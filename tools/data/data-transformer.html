@@ -9,16 +9,10 @@
       name="description"
       content="在线数据转换工具，支持添加前缀后缀、包裹、数字格式化、模板替换等批量处理"
     />
-    <meta
-      name="keywords"
-      content="data transform 转换 prefix suffix wrap template 模板 批量处理"
-    />
+    <meta name="keywords" content="data transform 转换 prefix suffix wrap template 模板 批量处理" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://tools.realtime-ai.chat/tools/data/data-transformer.html"
-    />
+    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/data-transformer.html" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="数据转换器 - WebUtils" />
@@ -42,17 +36,11 @@
       content="在线数据转换工具，支持添加前缀后缀、包裹、数字格式化、模板替换等批量处理"
     />
     <!-- OG Image -->
-    <meta
-      property="og:image"
-      content="https://tools.realtime-ai.chat/social-preview.png"
-    />
+    <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
     <meta property="og:image:type" content="image/png" />
-    <meta
-      name="twitter:image"
-      content="https://tools.realtime-ai.chat/social-preview.png"
-    />
+    <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- JSON-LD BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -109,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -128,7 +117,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -164,10 +153,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(
-            rgb(0, 245, 212, 0.02) 1px,
-            transparent 1px
-          ),
+        background-image:
+          linear-gradient(rgb(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgb(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -519,9 +506,7 @@
   </head>
   <body>
     <div class="bg-grid"></div>
-    <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
-      🌓
-    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌓</button>
 
     <div class="container">
       <header class="header">
@@ -554,9 +539,7 @@
         <div class="tool-section">
           <div class="section-title">转换类型</div>
           <div class="transform-type-select">
-            <button class="type-btn active" data-type="prefix-suffix">
-              前缀/后缀
-            </button>
+            <button class="type-btn active" data-type="prefix-suffix">前缀/后缀</button>
             <button class="type-btn" data-type="wrap">包裹</button>
             <button class="type-btn" data-type="template">模板替换</button>
             <button class="type-btn" data-type="number">数字格式化</button>
@@ -568,11 +551,7 @@
           <div class="transform-options" id="opt-prefix-suffix">
             <div class="option-card">
               <div class="option-card-title">添加前缀</div>
-              <input
-                type="text"
-                id="prefix"
-                placeholder='例如: "item_"'
-              />
+              <input type="text" id="prefix" placeholder='例如: "item_"' />
             </div>
             <div class="option-card">
               <div class="option-card-title">添加后缀</div>
@@ -586,23 +565,13 @@
               <div class="option-card-title">包裹字符</div>
               <div class="option-row">
                 <input type="text" id="wrapLeft" placeholder="左边" value='"' />
-                <input
-                  type="text"
-                  id="wrapRight"
-                  placeholder="右边"
-                  value='"'
-                />
+                <input type="text" id="wrapRight" placeholder="右边" value='"' />
               </div>
               <div class="input-hint">常用: 引号 "" '' | 括号 () [] {} | 标签 &lt;&gt;</div>
             </div>
             <div class="option-card">
               <div class="option-card-title">行分隔符</div>
-              <input
-                type="text"
-                id="wrapSeparator"
-                placeholder="例如: ,"
-                value=","
-              />
+              <input type="text" id="wrapSeparator" placeholder="例如: ," value="," />
               <div class="input-hint">用于连接各行，生成数组等</div>
             </div>
           </div>
@@ -614,11 +583,10 @@
               <input
                 type="text"
                 id="template"
-                placeholder='使用 {value} 表示原值，{index} 表示序号（从1开始），{index0} 从0开始'
+                placeholder="使用 {value} 表示原值，{index} 表示序号（从1开始），{index0} 从0开始"
               />
               <div class="input-hint">
-                示例: &lt;li&gt;{index}. {value}&lt;/li&gt; →
-                &lt;li&gt;1. apple&lt;/li&gt;
+                示例: &lt;li&gt;{index}. {value}&lt;/li&gt; → &lt;li&gt;1. apple&lt;/li&gt;
               </div>
             </div>
           </div>
@@ -669,8 +637,17 @@
             <div class="option-card">
               <div class="option-card-title">查找</div>
               <input type="text" id="replaceFind" placeholder="要查找的文本" />
-              <label style="margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--color-text-secondary);">
-                <input type="checkbox" id="replaceRegex" style="width: auto;" />
+              <label
+                style="
+                  margin-top: 8px;
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  font-size: 0.85rem;
+                  color: var(--color-text-secondary);
+                "
+              >
+                <input type="checkbox" id="replaceRegex" style="width: auto" />
                 使用正则表达式
               </label>
             </div>
@@ -681,12 +658,8 @@
           </div>
 
           <div class="btn-row">
-            <button class="btn btn-primary" onclick="transformData()">
-              🔄 转换
-            </button>
-            <button class="btn btn-secondary" onclick="clearAll()">
-              🗑️ 清空
-            </button>
+            <button class="btn btn-primary" onclick="transformData()">🔄 转换</button>
+            <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
           </div>
         </div>
 
@@ -704,12 +677,8 @@
           </div>
           <div class="result-box" id="result">转换结果将显示在这里...</div>
           <div class="btn-row" style="margin-top: 16px">
-            <button class="btn btn-primary" onclick="copyResult()">
-              📋 复制结果
-            </button>
-            <button class="btn btn-secondary" onclick="downloadResult()">
-              💾 下载
-            </button>
+            <button class="btn btn-primary" onclick="copyResult()">📋 复制结果</button>
+            <button class="btn btn-secondary" onclick="downloadResult()">💾 下载</button>
           </div>
         </div>
       </main>
@@ -728,9 +697,7 @@
       // Transform type selection
       document.querySelectorAll(".type-btn").forEach((btn) => {
         btn.addEventListener("click", function () {
-          document
-            .querySelectorAll(".type-btn")
-            .forEach((b) => b.classList.remove("active"));
+          document.querySelectorAll(".type-btn").forEach((b) => b.classList.remove("active"));
           this.classList.add("active");
           currentType = this.dataset.type;
 
@@ -738,9 +705,7 @@
           document.querySelectorAll(".transform-options").forEach((opt) => {
             opt.classList.add("hidden");
           });
-          document
-            .getElementById("opt-" + currentType)
-            .classList.remove("hidden");
+          document.getElementById("opt-" + currentType).classList.remove("hidden");
           saveState();
         });
       });
@@ -828,9 +793,7 @@
             case "sentence":
               return line.charAt(0).toUpperCase() + line.slice(1).toLowerCase();
             case "camel":
-              return line
-                .toLowerCase()
-                .replace(/[^a-zA-Z0-9]+(.)/g, (_, c) => c.toUpperCase());
+              return line.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, c) => c.toUpperCase());
             case "pascal":
               return line
                 .toLowerCase()
@@ -965,7 +928,7 @@
           caseType: document.getElementById("caseType").value,
           replaceFind: document.getElementById("replaceFind").value,
           replaceWith: document.getElementById("replaceWith").value,
-          replaceRegex: document.getElementById("replaceRegex").checked,
+          replaceRegex: document.getElementById("replaceRegex").checked
         };
         localStorage.setItem(LS_KEY, JSON.stringify(state));
       }
@@ -990,29 +953,21 @@
               document.querySelectorAll(".transform-options").forEach((opt) => {
                 opt.classList.add("hidden");
               });
-              document
-                .getElementById("opt-" + currentType)
-                .classList.remove("hidden");
+              document.getElementById("opt-" + currentType).classList.remove("hidden");
             }
 
             document.getElementById("prefix").value = state.prefix || "";
             document.getElementById("suffix").value = state.suffix || "";
             document.getElementById("wrapLeft").value = state.wrapLeft || '"';
             document.getElementById("wrapRight").value = state.wrapRight || '"';
-            document.getElementById("wrapSeparator").value =
-              state.wrapSeparator || ",";
+            document.getElementById("wrapSeparator").value = state.wrapSeparator || ",";
             document.getElementById("template").value = state.template || "";
-            document.getElementById("numberFormat").value =
-              state.numberFormat || "thousands";
-            document.getElementById("nonNumberAction").value =
-              state.nonNumberAction || "keep";
+            document.getElementById("numberFormat").value = state.numberFormat || "thousands";
+            document.getElementById("nonNumberAction").value = state.nonNumberAction || "keep";
             document.getElementById("caseType").value = state.caseType || "upper";
-            document.getElementById("replaceFind").value =
-              state.replaceFind || "";
-            document.getElementById("replaceWith").value =
-              state.replaceWith || "";
-            document.getElementById("replaceRegex").checked =
-              state.replaceRegex || false;
+            document.getElementById("replaceFind").value = state.replaceFind || "";
+            document.getElementById("replaceWith").value = state.replaceWith || "";
+            document.getElementById("replaceRegex").checked = state.replaceRegex || false;
           }
         } catch {
           // ignore

@@ -8,7 +8,10 @@
     <meta name="keywords" content="名片 制作 business card maker 打印 模板" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/business-card-maker.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/office/business-card-maker.html"
+    />
     <meta property="og:title" content="名片制作 - WebUtils" />
     <meta property="og:description" content="在线名片制作工具，多种风格模板，支持打印" />
     <meta property="og:type" content="website" />
@@ -76,7 +79,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +99,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -968,7 +972,7 @@
         address: document.getElementById("inputAddress"),
         bgColor: document.getElementById("inputBgColor"),
         textColor: document.getElementById("inputTextColor"),
-        accentColor: document.getElementById("inputAccentColor"),
+        accentColor: document.getElementById("inputAccentColor")
       };
 
       let currentStyle = "modern";
@@ -985,12 +989,24 @@
           bgColor: inputs.bgColor.value,
           textColor: inputs.textColor.value,
           accentColor: inputs.accentColor.value,
-          style: currentStyle,
+          style: currentStyle
         };
       }
 
       function renderCard(data) {
-        const { name, title, company, phone, email, website, address, bgColor, textColor, accentColor, style } = data;
+        const {
+          name,
+          title,
+          company,
+          phone,
+          email,
+          website,
+          address,
+          bgColor,
+          textColor,
+          accentColor,
+          style
+        } = data;
 
         cardPreview.className = "business-card card-" + style;
         cardPreview.style.backgroundColor = bgColor;
@@ -1229,48 +1245,115 @@
       }
 
       function generateCardHtml(data) {
-        const { name, title, company, phone, email, website, address, bgColor, textColor, accentColor, style } = data;
+        const {
+          name,
+          title,
+          company,
+          phone,
+          email,
+          website,
+          address,
+          bgColor,
+          textColor,
+          accentColor,
+          style
+        } = data;
         let html = "";
-        const cardStyle = "width:85mm;height:55mm;background:" + bgColor + ";color:" + textColor + ";border-radius:2mm;overflow:hidden;position:relative;border:0.5pt solid #ccc;";
+        const cardStyle =
+          "width:85mm;height:55mm;background:" +
+          bgColor +
+          ";color:" +
+          textColor +
+          ";border-radius:2mm;overflow:hidden;position:relative;border:0.5pt solid #ccc;";
 
         if (style === "modern") {
-          html = '<div class="business-card card-modern" style="' + cardStyle + 'display:flex;flex-direction:column;justify-content:center;padding:5mm;">';
-          html += '<div class="accent-bar" style="position:absolute;left:0;top:0;bottom:0;width:1.5mm;background:' + accentColor + '"></div>';
-          html += '<div class="card-name" style="font-size:5mm;font-weight:700;margin-bottom:1mm;">' + escapeHtml(name) + '</div>';
-          if (title) html += '<div class="card-title" style="font-size:2.5mm;opacity:0.8;margin-bottom:3mm;">' + escapeHtml(title) + '</div>';
-          if (company) html += '<div class="card-company" style="font-size:3mm;font-weight:600;margin-bottom:3mm;">' + escapeHtml(company) + '</div>';
+          html =
+            '<div class="business-card card-modern" style="' +
+            cardStyle +
+            'display:flex;flex-direction:column;justify-content:center;padding:5mm;">';
+          html +=
+            '<div class="accent-bar" style="position:absolute;left:0;top:0;bottom:0;width:1.5mm;background:' +
+            accentColor +
+            '"></div>';
+          html +=
+            '<div class="card-name" style="font-size:5mm;font-weight:700;margin-bottom:1mm;">' +
+            escapeHtml(name) +
+            "</div>";
+          if (title)
+            html +=
+              '<div class="card-title" style="font-size:2.5mm;opacity:0.8;margin-bottom:3mm;">' +
+              escapeHtml(title) +
+              "</div>";
+          if (company)
+            html +=
+              '<div class="card-company" style="font-size:3mm;font-weight:600;margin-bottom:3mm;">' +
+              escapeHtml(company) +
+              "</div>";
           html += '<div class="card-info" style="font-size:2.2mm;line-height:1.6;opacity:0.9;">';
-          if (phone) html += '<div>' + escapeHtml(phone) + '</div>';
-          if (email) html += '<div>' + escapeHtml(email) + '</div>';
-          if (website) html += '<div>' + escapeHtml(website) + '</div>';
-          if (address) html += '<div>' + escapeHtml(address) + '</div>';
-          html += '</div></div>';
+          if (phone) html += "<div>" + escapeHtml(phone) + "</div>";
+          if (email) html += "<div>" + escapeHtml(email) + "</div>";
+          if (website) html += "<div>" + escapeHtml(website) + "</div>";
+          if (address) html += "<div>" + escapeHtml(address) + "</div>";
+          html += "</div></div>";
         } else if (style === "classic") {
-          html = '<div class="business-card card-classic" style="' + cardStyle + 'display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5mm;">';
-          if (company) html += '<div class="card-company" style="font-size:3.5mm;font-weight:700;letter-spacing:0.3mm;text-transform:uppercase;margin-bottom:3mm;">' + escapeHtml(company) + '</div>';
-          html += '<div class="divider" style="width:15mm;height:0.5mm;margin-bottom:3mm;background:' + accentColor + '"></div>';
-          html += '<div class="card-name" style="font-size:4mm;font-weight:600;margin-bottom:1mm;">' + escapeHtml(name) + '</div>';
-          if (title) html += '<div class="card-title" style="font-size:2.5mm;opacity:0.8;margin-bottom:3mm;">' + escapeHtml(title) + '</div>';
+          html =
+            '<div class="business-card card-classic" style="' +
+            cardStyle +
+            'display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5mm;">';
+          if (company)
+            html +=
+              '<div class="card-company" style="font-size:3.5mm;font-weight:700;letter-spacing:0.3mm;text-transform:uppercase;margin-bottom:3mm;">' +
+              escapeHtml(company) +
+              "</div>";
+          html +=
+            '<div class="divider" style="width:15mm;height:0.5mm;margin-bottom:3mm;background:' +
+            accentColor +
+            '"></div>';
+          html +=
+            '<div class="card-name" style="font-size:4mm;font-weight:600;margin-bottom:1mm;">' +
+            escapeHtml(name) +
+            "</div>";
+          if (title)
+            html +=
+              '<div class="card-title" style="font-size:2.5mm;opacity:0.8;margin-bottom:3mm;">' +
+              escapeHtml(title) +
+              "</div>";
           html += '<div class="card-info" style="font-size:2.2mm;line-height:1.8;opacity:0.9;">';
-          if (phone) html += '<div>' + escapeHtml(phone) + '</div>';
-          if (email) html += '<div>' + escapeHtml(email) + '</div>';
-          if (website) html += '<div>' + escapeHtml(website) + '</div>';
-          if (address) html += '<div>' + escapeHtml(address) + '</div>';
-          html += '</div></div>';
+          if (phone) html += "<div>" + escapeHtml(phone) + "</div>";
+          if (email) html += "<div>" + escapeHtml(email) + "</div>";
+          if (website) html += "<div>" + escapeHtml(website) + "</div>";
+          if (address) html += "<div>" + escapeHtml(address) + "</div>";
+          html += "</div></div>";
         } else if (style === "minimal") {
-          html = '<div class="business-card card-minimal" style="' + cardStyle + 'display:grid;grid-template-columns:1fr 1fr;height:55mm;">';
-          html += '<div class="card-left" style="display:flex;flex-direction:column;justify-content:center;padding:5mm;">';
-          html += '<div class="card-name" style="font-size:4mm;font-weight:700;margin-bottom:1mm;">' + escapeHtml(name) + '</div>';
-          if (title) html += '<div class="card-title" style="font-size:2mm;opacity:0.7;margin-bottom:4mm;">' + escapeHtml(title) + '</div>';
+          html =
+            '<div class="business-card card-minimal" style="' +
+            cardStyle +
+            'display:grid;grid-template-columns:1fr 1fr;height:55mm;">';
+          html +=
+            '<div class="card-left" style="display:flex;flex-direction:column;justify-content:center;padding:5mm;">';
+          html +=
+            '<div class="card-name" style="font-size:4mm;font-weight:700;margin-bottom:1mm;">' +
+            escapeHtml(name) +
+            "</div>";
+          if (title)
+            html +=
+              '<div class="card-title" style="font-size:2mm;opacity:0.7;margin-bottom:4mm;">' +
+              escapeHtml(title) +
+              "</div>";
           html += '<div class="card-info" style="font-size:2mm;line-height:1.8;opacity:0.9;">';
-          if (phone) html += '<div>' + escapeHtml(phone) + '</div>';
-          if (email) html += '<div>' + escapeHtml(email) + '</div>';
-          if (website) html += '<div>' + escapeHtml(website) + '</div>';
-          if (address) html += '<div>' + escapeHtml(address) + '</div>';
-          html += '</div></div>';
-          html += '<div class="card-right" style="display:flex;flex-direction:column;justify-content:center;padding:5mm;opacity:0.15;">';
-          if (company) html += '<div class="card-company-bg" style="font-size:8mm;font-weight:900;line-height:1;word-break:break-all;">' + escapeHtml(company) + '</div>';
-          html += '</div></div>';
+          if (phone) html += "<div>" + escapeHtml(phone) + "</div>";
+          if (email) html += "<div>" + escapeHtml(email) + "</div>";
+          if (website) html += "<div>" + escapeHtml(website) + "</div>";
+          if (address) html += "<div>" + escapeHtml(address) + "</div>";
+          html += "</div></div>";
+          html +=
+            '<div class="card-right" style="display:flex;flex-direction:column;justify-content:center;padding:5mm;opacity:0.15;">';
+          if (company)
+            html +=
+              '<div class="card-company-bg" style="font-size:8mm;font-weight:900;line-height:1;word-break:break-all;">' +
+              escapeHtml(company) +
+              "</div>";
+          html += "</div></div>";
         }
 
         return html;
@@ -1286,23 +1369,27 @@
         const data = getCardData();
         const cardHtml = generateCardHtml(data);
 
-        const printContent = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>打印名片</title><style>' +
-          '@page{size:A4;margin:10mm}' +
-          '*{margin:0;padding:0;box-sizing:border-box}' +
+        const printContent =
+          '<!DOCTYPE html><html><head><meta charset="utf-8"><title>打印名片</title><style>' +
+          "@page{size:A4;margin:10mm}" +
+          "*{margin:0;padding:0;box-sizing:border-box}" +
           'body{font-family:-apple-system,blinkmacsystemfont,"Segoe UI",sans-serif}' +
-          '.print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10mm;padding:10mm}' +
-          '</style></head><body>' +
+          ".print-grid{display:grid;grid-template-columns:1fr 1fr;gap:10mm;padding:10mm}" +
+          "</style></head><body>" +
           '<div class="print-grid">' +
-          cardHtml + cardHtml + cardHtml + cardHtml +
-          '</div>' +
-          '</body></html>';
+          cardHtml +
+          cardHtml +
+          cardHtml +
+          cardHtml +
+          "</div>" +
+          "</body></html>";
 
         const printWindow = window.open("", "_blank");
         if (printWindow) {
           printWindow.document.open();
           printWindow.document.write(printContent);
           printWindow.document.close();
-          printWindow.onload = function() {
+          printWindow.onload = function () {
             printWindow.print();
           };
         }

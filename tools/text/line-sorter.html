@@ -14,7 +14,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="行排序工具 - WebUtils" />
-    <meta property="og:description" content="在线文本行排序工具，支持字母、数字、长度、随机排序，可去重" />
+    <meta
+      property="og:description"
+      content="在线文本行排序工具，支持字母、数字、长度、随机排序，可去重"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/text/line-sorter.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -27,7 +30,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="行排序工具 - WebUtils" />
-    <meta name="twitter:description" content="在线文本行排序工具，支持字母、数字、长度、随机排序，可去重" />
+    <meta
+      name="twitter:description"
+      content="在线文本行排序工具，支持字母、数字、长度、随机排序，可去重"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- Preload fonts -->
@@ -62,7 +68,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -83,7 +90,6 @@
       }
 
       /* Light Theme */
-      
 
       /* ============================================
          Base Styles
@@ -762,10 +768,17 @@
           <h2 class="card-title">📤 排序结果</h2>
 
           <div class="stats-bar">
-            <span class="stat-item">输入行数: <span class="stat-value" id="inputLines">0</span></span>
-            <span class="stat-item">输出行数: <span class="stat-value" id="outputLines">0</span></span>
+            <span class="stat-item">
+              输入行数:
+              <span class="stat-value" id="inputLines">0</span>
+            </span>
+            <span class="stat-item">
+              输出行数:
+              <span class="stat-value" id="outputLines">0</span>
+            </span>
             <span class="stat-item" id="duplicatesStat" style="display: none">
-              去除重复: <span class="stat-value" id="duplicatesRemoved">0</span>
+              去除重复:
+              <span class="stat-value" id="duplicatesRemoved">0</span>
             </span>
           </div>
 
@@ -1007,7 +1020,7 @@ banana`;
           caseSensitive: caseSensitiveEl.checked,
           removeDuplicates: removeDuplicatesEl.checked,
           trimLines: trimLinesEl.checked,
-          removeEmpty: removeEmptyEl.checked,
+          removeEmpty: removeEmptyEl.checked
         };
         localStorage.setItem("line-sorter-state", JSON.stringify(state));
       }

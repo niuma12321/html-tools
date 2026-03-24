@@ -6,7 +6,10 @@
     <title>目的地天气规划 - WebUtils</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间" />
+    <meta
+      name="description"
+      content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间"
+    />
     <meta name="keywords" content="weather 天气 travel 旅行天气 气候 最佳旅行时间" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -14,7 +17,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="目的地天气规划 - WebUtils" />
-    <meta property="og:description" content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间" />
+    <meta
+      property="og:description"
+      content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -30,7 +36,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="目的地天气规划 - WebUtils" />
-    <meta name="twitter:description" content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间" />
+    <meta
+      name="twitter:description"
+      content="旅行目的地天气查询工具，了解各月份气温、降水量和最佳旅行时间"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- JSON-LD BreadcrumbList Schema -->
@@ -90,7 +99,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -109,8 +119,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       *,
       *::before,
@@ -787,7 +795,7 @@
         "九月",
         "十月",
         "十一月",
-        "十二月",
+        "十二月"
       ];
 
       var destinations = {
@@ -809,10 +817,10 @@
             { high: 27, low: 21, rain: 210, condition: "多雨" },
             { high: 22, low: 15, rain: 198, condition: "舒适" },
             { high: 17, low: 10, rain: 93, condition: "凉爽" },
-            { high: 12, low: 4, rain: 51, condition: "晴冷" },
+            { high: 12, low: 4, rain: 51, condition: "晴冷" }
           ],
           tips: "春季赏樱(3-4月)、秋季赏枫(11月)是最佳时间",
-          packing: ["雨伞", "轻便外套", "舒适步行鞋"],
+          packing: ["雨伞", "轻便外套", "舒适步行鞋"]
         },
         bangkok: {
           name: "曼谷",
@@ -832,10 +840,10 @@
             { high: 32, low: 24, rain: 344, condition: "多雨" },
             { high: 32, low: 24, rain: 242, condition: "多雨" },
             { high: 32, low: 23, rain: 48, condition: "凉季" },
-            { high: 31, low: 21, rain: 10, condition: "凉季" },
+            { high: 31, low: 21, rain: 10, condition: "凉季" }
           ],
           tips: "11月至2月是凉季，天气最舒适；4-5月最热；6-10月为雨季",
-          packing: ["防晒霜", "太阳镜", "雨具", "轻薄衣物"],
+          packing: ["防晒霜", "太阳镜", "雨具", "轻薄衣物"]
         },
         paris: {
           name: "巴黎",
@@ -855,10 +863,10 @@
             { high: 21, low: 12, rain: 55, condition: "舒适" },
             { high: 16, low: 9, rain: 62, condition: "凉爽" },
             { high: 11, low: 5, rain: 51, condition: "阴冷" },
-            { high: 8, low: 3, rain: 58, condition: "阴冷" },
+            { high: 8, low: 3, rain: 58, condition: "阴冷" }
           ],
           tips: "5-6月和9-10月天气最好，游客也相对较少",
-          packing: ["风衣", "围巾", "舒适步行鞋", "雨伞"],
+          packing: ["风衣", "围巾", "舒适步行鞋", "雨伞"]
         },
         new_york: {
           name: "纽约",
@@ -878,10 +886,10 @@
             { high: 25, low: 16, rain: 109, condition: "舒适" },
             { high: 18, low: 10, rain: 112, condition: "凉爽" },
             { high: 12, low: 5, rain: 102, condition: "凉爽" },
-            { high: 6, low: 0, rain: 102, condition: "寒冷" },
+            { high: 6, low: 0, rain: 102, condition: "寒冷" }
           ],
           tips: "4-6月春季和9-11月秋季最适合旅游，冬季可看雪景和节日氛围",
-          packing: ["分层穿搭", "舒适步行鞋", "防寒外套(冬季)"],
+          packing: ["分层穿搭", "舒适步行鞋", "防寒外套(冬季)"]
         },
         sydney: {
           name: "悉尼",
@@ -901,10 +909,10 @@
             { high: 20, low: 11, rain: 69, condition: "春季" },
             { high: 22, low: 14, rain: 77, condition: "春季" },
             { high: 24, low: 16, rain: 83, condition: "春季" },
-            { high: 25, low: 18, rain: 78, condition: "夏季" },
+            { high: 25, low: 18, rain: 78, condition: "夏季" }
           ],
           tips: "南半球季节与北半球相反，9-11月(春季)和3-5月(秋季)最舒适",
-          packing: ["防晒霜", "泳衣", "轻便衣物", "太阳镜"],
+          packing: ["防晒霜", "泳衣", "轻便衣物", "太阳镜"]
         },
         dubai: {
           name: "迪拜",
@@ -924,10 +932,10 @@
             { high: 39, low: 27, rain: 0, condition: "酷热" },
             { high: 35, low: 23, rain: 1, condition: "热" },
             { high: 30, low: 19, rain: 3, condition: "温暖" },
-            { high: 26, low: 16, rain: 16, condition: "温暖" },
+            { high: 26, low: 16, rain: 16, condition: "温暖" }
           ],
           tips: "11月至3月是最佳旅行时间，夏季(6-9月)极其炎热，不建议户外活动",
-          packing: ["防晒霜", "太阳镜", "轻薄长袖", "帽子"],
+          packing: ["防晒霜", "太阳镜", "轻薄长袖", "帽子"]
         },
         london: {
           name: "伦敦",
@@ -947,10 +955,10 @@
             { high: 20, low: 11, rain: 49, condition: "舒适" },
             { high: 15, low: 8, rain: 69, condition: "凉爽" },
             { high: 11, low: 5, rain: 59, condition: "阴冷" },
-            { high: 8, low: 3, rain: 55, condition: "阴冷" },
+            { high: 8, low: 3, rain: 55, condition: "阴冷" }
           ],
           tips: "6-8月是夏季最温暖的时候，但随时可能下雨，记得带伞",
-          packing: ["雨伞", "防水外套", "分层穿搭", "舒适步行鞋"],
+          packing: ["雨伞", "防水外套", "分层穿搭", "舒适步行鞋"]
         },
         singapore: {
           name: "新加坡",
@@ -970,10 +978,10 @@
             { high: 31, low: 24, rain: 178, condition: "多雨" },
             { high: 31, low: 24, rain: 193, condition: "多雨" },
             { high: 31, low: 24, rain: 256, condition: "多雨" },
-            { high: 30, low: 24, rain: 269, condition: "多雨" },
+            { high: 30, low: 24, rain: 269, condition: "多雨" }
           ],
           tips: "全年高温多雨，2月和6-8月相对干燥，下午常有雷阵雨",
-          packing: ["防晒霜", "雨伞", "轻薄透气衣物", "太阳镜"],
+          packing: ["防晒霜", "雨伞", "轻薄透气衣物", "太阳镜"]
         },
         bali: {
           name: "巴厘岛",
@@ -993,10 +1001,10 @@
             { high: 29, low: 23, rain: 47, condition: "旱季" },
             { high: 30, low: 24, rain: 63, condition: "过渡" },
             { high: 30, low: 24, rain: 179, condition: "雨季" },
-            { high: 30, low: 24, rain: 276, condition: "雨季" },
+            { high: 30, low: 24, rain: 276, condition: "雨季" }
           ],
           tips: "4-10月是旱季，天气晴朗适合海滩和户外活动",
-          packing: ["防晒霜", "泳衣", "轻便衣物", "驱蚊液"],
+          packing: ["防晒霜", "泳衣", "轻便衣物", "驱蚊液"]
         },
         rome: {
           name: "罗马",
@@ -1016,10 +1024,10 @@
             { high: 27, low: 16, rain: 73, condition: "舒适" },
             { high: 22, low: 12, rain: 98, condition: "凉爽" },
             { high: 16, low: 8, rain: 115, condition: "多雨" },
-            { high: 13, low: 5, rain: 93, condition: "阴冷" },
+            { high: 13, low: 5, rain: 93, condition: "阴冷" }
           ],
           tips: "4-5月和9-10月天气宜人，游客较少；7-8月炎热且拥挤",
-          packing: ["太阳镜", "舒适步行鞋", "轻便外套", "遮阳帽"],
+          packing: ["太阳镜", "舒适步行鞋", "轻便外套", "遮阳帽"]
         },
         maldives: {
           name: "马尔代夫",
@@ -1039,11 +1047,11 @@
             { high: 30, low: 26, rain: 199, condition: "雨季" },
             { high: 30, low: 26, rain: 194, condition: "雨季" },
             { high: 30, low: 26, rain: 231, condition: "雨季" },
-            { high: 30, low: 26, rain: 217, condition: "过渡" },
+            { high: 30, low: 26, rain: 217, condition: "过渡" }
           ],
           tips: "12月至4月是旱季，海水清澈适合浮潜和潜水",
-          packing: ["防晒霜", "泳衣", "浮潜装备", "轻薄衣物"],
-        },
+          packing: ["防晒霜", "泳衣", "浮潜装备", "轻薄衣物"]
+        }
       };
 
       var selectedMonth = new Date().getMonth();
@@ -1100,7 +1108,11 @@
           { icon: "🌡️", value: monthData.high + "°C", label: "最高温度" },
           { icon: "❄️", value: monthData.low + "°C", label: "最低温度" },
           { icon: "🌧️", value: monthData.rain + "mm", label: "月降水量" },
-          { icon: getWeatherIcon(monthData.condition), value: monthData.condition, label: "天气状况" },
+          {
+            icon: getWeatherIcon(monthData.condition),
+            value: monthData.condition,
+            label: "天气状况"
+          }
         ];
 
         stats.forEach(function (stat) {
@@ -1192,10 +1204,12 @@
         var content = document.createElement("div");
         content.className = "recommendation-content";
 
-        var bestMonthsText = dest.bestMonths.map(function (m) {
-          return monthNames[m];
-        }).join("、");
-        
+        var bestMonthsText = dest.bestMonths
+          .map(function (m) {
+            return monthNames[m];
+          })
+          .join("、");
+
         content.textContent = dest.tips + "\n\n最佳旅行月份：" + bestMonthsText;
 
         var packingDiv = document.createElement("div");
@@ -1244,7 +1258,7 @@
           春季: "🌸",
           秋季: "🍂",
           旱季: "☀️",
-          热: "🌡️",
+          热: "🌡️"
         };
         return icons[condition] || "🌤️";
       }
@@ -1263,9 +1277,11 @@
         text += "月降水量：" + monthData.rain + "mm\n";
         text += "天气状况：" + monthData.condition + "\n\n";
 
-        var bestMonthsText = dest.bestMonths.map(function (m) {
-          return monthNames[m];
-        }).join("、");
+        var bestMonthsText = dest.bestMonths
+          .map(function (m) {
+            return monthNames[m];
+          })
+          .join("、");
         text += "最佳旅行月份：" + bestMonthsText + "\n\n";
         text += "旅行提示：" + dest.tips + "\n\n";
         text += "建议携带：" + dest.packing.join("、");
@@ -1281,7 +1297,7 @@
       function saveState() {
         var state = {
           destination: document.getElementById("destination").value,
-          month: document.getElementById("month").value,
+          month: document.getElementById("month").value
         };
         localStorage.setItem("weather-planner-state", JSON.stringify(state));
       }

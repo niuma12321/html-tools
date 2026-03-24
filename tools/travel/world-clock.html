@@ -8,7 +8,10 @@
     <meta property="og:title" content="世界时钟 - WebUtils" />
     <meta property="og:description" content="世界时钟：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/world-clock.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/world-clock.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/travel/world-clock.html" />
@@ -50,7 +53,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -69,8 +73,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       *,
       *::before,
@@ -667,7 +669,11 @@
 
       function addClock(timezone, city, country) {
         // Check if already exists
-        if (clocks.some(function (c) { return c.id === timezone; })) {
+        if (
+          clocks.some(function (c) {
+            return c.id === timezone;
+          })
+        ) {
           return;
         }
 
@@ -691,7 +697,9 @@
         var value = select.value;
         if (!value) return;
 
-        var tz = TIMEZONES.find(function (t) { return t.id === value; });
+        var tz = TIMEZONES.find(function (t) {
+          return t.id === value;
+        });
         if (tz) {
           addClock(tz.id, tz.city, tz.country);
         }
@@ -706,7 +714,9 @@
 
           // For local timezone, get actual city name if possible
           if (presetKey === "local") {
-            var localTz = TIMEZONES.find(function (t) { return t.id === preset.id; });
+            var localTz = TIMEZONES.find(function (t) {
+              return t.id === preset.id;
+            });
             if (localTz) {
               city = localTz.city;
               country = localTz.country;
@@ -791,7 +801,9 @@
         var removeBtn = document.createElement("button");
         removeBtn.className = "clock-remove";
         removeBtn.setAttribute("aria-label", "移除");
-        removeBtn.onclick = function () { removeClock(index); };
+        removeBtn.onclick = function () {
+          removeClock(index);
+        };
 
         var removeSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         removeSvg.setAttribute("viewBox", "0 0 24 24");
@@ -897,7 +909,9 @@
           if (minutes === 0) {
             return sign + diffHrs;
           } else {
-            return sign + (diffHrs >= 0 ? "" : "-") + hours + ":" + String(minutes).padStart(2, "0");
+            return (
+              sign + (diffHrs >= 0 ? "" : "-") + hours + ":" + String(minutes).padStart(2, "0")
+            );
           }
         } catch (e) {
           return "";

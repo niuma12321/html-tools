@@ -16,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="行李限额计算 - WebUtils" />
-    <meta property="og:description" content="航班行李重量计算器，支持多航空公司限额，物品清单管理" />
+    <meta
+      property="og:description"
+      content="航班行李重量计算器，支持多航空公司限额，物品清单管理"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -28,7 +31,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="行李限额计算 - WebUtils" />
-    <meta name="twitter:description" content="航班行李重量计算器，支持多航空公司限额，物品清单管理" />
+    <meta
+      name="twitter:description"
+      content="航班行李重量计算器，支持多航空公司限额，物品清单管理"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -91,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -110,7 +117,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -637,7 +644,9 @@
         <div class="warning-banner" id="warningBanner">
           <span class="warning-icon">⚠️</span>
           <span class="warning-text">
-            行李超重 <span class="warning-amount" id="overweightAmount">0</span> kg，可能需要支付额外费用！
+            行李超重
+            <span class="warning-amount" id="overweightAmount">0</span>
+            kg，可能需要支付额外费用！
           </span>
         </div>
 
@@ -724,7 +733,11 @@
 
         <!-- Items List -->
         <div class="tool-section">
-          <div class="section-title">物品清单 (<span id="itemCount">0</span> 件)</div>
+          <div class="section-title">
+            物品清单 (
+            <span id="itemCount">0</span>
+            件)
+          </div>
           <div class="items-list" id="itemsList">
             <div class="empty-state" id="emptyState">还没有添加物品，开始添加你的行李吧</div>
           </div>
@@ -854,7 +867,7 @@
         items.push({
           id: Date.now(),
           name: name,
-          weight: weight,
+          weight: weight
         });
 
         itemNameInput.value = "";
@@ -1003,7 +1016,7 @@
           items: items,
           limit: limit,
           airlineValue: airlineSelect.value,
-          customLimit: customLimitInput.value,
+          customLimit: customLimitInput.value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }

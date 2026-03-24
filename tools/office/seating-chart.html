@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>座位图生成器 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出" />
+    <meta
+      name="description"
+      content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出"
+    />
     <meta name="keywords" content="seating chart 座位 座位图 会议" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="座位图生成器 - WebUtils" />
-    <meta property="og:description" content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出" />
+    <meta
+      property="og:description"
+      content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -25,7 +31,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="座位图生成器 - WebUtils" />
-    <meta name="twitter:description" content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出" />
+    <meta
+      name="twitter:description"
+      content="在线座位图生成器，支持添加桌子、分配座位、可视化布局、打印导出"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -88,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -107,7 +117,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -729,9 +739,18 @@
         <!-- Stats -->
         <div class="tool-section">
           <div class="stats-row">
-            <div class="stat-item">桌子数: <span id="tableCount">0</span></div>
-            <div class="stat-item">总座位: <span id="totalSeats">0</span></div>
-            <div class="stat-item">已分配: <span id="assignedSeats">0</span></div>
+            <div class="stat-item">
+              桌子数:
+              <span id="tableCount">0</span>
+            </div>
+            <div class="stat-item">
+              总座位:
+              <span id="totalSeats">0</span>
+            </div>
+            <div class="stat-item">
+              已分配:
+              <span id="assignedSeats">0</span>
+            </div>
           </div>
         </div>
 
@@ -741,7 +760,7 @@
           <div class="seating-canvas">
             <div class="tables-container" id="tablesContainer">
               <!-- Tables will be rendered here -->
-              <div style="text-align: center; color: var(--text-muted); padding: 60px 0;">
+              <div style="text-align: center; color: var(--text-muted); padding: 60px 0">
                 点击"添加桌子"开始创建座位图
               </div>
             </div>
@@ -777,7 +796,7 @@
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      var LS_KEY = 'seating_chart_data_v1';
+      var LS_KEY = "seating_chart_data_v1";
       var tables = [];
       var tableIdCounter = 0;
       var currentSeat = null;
@@ -788,75 +807,79 @@
         loadFromStorage();
         renderTables();
         updateStats();
-        
+
         // Add input listeners for auto-save
-        document.getElementById('eventName').addEventListener('input', debounce(saveToStorage, 500));
+        document
+          .getElementById("eventName")
+          .addEventListener("input", debounce(saveToStorage, 500));
       }
 
       // Add table
       function addTable() {
-        var name = document.getElementById('tableName').value.trim();
-        var type = document.getElementById('tableType').value;
-        var seatCount = parseInt(document.getElementById('seatCount').value) || 8;
-        
+        var name = document.getElementById("tableName").value.trim();
+        var type = document.getElementById("tableType").value;
+        var seatCount = parseInt(document.getElementById("seatCount").value) || 8;
+
         if (!name) {
-          name = '桌 ' + (tables.length + 1);
+          name = "桌 " + (tables.length + 1);
         }
-        
+
         if (seatCount < 2) seatCount = 2;
         if (seatCount > 20) seatCount = 20;
-        
+
         var seats = [];
         for (var i = 0; i < seatCount; i++) {
           seats.push({
             number: i + 1,
-            name: ''
+            name: ""
           });
         }
-        
+
         tables.push({
           id: ++tableIdCounter,
           name: name,
           type: type,
           seats: seats
         });
-        
+
         // Reset inputs
-        document.getElementById('tableName').value = '';
-        document.getElementById('seatCount').value = '8';
-        
+        document.getElementById("tableName").value = "";
+        document.getElementById("seatCount").value = "8";
+
         renderTables();
         updateStats();
         saveToStorage();
-        showToast('已添加 ' + name);
+        showToast("已添加 " + name);
       }
 
       // Remove table
       function removeTable(id) {
-        if (!confirm('确定要删除这张桌子吗？')) return;
-        
-        tables = tables.filter(function(t) { return t.id !== id; });
+        if (!confirm("确定要删除这张桌子吗？")) return;
+
+        tables = tables.filter(function (t) {
+          return t.id !== id;
+        });
         renderTables();
         updateStats();
         saveToStorage();
-        showToast('已删除');
+        showToast("已删除");
       }
 
       // Render tables
       function renderTables() {
-        var container = document.getElementById('tablesContainer');
-        container.textContent = '';
-        
+        var container = document.getElementById("tablesContainer");
+        container.textContent = "";
+
         if (tables.length === 0) {
-          var placeholder = document.createElement('div');
-          placeholder.style.textAlign = 'center';
-          placeholder.style.color = 'var(--text-muted)';
-          placeholder.style.padding = '60px 0';
+          var placeholder = document.createElement("div");
+          placeholder.style.textAlign = "center";
+          placeholder.style.color = "var(--text-muted)";
+          placeholder.style.padding = "60px 0";
           placeholder.textContent = '点击"添加桌子"开始创建座位图';
           container.appendChild(placeholder);
           return;
         }
-        
+
         for (var i = 0; i < tables.length; i++) {
           var tableEl = createTableElement(tables[i]);
           container.appendChild(tableEl);
@@ -865,154 +888,158 @@
 
       // Create table element
       function createTableElement(table) {
-        var group = document.createElement('div');
-        group.className = 'table-group';
-        
-        var label = document.createElement('div');
-        label.className = 'table-label';
+        var group = document.createElement("div");
+        group.className = "table-group";
+
+        var label = document.createElement("div");
+        label.className = "table-label";
         label.textContent = table.name;
         group.appendChild(label);
-        
-        var shape = document.createElement('div');
-        shape.className = 'table-shape';
-        
-        if (table.type === 'round') {
+
+        var shape = document.createElement("div");
+        shape.className = "table-shape";
+
+        if (table.type === "round") {
           shape.appendChild(createRoundTable(table));
         } else {
           shape.appendChild(createRectTable(table));
         }
-        
+
         group.appendChild(shape);
-        
+
         // Remove button
-        var removeBtn = document.createElement('button');
-        removeBtn.className = 'btn-remove-table no-print';
-        removeBtn.textContent = '删除桌子';
-        removeBtn.addEventListener('click', function() {
+        var removeBtn = document.createElement("button");
+        removeBtn.className = "btn-remove-table no-print";
+        removeBtn.textContent = "删除桌子";
+        removeBtn.addEventListener("click", function () {
           removeTable(table.id);
         });
         group.appendChild(removeBtn);
-        
+
         return group;
       }
 
       // Create round table
       function createRoundTable(table) {
-        var tableEl = document.createElement('div');
-        tableEl.className = 'table-round';
-        
+        var tableEl = document.createElement("div");
+        tableEl.className = "table-round";
+
         var seatCount = table.seats.length;
         var radius = 100; // px from center
         var angleStep = (2 * Math.PI) / seatCount;
-        
+
         for (var i = 0; i < seatCount; i++) {
           var angle = angleStep * i - Math.PI / 2; // Start from top
           var x = 100 + radius * Math.cos(angle);
           var y = 100 + radius * Math.sin(angle);
-          
+
           var seat = createSeatElement(table, i);
-          seat.style.left = x + 'px';
-          seat.style.top = y + 'px';
+          seat.style.left = x + "px";
+          seat.style.top = y + "px";
           tableEl.appendChild(seat);
         }
-        
+
         return tableEl;
       }
 
       // Create rectangle table
       function createRectTable(table) {
-        var wrapper = document.createElement('div');
-        wrapper.className = 'table-rect';
-        
+        var wrapper = document.createElement("div");
+        wrapper.className = "table-rect";
+
         var seatCount = table.seats.length;
         var seatsPerSide = Math.ceil(seatCount / 2);
-        
+
         // Top row
-        var topRow = document.createElement('div');
-        topRow.className = 'table-seats-row';
+        var topRow = document.createElement("div");
+        topRow.className = "table-seats-row";
         for (var i = 0; i < seatsPerSide && i < seatCount; i++) {
           topRow.appendChild(createSeatElement(table, i));
         }
         wrapper.appendChild(topRow);
-        
+
         // Table body
-        var body = document.createElement('div');
-        body.className = 'table-rect-body';
+        var body = document.createElement("div");
+        body.className = "table-rect-body";
         wrapper.appendChild(body);
-        
+
         // Bottom row
-        var bottomRow = document.createElement('div');
-        bottomRow.className = 'table-seats-row';
+        var bottomRow = document.createElement("div");
+        bottomRow.className = "table-seats-row";
         for (var i = seatsPerSide; i < seatCount; i++) {
           bottomRow.appendChild(createSeatElement(table, i));
         }
         wrapper.appendChild(bottomRow);
-        
+
         return wrapper;
       }
 
       // Create seat element
       function createSeatElement(table, seatIndex) {
         var seatData = table.seats[seatIndex];
-        var seat = document.createElement('div');
-        seat.className = 'seat' + (seatData.name ? ' occupied' : '');
-        
-        var number = document.createElement('div');
-        number.className = 'seat-number';
+        var seat = document.createElement("div");
+        seat.className = "seat" + (seatData.name ? " occupied" : "");
+
+        var number = document.createElement("div");
+        number.className = "seat-number";
         number.textContent = seatData.number;
         seat.appendChild(number);
-        
-        var name = document.createElement('div');
-        name.className = 'seat-name';
-        name.textContent = seatData.name || '空';
+
+        var name = document.createElement("div");
+        name.className = "seat-name";
+        name.textContent = seatData.name || "空";
         seat.appendChild(name);
-        
-        seat.addEventListener('click', function() {
+
+        seat.addEventListener("click", function () {
           openSeatModal(table.id, seatIndex);
         });
-        
+
         return seat;
       }
 
       // Open seat modal
       function openSeatModal(tableId, seatIndex) {
         currentSeat = { tableId: tableId, seatIndex: seatIndex };
-        
+
         // Find current name
-        var table = tables.find(function(t) { return t.id === tableId; });
+        var table = tables.find(function (t) {
+          return t.id === tableId;
+        });
         var currentName = table.seats[seatIndex].name;
-        
-        document.getElementById('seatPersonName').value = currentName;
-        document.getElementById('seatModal').classList.add('show');
-        document.getElementById('seatPersonName').focus();
+
+        document.getElementById("seatPersonName").value = currentName;
+        document.getElementById("seatModal").classList.add("show");
+        document.getElementById("seatPersonName").focus();
       }
 
       // Close modal
       function closeModal() {
-        document.getElementById('seatModal').classList.remove('show');
+        document.getElementById("seatModal").classList.remove("show");
         currentSeat = null;
       }
 
       // Assign seat
       function assignSeat() {
         if (!currentSeat) return;
-        
-        var name = document.getElementById('seatPersonName').value.trim();
-        var table = tables.find(function(t) { return t.id === currentSeat.tableId; });
-        
+
+        var name = document.getElementById("seatPersonName").value.trim();
+        var table = tables.find(function (t) {
+          return t.id === currentSeat.tableId;
+        });
+
         if (table) {
           table.seats[currentSeat.seatIndex].name = name;
           renderTables();
           updateStats();
           saveToStorage();
         }
-        
+
         closeModal();
       }
 
       // Clear seat
       function clearSeat() {
-        document.getElementById('seatPersonName').value = '';
+        document.getElementById("seatPersonName").value = "";
         assignSeat();
       }
 
@@ -1020,7 +1047,7 @@
       function updateStats() {
         var totalSeats = 0;
         var assignedSeats = 0;
-        
+
         for (var i = 0; i < tables.length; i++) {
           var seats = tables[i].seats;
           totalSeats += seats.length;
@@ -1028,19 +1055,19 @@
             if (seats[j].name) assignedSeats++;
           }
         }
-        
-        document.getElementById('tableCount').textContent = tables.length;
-        document.getElementById('totalSeats').textContent = totalSeats;
-        document.getElementById('assignedSeats').textContent = assignedSeats;
+
+        document.getElementById("tableCount").textContent = tables.length;
+        document.getElementById("totalSeats").textContent = totalSeats;
+        document.getElementById("assignedSeats").textContent = assignedSeats;
       }
 
       // Debounce function
       function debounce(func, wait) {
         var timeout;
-        return function() {
+        return function () {
           var context = this;
           var args = arguments;
-          var later = function() {
+          var later = function () {
             clearTimeout(timeout);
             func.apply(context, args);
           };
@@ -1051,35 +1078,35 @@
 
       // Print chart
       function printChart() {
-        var eventName = document.getElementById('eventName').value || '座位安排';
-        document.getElementById('printEventName').textContent = eventName;
+        var eventName = document.getElementById("eventName").value || "座位安排";
+        document.getElementById("printEventName").textContent = eventName;
         window.print();
       }
 
       // Clear all
       function clearAll() {
-        if (!confirm('确定要清空所有内容吗？')) return;
-        
-        document.getElementById('eventName').value = '';
+        if (!confirm("确定要清空所有内容吗？")) return;
+
+        document.getElementById("eventName").value = "";
         tables = [];
         tableIdCounter = 0;
-        
+
         renderTables();
         updateStats();
-        
+
         localStorage.removeItem(LS_KEY);
-        
-        showToast('已清空');
+
+        showToast("已清空");
       }
 
       // Save to localStorage
       function saveToStorage() {
         var data = {
-          eventName: document.getElementById('eventName').value,
+          eventName: document.getElementById("eventName").value,
           tables: tables,
           tableIdCounter: tableIdCounter
         };
-        
+
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
 
@@ -1087,45 +1114,47 @@
       function loadFromStorage() {
         var saved = localStorage.getItem(LS_KEY);
         if (!saved) return;
-        
+
         try {
           var data = JSON.parse(saved);
-          
-          document.getElementById('eventName').value = data.eventName || '';
+
+          document.getElementById("eventName").value = data.eventName || "";
           tables = data.tables || [];
           tableIdCounter = data.tableIdCounter || 0;
         } catch (e) {
-          console.error('Failed to load saved data:', e);
+          console.error("Failed to load saved data:", e);
         }
       }
 
       // Theme toggle
       function toggleTheme() {
         var body = document.body;
-        var isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        var isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
       // Load theme
       function loadTheme() {
-        var saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       }
 
       // Show toast
       function showToast(msg) {
-        var toast = document.getElementById('toast');
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Handle Enter key in modal
-      document.getElementById('seatPersonName').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
+      document.getElementById("seatPersonName").addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
           assignSeat();
         }
       });

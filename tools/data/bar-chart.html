@@ -87,7 +87,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -106,7 +107,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -486,12 +487,17 @@
               <div class="section-title">数据输入</div>
               <div class="input-group">
                 <label class="input-label">数据 (每行一条: 标签,数值)</label>
-                <textarea id="dataInput" placeholder="苹果,120
+                <textarea
+                  id="dataInput"
+                  placeholder="苹果,120
 香蕉,85
 橙子,95
 葡萄,70
-西瓜,150"></textarea>
-                <div class="example-data">示例格式: 标签,数值 或 CSV格式（第一列为标签，第二列为数值）</div>
+西瓜,150"
+                ></textarea>
+                <div class="example-data">
+                  示例格式: 标签,数值 或 CSV格式（第一列为标签，第二列为数值）
+                </div>
               </div>
             </div>
 
@@ -511,7 +517,7 @@
                   <input type="text" id="yAxisLabel" placeholder="Y轴" value="数量" />
                 </div>
               </div>
-              <div class="inline-group" style="margin-top: 16px;">
+              <div class="inline-group" style="margin-top: 16px">
                 <div class="input-group">
                   <label class="input-label">图表类型</label>
                   <select id="chartType">
@@ -566,7 +572,7 @@
                 <div class="chart-placeholder" id="chartPlaceholder">输入数据后点击"生成图表"</div>
               </div>
             </div>
-            <div class="btn-row" style="margin-top: 16px;">
+            <div class="btn-row" style="margin-top: 16px">
               <button class="btn btn-primary" onclick="exportPNG()">📥 导出PNG</button>
               <button class="btn btn-secondary" onclick="shareChart()">🔗 分享</button>
             </div>
@@ -602,14 +608,17 @@
 
       // 解析数据
       function parseData(input) {
-        const lines = input.trim().split('\n').filter(line => line.trim());
+        const lines = input
+          .trim()
+          .split("\n")
+          .filter((line) => line.trim());
         if (lines.length === 0) return null;
 
         const data = { labels: [], values: [] };
-        
+
         for (const line of lines) {
           // 支持逗号、制表符、分号分隔
-          const parts = line.split(/[,\t;]/).map(p => p.trim());
+          const parts = line.split(/[,\t;]/).map((p) => p.trim());
           if (parts.length >= 2) {
             const label = parts[0];
             const value = parseFloat(parts[1]);
@@ -625,8 +634,8 @@
 
       // 获取颜色数组
       function getColors() {
-        const colorInputs = document.querySelectorAll('.bar-color');
-        return Array.from(colorInputs).map(input => input.value);
+        const colorInputs = document.querySelectorAll(".bar-color");
+        return Array.from(colorInputs).map((input) => input.value);
       }
 
       // 生成图表
@@ -647,7 +656,7 @@
 
         // 为每个数据项分配颜色
         const backgroundColors = data.values.map((_, i) => colors[i % colors.length]);
-        const borderColors = backgroundColors.map(c => c);
+        const borderColors = backgroundColors.map((c) => c);
 
         // 隐藏占位符
         document.getElementById("chartPlaceholder").style.display = "none";
@@ -658,7 +667,7 @@
         }
 
         const ctx = document.getElementById("chartCanvas").getContext("2d");
-        
+
         // 获取当前主题
         const isLight = document.body.getAttribute("data-theme") === "light";
         const textColor = isLight ? "#1a1a1a" : "#e8e8ed";
@@ -670,18 +679,20 @@
           type: "bar",
           data: {
             labels: data.labels,
-            datasets: [{
-              label: chartTitle,
-              data: data.values,
-              backgroundColor: backgroundColors,
-              borderColor: borderColors,
-              borderWidth: 2,
-              borderRadius: 4,
-              borderSkipped: false,
-            }]
+            datasets: [
+              {
+                label: chartTitle,
+                data: data.values,
+                backgroundColor: backgroundColors,
+                borderColor: borderColors,
+                borderWidth: 2,
+                borderRadius: 4,
+                borderSkipped: false
+              }
+            ]
           },
           options: {
-            indexAxis: isHorizontal ? 'y' : 'x',
+            indexAxis: isHorizontal ? "y" : "x",
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
@@ -691,7 +702,7 @@
                 color: textColor,
                 font: {
                   size: 16,
-                  weight: 'bold',
+                  weight: "bold",
                   family: "'Space Grotesk', sans-serif"
                 },
                 padding: {
@@ -703,7 +714,7 @@
                 display: false
               },
               tooltip: {
-                backgroundColor: isLight ? '#fff' : '#1a1a24',
+                backgroundColor: isLight ? "#fff" : "#1a1a24",
                 titleColor: textColor,
                 bodyColor: textColor,
                 borderColor: gridColor,
@@ -725,7 +736,7 @@
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 ticks: {
@@ -746,7 +757,7 @@
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 ticks: {
@@ -764,7 +775,7 @@
             },
             animation: {
               duration: 800,
-              easing: 'easeOutQuart'
+              easing: "easeOutQuart"
             }
           }
         });
@@ -782,9 +793,9 @@
         }
 
         const canvas = document.getElementById("chartCanvas");
-        const link = document.createElement('a');
-        link.download = 'bar-chart.png';
-        link.href = canvas.toDataURL('image/png', 1.0);
+        const link = document.createElement("a");
+        link.download = "bar-chart.png";
+        link.href = canvas.toDataURL("image/png", 1.0);
         link.click();
         showToast("PNG已下载");
       }
@@ -801,13 +812,16 @@
         };
 
         const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
-        const url = window.location.href.split('#')[0] + '#' + encoded;
-        
-        navigator.clipboard.writeText(url).then(() => {
-          showToast("分享链接已复制到剪贴板");
-        }).catch(() => {
-          showToast("复制失败，请手动复制URL", true);
-        });
+        const url = window.location.href.split("#")[0] + "#" + encoded;
+
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            showToast("分享链接已复制到剪贴板");
+          })
+          .catch(() => {
+            showToast("复制失败，请手动复制URL", true);
+          });
       }
 
       // 从URL加载状态
@@ -823,7 +837,7 @@
           if (state.yAxis) document.getElementById("yAxisLabel").value = state.yAxis;
           if (state.type) document.getElementById("chartType").value = state.type;
           if (state.colors && Array.isArray(state.colors)) {
-            const colorInputs = document.querySelectorAll('.bar-color');
+            const colorInputs = document.querySelectorAll(".bar-color");
             state.colors.forEach((color, i) => {
               if (colorInputs[i]) colorInputs[i].value = color;
             });
@@ -844,12 +858,12 @@
           type: document.getElementById("chartType").value,
           colors: getColors()
         };
-        localStorage.setItem('bar-chart-state', JSON.stringify(state));
+        localStorage.setItem("bar-chart-state", JSON.stringify(state));
       }
 
       // 从 localStorage 加载状态
       function loadState() {
-        const saved = localStorage.getItem('bar-chart-state');
+        const saved = localStorage.getItem("bar-chart-state");
         if (!saved) return false;
 
         try {
@@ -860,7 +874,7 @@
           if (state.yAxis) document.getElementById("yAxisLabel").value = state.yAxis;
           if (state.type) document.getElementById("chartType").value = state.type;
           if (state.colors && Array.isArray(state.colors)) {
-            const colorInputs = document.querySelectorAll('.bar-color');
+            const colorInputs = document.querySelectorAll(".bar-color");
             state.colors.forEach((color, i) => {
               if (colorInputs[i]) colorInputs[i].value = color;
             });
@@ -878,10 +892,10 @@
         document.getElementById("xAxisLabel").value = "类别";
         document.getElementById("yAxisLabel").value = "数量";
         document.getElementById("chartType").value = "vertical";
-        
+
         // 重置颜色
-        const defaultColors = ['#00f5d4', '#f72585', '#fbbf24', '#10b981', '#a855f7'];
-        const colorInputs = document.querySelectorAll('.bar-color');
+        const defaultColors = ["#00f5d4", "#f72585", "#fbbf24", "#10b981", "#a855f7"];
+        const colorInputs = document.querySelectorAll(".bar-color");
         defaultColors.forEach((color, i) => {
           if (colorInputs[i]) colorInputs[i].value = color;
         });
@@ -894,10 +908,10 @@
         document.getElementById("chartPlaceholder").style.display = "block";
 
         // 清除 localStorage
-        localStorage.removeItem('bar-chart-state');
-        
+        localStorage.removeItem("bar-chart-state");
+
         // 清除 URL hash
-        history.replaceState(null, '', window.location.pathname);
+        history.replaceState(null, "", window.location.pathname);
 
         showToast("已清空");
       }
@@ -906,7 +920,7 @@
       function showToast(msg, isError = false) {
         const toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.toggle('error', isError);
+        toast.classList.toggle("error", isError);
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 2000);
       }
@@ -926,14 +940,14 @@
         }
 
         // 监听输入变化保存状态
-        const inputs = ['dataInput', 'chartTitle', 'xAxisLabel', 'yAxisLabel', 'chartType'];
-        inputs.forEach(id => {
-          document.getElementById(id).addEventListener('input', saveState);
+        const inputs = ["dataInput", "chartTitle", "xAxisLabel", "yAxisLabel", "chartType"];
+        inputs.forEach((id) => {
+          document.getElementById(id).addEventListener("input", saveState);
         });
 
         // 监听颜色变化
-        document.querySelectorAll('.bar-color').forEach(input => {
-          input.addEventListener('change', saveState);
+        document.querySelectorAll(".bar-color").forEach((input) => {
+          input.addEventListener("change", saveState);
         });
       })();
     </script>

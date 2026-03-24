@@ -13,7 +13,10 @@
       href="https://tools.realtime-ai.chat/tools/travel/itinerary-planner.html"
     />
     <meta property="og:title" content="行程规划器 - WebUtils" />
-    <meta property="og:description" content="创建和管理旅行行程，支持多天活动安排、打印和本地保存" />
+    <meta
+      property="og:description"
+      content="创建和管理旅行行程，支持多天活动安排、打印和本地保存"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -24,7 +27,10 @@
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="行程规划器 - WebUtils" />
-    <meta name="twitter:description" content="创建和管理旅行行程，支持多天活动安排、打印和本地保存" />
+    <meta
+      name="twitter:description"
+      content="创建和管理旅行行程，支持多天活动安排、打印和本地保存"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
       {
@@ -79,7 +85,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -98,7 +105,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -828,7 +835,7 @@
 
         var itinerary = {
           name: "",
-          days: [],
+          days: []
         };
 
         function generateId() {
@@ -930,7 +937,7 @@
           deleteBtn.appendChild(
             createSvgIcon([
               { type: "line", x1: "18", y1: "6", x2: "6", y2: "18" },
-              { type: "line", x1: "6", y1: "6", x2: "18", y2: "18" },
+              { type: "line", x1: "6", y1: "6", x2: "18", y2: "18" }
             ])
           );
           deleteBtn.addEventListener("click", function () {
@@ -968,7 +975,7 @@
           addBtn.appendChild(
             createSvgIcon([
               { type: "line", x1: "12", y1: "5", x2: "12", y2: "19" },
-              { type: "line", x1: "5", y1: "12", x2: "19", y2: "12" },
+              { type: "line", x1: "5", y1: "12", x2: "19", y2: "12" }
             ])
           );
           addBtn.addEventListener("click", function () {
@@ -983,8 +990,8 @@
               { type: "polyline", points: "3 6 5 6 21 6" },
               {
                 type: "path",
-                d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
-              },
+                d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+              }
             ])
           );
           deleteBtn.addEventListener("click", function () {
@@ -1043,7 +1050,7 @@
           var day = {
             id: generateId(),
             dayNum: dayNum,
-            activities: [],
+            activities: []
           };
           itinerary.days.push(day);
           saveToStorage();
@@ -1072,7 +1079,7 @@
           var activity = {
             id: generateId(),
             time: "09:00",
-            description: "",
+            description: ""
           };
           day.activities.push(activity);
           saveToStorage();

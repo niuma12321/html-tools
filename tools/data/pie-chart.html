@@ -87,7 +87,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -106,7 +107,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -548,7 +549,10 @@
               <div class="section-title">数据输入</div>
               <div class="input-group">
                 <label class="input-label">数据格式：每行一条 "标签,数值"</label>
-                <textarea id="input" placeholder="苹果,30&#10;香蕉,25&#10;橙子,20&#10;葡萄,15&#10;其他,10"></textarea>
+                <textarea
+                  id="input"
+                  placeholder="苹果,30&#10;香蕉,25&#10;橙子,20&#10;葡萄,15&#10;其他,10"
+                ></textarea>
               </div>
               <div class="btn-row">
                 <button class="btn btn-secondary" onclick="loadSampleData()">📝 示例数据</button>
@@ -626,7 +630,8 @@
               <div class="section-title">图表预览</div>
               <div class="chart-container" id="chartContainer">
                 <div class="chart-placeholder" id="chartPlaceholder">
-                  输入数据后点击"生成图表"<br />
+                  输入数据后点击"生成图表"
+                  <br />
                   支持饼图和环形图
                 </div>
                 <canvas id="chartCanvas" style="display: none"></canvas>
@@ -659,7 +664,7 @@
           "#10b981",
           "#3b82f6",
           "#ef4444",
-          "#8b5cf6",
+          "#8b5cf6"
         ],
         pastel: [
           "#a8e6cf",
@@ -669,7 +674,7 @@
           "#ff8b94",
           "#b5ead7",
           "#c7ceea",
-          "#e2f0cb",
+          "#e2f0cb"
         ],
         vibrant: [
           "#ff6b6b",
@@ -679,7 +684,7 @@
           "#54a0ff",
           "#5f27cd",
           "#00d2d3",
-          "#1dd1a1",
+          "#1dd1a1"
         ],
         ocean: [
           "#0077b6",
@@ -689,7 +694,7 @@
           "#03045e",
           "#023e8a",
           "#0096c7",
-          "#48cae4",
+          "#48cae4"
         ],
         sunset: [
           "#f72585",
@@ -699,7 +704,7 @@
           "#480ca8",
           "#3a0ca3",
           "#3f37c9",
-          "#4361ee",
+          "#4361ee"
         ],
         custom: [
           "#00f5d4",
@@ -709,8 +714,8 @@
           "#10b981",
           "#3b82f6",
           "#ef4444",
-          "#8b5cf6",
-        ],
+          "#8b5cf6"
+        ]
       };
 
       // 主题切换
@@ -777,7 +782,7 @@
           // 支持多种分隔符：逗号、制表符、空格
           const parts = trimmed.split(/[,\t]+/);
           if (parts.length < 2) {
-            errors.push("第 " + (index + 1) + " 行格式错误: \"" + trimmed + "\"");
+            errors.push("第 " + (index + 1) + ' 行格式错误: "' + trimmed + '"');
             return;
           }
 
@@ -785,7 +790,7 @@
           const value = parseFloat(parts[1].trim());
 
           if (isNaN(value) || value < 0) {
-            errors.push("第 " + (index + 1) + " 行数值无效: \"" + parts[1] + "\"");
+            errors.push("第 " + (index + 1) + ' 行数值无效: "' + parts[1] + '"');
             return;
           }
 
@@ -939,9 +944,9 @@
                 backgroundColor: colors,
                 borderColor: isDark ? "#1a1a24" : "#fff",
                 borderWidth: 2,
-                hoverOffset: 10,
-              },
-            ],
+                hoverOffset: 10
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -954,9 +959,9 @@
                 font: {
                   size: 16,
                   weight: "bold",
-                  family: "'Space Grotesk', sans-serif",
+                  family: "'Space Grotesk', sans-serif"
                 },
-                padding: { bottom: 20 },
+                padding: { bottom: 20 }
               },
               legend: {
                 display: showLegend,
@@ -966,11 +971,11 @@
                   padding: 15,
                   font: {
                     family: "'JetBrains Mono', monospace",
-                    size: 12,
+                    size: 12
                   },
                   usePointStyle: true,
-                  pointStyle: "circle",
-                },
+                  pointStyle: "circle"
+                }
               },
               tooltip: {
                 callbacks: {
@@ -986,14 +991,14 @@
                       return label + ": " + percentage + "%";
                     }
                     return label;
-                  },
-                },
+                  }
+                }
               },
-              datalabels: false,
+              datalabels: false
             },
             layout: {
-              padding: 20,
-            },
+              padding: 20
+            }
           },
           plugins: showLabels
             ? [
@@ -1045,10 +1050,10 @@
                       });
                     });
                     ctx.restore();
-                  },
-                },
+                  }
+                }
               ]
-            : [],
+            : []
         });
 
         // 保存到 localStorage
@@ -1106,7 +1111,7 @@
           showLabels: document.getElementById("showLabels").checked,
           showPercentage: document.getElementById("showPercentage").checked,
           showLegend: document.getElementById("showLegend").checked,
-          showValues: document.getElementById("showValues").checked,
+          showValues: document.getElementById("showValues").checked
         };
 
         const hash = btoa(encodeURIComponent(JSON.stringify(config)));
@@ -1155,7 +1160,7 @@
           showLabels: document.getElementById("showLabels").checked,
           showPercentage: document.getElementById("showPercentage").checked,
           showLegend: document.getElementById("showLegend").checked,
-          showValues: document.getElementById("showValues").checked,
+          showValues: document.getElementById("showValues").checked
         };
         localStorage.setItem(LS_KEY, JSON.stringify(config));
       }

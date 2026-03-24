@@ -12,7 +12,10 @@
     <meta property="og:title" content="行李追踪器 - WebUtils" />
     <meta property="og:description" content="记录和追踪您的行李状态" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/baggage-tracker.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/baggage-tracker.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -22,7 +25,10 @@
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -44,7 +50,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -63,8 +70,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -88,7 +99,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -118,10 +130,20 @@
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-sm);
       }
-      .breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+      .breadcrumb a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -130,7 +152,11 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section p { color: var(--color-text-secondary); margin-top: 4px; font-size: 0.9rem; }
+      .title-section p {
+        color: var(--color-text-secondary);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
       .main-content {
         background: var(--color-bg-card);
         border: 1px solid var(--border-subtle);
@@ -154,13 +180,18 @@
         gap: 16px;
         margin-bottom: 20px;
       }
-      .form-group { display: flex; flex-direction: column; gap: 6px; }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
       .form-label {
         font-family: var(--font-mono);
         font-size: 0.8rem;
         color: var(--color-text-secondary);
       }
-      .form-input, .form-select {
+      .form-input,
+      .form-select {
         padding: 10px 14px;
         font-family: var(--font-mono);
         font-size: 0.9rem;
@@ -169,11 +200,17 @@
         border-radius: var(--radius-sm);
         color: var(--color-text-primary);
       }
-      .form-input:focus, .form-select:focus {
+      .form-input:focus,
+      .form-select:focus {
         outline: none;
         border-color: var(--accent-green);
       }
-      .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
       .btn {
         flex: 1;
         min-width: 120px;
@@ -190,15 +227,26 @@
         justify-content: center;
         gap: 8px;
       }
-      .btn-primary { background: var(--accent-green); color: var(--color-bg-deep); }
-      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 20px var(--glow-green); }
+      .btn-primary {
+        background: var(--accent-green);
+        color: var(--color-bg-deep);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px var(--glow-green);
+      }
       .btn-secondary {
         background: var(--color-bg-surface);
         color: var(--color-text-primary);
         border: 1px solid var(--border-subtle);
       }
-      .btn-secondary:hover { border-color: var(--accent-green); color: var(--accent-green); }
-      .baggage-list { margin-top: 24px; }
+      .btn-secondary:hover {
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+      }
+      .baggage-list {
+        margin-top: 24px;
+      }
       .baggage-item {
         background: var(--color-bg-surface);
         border: 1px solid var(--border-subtle);
@@ -207,7 +255,9 @@
         margin-bottom: 12px;
         transition: all 0.2s;
       }
-      .baggage-item:hover { border-color: var(--accent-green); }
+      .baggage-item:hover {
+        border-color: var(--accent-green);
+      }
       .baggage-header {
         display: flex;
         align-items: center;
@@ -227,21 +277,50 @@
         border-radius: var(--radius-sm);
         font-weight: 500;
       }
-      .status-checked { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
-      .status-transit { background: rgba(251, 191, 36, 0.2); color: var(--accent-yellow); }
-      .status-arrived { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
-      .status-delayed { background: rgba(244, 63, 94, 0.2); color: var(--accent-red); }
-      .status-lost { background: rgba(244, 63, 94, 0.3); color: var(--accent-red); }
+      .status-checked {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--accent-blue);
+      }
+      .status-transit {
+        background: rgba(251, 191, 36, 0.2);
+        color: var(--accent-yellow);
+      }
+      .status-arrived {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--accent-green);
+      }
+      .status-delayed {
+        background: rgba(244, 63, 94, 0.2);
+        color: var(--accent-red);
+      }
+      .status-lost {
+        background: rgba(244, 63, 94, 0.3);
+        color: var(--accent-red);
+      }
       .baggage-details {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 12px;
         font-size: 0.85rem;
       }
-      .detail-item { display: flex; flex-direction: column; gap: 2px; }
-      .detail-label { color: var(--text-muted); font-size: 0.75rem; }
-      .detail-value { color: var(--color-text-primary); font-family: var(--font-mono); }
-      .baggage-timeline { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-subtle); }
+      .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .detail-label {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+      }
+      .detail-value {
+        color: var(--color-text-primary);
+        font-family: var(--font-mono);
+      }
+      .baggage-timeline {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-subtle);
+      }
       .timeline-item {
         display: flex;
         align-items: flex-start;
@@ -257,9 +336,17 @@
         margin-top: 4px;
         flex-shrink: 0;
       }
-      .timeline-content { flex: 1; }
-      .timeline-time { font-family: var(--font-mono); color: var(--text-muted); font-size: 0.8rem; }
-      .timeline-text { color: var(--color-text-secondary); }
+      .timeline-content {
+        flex: 1;
+      }
+      .timeline-time {
+        font-family: var(--font-mono);
+        color: var(--text-muted);
+        font-size: 0.8rem;
+      }
+      .timeline-text {
+        color: var(--color-text-secondary);
+      }
       .baggage-actions {
         display: flex;
         gap: 8px;
@@ -278,14 +365,23 @@
         cursor: pointer;
         transition: all 0.2s;
       }
-      .action-btn:hover { border-color: var(--accent-green); color: var(--accent-green); }
-      .action-btn.delete:hover { border-color: var(--accent-red); color: var(--accent-red); }
+      .action-btn:hover {
+        border-color: var(--accent-green);
+        color: var(--accent-green);
+      }
+      .action-btn.delete:hover {
+        border-color: var(--accent-red);
+        color: var(--accent-red);
+      }
       .empty-state {
         text-align: center;
         padding: 40px;
         color: var(--text-muted);
       }
-      .empty-state-icon { font-size: 3rem; margin-bottom: 16px; }
+      .empty-state-icon {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
       .toast {
         position: fixed;
         bottom: 24px;
@@ -301,12 +397,23 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .form-grid { grid-template-columns: 1fr; }
-        .btn-row { flex-direction: column; }
-        .btn { width: 100%; }
+        .container {
+          padding: 16px;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .btn-row {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -322,7 +429,10 @@
           <span class="breadcrumb-current">行李追踪器</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">🧳</span>行李追踪器</h1>
+          <h1>
+            <span class="icon">🧳</span>
+            行李追踪器
+          </h1>
           <p>记录和追踪您的行李状态</p>
         </div>
       </header>
@@ -332,23 +442,28 @@
         <div class="form-grid">
           <div class="form-group">
             <label class="form-label">行李牌号</label>
-            <input type="text" class="form-input" id="tagNumber" placeholder="例如: AA123456">
+            <input type="text" class="form-input" id="tagNumber" placeholder="例如: AA123456" />
           </div>
           <div class="form-group">
             <label class="form-label">航班号</label>
-            <input type="text" class="form-input" id="flightNumber" placeholder="例如: CA1234">
+            <input type="text" class="form-input" id="flightNumber" placeholder="例如: CA1234" />
           </div>
           <div class="form-group">
             <label class="form-label">出发地</label>
-            <input type="text" class="form-input" id="origin" placeholder="例如: PEK 北京">
+            <input type="text" class="form-input" id="origin" placeholder="例如: PEK 北京" />
           </div>
           <div class="form-group">
             <label class="form-label">目的地</label>
-            <input type="text" class="form-input" id="destination" placeholder="例如: LAX 洛杉矶">
+            <input type="text" class="form-input" id="destination" placeholder="例如: LAX 洛杉矶" />
           </div>
           <div class="form-group">
             <label class="form-label">行李描述</label>
-            <input type="text" class="form-input" id="description" placeholder="例如: 黑色大号行李箱">
+            <input
+              type="text"
+              class="form-input"
+              id="description"
+              placeholder="例如: 黑色大号行李箱"
+            />
           </div>
           <div class="form-group">
             <label class="form-label">状态</label>
@@ -389,7 +504,7 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -434,11 +549,13 @@
           description: description,
           status: status,
           createdAt: new Date().toISOString(),
-          timeline: [{
-            time: new Date().toISOString(),
-            text: "行李已添加追踪",
-            status: status
-          }]
+          timeline: [
+            {
+              time: new Date().toISOString(),
+              text: "行李已添加追踪",
+              status: status
+            }
+          ]
         };
 
         baggageData.unshift(baggage);
@@ -458,7 +575,9 @@
       }
 
       function updateStatus(id, newStatus) {
-        var baggage = baggageData.find(function(b) { return b.id === id; });
+        var baggage = baggageData.find(function (b) {
+          return b.id === id;
+        });
         if (baggage) {
           var statusNames = {
             checked: "已托运",
@@ -482,7 +601,9 @@
       function addNote(id) {
         var note = prompt("添加备注:");
         if (note && note.trim()) {
-          var baggage = baggageData.find(function(b) { return b.id === id; });
+          var baggage = baggageData.find(function (b) {
+            return b.id === id;
+          });
           if (baggage) {
             baggage.timeline.unshift({
               time: new Date().toISOString(),
@@ -498,7 +619,9 @@
 
       function deleteBaggage(id) {
         if (confirm("确定要删除这件行李吗？")) {
-          baggageData = baggageData.filter(function(b) { return b.id !== id; });
+          baggageData = baggageData.filter(function (b) {
+            return b.id !== id;
+          });
           saveData();
           renderList();
           showToast("行李已删除");
@@ -507,7 +630,11 @@
 
       function formatDateTime(isoString) {
         var date = new Date(isoString);
-        return date.toLocaleDateString("zh-CN") + " " + date.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
+        return (
+          date.toLocaleDateString("zh-CN") +
+          " " +
+          date.toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" })
+        );
       }
 
       function renderList() {
@@ -543,7 +670,7 @@
           lost: "丢失"
         };
 
-        baggageData.forEach(function(baggage) {
+        baggageData.forEach(function (baggage) {
           var item = document.createElement("div");
           item.className = "baggage-item";
 
@@ -566,7 +693,7 @@
             { label: "目的地", value: baggage.destination || "-" },
             { label: "描述", value: baggage.description || "-" }
           ];
-          detailsData.forEach(function(d) {
+          detailsData.forEach(function (d) {
             var detailItem = document.createElement("div");
             detailItem.className = "detail-item";
             var labelEl = document.createElement("div");
@@ -582,7 +709,7 @@
 
           var timeline = document.createElement("div");
           timeline.className = "baggage-timeline";
-          baggage.timeline.slice(0, 3).forEach(function(entry) {
+          baggage.timeline.slice(0, 3).forEach(function (entry) {
             var timelineItem = document.createElement("div");
             timelineItem.className = "timeline-item";
             var dot = document.createElement("div");
@@ -604,28 +731,34 @@
 
           var actions = document.createElement("div");
           actions.className = "baggage-actions";
-          
+
           var statusSelect = document.createElement("select");
           statusSelect.className = "action-btn";
           statusSelect.style.padding = "6px";
-          Object.keys(statusNames).forEach(function(key) {
+          Object.keys(statusNames).forEach(function (key) {
             var opt = document.createElement("option");
             opt.value = key;
             opt.textContent = statusNames[key];
             if (key === baggage.status) opt.selected = true;
             statusSelect.appendChild(opt);
           });
-          statusSelect.onchange = function() { updateStatus(baggage.id, this.value); };
+          statusSelect.onchange = function () {
+            updateStatus(baggage.id, this.value);
+          };
 
           var noteBtn = document.createElement("button");
           noteBtn.className = "action-btn";
           noteBtn.textContent = "📝 备注";
-          noteBtn.onclick = function() { addNote(baggage.id); };
+          noteBtn.onclick = function () {
+            addNote(baggage.id);
+          };
 
           var deleteBtn = document.createElement("button");
           deleteBtn.className = "action-btn delete";
           deleteBtn.textContent = "🗑️ 删除";
-          deleteBtn.onclick = function() { deleteBaggage(baggage.id); };
+          deleteBtn.onclick = function () {
+            deleteBaggage(baggage.id);
+          };
 
           actions.appendChild(statusSelect);
           actions.appendChild(noteBtn);
@@ -643,7 +776,9 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize

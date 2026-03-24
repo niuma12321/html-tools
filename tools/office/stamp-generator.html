@@ -6,18 +6,21 @@
     <title>印章生成器 - WebUtils</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG" />
+    <meta
+      name="description"
+      content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG"
+    />
     <meta name="keywords" content="印章 生成 公章 圆章 椭圆章 公司章 组织章 stamp generator" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://tools.realtime-ai.chat/tools/office/stamp-generator.html"
-    />
+    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/stamp-generator.html" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="印章生成器 - WebUtils" />
-    <meta property="og:description" content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG" />
+    <meta
+      property="og:description"
+      content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -33,7 +36,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="印章生成器 - WebUtils" />
-    <meta name="twitter:description" content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG" />
+    <meta
+      name="twitter:description"
+      content="在线生成公司印章、组织印章，支持圆形、椭圆、矩形，可下载 PNG"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- JSON-LD BreadcrumbList Schema -->
@@ -96,7 +102,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -117,7 +124,6 @@
       }
 
       /* Light Theme */
-      
 
       /* ============================================
          Base Styles
@@ -659,12 +665,7 @@
 
           <div class="form-group">
             <label for="companyName">公司/组织名称</label>
-            <input
-              type="text"
-              id="companyName"
-              placeholder="请输入公司或组织名称"
-              maxlength="30"
-            />
+            <input type="text" id="companyName" placeholder="请输入公司或组织名称" maxlength="30" />
           </div>
 
           <div class="form-group">
@@ -780,7 +781,7 @@
           shape: shapeEl.value,
           borderColor: borderColorEl.value,
           borderWidth: borderWidthEl.value,
-          showStar: showStarEl.checked,
+          showStar: showStarEl.checked
         };
         localStorage.setItem(LS_KEY, JSON.stringify(config));
       }
@@ -793,7 +794,7 @@
 
         for (var i = 0; i < 5; i++) {
           // Outer point
-          var outerAngle = (Math.PI / 2) + (i * 2 * Math.PI / 5);
+          var outerAngle = Math.PI / 2 + (i * 2 * Math.PI) / 5;
           var outerX = cx + Math.cos(outerAngle) * outerRadius;
           var outerY = cy - Math.sin(outerAngle) * outerRadius;
 
@@ -911,7 +912,16 @@
 
           // Draw company name along top arc (adjusted for oval)
           var textRadiusOval = radiusY - 20;
-          drawTextArc(companyName, cx, cy, textRadiusOval, Math.PI * 1.15, Math.PI * 1.85, color, 16);
+          drawTextArc(
+            companyName,
+            cx,
+            cy,
+            textRadiusOval,
+            Math.PI * 1.15,
+            Math.PI * 1.85,
+            color,
+            16
+          );
 
           // Draw star in center
           if (showStar) {

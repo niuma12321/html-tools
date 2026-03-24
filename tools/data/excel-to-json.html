@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Excel/CSV 转 JSON - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="将 Excel/CSV 数据转换为 JSON 格式，支持自动检测分隔符、多种输出格式" />
+    <meta
+      name="description"
+      content="将 Excel/CSV 数据转换为 JSON 格式，支持自动检测分隔符、多种输出格式"
+    />
     <meta name="keywords" content="excel json csv 转换 converter tsv" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -15,7 +18,10 @@
     <meta property="og:title" content="Excel/CSV 转 JSON - WebUtils" />
     <meta property="og:description" content="将 Excel/CSV 数据转换为 JSON 格式" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/excel-to-json.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/data/excel-to-json.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
 
@@ -60,7 +66,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -82,7 +91,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -101,7 +111,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -116,8 +126,14 @@
         z-index: 100;
         transition: all 0.2s;
       }
-      .theme-toggle:hover { transform: scale(1.1); }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -128,7 +144,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgb(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgb(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgb(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -168,10 +185,20 @@
         text-decoration: none;
         transition: color 0.2s ease;
       }
-      .breadcrumb a:hover { color: var(--color-accent-cyan); }
-      .breadcrumb-separator { color: var(--text-muted); user-select: none; }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
-      .title-section { flex: 1; }
+      .breadcrumb a:hover {
+        color: var(--color-accent-cyan);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+        user-select: none;
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      .title-section {
+        flex: 1;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -180,7 +207,9 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section h1 .icon { font-size: 1.8rem; }
+      .title-section h1 .icon {
+        font-size: 1.8rem;
+      }
       .title-section p {
         color: var(--color-text-secondary);
         margin-top: 4px;
@@ -193,7 +222,9 @@
         padding: 24px;
         flex: 1;
       }
-      .tool-section { margin-bottom: 24px; }
+      .tool-section {
+        margin-bottom: 24px;
+      }
       .section-title {
         font-family: var(--font-mono);
         font-size: 0.9rem;
@@ -205,7 +236,9 @@
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .input-group { margin-bottom: 16px; }
+      .input-group {
+        margin-bottom: 16px;
+      }
       .input-label {
         display: block;
         font-family: var(--font-mono);
@@ -213,7 +246,10 @@
         color: var(--color-text-secondary);
         margin-bottom: 8px;
       }
-      input[type="text"], input[type="number"], select, textarea {
+      input[type="text"],
+      input[type="number"],
+      select,
+      textarea {
         width: 100%;
         padding: 10px 14px;
         font-family: var(--font-mono);
@@ -224,11 +260,16 @@
         color: var(--color-text-primary);
         transition: border-color 0.2s;
       }
-      input:focus, select:focus, textarea:focus {
+      input:focus,
+      select:focus,
+      textarea:focus {
         outline: none;
         border-color: var(--color-accent-cyan);
       }
-      textarea { min-height: 150px; resize: vertical; }
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
       .options-row {
         display: flex;
         gap: 16px;
@@ -259,7 +300,11 @@
         height: 18px;
         accent-color: var(--color-accent-cyan);
       }
-      .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+      .btn-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
       .btn {
         flex: 1;
         min-width: 100px;
@@ -322,8 +367,13 @@
         display: flex;
         gap: 6px;
       }
-      .stat-label { color: var(--text-muted); }
-      .stat-value { color: var(--color-accent-cyan); font-weight: 500; }
+      .stat-label {
+        color: var(--text-muted);
+      }
+      .stat-value {
+        color: var(--color-accent-cyan);
+        font-weight: 500;
+      }
       .toast {
         position: fixed;
         bottom: 24px;
@@ -357,17 +407,27 @@
         border-color: var(--color-accent-cyan);
         background: rgba(0, 245, 212, 0.05);
       }
-      .file-upload input { display: none; }
+      .file-upload input {
+        display: none;
+      }
       .file-upload-text {
         font-family: var(--font-mono);
         font-size: 0.9rem;
         color: var(--color-text-secondary);
       }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .btn-row { flex-direction: column; }
-        .btn { width: 100%; }
-        .options-row { flex-direction: column; }
+        .container {
+          padding: 16px;
+        }
+        .btn-row {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
+        .options-row {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
@@ -395,14 +455,22 @@
         <div class="tool-section">
           <div class="section-title">输入数据</div>
           <div class="file-upload" onclick="document.getElementById('fileInput').click()">
-            <input type="file" id="fileInput" accept=".csv,.tsv,.txt" onchange="handleFile(event)" />
+            <input
+              type="file"
+              id="fileInput"
+              accept=".csv,.tsv,.txt"
+              onchange="handleFile(event)"
+            />
             <div class="file-upload-text">📁 点击上传 CSV/TSV 文件，或拖拽文件到此处</div>
           </div>
           <div class="input-group">
             <label class="input-label">或粘贴 CSV/TSV 数据</label>
-            <textarea id="input" placeholder="姓名,年龄,城市&#10;张三,25,北京&#10;李四,30,上海&#10;王五,28,广州"></textarea>
+            <textarea
+              id="input"
+              placeholder="姓名,年龄,城市&#10;张三,25,北京&#10;李四,30,上海&#10;王五,28,广州"
+            ></textarea>
           </div>
-          
+
           <div class="options-row">
             <div class="option-group">
               <label>分隔符：</label>
@@ -430,7 +498,7 @@
               </select>
             </div>
           </div>
-          
+
           <div class="options-row">
             <div class="checkbox-group">
               <input type="checkbox" id="firstRowHeader" checked />
@@ -457,7 +525,7 @@
         <div class="tool-section">
           <div class="section-title">JSON 输出</div>
           <div class="result-box" id="result">转换结果将显示在这里...</div>
-          <div class="stats" id="stats" style="display: none;">
+          <div class="stats" id="stats" style="display: none">
             <div class="stat-item">
               <span class="stat-label">行数：</span>
               <span class="stat-value" id="rowCount">0</span>
@@ -488,7 +556,7 @@
         document.body.setAttribute("data-theme", isDark ? "light" : "dark");
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
-      (function() {
+      (function () {
         const saved = localStorage.getItem("theme");
         if (saved === "light") document.body.setAttribute("data-theme", "light");
       })();
@@ -499,30 +567,30 @@
         if (!file) return;
         const reader = new FileReader();
         reader.onload = (e) => {
-          document.getElementById('input').value = e.target.result;
-          showToast('文件已加载');
+          document.getElementById("input").value = e.target.result;
+          showToast("文件已加载");
         };
         reader.readAsText(file);
       }
 
       // Drag and drop
-      const fileUpload = document.querySelector('.file-upload');
-      fileUpload.addEventListener('dragover', (e) => {
+      const fileUpload = document.querySelector(".file-upload");
+      fileUpload.addEventListener("dragover", (e) => {
         e.preventDefault();
-        fileUpload.style.borderColor = 'var(--color-accent-cyan)';
+        fileUpload.style.borderColor = "var(--color-accent-cyan)";
       });
-      fileUpload.addEventListener('dragleave', () => {
-        fileUpload.style.borderColor = 'var(--border-subtle)';
+      fileUpload.addEventListener("dragleave", () => {
+        fileUpload.style.borderColor = "var(--border-subtle)";
       });
-      fileUpload.addEventListener('drop', (e) => {
+      fileUpload.addEventListener("drop", (e) => {
         e.preventDefault();
-        fileUpload.style.borderColor = 'var(--border-subtle)';
+        fileUpload.style.borderColor = "var(--border-subtle)";
         const file = e.dataTransfer.files[0];
         if (file) {
           const reader = new FileReader();
           reader.onload = (ev) => {
-            document.getElementById('input').value = ev.target.result;
-            showToast('文件已加载');
+            document.getElementById("input").value = ev.target.result;
+            showToast("文件已加载");
           };
           reader.readAsText(file);
         }
@@ -530,13 +598,13 @@
 
       // Detect delimiter
       function detectDelimiter(text) {
-        const firstLine = text.split('\n')[0];
-        const delimiters = [',', '\t', ';', '|'];
+        const firstLine = text.split("\n")[0];
+        const delimiters = [",", "\t", ";", "|"];
         let maxCount = 0;
-        let detected = ',';
-        
+        let detected = ",";
+
         for (const d of delimiters) {
-          const count = (firstLine.match(new RegExp(d === '|' ? '\\|' : d, 'g')) || []).length;
+          const count = (firstLine.match(new RegExp(d === "|" ? "\\|" : d, "g")) || []).length;
           if (count > maxCount) {
             maxCount = count;
             detected = d;
@@ -549,13 +617,13 @@
       function parseCSV(text, delimiter, trimValues, skipEmpty) {
         const rows = [];
         let currentRow = [];
-        let currentValue = '';
+        let currentValue = "";
         let inQuotes = false;
-        
+
         for (let i = 0; i < text.length; i++) {
           const char = text[i];
           const nextChar = text[i + 1];
-          
+
           if (inQuotes) {
             if (char === '"' && nextChar === '"') {
               currentValue += '"';
@@ -570,53 +638,53 @@
               inQuotes = true;
             } else if (char === delimiter) {
               currentRow.push(trimValues ? currentValue.trim() : currentValue);
-              currentValue = '';
-            } else if (char === '\n' || (char === '\r' && nextChar === '\n')) {
+              currentValue = "";
+            } else if (char === "\n" || (char === "\r" && nextChar === "\n")) {
               currentRow.push(trimValues ? currentValue.trim() : currentValue);
-              if (!skipEmpty || currentRow.some(v => v !== '')) {
+              if (!skipEmpty || currentRow.some((v) => v !== "")) {
                 rows.push(currentRow);
               }
               currentRow = [];
-              currentValue = '';
-              if (char === '\r') i++;
-            } else if (char !== '\r') {
+              currentValue = "";
+              if (char === "\r") i++;
+            } else if (char !== "\r") {
               currentValue += char;
             }
           }
         }
-        
+
         // Handle last row
         if (currentValue || currentRow.length > 0) {
           currentRow.push(trimValues ? currentValue.trim() : currentValue);
-          if (!skipEmpty || currentRow.some(v => v !== '')) {
+          if (!skipEmpty || currentRow.some((v) => v !== "")) {
             rows.push(currentRow);
           }
         }
-        
+
         return rows;
       }
 
       // Convert to JSON
       function convertToJSON() {
-        const input = document.getElementById('input').value;
+        const input = document.getElementById("input").value;
         if (!input.trim()) {
-          showToast('请输入数据');
+          showToast("请输入数据");
           return;
         }
 
-        const delimiterSelect = document.getElementById('delimiter').value;
-        const delimiter = delimiterSelect === 'auto' ? detectDelimiter(input) : delimiterSelect;
-        const outputFormat = document.getElementById('outputFormat').value;
-        const indent = parseInt(document.getElementById('indent').value);
-        const firstRowHeader = document.getElementById('firstRowHeader').checked;
-        const trimValues = document.getElementById('trimValues').checked;
-        const skipEmpty = document.getElementById('skipEmpty').checked;
+        const delimiterSelect = document.getElementById("delimiter").value;
+        const delimiter = delimiterSelect === "auto" ? detectDelimiter(input) : delimiterSelect;
+        const outputFormat = document.getElementById("outputFormat").value;
+        const indent = parseInt(document.getElementById("indent").value);
+        const firstRowHeader = document.getElementById("firstRowHeader").checked;
+        const trimValues = document.getElementById("trimValues").checked;
+        const skipEmpty = document.getElementById("skipEmpty").checked;
 
         try {
           const rows = parseCSV(input, delimiter, trimValues, skipEmpty);
-          
+
           if (rows.length === 0) {
-            showToast('没有有效数据');
+            showToast("没有有效数据");
             return;
           }
 
@@ -624,18 +692,18 @@
           let headers = [];
           let dataRows = rows;
 
-          if (outputFormat === 'objects' && firstRowHeader) {
+          if (outputFormat === "objects" && firstRowHeader) {
             headers = rows[0];
             dataRows = rows.slice(1);
-            result = dataRows.map(row => {
+            result = dataRows.map((row) => {
               const obj = {};
               headers.forEach((header, i) => {
-                obj[header] = row[i] !== undefined ? row[i] : '';
+                obj[header] = row[i] !== undefined ? row[i] : "";
               });
               return obj;
             });
-          } else if (outputFormat === 'objects' && !firstRowHeader) {
-            result = dataRows.map(row => {
+          } else if (outputFormat === "objects" && !firstRowHeader) {
+            result = dataRows.map((row) => {
               const obj = {};
               row.forEach((val, i) => {
                 obj[`col${i + 1}`] = val;
@@ -647,18 +715,20 @@
           }
 
           const jsonStr = JSON.stringify(result, null, indent || undefined);
-          document.getElementById('result').textContent = jsonStr;
+          document.getElementById("result").textContent = jsonStr;
 
           // Update stats
-          document.getElementById('stats').style.display = 'flex';
-          document.getElementById('rowCount').textContent = outputFormat === 'objects' && firstRowHeader ? dataRows.length : rows.length;
-          document.getElementById('colCount').textContent = rows[0]?.length || 0;
-          const delimiterNames = { ',': '逗号', '\t': '制表符', ';': '分号', '|': '竖线' };
-          document.getElementById('detectedDelimiter').textContent = delimiterNames[delimiter] || delimiter;
+          document.getElementById("stats").style.display = "flex";
+          document.getElementById("rowCount").textContent =
+            outputFormat === "objects" && firstRowHeader ? dataRows.length : rows.length;
+          document.getElementById("colCount").textContent = rows[0]?.length || 0;
+          const delimiterNames = { ",": "逗号", "\t": "制表符", ";": "分号", "|": "竖线" };
+          document.getElementById("detectedDelimiter").textContent =
+            delimiterNames[delimiter] || delimiter;
 
-          showToast('转换成功');
+          showToast("转换成功");
         } catch (err) {
-          showToast('转换失败: ' + err.message);
+          showToast("转换失败: " + err.message);
         }
       }
 
@@ -666,81 +736,81 @@
       async function pasteData() {
         try {
           const text = await navigator.clipboard.readText();
-          document.getElementById('input').value = text;
-          showToast('已粘贴');
+          document.getElementById("input").value = text;
+          showToast("已粘贴");
         } catch (err) {
-          showToast('粘贴失败');
+          showToast("粘贴失败");
         }
       }
 
       // Load sample data
       function loadSample() {
-        document.getElementById('input').value = `姓名,年龄,城市,职业
+        document.getElementById("input").value = `姓名,年龄,城市,职业
 张三,25,北京,工程师
 李四,30,上海,设计师
 王五,28,"广州,天河区",产品经理
 "赵六",35,深圳,"数据分析师"`;
-        showToast('示例数据已加载');
+        showToast("示例数据已加载");
       }
 
       // Copy result
       function copyResult() {
-        const result = document.getElementById('result').textContent;
-        if (!result || result === '转换结果将显示在这里...') {
-          showToast('没有可复制的内容');
+        const result = document.getElementById("result").textContent;
+        if (!result || result === "转换结果将显示在这里...") {
+          showToast("没有可复制的内容");
           return;
         }
-        navigator.clipboard.writeText(result).then(() => showToast('已复制'));
+        navigator.clipboard.writeText(result).then(() => showToast("已复制"));
       }
 
       // Download JSON
       function downloadJSON() {
-        const result = document.getElementById('result').textContent;
-        if (!result || result === '转换结果将显示在这里...') {
-          showToast('没有可下载的内容');
+        const result = document.getElementById("result").textContent;
+        if (!result || result === "转换结果将显示在这里...") {
+          showToast("没有可下载的内容");
           return;
         }
-        const blob = new Blob([result], { type: 'application/json' });
+        const blob = new Blob([result], { type: "application/json" });
         const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
+        const a = document.createElement("a");
         a.href = url;
-        a.download = 'data.json';
+        a.download = "data.json";
         a.click();
         URL.revokeObjectURL(url);
-        showToast('下载已开始');
+        showToast("下载已开始");
       }
 
       // Clear all
       function clearAll() {
-        document.getElementById('input').value = '';
-        document.getElementById('result').textContent = '转换结果将显示在这里...';
-        document.getElementById('stats').style.display = 'none';
-        showToast('已清空');
+        document.getElementById("input").value = "";
+        document.getElementById("result").textContent = "转换结果将显示在这里...";
+        document.getElementById("stats").style.display = "none";
+        showToast("已清空");
       }
 
       // Show toast
       function showToast(msg) {
-        const toast = document.getElementById('toast');
+        const toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2000);
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
       }
 
       // Keyboard shortcut
-      document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      document.addEventListener("keydown", (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
           e.preventDefault();
           convertToJSON();
         }
       });
 
       // Load from localStorage
-      const savedInput = localStorage.getItem('excel-to-json-input');
-      if (savedInput) document.getElementById('input').value = savedInput;
-      
+      const savedInput = localStorage.getItem("excel-to-json-input");
+      if (savedInput) document.getElementById("input").value = savedInput;
+
       // Save to localStorage on change
-      document.getElementById('input').addEventListener('input', () => {
-        localStorage.setItem('excel-to-json-input', document.getElementById('input').value);
+      document.getElementById("input").addEventListener("input", () => {
+        localStorage.setItem("excel-to-json-input", document.getElementById("input").value);
       });
     </script>
   </body>

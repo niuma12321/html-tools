@@ -3,7 +3,7 @@
 <div align="center">
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tools](https://img.shields.io/badge/Tools-1023+-blue.svg)](https://tools.realtime-ai.chat)
+[![Tools](https://img.shields.io/badge/Tools-1001+-blue.svg)](https://tools.realtime-ai.chat)
 [![Lint](https://github.com/chicogong/html-tools/actions/workflows/lint.yml/badge.svg)](https://github.com/chicogong/html-tools/actions/workflows/lint.yml)
 [![Deploy](https://github.com/chicogong/html-tools/actions/workflows/deploy.yml/badge.svg)](https://github.com/chicogong/html-tools/actions/workflows/deploy.yml)
 [![Vercel](https://img.shields.io/badge/Vercel-deployed-black?logo=vercel)](https://html-tools-jade.vercel.app)
@@ -14,13 +14,13 @@
 [![GitHub issues](https://img.shields.io/github/issues/chicogong/html-tools)](https://github.com/chicogong/html-tools/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/chicogong/html-tools/pulls)
 
-### 🚀 1023+ 纯前端在线工具集
+### 🚀 1001+ 纯前端在线工具集
 
 **单文件 · 零构建 · 可离线 · 隐私优先 · 数据不上传**
 
 一个完全开源、隐私至上的在线工具集。无需安装、无需注册、无广告、无追踪。
 
-[**🌐 立即体验**](https://tools.realtime-ai.chat) | [工具列表](#工具列表-1023-个) | [贡献指南](#贡献指南) | [添加新工具](#添加新工具)
+[**🌐 立即体验**](https://tools.realtime-ai.chat) | [工具列表](#工具列表-1001-个) | [贡献指南](#贡献指南) | [添加新工具](#添加新工具)
 
 </div>
 
@@ -93,7 +93,7 @@
 </tr>
 </table>
 
-[**查看全部 1001+ 个工具 ↓**](#工具列表-1023-个)
+[**查看全部 1001+ 个工具 ↓**](#工具列表-1001-个)
 
 ---
 
@@ -109,7 +109,7 @@
 | Surge             | https://webutils.surge.sh               | ✅      |
 | Netlify           | https://localtools.netlify.app          | ⏸️ 暂停 |
 
-## 工具列表 (1023 个)
+## 工具列表 (1001 个)
 
 ### 开发工具 (61 个)
 

@@ -7,12 +7,24 @@
     <meta property="og:title" content="紧急电话查询 - WebUtils" />
     <meta property="og:description" content="紧急电话查询：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/emergency-contacts.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/emergency-contacts.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/travel/emergency-contacts.html" />
-    <meta name="description" content="查询各国紧急求助电话号码：警察、急救、消防，以及中国驻外大使馆联系方式" />
-    <meta name="keywords" content="emergency numbers police ambulance fire 紧急电话 报警 急救 消防 旅行 大使馆 embassy" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/travel/emergency-contacts.html"
+    />
+    <meta
+      name="description"
+      content="查询各国紧急求助电话号码：警察、急救、消防，以及中国驻外大使馆联系方式"
+    />
+    <meta
+      name="keywords"
+      content="emergency numbers police ambulance fire 紧急电话 报警 急救 消防 旅行 大使馆 embassy"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -40,7 +52,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,8 +72,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -92,7 +109,9 @@
         z-index: 100;
         transition: all 0.2s;
       }
-      .theme-toggle:hover { transform: scale(1.1); }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
       .container {
         position: relative;
         z-index: 1;
@@ -124,10 +143,19 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .breadcrumb a:hover { color: var(--color-accent-cyan); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
-      .title-section { flex: 1; }
+      .breadcrumb a:hover {
+        color: var(--color-accent-cyan);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      .title-section {
+        flex: 1;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -158,7 +186,9 @@
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .input-group { margin-bottom: 20px; }
+      .input-group {
+        margin-bottom: 20px;
+      }
       .input-label {
         display: block;
         font-family: var(--font-mono);
@@ -399,11 +429,22 @@
         text-decoration: underline;
       }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .emergency-numbers { grid-template-columns: 1fr 1fr; }
-        .emergency-number { font-size: 1.4rem; }
-        .presets { gap: 6px; }
-        .preset-btn { padding: 6px 12px; font-size: 0.75rem; }
+        .container {
+          padding: 16px;
+        }
+        .emergency-numbers {
+          grid-template-columns: 1fr 1fr;
+        }
+        .emergency-number {
+          font-size: 1.4rem;
+        }
+        .presets {
+          gap: 6px;
+        }
+        .preset-btn {
+          padding: 6px 12px;
+          font-size: 0.75rem;
+        }
       }
     </style>
   </head>
@@ -426,7 +467,7 @@
 
       <main class="main-content">
         <div class="section-title">热门目的地</div>
-        
+
         <div class="presets" id="presets">
           <button class="preset-btn" data-country="US">🇺🇸 美国</button>
           <button class="preset-btn" data-country="GB">🇬🇧 英国</button>
@@ -447,23 +488,23 @@
           </select>
         </div>
 
-        <div id="resultCard" class="result-card" style="display: none;">
+        <div id="resultCard" class="result-card" style="display: none">
           <div class="result-header">
             <span class="country-flag" id="countryFlag"></span>
             <span class="country-name" id="countryName"></span>
           </div>
-          
+
           <div class="emergency-numbers" id="emergencyNumbers"></div>
-          
-          <div class="embassy-section" id="embassySection" style="display: none;">
+
+          <div class="embassy-section" id="embassySection" style="display: none">
             <div class="embassy-header">
               <span>🇨🇳</span>
               <span class="embassy-title">中国驻外大使馆/领事馆</span>
             </div>
             <div class="embassy-info" id="embassyInfo"></div>
           </div>
-          
-          <div class="notes" id="notes" style="display: none;">
+
+          <div class="notes" id="notes" style="display: none">
             <div class="notes-title">⚠️ 注意事项</div>
             <div id="notesContent"></div>
           </div>
@@ -471,7 +512,13 @@
       </main>
 
       <footer class="footer">
-        <a href="https://github.com/chicogong/html-tools/blob/main/tools/travel/emergency-contacts.html" target="_blank" rel="noreferrer">View Source</a>
+        <a
+          href="https://github.com/chicogong/html-tools/blob/main/tools/travel/emergency-contacts.html"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View Source
+        </a>
         · 纯前端工具 · 无服务器 ·
         <a href="../../index.html">WebUtils</a>
       </footer>
@@ -482,12 +529,12 @@
     <script>
       // Country emergency data with China embassy information
       var COUNTRIES = {
-        US: { 
-          name: "美国", 
-          flag: "🇺🇸", 
-          general: "911", 
-          police: "911", 
-          ambulance: "911", 
+        US: {
+          name: "美国",
+          flag: "🇺🇸",
+          general: "911",
+          police: "911",
+          ambulance: "911",
           fire: "911",
           embassy: {
             name: "中国驻美国大使馆",
@@ -496,12 +543,12 @@
             address: "3505 International Place NW, Washington, DC 20008"
           }
         },
-        CA: { 
-          name: "加拿大", 
-          flag: "🇨🇦", 
-          general: "911", 
-          police: "911", 
-          ambulance: "911", 
+        CA: {
+          name: "加拿大",
+          flag: "🇨🇦",
+          general: "911",
+          police: "911",
+          ambulance: "911",
           fire: "911",
           embassy: {
             name: "中国驻加拿大大使馆",
@@ -510,12 +557,12 @@
             address: "515 St. Patrick Street, Ottawa, Ontario K1N 5H3"
           }
         },
-        MX: { 
-          name: "墨西哥", 
-          flag: "🇲🇽", 
-          general: "911", 
-          police: "911", 
-          ambulance: "911", 
+        MX: {
+          name: "墨西哥",
+          flag: "🇲🇽",
+          general: "911",
+          police: "911",
+          ambulance: "911",
           fire: "911",
           embassy: {
             name: "中国驻墨西哥大使馆",
@@ -524,13 +571,13 @@
             address: "Av. San Jerónimo 217-B, La Otra Banda, Coyoacán, 04519"
           }
         },
-        GB: { 
-          name: "英国", 
-          flag: "🇬🇧", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
-          fire: "999", 
+        GB: {
+          name: "英国",
+          flag: "🇬🇧",
+          general: "999",
+          police: "999",
+          ambulance: "999",
+          fire: "999",
           notes: "也可拨打 112 (欧盟通用号码)",
           embassy: {
             name: "中国驻英国大使馆",
@@ -539,12 +586,12 @@
             address: "49-51 Portland Place, London W1B 1JL"
           }
         },
-        IE: { 
-          name: "爱尔兰", 
-          flag: "🇮🇪", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
+        IE: {
+          name: "爱尔兰",
+          flag: "🇮🇪",
+          general: "999",
+          police: "999",
+          ambulance: "999",
           fire: "999",
           notes: "也可拨打 112",
           embassy: {
@@ -554,12 +601,12 @@
             address: "40 Ailesbury Road, Ballsbridge, Dublin 4"
           }
         },
-        DE: { 
-          name: "德国", 
-          flag: "🇩🇪", 
-          general: "112", 
-          police: "110", 
-          ambulance: "112", 
+        DE: {
+          name: "德国",
+          flag: "🇩🇪",
+          general: "112",
+          police: "110",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻德国大使馆",
@@ -568,12 +615,12 @@
             address: "Märkisches Ufer 54, 10179 Berlin"
           }
         },
-        FR: { 
-          name: "法国", 
-          flag: "🇫🇷", 
-          general: "112", 
-          police: "17", 
-          ambulance: "15", 
+        FR: {
+          name: "法国",
+          flag: "🇫🇷",
+          general: "112",
+          police: "17",
+          ambulance: "15",
           fire: "18",
           embassy: {
             name: "中国驻法国大使馆",
@@ -582,12 +629,12 @@
             address: "11 Avenue George V, 75008 Paris"
           }
         },
-        IT: { 
-          name: "意大利", 
-          flag: "🇮🇹", 
-          general: "112", 
-          police: "113", 
-          ambulance: "118", 
+        IT: {
+          name: "意大利",
+          flag: "🇮🇹",
+          general: "112",
+          police: "113",
+          ambulance: "118",
           fire: "115",
           embassy: {
             name: "中国驻意大利大使馆",
@@ -596,12 +643,12 @@
             address: "Via Bruxelles 56, 00198 Roma"
           }
         },
-        ES: { 
-          name: "西班牙", 
-          flag: "🇪🇸", 
-          general: "112", 
-          police: "091", 
-          ambulance: "112", 
+        ES: {
+          name: "西班牙",
+          flag: "🇪🇸",
+          general: "112",
+          police: "091",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻西班牙大使馆",
@@ -610,12 +657,12 @@
             address: "Calle Arturo Soria 113, 28043 Madrid"
           }
         },
-        PT: { 
-          name: "葡萄牙", 
-          flag: "🇵🇹", 
-          general: "112", 
-          police: "112", 
-          ambulance: "112", 
+        PT: {
+          name: "葡萄牙",
+          flag: "🇵🇹",
+          general: "112",
+          police: "112",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻葡萄牙大使馆",
@@ -624,12 +671,12 @@
             address: "Rua Pau da Bandeira 11-13, 1249-088 Lisboa"
           }
         },
-        NL: { 
-          name: "荷兰", 
-          flag: "🇳🇱", 
-          general: "112", 
-          police: "112", 
-          ambulance: "112", 
+        NL: {
+          name: "荷兰",
+          flag: "🇳🇱",
+          general: "112",
+          police: "112",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻荷兰大使馆",
@@ -638,12 +685,12 @@
             address: "Willem Lodewijklaan 10, 2517 JT Den Haag"
           }
         },
-        BE: { 
-          name: "比利时", 
-          flag: "🇧🇪", 
-          general: "112", 
-          police: "101", 
-          ambulance: "112", 
+        BE: {
+          name: "比利时",
+          flag: "🇧🇪",
+          general: "112",
+          police: "101",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻比利时大使馆",
@@ -652,11 +699,11 @@
             address: "Avenue de Tervueren 445, 1150 Brussels"
           }
         },
-        CH: { 
-          name: "瑞士", 
-          flag: "🇨🇭", 
-          police: "117", 
-          ambulance: "144", 
+        CH: {
+          name: "瑞士",
+          flag: "🇨🇭",
+          police: "117",
+          ambulance: "144",
           fire: "118",
           embassy: {
             name: "中国驻瑞士大使馆",
@@ -665,12 +712,12 @@
             address: "Kalcheggweg 10, 3006 Bern"
           }
         },
-        AT: { 
-          name: "奥地利", 
-          flag: "🇦🇹", 
-          general: "112", 
-          police: "133", 
-          ambulance: "144", 
+        AT: {
+          name: "奥地利",
+          flag: "🇦🇹",
+          general: "112",
+          police: "133",
+          ambulance: "144",
           fire: "122",
           embassy: {
             name: "中国驻奥地利大使馆",
@@ -679,12 +726,12 @@
             address: "Metternichgasse 4, 1030 Wien"
           }
         },
-        SE: { 
-          name: "瑞典", 
-          flag: "🇸🇪", 
-          general: "112", 
-          police: "112", 
-          ambulance: "112", 
+        SE: {
+          name: "瑞典",
+          flag: "🇸🇪",
+          general: "112",
+          police: "112",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻瑞典大使馆",
@@ -693,12 +740,12 @@
             address: "Lidovägen 8, 115 25 Stockholm"
           }
         },
-        NO: { 
-          name: "挪威", 
-          flag: "🇳🇴", 
-          general: "112", 
-          police: "112", 
-          ambulance: "113", 
+        NO: {
+          name: "挪威",
+          flag: "🇳🇴",
+          general: "112",
+          police: "112",
+          ambulance: "113",
           fire: "110",
           embassy: {
             name: "中国驻挪威大使馆",
@@ -707,12 +754,12 @@
             address: "Tuengen Allé 2B, 0244 Oslo"
           }
         },
-        DK: { 
-          name: "丹麦", 
-          flag: "🇩🇰", 
-          general: "112", 
-          police: "112", 
-          ambulance: "112", 
+        DK: {
+          name: "丹麦",
+          flag: "🇩🇰",
+          general: "112",
+          police: "112",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻丹麦大使馆",
@@ -721,12 +768,12 @@
             address: "Øregårds Allé 25, 2900 Hellerup"
           }
         },
-        FI: { 
-          name: "芬兰", 
-          flag: "🇫🇮", 
-          general: "112", 
-          police: "112", 
-          ambulance: "112", 
+        FI: {
+          name: "芬兰",
+          flag: "🇫🇮",
+          general: "112",
+          police: "112",
+          ambulance: "112",
           fire: "112",
           embassy: {
             name: "中国驻芬兰大使馆",
@@ -735,12 +782,12 @@
             address: "Vanha Kelkkamäki 11, 00570 Helsinki"
           }
         },
-        GR: { 
-          name: "希腊", 
-          flag: "🇬🇷", 
-          general: "112", 
-          police: "100", 
-          ambulance: "166", 
+        GR: {
+          name: "希腊",
+          flag: "🇬🇷",
+          general: "112",
+          police: "100",
+          ambulance: "166",
           fire: "199",
           embassy: {
             name: "中国驻希腊大使馆",
@@ -749,12 +796,12 @@
             address: "2A Krinon Street, Paleo Psychiko, 154 52 Athens"
           }
         },
-        PL: { 
-          name: "波兰", 
-          flag: "🇵🇱", 
-          general: "112", 
-          police: "997", 
-          ambulance: "999", 
+        PL: {
+          name: "波兰",
+          flag: "🇵🇱",
+          general: "112",
+          police: "997",
+          ambulance: "999",
           fire: "998",
           embassy: {
             name: "中国驻波兰大使馆",
@@ -763,12 +810,12 @@
             address: "ul. Bonifraterska 1, 00-203 Warszawa"
           }
         },
-        CZ: { 
-          name: "捷克", 
-          flag: "🇨🇿", 
-          general: "112", 
-          police: "158", 
-          ambulance: "155", 
+        CZ: {
+          name: "捷克",
+          flag: "🇨🇿",
+          general: "112",
+          police: "158",
+          ambulance: "155",
           fire: "150",
           embassy: {
             name: "中国驻捷克大使馆",
@@ -777,12 +824,12 @@
             address: "Pelléova 18, 160 00 Praha 6"
           }
         },
-        HU: { 
-          name: "匈牙利", 
-          flag: "🇭🇺", 
-          general: "112", 
-          police: "107", 
-          ambulance: "104", 
+        HU: {
+          name: "匈牙利",
+          flag: "🇭🇺",
+          general: "112",
+          police: "107",
+          ambulance: "104",
           fire: "105",
           embassy: {
             name: "中国驻匈牙利大使馆",
@@ -791,12 +838,12 @@
             address: "Benczúr utca 17, 1068 Budapest"
           }
         },
-        RU: { 
-          name: "俄罗斯", 
-          flag: "🇷🇺", 
-          general: "112", 
-          police: "102", 
-          ambulance: "103", 
+        RU: {
+          name: "俄罗斯",
+          flag: "🇷🇺",
+          general: "112",
+          police: "102",
+          ambulance: "103",
           fire: "101",
           embassy: {
             name: "中国驻俄罗斯大使馆",
@@ -805,12 +852,12 @@
             address: "ul. Druzhby 6, Moscow 117330"
           }
         },
-        JP: { 
-          name: "日本", 
-          flag: "🇯🇵", 
-          police: "110", 
-          ambulance: "119", 
-          fire: "119", 
+        JP: {
+          name: "日本",
+          flag: "🇯🇵",
+          police: "110",
+          ambulance: "119",
+          fire: "119",
           notes: "119 同时用于急救和消防。外语服务热线：03-3501-0110",
           embassy: {
             name: "中国驻日本大使馆",
@@ -819,43 +866,43 @@
             address: "东京都港区元麻布3-4-33"
           }
         },
-        CN: { 
-          name: "中国", 
-          flag: "🇨🇳", 
-          police: "110", 
-          ambulance: "120", 
-          fire: "119", 
+        CN: {
+          name: "中国",
+          flag: "🇨🇳",
+          police: "110",
+          ambulance: "120",
+          fire: "119",
           notes: "交通事故报警 122，全国旅游服务热线 12301"
         },
-        HK: { 
-          name: "中国香港", 
-          flag: "🇭🇰", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
+        HK: {
+          name: "中国香港",
+          flag: "🇭🇰",
+          general: "999",
+          police: "999",
+          ambulance: "999",
           fire: "999"
         },
-        MO: { 
-          name: "中国澳门", 
-          flag: "🇲🇴", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
+        MO: {
+          name: "中国澳门",
+          flag: "🇲🇴",
+          general: "999",
+          police: "999",
+          ambulance: "999",
           fire: "999"
         },
-        TW: { 
-          name: "中国台湾", 
-          flag: "🇹🇼", 
-          police: "110", 
-          ambulance: "119", 
+        TW: {
+          name: "中国台湾",
+          flag: "🇹🇼",
+          police: "110",
+          ambulance: "119",
           fire: "119"
         },
-        KR: { 
-          name: "韩国", 
-          flag: "🇰🇷", 
-          police: "112", 
-          ambulance: "119", 
-          fire: "119", 
+        KR: {
+          name: "韩国",
+          flag: "🇰🇷",
+          police: "112",
+          ambulance: "119",
+          fire: "119",
           notes: "外国人求助热线 1330 (旅游)，120 (市政)",
           embassy: {
             name: "中国驻韩国大使馆",
@@ -864,11 +911,11 @@
             address: "首尔市钟路区孝子路54号"
           }
         },
-        SG: { 
-          name: "新加坡", 
-          flag: "🇸🇬", 
-          police: "999", 
-          ambulance: "995", 
+        SG: {
+          name: "新加坡",
+          flag: "🇸🇬",
+          police: "999",
+          ambulance: "995",
           fire: "995",
           embassy: {
             name: "中国驻新加坡大使馆",
@@ -877,12 +924,12 @@
             address: "150 Tanglin Road, Singapore 247969"
           }
         },
-        MY: { 
-          name: "马来西亚", 
-          flag: "🇲🇾", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
+        MY: {
+          name: "马来西亚",
+          flag: "🇲🇾",
+          general: "999",
+          police: "999",
+          ambulance: "999",
           fire: "994",
           notes: "旅游警察热线 1800-88-5050",
           embassy: {
@@ -892,12 +939,12 @@
             address: "No.229, Jalan Ampang, 50450 Kuala Lumpur"
           }
         },
-        TH: { 
-          name: "泰国", 
-          flag: "🇹🇭", 
-          police: "191", 
-          ambulance: "1669", 
-          fire: "199", 
+        TH: {
+          name: "泰国",
+          flag: "🇹🇭",
+          police: "191",
+          ambulance: "1669",
+          fire: "199",
           notes: "旅游警察 1155 (24小时中英文服务)",
           embassy: {
             name: "中国驻泰国大使馆",
@@ -906,11 +953,11 @@
             address: "57 Ratchadapisek Road, Bangkok 10310"
           }
         },
-        VN: { 
-          name: "越南", 
-          flag: "🇻🇳", 
-          police: "113", 
-          ambulance: "115", 
+        VN: {
+          name: "越南",
+          flag: "🇻🇳",
+          police: "113",
+          ambulance: "115",
           fire: "114",
           embassy: {
             name: "中国驻越南大使馆",
@@ -919,12 +966,12 @@
             address: "46 Hoàng Diệu, Điện Biên, Ba Đình, Hà Nội"
           }
         },
-        PH: { 
-          name: "菲律宾", 
-          flag: "🇵🇭", 
-          general: "911", 
-          police: "911", 
-          ambulance: "911", 
+        PH: {
+          name: "菲律宾",
+          flag: "🇵🇭",
+          general: "911",
+          police: "911",
+          ambulance: "911",
           fire: "911",
           embassy: {
             name: "中国驻菲律宾大使馆",
@@ -933,12 +980,12 @@
             address: "4896 Pasay Road, Dasmariñas Village, Makati City"
           }
         },
-        ID: { 
-          name: "印度尼西亚", 
-          flag: "🇮🇩", 
-          general: "112", 
-          police: "110", 
-          ambulance: "118", 
+        ID: {
+          name: "印度尼西亚",
+          flag: "🇮🇩",
+          general: "112",
+          police: "110",
+          ambulance: "118",
           fire: "113",
           embassy: {
             name: "中国驻印度尼西亚大使馆",
@@ -947,12 +994,12 @@
             address: "Jl. Mega Kuningan No. 2, Jakarta 12950"
           }
         },
-        IN: { 
-          name: "印度", 
-          flag: "🇮🇳", 
-          general: "112", 
-          police: "100", 
-          ambulance: "102", 
+        IN: {
+          name: "印度",
+          flag: "🇮🇳",
+          general: "112",
+          police: "100",
+          ambulance: "102",
           fire: "101",
           embassy: {
             name: "中国驻印度大使馆",
@@ -961,13 +1008,13 @@
             address: "50-D, Shantipath, Chanakyapuri, New Delhi 110021"
           }
         },
-        AU: { 
-          name: "澳大利亚", 
-          flag: "🇦🇺", 
-          general: "000", 
-          police: "000", 
-          ambulance: "000", 
-          fire: "000", 
+        AU: {
+          name: "澳大利亚",
+          flag: "🇦🇺",
+          general: "000",
+          police: "000",
+          ambulance: "000",
+          fire: "000",
           notes: "手机也可拨打 112。非紧急警察服务 131 444",
           embassy: {
             name: "中国驻澳大利亚大使馆",
@@ -976,12 +1023,12 @@
             address: "15 Coronation Drive, Yarralumla ACT 2600"
           }
         },
-        NZ: { 
-          name: "新西兰", 
-          flag: "🇳🇿", 
-          general: "111", 
-          police: "111", 
-          ambulance: "111", 
+        NZ: {
+          name: "新西兰",
+          flag: "🇳🇿",
+          general: "111",
+          police: "111",
+          ambulance: "111",
           fire: "111",
           embassy: {
             name: "中国驻新西兰大使馆",
@@ -990,11 +1037,11 @@
             address: "2-6 Glenmore Street, Wellington 6011"
           }
         },
-        BR: { 
-          name: "巴西", 
-          flag: "🇧🇷", 
-          police: "190", 
-          ambulance: "192", 
+        BR: {
+          name: "巴西",
+          flag: "🇧🇷",
+          police: "190",
+          ambulance: "192",
           fire: "193",
           embassy: {
             name: "中国驻巴西大使馆",
@@ -1003,12 +1050,12 @@
             address: "SES Av. das Nações 801, Lote 51, 70443-900 Brasília"
           }
         },
-        AR: { 
-          name: "阿根廷", 
-          flag: "🇦🇷", 
-          general: "911", 
-          police: "101", 
-          ambulance: "107", 
+        AR: {
+          name: "阿根廷",
+          flag: "🇦🇷",
+          general: "911",
+          police: "101",
+          ambulance: "107",
           fire: "100",
           embassy: {
             name: "中国驻阿根廷大使馆",
@@ -1017,11 +1064,11 @@
             address: "Crisólogo Larralde 5349, C1431ALH Buenos Aires"
           }
         },
-        ZA: { 
-          name: "南非", 
-          flag: "🇿🇦", 
-          police: "10111", 
-          ambulance: "10177", 
+        ZA: {
+          name: "南非",
+          flag: "🇿🇦",
+          police: "10111",
+          ambulance: "10177",
           fire: "10177",
           embassy: {
             name: "中国驻南非大使馆",
@@ -1030,11 +1077,11 @@
             address: "972 Pretorius Street, Arcadia, Pretoria 0083"
           }
         },
-        EG: { 
-          name: "埃及", 
-          flag: "🇪🇬", 
-          police: "122", 
-          ambulance: "123", 
+        EG: {
+          name: "埃及",
+          flag: "🇪🇬",
+          police: "122",
+          ambulance: "123",
           fire: "180",
           notes: "旅游警察 126",
           embassy: {
@@ -1044,12 +1091,12 @@
             address: "14 Bahgat Ali Street, Zamalek, Cairo"
           }
         },
-        AE: { 
-          name: "阿联酋", 
-          flag: "🇦🇪", 
-          general: "999", 
-          police: "999", 
-          ambulance: "998", 
+        AE: {
+          name: "阿联酋",
+          flag: "🇦🇪",
+          general: "999",
+          police: "999",
+          ambulance: "998",
           fire: "997",
           embassy: {
             name: "中国驻阿联酋大使馆",
@@ -1058,11 +1105,11 @@
             address: "Plot No.30, Sector W59/02, Abu Dhabi"
           }
         },
-        SA: { 
-          name: "沙特阿拉伯", 
-          flag: "🇸🇦", 
-          police: "999", 
-          ambulance: "997", 
+        SA: {
+          name: "沙特阿拉伯",
+          flag: "🇸🇦",
+          police: "999",
+          ambulance: "997",
           fire: "998",
           embassy: {
             name: "中国驻沙特阿拉伯大使馆",
@@ -1071,11 +1118,11 @@
             address: "G8F3+CXQ, As Safarat, Riyadh"
           }
         },
-        IL: { 
-          name: "以色列", 
-          flag: "🇮🇱", 
-          police: "100", 
-          ambulance: "101", 
+        IL: {
+          name: "以色列",
+          flag: "🇮🇱",
+          police: "100",
+          ambulance: "101",
           fire: "102",
           embassy: {
             name: "中国驻以色列大使馆",
@@ -1084,12 +1131,12 @@
             address: "222 Ben Yehuda Street, Tel Aviv 6340107"
           }
         },
-        TR: { 
-          name: "土耳其", 
-          flag: "🇹🇷", 
-          general: "112", 
-          police: "155", 
-          ambulance: "112", 
+        TR: {
+          name: "土耳其",
+          flag: "🇹🇷",
+          general: "112",
+          police: "155",
+          ambulance: "112",
           fire: "110",
           embassy: {
             name: "中国驻土耳其大使馆",
@@ -1098,12 +1145,12 @@
             address: "Gölgeli Sokak No.34, Gaziosmanpaşa, Ankara"
           }
         },
-        AZ: { 
-          name: "阿塞拜疆", 
-          flag: "🇦🇿", 
-          general: "112", 
-          police: "102", 
-          ambulance: "103", 
+        AZ: {
+          name: "阿塞拜疆",
+          flag: "🇦🇿",
+          general: "112",
+          police: "102",
+          ambulance: "103",
           fire: "101",
           embassy: {
             name: "中国驻阿塞拜疆大使馆",
@@ -1112,12 +1159,12 @@
             address: "50 Khagani Street, Baku AZ1010"
           }
         },
-        KZ: { 
-          name: "哈萨克斯坦", 
-          flag: "🇰🇿", 
-          general: "112", 
-          police: "102", 
-          ambulance: "103", 
+        KZ: {
+          name: "哈萨克斯坦",
+          flag: "🇰🇿",
+          general: "112",
+          police: "102",
+          ambulance: "103",
           fire: "101",
           embassy: {
             name: "中国驻哈萨克斯坦大使馆",
@@ -1126,12 +1173,12 @@
             address: "62 Kunayev Street, Astana 010000"
           }
         },
-        UA: { 
-          name: "乌克兰", 
-          flag: "🇺🇦", 
-          general: "112", 
-          police: "102", 
-          ambulance: "103", 
+        UA: {
+          name: "乌克兰",
+          flag: "🇺🇦",
+          general: "112",
+          police: "102",
+          ambulance: "103",
           fire: "101",
           embassy: {
             name: "中国驻乌克兰大使馆",
@@ -1140,11 +1187,11 @@
             address: "32 Grushevskogo Street, Kyiv 01901"
           }
         },
-        MM: { 
-          name: "缅甸", 
-          flag: "🇲🇲", 
-          police: "199", 
-          ambulance: "192", 
+        MM: {
+          name: "缅甸",
+          flag: "🇲🇲",
+          police: "199",
+          ambulance: "192",
           fire: "191",
           embassy: {
             name: "中国驻缅甸大使馆",
@@ -1153,11 +1200,11 @@
             address: "No.1 Pyidaungsu Yeiktha Road, Dagon Township, Yangon"
           }
         },
-        KH: { 
-          name: "柬埔寨", 
-          flag: "🇰🇭", 
-          police: "117", 
-          ambulance: "119", 
+        KH: {
+          name: "柬埔寨",
+          flag: "🇰🇭",
+          police: "117",
+          ambulance: "119",
           fire: "118",
           embassy: {
             name: "中国驻柬埔寨大使馆",
@@ -1166,11 +1213,11 @@
             address: "156 Mao Tse Toung Blvd, Phnom Penh"
           }
         },
-        LA: { 
-          name: "老挝", 
-          flag: "🇱🇦", 
-          police: "191", 
-          ambulance: "195", 
+        LA: {
+          name: "老挝",
+          flag: "🇱🇦",
+          police: "191",
+          ambulance: "195",
           fire: "190",
           embassy: {
             name: "中国驻老挝大使馆",
@@ -1179,11 +1226,11 @@
             address: "Rue Wat Nak, Vientiane"
           }
         },
-        NP: { 
-          name: "尼泊尔", 
-          flag: "🇳🇵", 
-          police: "100", 
-          ambulance: "102", 
+        NP: {
+          name: "尼泊尔",
+          flag: "🇳🇵",
+          police: "100",
+          ambulance: "102",
           fire: "101",
           embassy: {
             name: "中国驻尼泊尔大使馆",
@@ -1192,12 +1239,12 @@
             address: "Baluwatar, Kathmandu"
           }
         },
-        LK: { 
-          name: "斯里兰卡", 
-          flag: "🇱🇰", 
-          general: "119", 
-          police: "119", 
-          ambulance: "110", 
+        LK: {
+          name: "斯里兰卡",
+          flag: "🇱🇰",
+          general: "119",
+          police: "119",
+          ambulance: "110",
           fire: "111",
           embassy: {
             name: "中国驻斯里兰卡大使馆",
@@ -1206,11 +1253,11 @@
             address: "381/A, Bauddhaloka Mawatha, Colombo 7"
           }
         },
-        PK: { 
-          name: "巴基斯坦", 
-          flag: "🇵🇰", 
-          police: "15", 
-          ambulance: "115", 
+        PK: {
+          name: "巴基斯坦",
+          flag: "🇵🇰",
+          police: "15",
+          ambulance: "115",
           fire: "16",
           embassy: {
             name: "中国驻巴基斯坦大使馆",
@@ -1219,12 +1266,12 @@
             address: "Diplomatic Enclave, Islamabad"
           }
         },
-        BD: { 
-          name: "孟加拉国", 
-          flag: "🇧🇩", 
-          general: "999", 
-          police: "999", 
-          ambulance: "999", 
+        BD: {
+          name: "孟加拉国",
+          flag: "🇧🇩",
+          general: "999",
+          police: "999",
+          ambulance: "999",
           fire: "199",
           embassy: {
             name: "中国驻孟加拉国大使馆",
@@ -1233,11 +1280,11 @@
             address: "Plot 2, Road 3, Block I, Baridhara, Dhaka 1212"
           }
         },
-        MV: { 
-          name: "马尔代夫", 
-          flag: "🇲🇻", 
-          police: "119", 
-          ambulance: "102", 
+        MV: {
+          name: "马尔代夫",
+          flag: "🇲🇻",
+          police: "119",
+          ambulance: "102",
           fire: "118",
           embassy: {
             name: "中国驻马尔代夫大使馆",
@@ -1256,7 +1303,7 @@
       }
 
       // Load theme
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -1268,45 +1315,52 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Copy to clipboard
       function copyToClipboard(text) {
-        navigator.clipboard.writeText(text).then(function() {
-          showToast("已复制: " + text);
-        }).catch(function() {
-          showToast("复制失败");
-        });
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            showToast("已复制: " + text);
+          })
+          .catch(function () {
+            showToast("复制失败");
+          });
       }
 
       // Create emergency card element
       function createEmergencyCard(type, icon, label, number) {
         var item = document.createElement("div");
         item.className = "emergency-item " + type;
-        item.onclick = function() { copyToClipboard(number); };
-        
+        item.onclick = function () {
+          copyToClipboard(number);
+        };
+
         var iconDiv = document.createElement("div");
         iconDiv.className = "emergency-icon";
         iconDiv.textContent = icon;
-        
+
         var labelDiv = document.createElement("div");
         labelDiv.className = "emergency-label";
         labelDiv.textContent = label;
-        
+
         var numberDiv = document.createElement("div");
         numberDiv.className = "emergency-number";
         numberDiv.textContent = number;
-        
+
         var hintDiv = document.createElement("div");
         hintDiv.className = "copy-hint";
         hintDiv.textContent = "点击复制";
-        
+
         item.appendChild(iconDiv);
         item.appendChild(labelDiv);
         item.appendChild(numberDiv);
         item.appendChild(hintDiv);
-        
+
         return item;
       }
 
@@ -1315,49 +1369,51 @@
         var row = document.createElement("div");
         row.className = "embassy-row";
         if (copyable) {
-          row.onclick = function() { copyToClipboard(value); };
+          row.onclick = function () {
+            copyToClipboard(value);
+          };
         }
-        
+
         var iconSpan = document.createElement("span");
         iconSpan.className = "embassy-row-icon";
         iconSpan.textContent = icon;
-        
+
         var content = document.createElement("div");
         content.className = "embassy-row-content";
-        
+
         var labelDiv = document.createElement("div");
         labelDiv.className = "embassy-row-label";
         labelDiv.textContent = label;
-        
+
         var valueDiv = document.createElement("div");
         valueDiv.className = "embassy-row-value";
         valueDiv.textContent = value;
-        
+
         content.appendChild(labelDiv);
         content.appendChild(valueDiv);
         row.appendChild(iconSpan);
         row.appendChild(content);
-        
+
         return row;
       }
 
       // Initialize country select
       function initCountrySelect() {
         var select = document.getElementById("countrySelect");
-        var countries = Object.keys(COUNTRIES).map(function(code) {
+        var countries = Object.keys(COUNTRIES).map(function (code) {
           return { code: code, data: COUNTRIES[code] };
         });
-        countries.sort(function(a, b) {
+        countries.sort(function (a, b) {
           return a.data.name.localeCompare(b.data.name, "zh-CN");
         });
-        
-        countries.forEach(function(item) {
+
+        countries.forEach(function (item) {
           var option = document.createElement("option");
           option.value = item.code;
           option.textContent = item.data.flag + " " + item.data.name;
           select.appendChild(option);
         });
-        
+
         select.addEventListener("change", updateResult);
       }
 
@@ -1371,7 +1427,7 @@
       // Update preset button states
       function updatePresetButtons(code) {
         var buttons = document.querySelectorAll(".preset-btn");
-        buttons.forEach(function(btn) {
+        buttons.forEach(function (btn) {
           btn.classList.remove("active");
           if (btn.getAttribute("data-country") === code) {
             btn.classList.add("active");
@@ -1383,7 +1439,7 @@
       function updateResult() {
         var code = document.getElementById("countrySelect").value;
         var resultCard = document.getElementById("resultCard");
-        
+
         if (!code || !COUNTRIES[code]) {
           resultCard.style.display = "none";
           return;
@@ -1391,53 +1447,61 @@
 
         var country = COUNTRIES[code];
         resultCard.style.display = "block";
-        
+
         document.getElementById("countryFlag").textContent = country.flag;
         document.getElementById("countryName").textContent = country.name;
-        
+
         // Build emergency numbers
         var numbersContainer = document.getElementById("emergencyNumbers");
         numbersContainer.textContent = "";
-        
+
         if (country.general) {
-          numbersContainer.appendChild(createEmergencyCard("general", "📞", "统一急救", country.general));
+          numbersContainer.appendChild(
+            createEmergencyCard("general", "📞", "统一急救", country.general)
+          );
         }
         if (country.police) {
           numbersContainer.appendChild(createEmergencyCard("police", "👮", "警察", country.police));
         }
         if (country.ambulance) {
-          numbersContainer.appendChild(createEmergencyCard("ambulance", "🚑", "急救", country.ambulance));
+          numbersContainer.appendChild(
+            createEmergencyCard("ambulance", "🚑", "急救", country.ambulance)
+          );
         }
         if (country.fire) {
           numbersContainer.appendChild(createEmergencyCard("fire", "🚒", "消防", country.fire));
         }
-        
+
         // Embassy section
         var embassySection = document.getElementById("embassySection");
         var embassyInfo = document.getElementById("embassyInfo");
-        
+
         if (country.embassy) {
           var embassy = country.embassy;
           embassyInfo.textContent = "";
-          
+
           if (embassy.name) {
             embassyInfo.appendChild(createEmbassyRow("🏛️", "名称", embassy.name, false));
           }
           if (embassy.phone) {
-            embassyInfo.appendChild(createEmbassyRow("📞", "领事保护与协助电话", embassy.phone, true));
+            embassyInfo.appendChild(
+              createEmbassyRow("📞", "领事保护与协助电话", embassy.phone, true)
+            );
           }
           if (embassy.emergency) {
-            embassyInfo.appendChild(createEmbassyRow("🆘", "紧急求助热线", embassy.emergency, true));
+            embassyInfo.appendChild(
+              createEmbassyRow("🆘", "紧急求助热线", embassy.emergency, true)
+            );
           }
           if (embassy.address) {
             embassyInfo.appendChild(createEmbassyRow("📍", "地址", embassy.address, true));
           }
-          
+
           embassySection.style.display = "block";
         } else {
           embassySection.style.display = "none";
         }
-        
+
         // Show notes if any
         var notesEl = document.getElementById("notes");
         var notesContent = document.getElementById("notesContent");
@@ -1458,8 +1522,8 @@
       // Initialize preset buttons
       function initPresetButtons() {
         var buttons = document.querySelectorAll(".preset-btn");
-        buttons.forEach(function(btn) {
-          btn.addEventListener("click", function() {
+        buttons.forEach(function (btn) {
+          btn.addEventListener("click", function () {
             var code = btn.getAttribute("data-country");
             selectCountry(code);
           });
@@ -1467,10 +1531,10 @@
       }
 
       // Initialize
-      (function() {
+      (function () {
         initCountrySelect();
         initPresetButtons();
-        
+
         // Load saved country
         var saved = localStorage.getItem("emergency_contacts_country");
         if (saved && COUNTRIES[saved]) {

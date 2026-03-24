@@ -17,7 +17,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
@@ -40,7 +43,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -60,170 +64,374 @@
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
-      
-
-      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-      html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-      body { font-family: var(--font-sans); background: var(--color-bg-deep); color: var(--color-text-primary); min-height: 100vh; line-height: 1.5; }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-bg-deep);
+        color: var(--color-text-primary);
+        min-height: 100vh;
+        line-height: 1.5;
+      }
 
       body::before {
-        content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-        background: radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
       }
 
       .nav-bar {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        height: calc(var(--nav-height) + var(--safe-area-top)); padding-top: var(--safe-area-top);
-        background: var(--glass-bg); backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
-        border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: calc(var(--nav-height) + var(--safe-area-top));
+        padding-top: var(--safe-area-top);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav-content {
-        width: 100%; max-width: var(--container-max); height: var(--nav-height); padding: 0 var(--space-6);
-        display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-4);
+        width: 100%;
+        max-width: var(--container-max);
+        height: var(--nav-height);
+        padding: 0 var(--space-6);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: var(--space-4);
       }
 
       .nav-back {
-        display: flex; align-items: center; gap: var(--space-1); color: var(--color-accent-primary);
-        text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding: var(--space-2) var(--space-1);
-        border-radius: var(--radius-sm); transition: all var(--transition-fast); justify-self: start;
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        color: var(--color-accent-primary);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        padding: var(--space-2) var(--space-1);
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+        justify-self: start;
       }
-      .nav-back:hover { background: var(--color-border-subtle); }
-      .nav-back-icon { width: 20px; height: 20px; stroke-width: 2.5; }
-      .nav-title { font-size: 1rem; font-weight: 600; text-align: center; }
-      .nav-actions { display: flex; gap: var(--space-2); justify-self: end; }
+      .nav-back:hover {
+        background: var(--color-border-subtle);
+      }
+      .nav-back-icon {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2.5;
+      }
+      .nav-title {
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .nav-actions {
+        display: flex;
+        gap: var(--space-2);
+        justify-self: end;
+      }
 
       .theme-toggle {
-        display: flex; align-items: center; justify-content: center; width: 36px; height: 36px;
-        border: none; border-radius: var(--radius-full); background: var(--color-bg-subtle);
-        color: var(--color-text-secondary); cursor: pointer; transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: var(--radius-full);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
+        cursor: pointer;
+        transition: all var(--transition-fast);
       }
-      .theme-toggle:hover { background: var(--color-border-strong); transform: scale(1.05); }
-      .theme-toggle svg { width: 18px; height: 18px; }
-      .theme-icon-dark, .theme-icon-light { display: none; }
-      [data-theme="dark"] .theme-icon-light, :root:not([data-theme]) .theme-icon-light { display: block; }
-      [data-theme="light"] .theme-icon-dark { display: block; }
+      .theme-toggle:hover {
+        background: var(--color-border-strong);
+        transform: scale(1.05);
+      }
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+      .theme-icon-dark,
+      .theme-icon-light {
+        display: none;
+      }
+      [data-theme="dark"] .theme-icon-light,
+      :root:not([data-theme]) .theme-icon-light {
+        display: block;
+      }
+      [data-theme="light"] .theme-icon-dark {
+        display: block;
+      }
 
       .main-content {
-        position: relative; z-index: 1; min-height: 100vh;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
         padding-top: calc(var(--nav-height) + var(--safe-area-top) + var(--space-6));
         padding-bottom: calc(var(--space-8) + var(--safe-area-bottom));
-        padding-left: var(--space-6); padding-right: var(--space-6);
-        display: flex; flex-direction: column; align-items: center;
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .container { width: 100%; max-width: var(--container-max); }
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+      }
 
       .card {
-        background: var(--glass-bg); backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-lg);
-        padding: var(--space-6); margin-bottom: var(--space-5); box-shadow: var(--shadow-md);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        margin-bottom: var(--space-5);
+        box-shadow: var(--shadow-md);
       }
 
-      .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-5); }
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--space-5);
+      }
 
-      .input-group { margin-bottom: var(--space-4); }
-      .input-group:last-child { margin-bottom: 0; }
+      .input-group {
+        margin-bottom: var(--space-4);
+      }
+      .input-group:last-child {
+        margin-bottom: 0;
+      }
       .input-group label {
-        display: block; font-weight: 500; margin-bottom: var(--space-2);
-        font-size: 0.9375rem; color: var(--color-text-secondary);
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--space-2);
+        font-size: 0.9375rem;
+        color: var(--color-text-secondary);
       }
 
-      input, select {
-        width: 100%; padding: var(--space-3) var(--space-4); font-size: 0.9375rem;
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-md);
-        background: var(--color-bg-input); color: var(--color-text-primary);
-        font-family: var(--font-mono); transition: all var(--transition-fast);
+      input,
+      select {
+        width: 100%;
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.9375rem;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-input);
+        color: var(--color-text-primary);
+        font-family: var(--font-mono);
+        transition: all var(--transition-fast);
       }
-      input:focus, select:focus {
-        outline: none; border-color: var(--color-accent-primary);
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--color-accent-primary);
         box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
       }
 
       button {
-        padding: var(--space-3) var(--space-4); font-size: 0.9375rem; font-weight: 500;
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-md);
-        background: var(--color-bg-subtle); color: var(--color-text-primary);
-        cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-sans);
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-primary);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        font-family: var(--font-sans);
       }
-      button:hover { border-color: var(--color-accent-primary); }
+      button:hover {
+        border-color: var(--color-accent-primary);
+      }
       button.primary {
-        background: var(--color-accent-primary); border-color: var(--color-accent-primary);
-        color: #fff; font-weight: 600;
+        background: var(--color-accent-primary);
+        border-color: var(--color-accent-primary);
+        color: #fff;
+        font-weight: 600;
       }
-      button.primary:hover { background: #00c299; box-shadow: var(--shadow-glow); }
+      button.primary:hover {
+        background: #00c299;
+        box-shadow: var(--shadow-glow);
+      }
 
       .tip-info {
-        background: var(--color-bg-surface); border: 1px solid var(--color-border-default);
-        border-radius: var(--radius-md); padding: var(--space-5); margin-top: var(--space-5);
+        background: var(--color-bg-surface);
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        padding: var(--space-5);
+        margin-top: var(--space-5);
       }
 
       .tip-header {
-        display: flex; justify-content: space-between; align-items: center;
-        margin-bottom: var(--space-4); padding-bottom: var(--space-4);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--space-4);
+        padding-bottom: var(--space-4);
         border-bottom: 1px solid var(--color-border-subtle);
       }
 
-      .tip-country { font-size: 1.25rem; font-weight: 600; }
-      .tip-expectation {
-        padding: var(--space-2) var(--space-3); border-radius: var(--radius-full);
-        font-size: 0.8125rem; font-weight: 500;
+      .tip-country {
+        font-size: 1.25rem;
+        font-weight: 600;
       }
-      .tip-expectation.expected { background: var(--color-success); color: #fff; }
-      .tip-expectation.appreciated { background: var(--color-warning); color: #000; }
-      .tip-expectation.not-expected { background: var(--text-muted); color: #fff; }
+      .tip-expectation {
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-full);
+        font-size: 0.8125rem;
+        font-weight: 500;
+      }
+      .tip-expectation.expected {
+        background: var(--color-success);
+        color: #fff;
+      }
+      .tip-expectation.appreciated {
+        background: var(--color-warning);
+        color: #000;
+      }
+      .tip-expectation.not-expected {
+        background: var(--text-muted);
+        color: #fff;
+      }
 
-      .tip-details { display: grid; gap: var(--space-4); }
+      .tip-details {
+        display: grid;
+        gap: var(--space-4);
+      }
 
-      .tip-item { display: flex; justify-content: space-between; align-items: flex-start; }
-      .tip-item-label { font-size: 0.9375rem; color: var(--color-text-secondary); }
-      .tip-item-value { font-size: 0.9375rem; font-weight: 500; text-align: right; }
+      .tip-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .tip-item-label {
+        font-size: 0.9375rem;
+        color: var(--color-text-secondary);
+      }
+      .tip-item-value {
+        font-size: 0.9375rem;
+        font-weight: 500;
+        text-align: right;
+      }
 
       .tip-note {
-        font-size: 0.8125rem; color: var(--text-muted);
-        margin-top: var(--space-4); padding-top: var(--space-4);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-top: var(--space-4);
+        padding-top: var(--space-4);
         border-top: 1px solid var(--color-border-subtle);
       }
 
       /* Calculator */
-      .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
+      .calc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+      }
 
-      .tip-buttons { display: flex; gap: var(--space-2); margin-top: var(--space-3); }
+      .tip-buttons {
+        display: flex;
+        gap: var(--space-2);
+        margin-top: var(--space-3);
+      }
       .tip-btn {
-        flex: 1; padding: var(--space-2) var(--space-3); font-size: 0.875rem;
+        flex: 1;
+        padding: var(--space-2) var(--space-3);
+        font-size: 0.875rem;
         background: var(--color-bg-subtle);
       }
-      .tip-btn.active { background: var(--color-accent-primary); color: #fff; border-color: var(--color-accent-primary); }
+      .tip-btn.active {
+        background: var(--color-accent-primary);
+        color: #fff;
+        border-color: var(--color-accent-primary);
+      }
 
       .calc-result {
-        background: var(--color-bg-subtle); border-radius: var(--radius-md);
-        padding: var(--space-5); margin-top: var(--space-5); text-align: center;
+        background: var(--color-bg-subtle);
+        border-radius: var(--radius-md);
+        padding: var(--space-5);
+        margin-top: var(--space-5);
+        text-align: center;
       }
 
       .result-row {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border-subtle);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--space-3) 0;
+        border-bottom: 1px solid var(--color-border-subtle);
       }
-      .result-row:last-child { border-bottom: none; }
-      .result-label { font-size: 0.9375rem; color: var(--color-text-secondary); }
-      .result-value { font-size: 1.125rem; font-weight: 600; font-family: var(--font-mono); }
-      .result-total { color: var(--color-accent-primary); font-size: 1.5rem; }
+      .result-row:last-child {
+        border-bottom: none;
+      }
+      .result-label {
+        font-size: 0.9375rem;
+        color: var(--color-text-secondary);
+      }
+      .result-value {
+        font-size: 1.125rem;
+        font-weight: 600;
+        font-family: var(--font-mono);
+      }
+      .result-total {
+        color: var(--color-accent-primary);
+        font-size: 1.5rem;
+      }
 
       @media (max-width: 640px) {
-        .calc-grid { grid-template-columns: 1fr; }
+        .calc-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 480px) {
-        :root { --nav-height: 52px; }
-        .nav-content { padding: 0 var(--space-4); }
-        .nav-back-text { display: none; }
+        :root {
+          --nav-height: 52px;
+        }
+        .nav-content {
+          padding: 0 var(--space-4);
+        }
+        .nav-back-text {
+          display: none;
+        }
         .main-content {
           padding-top: calc(var(--nav-height) + var(--safe-area-top) + var(--space-4));
-          padding-left: var(--space-4); padding-right: var(--space-4);
+          padding-left: var(--space-4);
+          padding-right: var(--space-4);
         }
-        .card { padding: var(--space-4); }
-        .tip-header { flex-direction: column; align-items: flex-start; gap: var(--space-2); }
+        .card {
+          padding: var(--space-4);
+        }
+        .tip-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--space-2);
+        }
       }
     </style>
   </head>
@@ -231,7 +439,14 @@
     <nav class="nav-bar">
       <div class="nav-content">
         <a href="../../index.html" class="nav-back" aria-label="返回首页">
-          <svg class="nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            class="nav-back-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
           <span class="nav-back-text">首页</span>
@@ -239,10 +454,26 @@
         <h1 class="nav-title">小费指南</h1>
         <div class="nav-actions">
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-            <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-light"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
-            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-dark"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -268,7 +499,7 @@
             <select id="countrySelect" onchange="showTipInfo()"></select>
           </div>
 
-          <div class="tip-info" id="tipInfo" style="display: none;">
+          <div class="tip-info" id="tipInfo" style="display: none">
             <div class="tip-header">
               <span class="tip-country" id="tipCountry"></span>
               <span class="tip-expectation" id="tipExpectation"></span>
@@ -284,11 +515,26 @@
           <div class="calc-grid">
             <div class="input-group">
               <label>账单金额</label>
-              <input type="number" id="billAmount" min="0" step="0.01" placeholder="100.00" oninput="calculateTip()" />
+              <input
+                type="number"
+                id="billAmount"
+                min="0"
+                step="0.01"
+                placeholder="100.00"
+                oninput="calculateTip()"
+              />
             </div>
             <div class="input-group">
               <label>小费比例</label>
-              <input type="number" id="tipPercent" min="0" max="100" step="1" value="15" oninput="calculateTip()" />
+              <input
+                type="number"
+                id="tipPercent"
+                min="0"
+                max="100"
+                step="1"
+                value="15"
+                oninput="calculateTip()"
+              />
               <div class="tip-buttons">
                 <button class="tip-btn" onclick="setTipPercent(10)">10%</button>
                 <button class="tip-btn active" onclick="setTipPercent(15)">15%</button>
@@ -318,7 +564,7 @@
 
     <script>
       var TIP_DATA = {
-        "美国": {
+        美国: {
           expectation: "expected",
           expectationText: "必须给",
           details: [
@@ -330,7 +576,7 @@
           ],
           note: "在美国，小费是服务人员收入的重要组成部分。不给小费被认为是非常不礼貌的行为。"
         },
-        "加拿大": {
+        加拿大: {
           expectation: "expected",
           expectationText: "必须给",
           details: [
@@ -341,7 +587,7 @@
           ],
           note: "加拿大的小费文化与美国类似，服务人员依赖小费作为收入的一部分。"
         },
-        "英国": {
+        英国: {
           expectation: "appreciated",
           expectationText: "欢迎但非必须",
           details: [
@@ -352,7 +598,7 @@
           ],
           note: "许多餐厅会在账单中包含服务费。如果已含服务费，则不需要额外给小费。"
         },
-        "法国": {
+        法国: {
           expectation: "appreciated",
           expectationText: "欢迎但非必须",
           details: [
@@ -363,7 +609,7 @@
           ],
           note: "法国的账单中通常已包含服务费(service compris)。额外的小费是对优质服务的感谢。"
         },
-        "德国": {
+        德国: {
           expectation: "appreciated",
           expectationText: "欢迎但非必须",
           details: [
@@ -374,7 +620,7 @@
           ],
           note: "德国人通常会将账单四舍五入到整数或多给一点。直接告诉服务员你想支付的总金额。"
         },
-        "日本": {
+        日本: {
           expectation: "not-expected",
           expectationText: "不需要",
           details: [
@@ -385,7 +631,7 @@
           ],
           note: "在日本给小费可能被视为不礼貌。优质服务是理所当然的。如果想表示感谢，可以用双手递上一个信封。"
         },
-        "中国": {
+        中国: {
           expectation: "not-expected",
           expectationText: "不需要",
           details: [
@@ -395,7 +641,7 @@
           ],
           note: "中国大陆没有小费文化。在高档酒店给行李员一些小费是可以的，但不是必须的。"
         },
-        "韩国": {
+        韩国: {
           expectation: "not-expected",
           expectationText: "不需要",
           details: [
@@ -405,7 +651,7 @@
           ],
           note: "韩国没有小费文化，服务费通常已包含在价格中。"
         },
-        "泰国": {
+        泰国: {
           expectation: "appreciated",
           expectationText: "欢迎但非必须",
           details: [
@@ -416,7 +662,7 @@
           ],
           note: "虽然不是必须的，但给小费在泰国是受欢迎的。按摩师和酒店服务人员特别期待小费。"
         },
-        "新加坡": {
+        新加坡: {
           expectation: "not-expected",
           expectationText: "不需要",
           details: [
@@ -426,7 +672,7 @@
           ],
           note: "新加坡的账单中通常已包含10%服务费和7%消费税(GST)。不需要额外给小费。"
         },
-        "澳大利亚": {
+        澳大利亚: {
           expectation: "appreciated",
           expectationText: "欢迎但非必须",
           details: [
@@ -459,7 +705,7 @@
 
       function populateCountries() {
         var select = document.getElementById("countrySelect");
-        Object.keys(TIP_DATA).forEach(function(country) {
+        Object.keys(TIP_DATA).forEach(function (country) {
           var option = document.createElement("option");
           option.value = country;
           option.textContent = country;
@@ -485,7 +731,7 @@
         var detailsEl = document.getElementById("tipDetails");
         detailsEl.textContent = "";
 
-        data.details.forEach(function(item) {
+        data.details.forEach(function (item) {
           var row = document.createElement("div");
           row.className = "tip-item";
 
@@ -510,7 +756,7 @@
         document.getElementById("tipPercent").value = percent;
 
         var buttons = document.querySelectorAll(".tip-btn");
-        buttons.forEach(function(btn) {
+        buttons.forEach(function (btn) {
           btn.classList.remove("active");
           if (parseInt(btn.textContent) === percent) {
             btn.classList.add("active");
@@ -533,7 +779,7 @@
 
         // Update active button
         var buttons = document.querySelectorAll(".tip-btn");
-        buttons.forEach(function(btn) {
+        buttons.forEach(function (btn) {
           btn.classList.remove("active");
           if (parseInt(btn.textContent) === percent) {
             btn.classList.add("active");

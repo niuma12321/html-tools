@@ -9,16 +9,10 @@
       name="description"
       content="在线数据采样工具，支持随机采样、前N条、后N条、每N条等多种采样模式"
     />
-    <meta
-      name="keywords"
-      content="data sample 采样 随机 random first last every nth 抽样"
-    />
+    <meta name="keywords" content="data sample 采样 随机 random first last every nth 抽样" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link
-      rel="canonical"
-      href="https://tools.realtime-ai.chat/tools/data/data-sampler.html"
-    />
+    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/data-sampler.html" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="数据采样器 - WebUtils" />
@@ -27,10 +21,7 @@
       content="在线数据采样工具，支持随机采样、前N条、后N条、每N条等多种采样模式"
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://tools.realtime-ai.chat/tools/data/data-sampler.html"
-    />
+    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/data-sampler.html" />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
 
@@ -42,17 +33,11 @@
       content="在线数据采样工具，支持随机采样、前N条、后N条、每N条等多种采样模式"
     />
     <!-- OG Image -->
-    <meta
-      property="og:image"
-      content="https://tools.realtime-ai.chat/social-preview.png"
-    />
+    <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
     <meta property="og:image:type" content="image/png" />
-    <meta
-      name="twitter:image"
-      content="https://tools.realtime-ai.chat/social-preview.png"
-    />
+    <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- JSON-LD BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -109,7 +94,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -128,7 +114,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -164,10 +150,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(
-            rgb(0, 245, 212, 0.02) 1px,
-            transparent 1px
-          ),
+        background-image:
+          linear-gradient(rgb(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgb(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -513,9 +497,7 @@
   </head>
   <body>
     <div class="bg-grid"></div>
-    <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
-      🌓
-    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">🌓</button>
 
     <div class="container">
       <header class="header">
@@ -570,42 +552,36 @@
             <div class="option-card hidden" id="everyOption">
               <div class="option-title">间隔设置</div>
               <div class="size-input-row">
-                <span style="color: var(--color-text-secondary);">每</span>
-                <input type="number" id="everyN" value="2" min="1" style="width: 60px;" />
-                <span style="color: var(--color-text-secondary);">条取 1 条</span>
+                <span style="color: var(--color-text-secondary)">每</span>
+                <input type="number" id="everyN" value="2" min="1" style="width: 60px" />
+                <span style="color: var(--color-text-secondary)">条取 1 条</span>
               </div>
             </div>
 
             <div class="option-card hidden" id="rangeOption">
               <div class="option-title">范围设置</div>
               <div class="size-input-row">
-                <span style="color: var(--color-text-secondary);">从第</span>
-                <input type="number" id="rangeStart" value="1" min="1" style="width: 60px;" />
-                <span style="color: var(--color-text-secondary);">到第</span>
-                <input type="number" id="rangeEnd" value="10" min="1" style="width: 60px;" />
-                <span style="color: var(--color-text-secondary);">条</span>
+                <span style="color: var(--color-text-secondary)">从第</span>
+                <input type="number" id="rangeStart" value="1" min="1" style="width: 60px" />
+                <span style="color: var(--color-text-secondary)">到第</span>
+                <input type="number" id="rangeEnd" value="10" min="1" style="width: 60px" />
+                <span style="color: var(--color-text-secondary)">条</span>
               </div>
             </div>
 
             <div class="option-card" id="seedOption">
               <div class="option-title">随机种子（可选）</div>
               <input type="number" id="seed" placeholder="留空则每次随机" />
-              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px">
                 相同种子可重现相同结果
               </div>
             </div>
           </div>
 
           <div class="btn-row">
-            <button class="btn btn-primary" onclick="sampleData()">
-              🎲 采样
-            </button>
-            <button class="btn btn-secondary" onclick="resample()">
-              🔄 重新采样
-            </button>
-            <button class="btn btn-secondary" onclick="clearAll()">
-              🗑️ 清空
-            </button>
+            <button class="btn btn-primary" onclick="sampleData()">🎲 采样</button>
+            <button class="btn btn-secondary" onclick="resample()">🔄 重新采样</button>
+            <button class="btn btn-secondary" onclick="clearAll()">🗑️ 清空</button>
           </div>
         </div>
 
@@ -627,12 +603,8 @@
           </div>
           <div class="result-box" id="result">采样结果将显示在这里...</div>
           <div class="btn-row" style="margin-top: 16px">
-            <button class="btn btn-primary" onclick="copyResult()">
-              📋 复制结果
-            </button>
-            <button class="btn btn-secondary" onclick="downloadResult()">
-              💾 下载
-            </button>
+            <button class="btn btn-primary" onclick="copyResult()">📋 复制结果</button>
+            <button class="btn btn-secondary" onclick="downloadResult()">💾 下载</button>
           </div>
         </div>
       </main>
@@ -778,12 +750,9 @@
         document.getElementById("inputCount").textContent = lines.length;
         document.getElementById("outputCount").textContent = result.length;
         document.getElementById("samplePercent").textContent =
-          lines.length > 0
-            ? ((result.length / lines.length) * 100).toFixed(1) + "%"
-            : "0%";
+          lines.length > 0 ? ((result.length / lines.length) * 100).toFixed(1) + "%" : "0%";
 
-        resultEl.textContent =
-          result.length > 0 ? result.join("\n") : "（无数据）";
+        resultEl.textContent = result.length > 0 ? result.join("\n") : "（无数据）";
         saveState();
         showToast("采样完成");
       }
@@ -815,7 +784,7 @@
           return;
         }
         const blob = new Blob([lastResult.join("\n")], {
-          type: "text/plain;charset=utf-8",
+          type: "text/plain;charset=utf-8"
         });
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
@@ -848,7 +817,7 @@
           everyN: document.getElementById("everyN").value,
           rangeStart: document.getElementById("rangeStart").value,
           rangeEnd: document.getElementById("rangeEnd").value,
-          seed: document.getElementById("seed").value,
+          seed: document.getElementById("seed").value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(state));
       }

@@ -12,7 +12,10 @@
     <meta property="og:title" content="最佳旅行季节 - WebUtils" />
     <meta property="og:description" content="查询各目的地最佳旅行时间" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/season-guide.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/season-guide.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -22,7 +25,10 @@
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -44,7 +50,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -63,8 +70,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -88,7 +99,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -118,10 +130,20 @@
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-sm);
       }
-      .breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+      .breadcrumb a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -130,14 +152,20 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section p { color: var(--color-text-secondary); margin-top: 4px; font-size: 0.9rem; }
+      .title-section p {
+        color: var(--color-text-secondary);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
       .main-content {
         background: var(--color-bg-card);
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-lg);
         padding: 24px;
       }
-      .search-box { margin-bottom: 24px; }
+      .search-box {
+        margin-bottom: 24px;
+      }
       .search-input {
         width: 100%;
         padding: 14px 18px;
@@ -148,8 +176,15 @@
         border-radius: var(--radius-md);
         color: var(--color-text-primary);
       }
-      .search-input:focus { outline: none; border-color: var(--accent-green); }
-      .destination-list { display: flex; flex-direction: column; gap: 16px; }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent-green);
+      }
+      .destination-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
       .destination-card {
         background: var(--color-bg-surface);
         border: 1px solid var(--border-subtle);
@@ -157,16 +192,26 @@
         padding: 20px;
         transition: all 0.2s;
       }
-      .destination-card:hover { border-color: var(--accent-green); }
+      .destination-card:hover {
+        border-color: var(--accent-green);
+      }
       .destination-header {
         display: flex;
         align-items: center;
         gap: 12px;
         margin-bottom: 16px;
       }
-      .destination-flag { font-size: 2rem; }
-      .destination-name { font-weight: 600; font-size: 1.1rem; }
-      .destination-region { font-size: 0.85rem; color: var(--text-muted); }
+      .destination-flag {
+        font-size: 2rem;
+      }
+      .destination-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+      .destination-region {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
       .months-grid {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -184,10 +229,22 @@
         font-weight: 500;
         margin-bottom: 2px;
       }
-      .month-cell.best { background: rgba(16, 185, 129, 0.3); color: var(--accent-green); }
-      .month-cell.good { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
-      .month-cell.ok { background: rgba(251, 191, 36, 0.2); color: var(--accent-yellow); }
-      .month-cell.avoid { background: rgba(244, 63, 94, 0.2); color: var(--accent-red); }
+      .month-cell.best {
+        background: rgba(16, 185, 129, 0.3);
+        color: var(--accent-green);
+      }
+      .month-cell.good {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--accent-blue);
+      }
+      .month-cell.ok {
+        background: rgba(251, 191, 36, 0.2);
+        color: var(--accent-yellow);
+      }
+      .month-cell.avoid {
+        background: rgba(244, 63, 94, 0.2);
+        color: var(--accent-red);
+      }
       .season-info {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -235,10 +292,18 @@
         height: 12px;
         border-radius: var(--radius-sm);
       }
-      .legend-dot.best { background: rgba(16, 185, 129, 0.5); }
-      .legend-dot.good { background: rgba(59, 130, 246, 0.3); }
-      .legend-dot.ok { background: rgba(251, 191, 36, 0.3); }
-      .legend-dot.avoid { background: rgba(244, 63, 94, 0.3); }
+      .legend-dot.best {
+        background: rgba(16, 185, 129, 0.5);
+      }
+      .legend-dot.good {
+        background: rgba(59, 130, 246, 0.3);
+      }
+      .legend-dot.ok {
+        background: rgba(251, 191, 36, 0.3);
+      }
+      .legend-dot.avoid {
+        background: rgba(244, 63, 94, 0.3);
+      }
       .toast {
         position: fixed;
         bottom: 24px;
@@ -254,11 +319,20 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
       @media (max-width: 768px) {
-        .container { padding: 16px; }
-        .months-grid { grid-template-columns: repeat(6, 1fr); }
-        .season-info { grid-template-columns: 1fr; }
+        .container {
+          padding: 16px;
+        }
+        .months-grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+        .season-info {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -274,21 +348,42 @@
           <span class="breadcrumb-current">最佳旅行季节</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">🌸</span>最佳旅行季节</h1>
+          <h1>
+            <span class="icon">🌸</span>
+            最佳旅行季节
+          </h1>
           <p>查询各目的地最佳旅行时间</p>
         </div>
       </header>
 
       <main class="main-content">
         <div class="legend">
-          <div class="legend-item"><div class="legend-dot best"></div><span>最佳</span></div>
-          <div class="legend-item"><div class="legend-dot good"></div><span>推荐</span></div>
-          <div class="legend-item"><div class="legend-dot ok"></div><span>一般</span></div>
-          <div class="legend-item"><div class="legend-dot avoid"></div><span>不推荐</span></div>
+          <div class="legend-item">
+            <div class="legend-dot best"></div>
+            <span>最佳</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot good"></div>
+            <span>推荐</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot ok"></div>
+            <span>一般</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot avoid"></div>
+            <span>不推荐</span>
+          </div>
         </div>
 
         <div class="search-box">
-          <input type="text" class="search-input" id="searchInput" placeholder="搜索目的地..." oninput="filterDestinations()">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="搜索目的地..."
+            oninput="filterDestinations()"
+          />
         </div>
 
         <div class="destination-list" id="destinationList"></div>
@@ -299,29 +394,482 @@
 
     <script>
       var destinations = [
-        { name: "东京", region: "日本", flag: "🇯🇵", months: ["good","good","best","best","good","ok","ok","ok","good","good","good","good"], bestTime: "3-4月/10-11月", climate: "温带季风", avgTemp: "16°C", tips: "樱花季(3-4月)和红叶季(11月)最美" },
-        { name: "巴黎", region: "法国", flag: "🇫🇷", months: ["ok","ok","good","best","best","best","good","good","best","good","ok","ok"], bestTime: "4-6月/9月", climate: "温带海洋性", avgTemp: "12°C", tips: "避开8月，当地人度假商店关闭" },
-        { name: "伦敦", region: "英国", flag: "🇬🇧", months: ["ok","ok","good","good","best","best","best","good","good","ok","ok","ok"], bestTime: "5-7月", climate: "温带海洋性", avgTemp: "11°C", tips: "夏季日照长，但需准备雨具" },
-        { name: "纽约", region: "美国", flag: "🇺🇸", months: ["avoid","avoid","good","best","best","good","ok","ok","best","best","good","avoid"], bestTime: "4-5月/9-10月", climate: "温带大陆性", avgTemp: "13°C", tips: "秋季中央公园红叶绝美" },
-        { name: "悉尼", region: "澳大利亚", flag: "🇦🇺", months: ["good","good","best","best","good","ok","ok","ok","best","best","good","good"], bestTime: "9-11月/3-5月", climate: "温带海洋性", avgTemp: "18°C", tips: "南半球季节相反，圣诞在夏天" },
-        { name: "曼谷", region: "泰国", flag: "🇹🇭", months: ["best","best","good","ok","avoid","avoid","avoid","avoid","avoid","ok","best","best"], bestTime: "11-2月", climate: "热带季风", avgTemp: "28°C", tips: "11-2月凉季最舒适，避开雨季" },
-        { name: "巴厘岛", region: "印度尼西亚", flag: "🇮🇩", months: ["avoid","avoid","avoid","good","best","best","best","best","best","good","ok","avoid"], bestTime: "4-10月", climate: "热带雨林", avgTemp: "27°C", tips: "旱季适合水上活动" },
-        { name: "新加坡", region: "新加坡", flag: "🇸🇬", months: ["good","best","best","good","good","good","good","good","good","ok","ok","ok"], bestTime: "2-4月", climate: "热带雨林", avgTemp: "27°C", tips: "全年炎热，室内空调冷" },
-        { name: "首尔", region: "韩国", flag: "🇰🇷", months: ["avoid","ok","good","best","best","ok","avoid","avoid","best","best","good","avoid"], bestTime: "4-5月/9-10月", climate: "温带季风", avgTemp: "12°C", tips: "樱花和红叶季最美" },
-        { name: "北京", region: "中国", flag: "🇨🇳", months: ["avoid","ok","good","best","best","ok","avoid","avoid","best","best","good","avoid"], bestTime: "4-5月/9-10月", climate: "温带季风", avgTemp: "13°C", tips: "秋高气爽，避开沙尘和酷暑" },
-        { name: "上海", region: "中国", flag: "🇨🇳", months: ["ok","ok","good","best","best","avoid","avoid","avoid","good","best","good","ok"], bestTime: "3-5月/9-11月", climate: "亚热带季风", avgTemp: "16°C", tips: "春秋最宜，避开梅雨和酷暑" },
-        { name: "香港", region: "中国", flag: "🇭🇰", months: ["good","ok","ok","ok","avoid","avoid","avoid","avoid","avoid","best","best","best"], bestTime: "10-12月", climate: "亚热带季风", avgTemp: "23°C", tips: "秋冬干爽舒适" },
-        { name: "台北", region: "中国台湾", flag: "🇹🇼", months: ["ok","ok","good","good","avoid","avoid","avoid","avoid","good","best","best","ok"], bestTime: "9-11月", climate: "亚热带季风", avgTemp: "22°C", tips: "秋季气候最舒适" },
-        { name: "马尔代夫", region: "马尔代夫", flag: "🇲🇻", months: ["best","best","best","best","ok","avoid","avoid","avoid","ok","ok","good","best"], bestTime: "12-4月", climate: "热带季风", avgTemp: "28°C", tips: "旱季最适合浮潜" },
-        { name: "迪拜", region: "阿联酋", flag: "🇦🇪", months: ["best","best","best","good","ok","avoid","avoid","avoid","avoid","ok","good","best"], bestTime: "11-3月", climate: "热带沙漠", avgTemp: "27°C", tips: "夏季酷热难耐" },
-        { name: "罗马", region: "意大利", flag: "🇮🇹", months: ["ok","ok","good","best","best","good","ok","ok","best","good","ok","ok"], bestTime: "4-5月/9-10月", climate: "地中海", avgTemp: "16°C", tips: "避开盛夏旅游旺季" },
-        { name: "巴塞罗那", region: "西班牙", flag: "🇪🇸", months: ["ok","ok","good","good","best","best","good","ok","best","good","ok","ok"], bestTime: "5-6月/9月", climate: "地中海", avgTemp: "16°C", tips: "海滩和文化兼得" },
-        { name: "阿姆斯特丹", region: "荷兰", flag: "🇳🇱", months: ["ok","ok","good","best","best","good","good","good","good","ok","ok","ok"], bestTime: "4-5月", climate: "温带海洋性", avgTemp: "10°C", tips: "郁金香季不可错过" },
-        { name: "冰岛", region: "冰岛", flag: "🇮🇸", months: ["ok","ok","best","good","good","best","best","best","good","ok","ok","ok"], bestTime: "6-8月/3月(极光)", climate: "亚北极", avgTemp: "5°C", tips: "夏季午夜阳光，冬季极光" },
-        { name: "开普敦", region: "南非", flag: "🇿🇦", months: ["good","good","best","best","ok","ok","ok","ok","best","best","good","good"], bestTime: "9-11月/2-3月", climate: "地中海", avgTemp: "17°C", tips: "南半球春秋最美" }
+        {
+          name: "东京",
+          region: "日本",
+          flag: "🇯🇵",
+          months: [
+            "good",
+            "good",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "ok",
+            "ok",
+            "good",
+            "good",
+            "good",
+            "good"
+          ],
+          bestTime: "3-4月/10-11月",
+          climate: "温带季风",
+          avgTemp: "16°C",
+          tips: "樱花季(3-4月)和红叶季(11月)最美"
+        },
+        {
+          name: "巴黎",
+          region: "法国",
+          flag: "🇫🇷",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "best",
+            "good",
+            "good",
+            "best",
+            "good",
+            "ok",
+            "ok"
+          ],
+          bestTime: "4-6月/9月",
+          climate: "温带海洋性",
+          avgTemp: "12°C",
+          tips: "避开8月，当地人度假商店关闭"
+        },
+        {
+          name: "伦敦",
+          region: "英国",
+          flag: "🇬🇧",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "good",
+            "best",
+            "best",
+            "best",
+            "good",
+            "good",
+            "ok",
+            "ok",
+            "ok"
+          ],
+          bestTime: "5-7月",
+          climate: "温带海洋性",
+          avgTemp: "11°C",
+          tips: "夏季日照长，但需准备雨具"
+        },
+        {
+          name: "纽约",
+          region: "美国",
+          flag: "🇺🇸",
+          months: [
+            "avoid",
+            "avoid",
+            "good",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "ok",
+            "best",
+            "best",
+            "good",
+            "avoid"
+          ],
+          bestTime: "4-5月/9-10月",
+          climate: "温带大陆性",
+          avgTemp: "13°C",
+          tips: "秋季中央公园红叶绝美"
+        },
+        {
+          name: "悉尼",
+          region: "澳大利亚",
+          flag: "🇦🇺",
+          months: [
+            "good",
+            "good",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "ok",
+            "ok",
+            "best",
+            "best",
+            "good",
+            "good"
+          ],
+          bestTime: "9-11月/3-5月",
+          climate: "温带海洋性",
+          avgTemp: "18°C",
+          tips: "南半球季节相反，圣诞在夏天"
+        },
+        {
+          name: "曼谷",
+          region: "泰国",
+          flag: "🇹🇭",
+          months: [
+            "best",
+            "best",
+            "good",
+            "ok",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "ok",
+            "best",
+            "best"
+          ],
+          bestTime: "11-2月",
+          climate: "热带季风",
+          avgTemp: "28°C",
+          tips: "11-2月凉季最舒适，避开雨季"
+        },
+        {
+          name: "巴厘岛",
+          region: "印度尼西亚",
+          flag: "🇮🇩",
+          months: [
+            "avoid",
+            "avoid",
+            "avoid",
+            "good",
+            "best",
+            "best",
+            "best",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "avoid"
+          ],
+          bestTime: "4-10月",
+          climate: "热带雨林",
+          avgTemp: "27°C",
+          tips: "旱季适合水上活动"
+        },
+        {
+          name: "新加坡",
+          region: "新加坡",
+          flag: "🇸🇬",
+          months: [
+            "good",
+            "best",
+            "best",
+            "good",
+            "good",
+            "good",
+            "good",
+            "good",
+            "good",
+            "ok",
+            "ok",
+            "ok"
+          ],
+          bestTime: "2-4月",
+          climate: "热带雨林",
+          avgTemp: "27°C",
+          tips: "全年炎热，室内空调冷"
+        },
+        {
+          name: "首尔",
+          region: "韩国",
+          flag: "🇰🇷",
+          months: [
+            "avoid",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "ok",
+            "avoid",
+            "avoid",
+            "best",
+            "best",
+            "good",
+            "avoid"
+          ],
+          bestTime: "4-5月/9-10月",
+          climate: "温带季风",
+          avgTemp: "12°C",
+          tips: "樱花和红叶季最美"
+        },
+        {
+          name: "北京",
+          region: "中国",
+          flag: "🇨🇳",
+          months: [
+            "avoid",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "ok",
+            "avoid",
+            "avoid",
+            "best",
+            "best",
+            "good",
+            "avoid"
+          ],
+          bestTime: "4-5月/9-10月",
+          climate: "温带季风",
+          avgTemp: "13°C",
+          tips: "秋高气爽，避开沙尘和酷暑"
+        },
+        {
+          name: "上海",
+          region: "中国",
+          flag: "🇨🇳",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "avoid",
+            "avoid",
+            "avoid",
+            "good",
+            "best",
+            "good",
+            "ok"
+          ],
+          bestTime: "3-5月/9-11月",
+          climate: "亚热带季风",
+          avgTemp: "16°C",
+          tips: "春秋最宜，避开梅雨和酷暑"
+        },
+        {
+          name: "香港",
+          region: "中国",
+          flag: "🇭🇰",
+          months: [
+            "good",
+            "ok",
+            "ok",
+            "ok",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "best",
+            "best",
+            "best"
+          ],
+          bestTime: "10-12月",
+          climate: "亚热带季风",
+          avgTemp: "23°C",
+          tips: "秋冬干爽舒适"
+        },
+        {
+          name: "台北",
+          region: "中国台湾",
+          flag: "🇹🇼",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "good",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "good",
+            "best",
+            "best",
+            "ok"
+          ],
+          bestTime: "9-11月",
+          climate: "亚热带季风",
+          avgTemp: "22°C",
+          tips: "秋季气候最舒适"
+        },
+        {
+          name: "马尔代夫",
+          region: "马尔代夫",
+          flag: "🇲🇻",
+          months: [
+            "best",
+            "best",
+            "best",
+            "best",
+            "ok",
+            "avoid",
+            "avoid",
+            "avoid",
+            "ok",
+            "ok",
+            "good",
+            "best"
+          ],
+          bestTime: "12-4月",
+          climate: "热带季风",
+          avgTemp: "28°C",
+          tips: "旱季最适合浮潜"
+        },
+        {
+          name: "迪拜",
+          region: "阿联酋",
+          flag: "🇦🇪",
+          months: [
+            "best",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "avoid",
+            "avoid",
+            "avoid",
+            "avoid",
+            "ok",
+            "good",
+            "best"
+          ],
+          bestTime: "11-3月",
+          climate: "热带沙漠",
+          avgTemp: "27°C",
+          tips: "夏季酷热难耐"
+        },
+        {
+          name: "罗马",
+          region: "意大利",
+          flag: "🇮🇹",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "ok",
+            "best",
+            "good",
+            "ok",
+            "ok"
+          ],
+          bestTime: "4-5月/9-10月",
+          climate: "地中海",
+          avgTemp: "16°C",
+          tips: "避开盛夏旅游旺季"
+        },
+        {
+          name: "巴塞罗那",
+          region: "西班牙",
+          flag: "🇪🇸",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "good",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "best",
+            "good",
+            "ok",
+            "ok"
+          ],
+          bestTime: "5-6月/9月",
+          climate: "地中海",
+          avgTemp: "16°C",
+          tips: "海滩和文化兼得"
+        },
+        {
+          name: "阿姆斯特丹",
+          region: "荷兰",
+          flag: "🇳🇱",
+          months: [
+            "ok",
+            "ok",
+            "good",
+            "best",
+            "best",
+            "good",
+            "good",
+            "good",
+            "good",
+            "ok",
+            "ok",
+            "ok"
+          ],
+          bestTime: "4-5月",
+          climate: "温带海洋性",
+          avgTemp: "10°C",
+          tips: "郁金香季不可错过"
+        },
+        {
+          name: "冰岛",
+          region: "冰岛",
+          flag: "🇮🇸",
+          months: [
+            "ok",
+            "ok",
+            "best",
+            "good",
+            "good",
+            "best",
+            "best",
+            "best",
+            "good",
+            "ok",
+            "ok",
+            "ok"
+          ],
+          bestTime: "6-8月/3月(极光)",
+          climate: "亚北极",
+          avgTemp: "5°C",
+          tips: "夏季午夜阳光，冬季极光"
+        },
+        {
+          name: "开普敦",
+          region: "南非",
+          flag: "🇿🇦",
+          months: [
+            "good",
+            "good",
+            "best",
+            "best",
+            "ok",
+            "ok",
+            "ok",
+            "ok",
+            "best",
+            "best",
+            "good",
+            "good"
+          ],
+          bestTime: "9-11月/2-3月",
+          climate: "地中海",
+          avgTemp: "17°C",
+          tips: "南半球春秋最美"
+        }
       ];
 
-      var monthNames = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+      var monthNames = [
+        "1月",
+        "2月",
+        "3月",
+        "4月",
+        "5月",
+        "6月",
+        "7月",
+        "8月",
+        "9月",
+        "10月",
+        "11月",
+        "12月"
+      ];
 
       function toggleTheme() {
         var body = document.body;
@@ -330,7 +878,7 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -339,7 +887,7 @@
 
       function filterDestinations() {
         var search = document.getElementById("searchInput").value.toLowerCase();
-        var filtered = destinations.filter(function(d) {
+        var filtered = destinations.filter(function (d) {
           return d.name.toLowerCase().includes(search) || d.region.toLowerCase().includes(search);
         });
         renderDestinations(filtered);
@@ -349,7 +897,7 @@
         var container = document.getElementById("destinationList");
         container.textContent = "";
 
-        list.forEach(function(dest) {
+        list.forEach(function (dest) {
           var card = document.createElement("div");
           card.className = "destination-card";
 
@@ -372,7 +920,7 @@
 
           var monthsGrid = document.createElement("div");
           monthsGrid.className = "months-grid";
-          dest.months.forEach(function(rating, i) {
+          dest.months.forEach(function (rating, i) {
             var cell = document.createElement("div");
             cell.className = "month-cell " + rating;
             var monthName = document.createElement("div");
@@ -389,7 +937,7 @@
             { label: "气候类型", value: dest.climate },
             { label: "平均温度", value: dest.avgTemp }
           ];
-          infoItems.forEach(function(item) {
+          infoItems.forEach(function (item) {
             var el = document.createElement("div");
             el.className = "season-item";
             var label = document.createElement("div");
@@ -419,7 +967,9 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize

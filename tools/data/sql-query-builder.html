@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SQL查询构建器 - WebUtils</title>
-    <meta name="description" content="可视化构建SQL查询语句，支持SELECT、INSERT、UPDATE、DELETE操作" />
+    <meta
+      name="description"
+      content="可视化构建SQL查询语句，支持SELECT、INSERT、UPDATE、DELETE操作"
+    />
     <meta name="keywords" content="SQL query builder 查询构建器 SELECT INSERT UPDATE DELETE" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -12,7 +15,10 @@
     <meta property="og:title" content="SQL查询构建器 - WebUtils" />
     <meta property="og:description" content="可视化构建SQL查询语句" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/sql-query-builder.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/data/sql-query-builder.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -23,10 +29,38 @@
     <meta property="og:image:height" content="640" />
     <meta property="og:image:type" content="image/png" />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://tools.realtime-ai.chat/"},{"@type":"ListItem","position":2,"name":"数据工具","item":"https://tools.realtime-ai.chat/#data"},{"@type":"ListItem","position":3,"name":"SQL查询构建器","item":"https://tools.realtime-ai.chat/tools/data/sql-query-builder.html"}]}</script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "https://tools.realtime-ai.chat/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "数据工具",
+            "item": "https://tools.realtime-ai.chat/#data"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "SQL查询构建器",
+            "item": "https://tools.realtime-ai.chat/tools/data/sql-query-builder.html"
+          }
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -48,7 +82,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -67,8 +102,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       .theme-toggle {
         position: fixed;
@@ -106,7 +139,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgb(0 245 212 / 2%) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgb(0 245 212 / 2%) 1px, transparent 1px),
           linear-gradient(90deg, rgb(0 245 212 / 2%) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -511,7 +545,10 @@
           <span class="breadcrumb-current">SQL查询构建器</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">🔧</span>SQL查询构建器</h1>
+          <h1>
+            <span class="icon">🔧</span>
+            SQL查询构建器
+          </h1>
           <p>可视化构建SQL查询语句，支持SELECT、INSERT、UPDATE、DELETE</p>
         </div>
       </header>
@@ -522,10 +559,18 @@
             <div class="tool-section">
               <div class="section-title">操作类型</div>
               <div class="operation-tabs">
-                <button class="op-tab active" data-op="select" onclick="selectOperation('select')">SELECT</button>
-                <button class="op-tab" data-op="insert" onclick="selectOperation('insert')">INSERT</button>
-                <button class="op-tab" data-op="update" onclick="selectOperation('update')">UPDATE</button>
-                <button class="op-tab" data-op="delete" onclick="selectOperation('delete')">DELETE</button>
+                <button class="op-tab active" data-op="select" onclick="selectOperation('select')">
+                  SELECT
+                </button>
+                <button class="op-tab" data-op="insert" onclick="selectOperation('insert')">
+                  INSERT
+                </button>
+                <button class="op-tab" data-op="update" onclick="selectOperation('update')">
+                  UPDATE
+                </button>
+                <button class="op-tab" data-op="delete" onclick="selectOperation('delete')">
+                  DELETE
+                </button>
               </div>
             </div>
 
@@ -534,7 +579,13 @@
               <div class="section-title">表设置</div>
               <div class="input-group">
                 <label class="input-label">表名</label>
-                <input type="text" id="tableName" placeholder="users" value="users" oninput="generateSQL()" />
+                <input
+                  type="text"
+                  id="tableName"
+                  placeholder="users"
+                  value="users"
+                  oninput="generateSQL()"
+                />
               </div>
             </div>
 
@@ -569,7 +620,13 @@
             <div class="tool-section" id="valuesSection" style="display: none">
               <div class="section-title">字段值 (SET)</div>
               <div id="valuesList"></div>
-              <button class="btn btn-secondary btn-small" onclick="addValue()" style="margin-top: 8px">+ 添加字段</button>
+              <button
+                class="btn btn-secondary btn-small"
+                onclick="addValue()"
+                style="margin-top: 8px"
+              >
+                + 添加字段
+              </button>
             </div>
 
             <!-- WHERE条件 -->
@@ -578,7 +635,9 @@
               <div class="condition-list" id="conditionList">
                 <span class="empty-state">无条件 (可选)</span>
               </div>
-              <button class="btn btn-secondary btn-small" onclick="addCondition()">+ 添加条件</button>
+              <button class="btn btn-secondary btn-small" onclick="addCondition()">
+                + 添加条件
+              </button>
             </div>
 
             <!-- ORDER BY (SELECT) -->
@@ -587,7 +646,12 @@
               <div class="input-row">
                 <div class="input-group">
                   <label class="input-label">排序列</label>
-                  <input type="text" id="orderBy" placeholder="column_name" oninput="generateSQL()" />
+                  <input
+                    type="text"
+                    id="orderBy"
+                    placeholder="column_name"
+                    oninput="generateSQL()"
+                  />
                 </div>
                 <div class="input-group">
                   <label class="input-label">顺序</label>
@@ -606,11 +670,23 @@
               <div class="input-row">
                 <div class="input-group">
                   <label class="input-label">LIMIT</label>
-                  <input type="number" id="limitVal" placeholder="10" min="0" oninput="generateSQL()" />
+                  <input
+                    type="number"
+                    id="limitVal"
+                    placeholder="10"
+                    min="0"
+                    oninput="generateSQL()"
+                  />
                 </div>
                 <div class="input-group">
                   <label class="input-label">OFFSET</label>
-                  <input type="number" id="offsetVal" placeholder="0" min="0" oninput="generateSQL()" />
+                  <input
+                    type="number"
+                    id="offsetVal"
+                    placeholder="0"
+                    min="0"
+                    oninput="generateSQL()"
+                  />
                 </div>
               </div>
             </div>
@@ -665,11 +741,15 @@
         });
 
         // 控制各区块显示
-        document.getElementById("distinctSection").style.display = op === "select" ? "block" : "none";
-        document.getElementById("columnsSection").style.display = op === "select" || op === "insert" ? "block" : "none";
+        document.getElementById("distinctSection").style.display =
+          op === "select" ? "block" : "none";
+        document.getElementById("columnsSection").style.display =
+          op === "select" || op === "insert" ? "block" : "none";
         document.getElementById("aliasGroup").style.display = op === "select" ? "block" : "none";
-        document.getElementById("valuesSection").style.display = op === "insert" || op === "update" ? "block" : "none";
-        document.getElementById("conditionsSection").style.display = op !== "insert" ? "block" : "none";
+        document.getElementById("valuesSection").style.display =
+          op === "insert" || op === "update" ? "block" : "none";
+        document.getElementById("conditionsSection").style.display =
+          op !== "insert" ? "block" : "none";
         document.getElementById("orderSection").style.display = op === "select" ? "block" : "none";
         document.getElementById("limitSection").style.display = op === "select" ? "block" : "none";
 
@@ -799,7 +879,22 @@
 
           // 操作符选择
           var opSelect = document.createElement("select");
-          var operators = ["=", "!=", "<>", ">", "<", ">=", "<=", "LIKE", "NOT LIKE", "IN", "NOT IN", "BETWEEN", "IS NULL", "IS NOT NULL"];
+          var operators = [
+            "=",
+            "!=",
+            "<>",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "LIKE",
+            "NOT LIKE",
+            "IN",
+            "NOT IN",
+            "BETWEEN",
+            "IS NULL",
+            "IS NOT NULL"
+          ];
           operators.forEach(function (op) {
             var opt = document.createElement("option");
             opt.value = op;
@@ -988,7 +1083,9 @@
                     if (parts.length >= 2) {
                       return c.column + " BETWEEN " + parts[0] + " AND " + parts[1];
                     }
-                    return c.column + " BETWEEN " + escapeValue(c.value) + " AND " + escapeValue(c.value);
+                    return (
+                      c.column + " BETWEEN " + escapeValue(c.value) + " AND " + escapeValue(c.value)
+                    );
                   }
                   return c.column + " " + c.operator + " " + escapeValue(c.value);
                 });
@@ -1039,7 +1136,14 @@
               });
 
             if (insertCols.length > 0 && insertVals.length > 0) {
-              sql = "INSERT INTO " + table + " (" + insertCols.join(", ") + ")\nVALUES (" + insertVals.join(", ") + ")";
+              sql =
+                "INSERT INTO " +
+                table +
+                " (" +
+                insertCols.join(", ") +
+                ")\nVALUES (" +
+                insertVals.join(", ") +
+                ")";
             } else {
               sql = "INSERT INTO " + table + " (column1, column2)\nVALUES ('value1', 'value2')";
             }
@@ -1150,7 +1254,7 @@
           orderBy: document.getElementById("orderBy").value,
           orderDir: document.getElementById("orderDir").value,
           limit: document.getElementById("limitVal").value,
-          offset: document.getElementById("offsetVal").value,
+          offset: document.getElementById("offsetVal").value
         };
 
         var encoded = btoa(encodeURIComponent(JSON.stringify(data)));
@@ -1192,7 +1296,7 @@
           orderBy: document.getElementById("orderBy").value,
           orderDir: document.getElementById("orderDir").value,
           limit: document.getElementById("limitVal").value,
-          offset: document.getElementById("offsetVal").value,
+          offset: document.getElementById("offsetVal").value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -1214,7 +1318,8 @@
       // 恢复状态
       function restoreState(data) {
         if (data.table) document.getElementById("tableName").value = data.table;
-        if (data.distinct !== undefined) document.getElementById("distinctCheck").checked = data.distinct;
+        if (data.distinct !== undefined)
+          document.getElementById("distinctCheck").checked = data.distinct;
         if (data.columns) columns = data.columns;
         if (data.conditions) conditions = data.conditions;
         if (data.values) values = data.values;

@@ -76,7 +76,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +96,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -861,7 +862,10 @@
             <div class="progress-fill" id="progressFill" style="width: 0%"></div>
           </div>
           <div class="progress-text">
-            <strong id="completedCount">0</strong> / <span id="totalCount">0</span> 已完成
+            <strong id="completedCount">0</strong>
+            /
+            <span id="totalCount">0</span>
+            已完成
           </div>
         </div>
 
@@ -1162,7 +1166,7 @@
         items.push({
           id: generateId(),
           text: trimmed,
-          completed: false,
+          completed: false
         });
 
         saveToStorage();

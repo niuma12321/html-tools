@@ -53,7 +53,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -72,8 +73,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       .theme-toggle {
         position: fixed;
@@ -544,7 +543,9 @@
         <div class="card" id="deckEditor" style="display: none">
           <div class="card-title">编辑卡组</div>
           <div style="margin-bottom: 16px">
-            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">卡组名称</label>
+            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">
+              卡组名称
+            </label>
             <input type="text" id="deckName" placeholder="输入卡组名称" />
           </div>
           <div>
@@ -573,11 +574,15 @@
         <div class="card">
           <div class="card-title">导入卡片</div>
           <div style="margin-bottom: 16px">
-            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">卡组名称</label>
+            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">
+              卡组名称
+            </label>
             <input type="text" id="importDeckName" placeholder="例如：英语单词" />
           </div>
           <div>
-            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">卡片数据</label>
+            <label style="display: block; margin-bottom: 6px; color: var(--text-secondary)">
+              卡片数据
+            </label>
             <textarea
               id="importData"
               placeholder="每行一个卡片，格式：正面 | 背面 | 例句（可选）&#10;&#10;例如：&#10;apple | 苹果 | An apple a day keeps the doctor away.&#10;book | 书&#10;computer | 电脑 | I use a computer every day."

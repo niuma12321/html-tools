@@ -7,11 +7,17 @@
     <meta property="og:title" content="数据导出 - WebUtils" />
     <meta property="og:description" content="数据导出：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/data-exporter.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/data/data-exporter.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/data-exporter.html" />
-    <meta name="description" content="将JSON或CSV数据导出为多种格式：CSV、TSV、JSON、HTML表格、Markdown表格" />
+    <meta
+      name="description"
+      content="将JSON或CSV数据导出为多种格式：CSV、TSV、JSON、HTML表格、Markdown表格"
+    />
     <meta name="keywords" content="export 导出 CSV TSV JSON HTML Markdown 转换" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,7 +46,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,7 +66,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -204,7 +211,8 @@
         color: var(--text-muted);
         margin-top: 4px;
       }
-      textarea, select {
+      textarea,
+      select {
         width: 100%;
         padding: 10px 14px;
         font-family: var(--font-mono);
@@ -219,7 +227,8 @@
         min-height: 250px;
         resize: vertical;
       }
-      textarea:focus, select:focus {
+      textarea:focus,
+      select:focus {
         outline: none;
         border-color: var(--color-accent-cyan);
       }
@@ -382,7 +391,9 @@
             </div>
             <div class="input-group">
               <label class="input-label">输入数据</label>
-              <textarea id="inputData" placeholder='JSON 示例：
+              <textarea
+                id="inputData"
+                placeholder='JSON 示例：
 [
   {"name": "Alice", "age": 30, "city": "Beijing"},
   {"name": "Bob", "age": 25, "city": "Shanghai"}
@@ -391,7 +402,8 @@
 CSV 示例：
 name,age,city
 Alice,30,Beijing
-Bob,25,Shanghai'></textarea>
+Bob,25,Shanghai'
+              ></textarea>
               <div class="input-hint" id="formatHint">自动检测输入格式</div>
             </div>
             <div class="btn-row">
@@ -408,11 +420,21 @@ Bob,25,Shanghai'></textarea>
               <span class="format-badge" id="currentFormat">CSV</span>
             </div>
             <div class="format-tabs">
-              <button class="format-tab active" data-format="csv" onclick="selectFormat('csv')">CSV</button>
-              <button class="format-tab" data-format="tsv" onclick="selectFormat('tsv')">TSV</button>
-              <button class="format-tab" data-format="json" onclick="selectFormat('json')">JSON</button>
-              <button class="format-tab" data-format="html" onclick="selectFormat('html')">HTML</button>
-              <button class="format-tab" data-format="markdown" onclick="selectFormat('markdown')">Markdown</button>
+              <button class="format-tab active" data-format="csv" onclick="selectFormat('csv')">
+                CSV
+              </button>
+              <button class="format-tab" data-format="tsv" onclick="selectFormat('tsv')">
+                TSV
+              </button>
+              <button class="format-tab" data-format="json" onclick="selectFormat('json')">
+                JSON
+              </button>
+              <button class="format-tab" data-format="html" onclick="selectFormat('html')">
+                HTML
+              </button>
+              <button class="format-tab" data-format="markdown" onclick="selectFormat('markdown')">
+                Markdown
+              </button>
             </div>
             <div class="input-group">
               <label class="input-label">输出结果</label>
@@ -430,51 +452,51 @@ Bob,25,Shanghai'></textarea>
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      var LS_KEY = 'data-exporter-data';
-      var currentOutputFormat = 'csv';
+      var LS_KEY = "data-exporter-data";
+      var currentOutputFormat = "csv";
       var parsedData = null;
 
       function toggleTheme() {
         var body = document.body;
-        var isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        var isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
       (function () {
-        var saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       })();
 
       function detectFormat() {
-        var format = document.getElementById('inputFormat').value;
-        var hint = document.getElementById('formatHint');
-        if (format === 'auto') {
-          hint.textContent = '自动检测输入格式';
-        } else if (format === 'json') {
-          hint.textContent = '输入 JSON 数组格式数据';
+        var format = document.getElementById("inputFormat").value;
+        var hint = document.getElementById("formatHint");
+        if (format === "auto") {
+          hint.textContent = "自动检测输入格式";
+        } else if (format === "json") {
+          hint.textContent = "输入 JSON 数组格式数据";
         } else {
-          hint.textContent = '输入 CSV 格式数据（第一行为表头）';
+          hint.textContent = "输入 CSV 格式数据（第一行为表头）";
         }
       }
 
       function parseInput(text) {
-        var format = document.getElementById('inputFormat').value;
+        var format = document.getElementById("inputFormat").value;
         text = text.trim();
 
         if (!text) return null;
 
-        if (format === 'auto') {
-          if (text.charAt(0) === '[' || text.charAt(0) === '{') {
-            format = 'json';
+        if (format === "auto") {
+          if (text.charAt(0) === "[" || text.charAt(0) === "{") {
+            format = "json";
           } else {
-            format = 'csv';
+            format = "csv";
           }
         }
 
-        if (format === 'json') {
+        if (format === "json") {
           try {
             var data = JSON.parse(text);
             if (!Array.isArray(data)) {
@@ -482,21 +504,27 @@ Bob,25,Shanghai'></textarea>
             }
             return data;
           } catch (e) {
-            showToast('JSON 解析失败: ' + e.message, 'error');
+            showToast("JSON 解析失败: " + e.message, "error");
             return null;
           }
         } else {
-          var lines = text.split('\n').filter(function(l) { return l.trim(); });
+          var lines = text.split("\n").filter(function (l) {
+            return l.trim();
+          });
           if (lines.length < 1) return null;
 
-          var headers = lines[0].split(',').map(function(h) { return h.trim(); });
+          var headers = lines[0].split(",").map(function (h) {
+            return h.trim();
+          });
           var rows = [];
 
           for (var i = 1; i < lines.length; i++) {
-            var values = lines[i].split(',').map(function(v) { return v.trim(); });
+            var values = lines[i].split(",").map(function (v) {
+              return v.trim();
+            });
             var row = {};
             for (var j = 0; j < headers.length; j++) {
-              row[headers[j]] = values[j] || '';
+              row[headers[j]] = values[j] || "";
             }
             rows.push(row);
           }
@@ -508,14 +536,14 @@ Bob,25,Shanghai'></textarea>
       function selectFormat(format) {
         currentOutputFormat = format;
 
-        document.querySelectorAll('.format-tab').forEach(function(tab) {
-          tab.classList.remove('active');
-          if (tab.getAttribute('data-format') === format) {
-            tab.classList.add('active');
+        document.querySelectorAll(".format-tab").forEach(function (tab) {
+          tab.classList.remove("active");
+          if (tab.getAttribute("data-format") === format) {
+            tab.classList.add("active");
           }
         });
 
-        document.getElementById('currentFormat').textContent = format.toUpperCase();
+        document.getElementById("currentFormat").textContent = format.toUpperCase();
 
         if (parsedData) {
           renderOutput();
@@ -523,178 +551,197 @@ Bob,25,Shanghai'></textarea>
       }
 
       function convert() {
-        var input = document.getElementById('inputData').value;
+        var input = document.getElementById("inputData").value;
         parsedData = parseInput(input);
 
         if (!parsedData || parsedData.length === 0) {
-          showToast('无法解析输入数据', 'error');
+          showToast("无法解析输入数据", "error");
           return;
         }
 
         renderOutput();
         saveToStorage();
-        showToast('转换成功');
+        showToast("转换成功");
       }
 
       function renderOutput() {
         if (!parsedData || parsedData.length === 0) {
-          document.getElementById('outputData').value = '';
+          document.getElementById("outputData").value = "";
           return;
         }
 
-        var output = '';
+        var output = "";
         var headers = Object.keys(parsedData[0]);
 
         switch (currentOutputFormat) {
-          case 'csv':
-            output = toCSV(parsedData, headers, ',');
+          case "csv":
+            output = toCSV(parsedData, headers, ",");
             break;
-          case 'tsv':
-            output = toCSV(parsedData, headers, '\t');
+          case "tsv":
+            output = toCSV(parsedData, headers, "\t");
             break;
-          case 'json':
+          case "json":
             output = JSON.stringify(parsedData, null, 2);
             break;
-          case 'html':
+          case "html":
             output = toHTML(parsedData, headers);
             break;
-          case 'markdown':
+          case "markdown":
             output = toMarkdown(parsedData, headers);
             break;
         }
 
-        document.getElementById('outputData').value = output;
+        document.getElementById("outputData").value = output;
       }
 
       function toCSV(data, headers, delimiter) {
         var lines = [headers.join(delimiter)];
-        data.forEach(function(row) {
-          var values = headers.map(function(h) {
-            var val = String(row[h] || '');
-            if (val.indexOf(delimiter) !== -1 || val.indexOf('"') !== -1 || val.indexOf('\n') !== -1) {
+        data.forEach(function (row) {
+          var values = headers.map(function (h) {
+            var val = String(row[h] || "");
+            if (
+              val.indexOf(delimiter) !== -1 ||
+              val.indexOf('"') !== -1 ||
+              val.indexOf("\n") !== -1
+            ) {
               val = '"' + val.replace(/"/g, '""') + '"';
             }
             return val;
           });
           lines.push(values.join(delimiter));
         });
-        return lines.join('\n');
+        return lines.join("\n");
       }
 
       function toHTML(data, headers) {
         var lines = ['<table border="1" cellpadding="8" cellspacing="0">'];
-        lines.push('  <thead>');
-        lines.push('    <tr>');
-        headers.forEach(function(h) {
-          lines.push('      <th>' + escapeHtml(h) + '</th>');
+        lines.push("  <thead>");
+        lines.push("    <tr>");
+        headers.forEach(function (h) {
+          lines.push("      <th>" + escapeHtml(h) + "</th>");
         });
-        lines.push('    </tr>');
-        lines.push('  </thead>');
-        lines.push('  <tbody>');
-        data.forEach(function(row) {
-          lines.push('    <tr>');
-          headers.forEach(function(h) {
-            lines.push('      <td>' + escapeHtml(String(row[h] || '')) + '</td>');
+        lines.push("    </tr>");
+        lines.push("  </thead>");
+        lines.push("  <tbody>");
+        data.forEach(function (row) {
+          lines.push("    <tr>");
+          headers.forEach(function (h) {
+            lines.push("      <td>" + escapeHtml(String(row[h] || "")) + "</td>");
           });
-          lines.push('    </tr>');
+          lines.push("    </tr>");
         });
-        lines.push('  </tbody>');
-        lines.push('</table>');
-        return lines.join('\n');
+        lines.push("  </tbody>");
+        lines.push("</table>");
+        return lines.join("\n");
       }
 
       function toMarkdown(data, headers) {
         var lines = [];
-        lines.push('| ' + headers.join(' | ') + ' |');
-        lines.push('| ' + headers.map(function() { return '---'; }).join(' | ') + ' |');
-        data.forEach(function(row) {
-          var values = headers.map(function(h) { return String(row[h] || '').replace(/\|/g, '\\|'); });
-          lines.push('| ' + values.join(' | ') + ' |');
+        lines.push("| " + headers.join(" | ") + " |");
+        lines.push(
+          "| " +
+            headers
+              .map(function () {
+                return "---";
+              })
+              .join(" | ") +
+            " |"
+        );
+        data.forEach(function (row) {
+          var values = headers.map(function (h) {
+            return String(row[h] || "").replace(/\|/g, "\\|");
+          });
+          lines.push("| " + values.join(" | ") + " |");
         });
-        return lines.join('\n');
+        return lines.join("\n");
       }
 
       function escapeHtml(text) {
-        var div = document.createElement('div');
+        var div = document.createElement("div");
         div.textContent = text;
         return div.innerHTML;
       }
 
       function copyOutput() {
-        var output = document.getElementById('outputData').value;
+        var output = document.getElementById("outputData").value;
         if (!output) {
-          showToast('无内容可复制', 'error');
+          showToast("无内容可复制", "error");
           return;
         }
-        navigator.clipboard.writeText(output).then(function() {
-          showToast('已复制');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(output)
+          .then(function () {
+            showToast("已复制");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function downloadOutput() {
-        var output = document.getElementById('outputData').value;
+        var output = document.getElementById("outputData").value;
         if (!output) {
-          showToast('无内容可下载', 'error');
+          showToast("无内容可下载", "error");
           return;
         }
 
         var ext = {
-          csv: 'csv',
-          tsv: 'tsv',
-          json: 'json',
-          html: 'html',
-          markdown: 'md'
+          csv: "csv",
+          tsv: "tsv",
+          json: "json",
+          html: "html",
+          markdown: "md"
         }[currentOutputFormat];
 
         var mime = {
-          csv: 'text/csv',
-          tsv: 'text/tab-separated-values',
-          json: 'application/json',
-          html: 'text/html',
-          markdown: 'text/markdown'
+          csv: "text/csv",
+          tsv: "text/tab-separated-values",
+          json: "application/json",
+          html: "text/html",
+          markdown: "text/markdown"
         }[currentOutputFormat];
 
-        var blob = new Blob([output], { type: mime + ';charset=utf-8' });
+        var blob = new Blob([output], { type: mime + ";charset=utf-8" });
         var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
+        var a = document.createElement("a");
         a.href = url;
-        a.download = 'data.' + ext;
+        a.download = "data." + ext;
         a.click();
         URL.revokeObjectURL(url);
 
-        showToast('已下载');
+        showToast("已下载");
       }
 
       function loadSampleJSON() {
-        document.getElementById('inputData').value = '[\n  {"name": "Alice", "age": 30, "city": "Beijing"},\n  {"name": "Bob", "age": 25, "city": "Shanghai"},\n  {"name": "Charlie", "age": 35, "city": "Shenzhen"}\n]';
-        document.getElementById('inputFormat').value = 'json';
+        document.getElementById("inputData").value =
+          '[\n  {"name": "Alice", "age": 30, "city": "Beijing"},\n  {"name": "Bob", "age": 25, "city": "Shanghai"},\n  {"name": "Charlie", "age": 35, "city": "Shenzhen"}\n]';
+        document.getElementById("inputFormat").value = "json";
         detectFormat();
         convert();
       }
 
       function loadSampleCSV() {
-        document.getElementById('inputData').value = 'name,age,city\nAlice,30,Beijing\nBob,25,Shanghai\nCharlie,35,Shenzhen';
-        document.getElementById('inputFormat').value = 'csv';
+        document.getElementById("inputData").value =
+          "name,age,city\nAlice,30,Beijing\nBob,25,Shanghai\nCharlie,35,Shenzhen";
+        document.getElementById("inputFormat").value = "csv";
         detectFormat();
         convert();
       }
 
       function clearAll() {
-        document.getElementById('inputData').value = '';
-        document.getElementById('outputData').value = '';
-        document.getElementById('inputFormat').value = 'auto';
+        document.getElementById("inputData").value = "";
+        document.getElementById("outputData").value = "";
+        document.getElementById("inputFormat").value = "auto";
         parsedData = null;
         detectFormat();
         localStorage.removeItem(LS_KEY);
-        showToast('已清空');
+        showToast("已清空");
       }
 
       function saveToStorage() {
         var data = {
-          input: document.getElementById('inputData').value,
-          format: document.getElementById('inputFormat').value,
+          input: document.getElementById("inputData").value,
+          format: document.getElementById("inputFormat").value,
           outputFormat: currentOutputFormat
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
@@ -706,8 +753,8 @@ Bob,25,Shanghai'></textarea>
 
         try {
           var data = JSON.parse(saved);
-          if (data.input) document.getElementById('inputData').value = data.input;
-          if (data.format) document.getElementById('inputFormat').value = data.format;
+          if (data.input) document.getElementById("inputData").value = data.input;
+          if (data.format) document.getElementById("inputFormat").value = data.format;
           if (data.outputFormat) selectFormat(data.outputFormat);
           detectFormat();
         } catch (e) {
@@ -716,19 +763,21 @@ Bob,25,Shanghai'></textarea>
       }
 
       function showToast(msg, type) {
-        type = type || 'success';
-        var toast = document.getElementById('toast');
+        type = type || "success";
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.className = 'toast' + (type === 'error' ? ' error' : '');
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.className = "toast" + (type === "error" ? " error" : "");
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         loadFromStorage();
 
-        document.getElementById('inputData').addEventListener('input', saveToStorage);
-        document.getElementById('inputFormat').addEventListener('change', saveToStorage);
+        document.getElementById("inputData").addEventListener("input", saveToStorage);
+        document.getElementById("inputFormat").addEventListener("change", saveToStorage);
       });
     </script>
   </body>

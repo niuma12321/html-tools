@@ -4,13 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>会议议程 - WebUtils</title>
-    <meta name="description" content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制" />
+    <meta
+      name="description"
+      content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制"
+    />
     <meta name="keywords" content="会议议程 agenda meeting 会议安排 议题 时间表" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/agenda-maker.html" />
     <meta property="og:title" content="会议议程 - WebUtils" />
-    <meta property="og:description" content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制" />
+    <meta
+      property="og:description"
+      content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -21,7 +27,10 @@
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="会议议程 - WebUtils" />
-    <meta name="twitter:description" content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制" />
+    <meta
+      name="twitter:description"
+      content="创建会议议程，支持添加议题、时间分配、与会人员管理，可打印和复制"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
       {
@@ -76,7 +85,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +105,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -944,7 +954,7 @@
           time: meetingTimeEl.value,
           location: meetingLocationEl.value,
           attendees: attendees,
-          agendaItems: agendaItems,
+          agendaItems: agendaItems
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -1040,7 +1050,7 @@
 
           const numberSpan = document.createElement("span");
           numberSpan.className = "agenda-item-number";
-          numberSpan.textContent = (index + 1) + ".";
+          numberSpan.textContent = index + 1 + ".";
           div.appendChild(numberSpan);
 
           const contentDiv = document.createElement("div");
@@ -1216,7 +1226,7 @@
               timeStr = " (" + item.duration + "分钟)";
             }
             cumulativeTime += item.duration;
-            lines.push((index + 1) + ". " + item.topic + timeStr);
+            lines.push(index + 1 + ". " + item.topic + timeStr);
           });
         }
 

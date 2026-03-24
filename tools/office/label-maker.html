@@ -10,7 +10,10 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/label-maker.html" />
     <meta property="og:title" content="标签生成器 - WebUtils" />
-    <meta property="og:description" content="打印标签制作工具，支持多种尺寸、字体大小调整和批量打印" />
+    <meta
+      property="og:description"
+      content="打印标签制作工具，支持多种尺寸、字体大小调整和批量打印"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -21,7 +24,10 @@
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="标签生成器 - WebUtils" />
-    <meta name="twitter:description" content="打印标签制作工具，支持多种尺寸、字体大小调整和批量打印" />
+    <meta
+      name="twitter:description"
+      content="打印标签制作工具，支持多种尺寸、字体大小调整和批量打印"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
       {
@@ -76,7 +82,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +102,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -949,7 +956,7 @@
       var sizeNames = {
         small: "小",
         medium: "中",
-        large: "大",
+        large: "大"
       };
 
       window.loadFromUrl = function () {
@@ -979,7 +986,7 @@
             input: inputEl.value,
             size: labelSizeEl.value,
             fontSize: fontSizeEl.value,
-            align: currentAlign,
+            align: currentAlign
           };
           var encoded = btoa(encodeURIComponent(JSON.stringify(data)));
           if (encoded.length > 2000) return;
@@ -1013,7 +1020,7 @@
           input: inputEl.value,
           size: labelSizeEl.value,
           fontSize: fontSizeEl.value,
-          align: currentAlign,
+          align: currentAlign
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }

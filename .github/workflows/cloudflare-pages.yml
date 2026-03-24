@@ -21,4 +21,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=htmltools
+          command: pages deploy . --project-name=htmltools --commit-message="Deploy from GitHub Actions - ${{ github.sha }}" --branch="${{ github.ref_name }}"

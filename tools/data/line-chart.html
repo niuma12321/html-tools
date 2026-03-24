@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>折线图生成器 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG" />
+    <meta
+      name="description"
+      content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG"
+    />
     <meta name="keywords" content="line chart 折线图 曲线图 chart.js 数据可视化" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="折线图生成器 - WebUtils" />
-    <meta property="og:description" content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG" />
+    <meta
+      property="og:description"
+      content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/line-chart.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -22,7 +28,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="折线图生成器 - WebUtils" />
-    <meta name="twitter:description" content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG" />
+    <meta
+      name="twitter:description"
+      content="创建折线图和曲线图，支持多数据系列、自定义标题和轴标签、导出PNG"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -87,7 +96,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -106,7 +116,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -578,7 +588,9 @@
               <div class="section-title">数据输入</div>
               <div class="input-group">
                 <label class="input-label">输入数据（每行一个点）</label>
-                <textarea id="dataInput" placeholder="格式：X,Y 或 X,Y1,Y2,Y3...
+                <textarea
+                  id="dataInput"
+                  placeholder="格式：X,Y 或 X,Y1,Y2,Y3...
 
 示例（单系列）：
 1,10
@@ -592,7 +604,8 @@ Jan,65,28
 Feb,59,48
 Mar,80,40
 Apr,81,19
-May,56,86"></textarea>
+May,56,86"
+                ></textarea>
                 <div class="input-hint">提示：第一列为X轴标签，后续列对应各数据系列的Y值</div>
               </div>
               <div class="btn-row">
@@ -628,24 +641,24 @@ May,56,86"></textarea>
       let chart = null;
       let seriesCount = 0;
       const defaultColors = [
-        '#00f5d4', // cyan
-        '#f72585', // magenta
-        '#fbbf24', // yellow
-        '#a855f7', // purple
-        '#10b981', // green
-        '#3b82f6', // blue
-        '#f43f5e', // red
-        '#06b6d4', // teal
+        "#00f5d4", // cyan
+        "#f72585", // magenta
+        "#fbbf24", // yellow
+        "#a855f7", // purple
+        "#10b981", // green
+        "#3b82f6", // blue
+        "#f43f5e", // red
+        "#06b6d4" // teal
       ];
 
-      const LS_KEY = 'line-chart-data';
+      const LS_KEY = "line-chart-data";
 
       // 主题切换
       function toggleTheme() {
         const body = document.body;
-        const isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        const isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
         // 重新生成图表以更新主题
         if (chart) {
           generateChart();
@@ -654,53 +667,55 @@ May,56,86"></textarea>
 
       // 加载主题
       (function () {
-        const saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        const saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       })();
 
       // 创建系列元素
       function createSeriesElement(name, color, id) {
-        const item = document.createElement('div');
-        item.className = 'series-item';
+        const item = document.createElement("div");
+        item.className = "series-item";
         item.dataset.seriesId = id;
 
-        const colorInput = document.createElement('input');
-        colorInput.type = 'color';
-        colorInput.className = 'series-color';
+        const colorInput = document.createElement("input");
+        colorInput.type = "color";
+        colorInput.className = "series-color";
         colorInput.value = color;
-        colorInput.title = '选择颜色';
+        colorInput.title = "选择颜色";
 
-        const nameInput = document.createElement('input');
-        nameInput.type = 'text';
-        nameInput.className = 'series-name';
+        const nameInput = document.createElement("input");
+        nameInput.type = "text";
+        nameInput.className = "series-name";
         nameInput.value = name;
-        nameInput.placeholder = '系列名称';
+        nameInput.placeholder = "系列名称";
 
-        const removeBtn = document.createElement('button');
-        removeBtn.className = 'series-btn';
-        removeBtn.title = '删除系列';
-        removeBtn.textContent = '✕';
-        removeBtn.onclick = function() { removeSeries(this); };
+        const removeBtn = document.createElement("button");
+        removeBtn.className = "series-btn";
+        removeBtn.title = "删除系列";
+        removeBtn.textContent = "✕";
+        removeBtn.onclick = function () {
+          removeSeries(this);
+        };
 
         item.appendChild(colorInput);
         item.appendChild(nameInput);
         item.appendChild(removeBtn);
 
         // 绑定事件
-        colorInput.addEventListener('input', saveToStorage);
-        colorInput.addEventListener('change', saveToStorage);
-        nameInput.addEventListener('input', saveToStorage);
-        nameInput.addEventListener('change', saveToStorage);
+        colorInput.addEventListener("input", saveToStorage);
+        colorInput.addEventListener("change", saveToStorage);
+        nameInput.addEventListener("input", saveToStorage);
+        nameInput.addEventListener("change", saveToStorage);
 
         return item;
       }
 
       // 初始化
-      document.addEventListener('DOMContentLoaded', function () {
+      document.addEventListener("DOMContentLoaded", function () {
         // 添加默认数据系列
-        addSeries('系列 1', defaultColors[0]);
+        addSeries("系列 1", defaultColors[0]);
 
         // 从 localStorage 加载
         loadFromStorage();
@@ -709,48 +724,53 @@ May,56,86"></textarea>
         loadFromUrl();
 
         // 自动保存
-        document.querySelectorAll('input, textarea, select').forEach((el) => {
-          el.addEventListener('input', saveToStorage);
-          el.addEventListener('change', saveToStorage);
+        document.querySelectorAll("input, textarea, select").forEach((el) => {
+          el.addEventListener("input", saveToStorage);
+          el.addEventListener("change", saveToStorage);
         });
       });
 
       // 添加数据系列
       function addSeries(name, color) {
         seriesCount++;
-        const seriesName = name || ('系列 ' + seriesCount);
+        const seriesName = name || "系列 " + seriesCount;
         const seriesColor = color || defaultColors[(seriesCount - 1) % defaultColors.length];
 
-        const container = document.getElementById('seriesManager');
+        const container = document.getElementById("seriesManager");
         const item = createSeriesElement(seriesName, seriesColor, seriesCount);
         container.appendChild(item);
       }
 
       // 移除数据系列
       function removeSeries(btn) {
-        const items = document.querySelectorAll('.series-item');
+        const items = document.querySelectorAll(".series-item");
         if (items.length <= 1) {
-          showToast('至少保留一个数据系列', 'error');
+          showToast("至少保留一个数据系列", "error");
           return;
         }
-        btn.closest('.series-item').remove();
+        btn.closest(".series-item").remove();
         saveToStorage();
       }
 
       // 获取所有系列配置
       function getSeriesConfig() {
-        const items = document.querySelectorAll('.series-item');
-        return Array.from(items).map(function(item) {
+        const items = document.querySelectorAll(".series-item");
+        return Array.from(items).map(function (item) {
           return {
-            name: item.querySelector('.series-name').value || '未命名',
-            color: item.querySelector('.series-color').value
+            name: item.querySelector(".series-name").value || "未命名",
+            color: item.querySelector(".series-color").value
           };
         });
       }
 
       // 解析数据
       function parseData(input) {
-        const lines = input.trim().split('\n').filter(function(line) { return line.trim(); });
+        const lines = input
+          .trim()
+          .split("\n")
+          .filter(function (line) {
+            return line.trim();
+          });
         if (lines.length === 0) return null;
 
         const labels = [];
@@ -758,8 +778,10 @@ May,56,86"></textarea>
         const seriesConfig = getSeriesConfig();
 
         // 解析每行数据
-        lines.forEach(function(line) {
-          const parts = line.split(',').map(function(s) { return s.trim(); });
+        lines.forEach(function (line) {
+          const parts = line.split(",").map(function (s) {
+            return s.trim();
+          });
           if (parts.length < 2) return;
 
           labels.push(parts[0]);
@@ -782,7 +804,7 @@ May,56,86"></textarea>
         while (seriesConfig.length < datasets.length) {
           const idx = seriesConfig.length;
           seriesConfig.push({
-            name: '系列 ' + (idx + 1),
+            name: "系列 " + (idx + 1),
             color: defaultColors[idx % defaultColors.length]
           });
           // 添加 UI
@@ -794,34 +816,34 @@ May,56,86"></textarea>
 
       // 生成图表
       function generateChart() {
-        const input = document.getElementById('dataInput').value;
+        const input = document.getElementById("dataInput").value;
         if (!input.trim()) {
-          showToast('请输入数据', 'error');
+          showToast("请输入数据", "error");
           return;
         }
 
         const parsed = parseData(input);
         if (!parsed) {
-          showToast('数据格式错误，请检查输入', 'error');
+          showToast("数据格式错误，请检查输入", "error");
           return;
         }
 
         const labels = parsed.labels;
         const datasets = parsed.datasets;
         const seriesConfig = parsed.seriesConfig;
-        const chartTitle = document.getElementById('chartTitle').value || '折线图';
-        const xAxisLabel = document.getElementById('xAxisLabel').value;
-        const yAxisLabel = document.getElementById('yAxisLabel').value;
-        const lineStyle = document.getElementById('lineStyle').value;
-        const showPoints = document.getElementById('showPoints').value === 'true';
+        const chartTitle = document.getElementById("chartTitle").value || "折线图";
+        const xAxisLabel = document.getElementById("xAxisLabel").value;
+        const yAxisLabel = document.getElementById("yAxisLabel").value;
+        const lineStyle = document.getElementById("lineStyle").value;
+        const showPoints = document.getElementById("showPoints").value === "true";
 
         // 判断当前主题
-        const isLight = document.body.getAttribute('data-theme') === 'light';
-        const gridColor = isLight ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
-        const textColor = isLight ? '#1a1a1a' : '#e8e8ed';
+        const isLight = document.body.getAttribute("data-theme") === "light";
+        const gridColor = isLight ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.1)";
+        const textColor = isLight ? "#1a1a1a" : "#e8e8ed";
 
         // 隐藏占位符
-        document.getElementById('chartPlaceholder').style.display = 'none';
+        document.getElementById("chartPlaceholder").style.display = "none";
 
         // 销毁旧图表
         if (chart) {
@@ -829,9 +851,9 @@ May,56,86"></textarea>
         }
 
         // 构建数据集
-        const chartDatasets = datasets.map(function(data, index) {
+        const chartDatasets = datasets.map(function (data, index) {
           const config = seriesConfig[index] || {
-            name: '系列 ' + (index + 1),
+            name: "系列 " + (index + 1),
             color: defaultColors[index % defaultColors.length]
           };
 
@@ -839,11 +861,11 @@ May,56,86"></textarea>
             label: config.name,
             data: data,
             borderColor: config.color,
-            backgroundColor: config.color + '20',
+            backgroundColor: config.color + "20",
             borderWidth: 2,
             fill: false,
-            tension: lineStyle === 'smooth' ? 0.4 : 0,
-            stepped: lineStyle === 'stepped',
+            tension: lineStyle === "smooth" ? 0.4 : 0,
+            stepped: lineStyle === "stepped",
             pointRadius: showPoints ? 4 : 0,
             pointHoverRadius: showPoints ? 6 : 4,
             pointBackgroundColor: config.color,
@@ -852,9 +874,9 @@ May,56,86"></textarea>
         });
 
         // 创建图表
-        const ctx = document.getElementById('lineChart').getContext('2d');
+        const ctx = document.getElementById("lineChart").getContext("2d");
         chart = new Chart(ctx, {
-          type: 'line',
+          type: "line",
           data: {
             labels: labels,
             datasets: chartDatasets
@@ -863,7 +885,7 @@ May,56,86"></textarea>
             responsive: true,
             maintainAspectRatio: true,
             interaction: {
-              mode: 'index',
+              mode: "index",
               intersect: false
             },
             plugins: {
@@ -873,14 +895,14 @@ May,56,86"></textarea>
                 color: textColor,
                 font: {
                   size: 16,
-                  weight: '600',
+                  weight: "600",
                   family: "'Space Grotesk', sans-serif"
                 },
                 padding: { bottom: 20 }
               },
               legend: {
                 display: datasets.length > 1,
-                position: 'top',
+                position: "top",
                 labels: {
                   color: textColor,
                   font: {
@@ -891,15 +913,15 @@ May,56,86"></textarea>
                 }
               },
               tooltip: {
-                backgroundColor: isLight ? 'rgba(255, 255, 255, 0.95)' : 'rgba(26, 26, 36, 0.95)',
+                backgroundColor: isLight ? "rgba(255, 255, 255, 0.95)" : "rgba(26, 26, 36, 0.95)",
                 titleColor: textColor,
                 bodyColor: textColor,
-                borderColor: isLight ? '#e5e5e5' : '#3a3a4a',
+                borderColor: isLight ? "#e5e5e5" : "#3a3a4a",
                 borderWidth: 1,
                 cornerRadius: 8,
                 titleFont: {
                   family: "'Space Grotesk', sans-serif",
-                  weight: '600'
+                  weight: "600"
                 },
                 bodyFont: {
                   family: "'JetBrains Mono', monospace"
@@ -916,7 +938,7 @@ May,56,86"></textarea>
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 grid: {
@@ -938,7 +960,7 @@ May,56,86"></textarea>
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 grid: {
@@ -957,46 +979,49 @@ May,56,86"></textarea>
           }
         });
 
-        showToast('图表生成成功');
+        showToast("图表生成成功");
         saveToStorage();
       }
 
       // 导出 PNG
       function exportPNG() {
         if (!chart) {
-          showToast('请先生成图表', 'error');
+          showToast("请先生成图表", "error");
           return;
         }
 
-        const canvas = document.getElementById('lineChart');
-        const link = document.createElement('a');
-        link.download = 'line-chart.png';
-        link.href = canvas.toDataURL('image/png', 1.0);
+        const canvas = document.getElementById("lineChart");
+        const link = document.createElement("a");
+        link.download = "line-chart.png";
+        link.href = canvas.toDataURL("image/png", 1.0);
         link.click();
 
-        showToast('图表已导出');
+        showToast("图表已导出");
       }
 
       // 分享图表
       function shareChart() {
         const data = {
-          title: document.getElementById('chartTitle').value,
-          xAxis: document.getElementById('xAxisLabel').value,
-          yAxis: document.getElementById('yAxisLabel').value,
-          style: document.getElementById('lineStyle').value,
-          points: document.getElementById('showPoints').value,
+          title: document.getElementById("chartTitle").value,
+          xAxis: document.getElementById("xAxisLabel").value,
+          yAxis: document.getElementById("yAxisLabel").value,
+          style: document.getElementById("lineStyle").value,
+          points: document.getElementById("showPoints").value,
           series: getSeriesConfig(),
-          data: document.getElementById('dataInput').value
+          data: document.getElementById("dataInput").value
         };
 
         const encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-        const url = window.location.href.split('#')[0] + '#' + encoded;
+        const url = window.location.href.split("#")[0] + "#" + encoded;
 
-        navigator.clipboard.writeText(url).then(function() {
-          showToast('分享链接已复制到剪贴板');
-        }).catch(function() {
-          showToast('复制失败，请手动复制地址栏链接', 'error');
-        });
+        navigator.clipboard
+          .writeText(url)
+          .then(function () {
+            showToast("分享链接已复制到剪贴板");
+          })
+          .catch(function () {
+            showToast("复制失败，请手动复制地址栏链接", "error");
+          });
       }
 
       // 从 URL 加载
@@ -1007,18 +1032,20 @@ May,56,86"></textarea>
         try {
           const data = JSON.parse(decodeURIComponent(atob(hash)));
 
-          if (data.title) document.getElementById('chartTitle').value = data.title;
-          if (data.xAxis) document.getElementById('xAxisLabel').value = data.xAxis;
-          if (data.yAxis) document.getElementById('yAxisLabel').value = data.yAxis;
-          if (data.style) document.getElementById('lineStyle').value = data.style;
-          if (data.points) document.getElementById('showPoints').value = data.points;
-          if (data.data) document.getElementById('dataInput').value = data.data;
+          if (data.title) document.getElementById("chartTitle").value = data.title;
+          if (data.xAxis) document.getElementById("xAxisLabel").value = data.xAxis;
+          if (data.yAxis) document.getElementById("yAxisLabel").value = data.yAxis;
+          if (data.style) document.getElementById("lineStyle").value = data.style;
+          if (data.points) document.getElementById("showPoints").value = data.points;
+          if (data.data) document.getElementById("dataInput").value = data.data;
 
           // 恢复系列配置
           if (data.series && data.series.length > 0) {
-            document.getElementById('seriesManager').textContent = '';
+            document.getElementById("seriesManager").textContent = "";
             seriesCount = 0;
-            data.series.forEach(function(s) { addSeries(s.name, s.color); });
+            data.series.forEach(function (s) {
+              addSeries(s.name, s.color);
+            });
           }
 
           // 自动生成图表
@@ -1033,13 +1060,13 @@ May,56,86"></textarea>
       // 保存到 localStorage
       function saveToStorage() {
         const data = {
-          title: document.getElementById('chartTitle').value,
-          xAxis: document.getElementById('xAxisLabel').value,
-          yAxis: document.getElementById('yAxisLabel').value,
-          style: document.getElementById('lineStyle').value,
-          points: document.getElementById('showPoints').value,
+          title: document.getElementById("chartTitle").value,
+          xAxis: document.getElementById("xAxisLabel").value,
+          yAxis: document.getElementById("yAxisLabel").value,
+          style: document.getElementById("lineStyle").value,
+          points: document.getElementById("showPoints").value,
           series: getSeriesConfig(),
-          data: document.getElementById('dataInput').value
+          data: document.getElementById("dataInput").value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -1055,18 +1082,20 @@ May,56,86"></textarea>
         try {
           const data = JSON.parse(saved);
 
-          if (data.title) document.getElementById('chartTitle').value = data.title;
-          if (data.xAxis) document.getElementById('xAxisLabel').value = data.xAxis;
-          if (data.yAxis) document.getElementById('yAxisLabel').value = data.yAxis;
-          if (data.style) document.getElementById('lineStyle').value = data.style;
-          if (data.points) document.getElementById('showPoints').value = data.points;
-          if (data.data) document.getElementById('dataInput').value = data.data;
+          if (data.title) document.getElementById("chartTitle").value = data.title;
+          if (data.xAxis) document.getElementById("xAxisLabel").value = data.xAxis;
+          if (data.yAxis) document.getElementById("yAxisLabel").value = data.yAxis;
+          if (data.style) document.getElementById("lineStyle").value = data.style;
+          if (data.points) document.getElementById("showPoints").value = data.points;
+          if (data.data) document.getElementById("dataInput").value = data.data;
 
           // 恢复系列配置
           if (data.series && data.series.length > 0) {
-            document.getElementById('seriesManager').textContent = '';
+            document.getElementById("seriesManager").textContent = "";
             seriesCount = 0;
-            data.series.forEach(function(s) { addSeries(s.name, s.color); });
+            data.series.forEach(function (s) {
+              addSeries(s.name, s.color);
+            });
           }
         } catch (e) {
           // 忽略解析错误
@@ -1075,60 +1104,63 @@ May,56,86"></textarea>
 
       // 加载示例数据
       function loadSampleData() {
-        const sampleData = 'Jan,65,28,45\nFeb,59,48,52\nMar,80,40,61\nApr,81,19,73\nMay,56,86,42\nJun,55,27,58\nJul,40,90,35';
+        const sampleData =
+          "Jan,65,28,45\nFeb,59,48,52\nMar,80,40,61\nApr,81,19,73\nMay,56,86,42\nJun,55,27,58\nJul,40,90,35";
 
-        document.getElementById('dataInput').value = sampleData;
-        document.getElementById('chartTitle').value = '月度数据对比';
-        document.getElementById('xAxisLabel').value = '月份';
-        document.getElementById('yAxisLabel').value = '数值';
+        document.getElementById("dataInput").value = sampleData;
+        document.getElementById("chartTitle").value = "月度数据对比";
+        document.getElementById("xAxisLabel").value = "月份";
+        document.getElementById("yAxisLabel").value = "数值";
 
         // 确保有 3 个系列
-        const manager = document.getElementById('seriesManager');
-        manager.textContent = '';
+        const manager = document.getElementById("seriesManager");
+        manager.textContent = "";
         seriesCount = 0;
-        addSeries('销售额', '#00f5d4');
-        addSeries('成本', '#f72585');
-        addSeries('利润', '#fbbf24');
+        addSeries("销售额", "#00f5d4");
+        addSeries("成本", "#f72585");
+        addSeries("利润", "#fbbf24");
 
         generateChart();
       }
 
       // 清空所有内容
       function clearAll() {
-        document.getElementById('chartTitle').value = '折线图';
-        document.getElementById('xAxisLabel').value = '';
-        document.getElementById('yAxisLabel').value = '';
-        document.getElementById('lineStyle').value = 'smooth';
-        document.getElementById('showPoints').value = 'true';
-        document.getElementById('dataInput').value = '';
+        document.getElementById("chartTitle").value = "折线图";
+        document.getElementById("xAxisLabel").value = "";
+        document.getElementById("yAxisLabel").value = "";
+        document.getElementById("lineStyle").value = "smooth";
+        document.getElementById("showPoints").value = "true";
+        document.getElementById("dataInput").value = "";
 
         // 重置系列
-        document.getElementById('seriesManager').textContent = '';
+        document.getElementById("seriesManager").textContent = "";
         seriesCount = 0;
-        addSeries('系列 1', defaultColors[0]);
+        addSeries("系列 1", defaultColors[0]);
 
         // 销毁图表
         if (chart) {
           chart.destroy();
           chart = null;
         }
-        document.getElementById('chartPlaceholder').style.display = 'flex';
+        document.getElementById("chartPlaceholder").style.display = "flex";
 
         // 清除存储
         localStorage.removeItem(LS_KEY);
-        window.location.hash = '';
+        window.location.hash = "";
 
-        showToast('已清空');
+        showToast("已清空");
       }
 
       // 显示提示
       function showToast(msg, type) {
-        type = type || 'success';
-        const toast = document.getElementById('toast');
+        type = type || "success";
+        const toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.className = 'toast' + (type === 'error' ? ' error' : '');
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.className = "toast" + (type === "error" ? " error" : "");
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
     </script>
   </body>

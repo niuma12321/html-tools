@@ -4,13 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>数据清洗工具 - WebUtils</title>
-    <meta name="description" content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作" />
+    <meta
+      name="description"
+      content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作"
+    />
     <meta name="keywords" content="data clean 数据清洗 去重 去空行 文本处理 CSV cleaner" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/data-cleaner.html" />
     <meta property="og:title" content="数据清洗工具 - WebUtils" />
-    <meta property="og:description" content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作" />
+    <meta
+      property="og:description"
+      content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/data-cleaner.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -18,7 +24,10 @@
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="数据清洗工具 - WebUtils" />
-    <meta name="twitter:description" content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作" />
+    <meta
+      name="twitter:description"
+      content="强大的文本和CSV数据清洗工具，支持去除空行、去重、大小写转换、特殊字符处理等多种清洗操作"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
       {
@@ -73,7 +82,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -92,7 +102,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -953,7 +963,7 @@
           originalLines: lines.length,
           originalChars: text.length,
           duplicates: 0,
-          replacements: 0,
+          replacements: 0
         };
 
         // 1. Trim whitespace from each line
@@ -1051,7 +1061,9 @@
         document.getElementById("statOriginalLines").textContent = stats.originalLines;
         document.getElementById("statCleanedLines").textContent = stats.cleanedLines;
         document.getElementById("statRemovedLines").textContent = stats.removedLines;
-        document.getElementById("statOriginalChars").textContent = formatNumber(stats.originalChars);
+        document.getElementById("statOriginalChars").textContent = formatNumber(
+          stats.originalChars
+        );
         document.getElementById("statCleanedChars").textContent = formatNumber(stats.cleanedChars);
         document.getElementById("statRemovedChars").textContent = formatNumber(stats.removedChars);
         document.getElementById("statDuplicates").textContent = stats.duplicates;
@@ -1144,7 +1156,11 @@
           cleanData();
         }
         if ((e.ctrlKey || e.metaKey) && e.key === "z" && !e.shiftKey) {
-          if (document.activeElement !== inputEl && document.activeElement !== replaceFromEl && document.activeElement !== replaceToEl) {
+          if (
+            document.activeElement !== inputEl &&
+            document.activeElement !== replaceFromEl &&
+            document.activeElement !== replaceToEl
+          ) {
             e.preventDefault();
             undo();
           }

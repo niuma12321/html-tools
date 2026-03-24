@@ -8,16 +8,25 @@
     <meta property="og:title" content="距离计算器 - WebUtils" />
     <meta property="og:description" content="距离计算器：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/distance-calculator.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/distance-calculator.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/travel/distance-calculator.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/travel/distance-calculator.html"
+    />
     <meta name="description" content="计算两地之间的直线距离，支持城市名称或坐标输入" />
     <meta name="keywords" content="距离计算 distance calculator 两地距离 haversine" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       :root {
@@ -40,7 +49,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -60,161 +70,333 @@
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
 
-      
-
-      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-      html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-      body { font-family: var(--font-sans); background: var(--color-bg-deep); color: var(--color-text-primary); min-height: 100vh; line-height: 1.5; }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-bg-deep);
+        color: var(--color-text-primary);
+        min-height: 100vh;
+        line-height: 1.5;
+      }
 
       body::before {
-        content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-        background: radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
       }
 
       .nav-bar {
-        position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-        height: calc(var(--nav-height) + var(--safe-area-top)); padding-top: var(--safe-area-top);
-        background: var(--glass-bg); backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
-        border-bottom: 1px solid var(--glass-border); display: flex; align-items: center; justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: calc(var(--nav-height) + var(--safe-area-top));
+        padding-top: var(--safe-area-top);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .nav-content {
-        width: 100%; max-width: var(--container-max); height: var(--nav-height); padding: 0 var(--space-6);
-        display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--space-4);
+        width: 100%;
+        max-width: var(--container-max);
+        height: var(--nav-height);
+        padding: 0 var(--space-6);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: var(--space-4);
       }
 
       .nav-back {
-        display: flex; align-items: center; gap: var(--space-1); color: var(--color-accent-primary);
-        text-decoration: none; font-size: 0.9375rem; font-weight: 500; padding: var(--space-2) var(--space-1);
-        border-radius: var(--radius-sm); transition: all var(--transition-fast); justify-self: start;
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        color: var(--color-accent-primary);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        padding: var(--space-2) var(--space-1);
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+        justify-self: start;
       }
-      .nav-back:hover { background: var(--color-border-subtle); }
-      .nav-back-icon { width: 20px; height: 20px; stroke-width: 2.5; }
-      .nav-title { font-size: 1rem; font-weight: 600; text-align: center; }
-      .nav-actions { display: flex; gap: var(--space-2); justify-self: end; }
+      .nav-back:hover {
+        background: var(--color-border-subtle);
+      }
+      .nav-back-icon {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2.5;
+      }
+      .nav-title {
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .nav-actions {
+        display: flex;
+        gap: var(--space-2);
+        justify-self: end;
+      }
 
       .theme-toggle {
-        display: flex; align-items: center; justify-content: center; width: 36px; height: 36px;
-        border: none; border-radius: var(--radius-full); background: var(--color-bg-subtle);
-        color: var(--color-text-secondary); cursor: pointer; transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: var(--radius-full);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
+        cursor: pointer;
+        transition: all var(--transition-fast);
       }
-      .theme-toggle:hover { background: var(--color-border-strong); transform: scale(1.05); }
-      .theme-toggle svg { width: 18px; height: 18px; }
-      .theme-icon-dark, .theme-icon-light { display: none; }
-      [data-theme="dark"] .theme-icon-light, :root:not([data-theme]) .theme-icon-light { display: block; }
-      [data-theme="light"] .theme-icon-dark { display: block; }
+      .theme-toggle:hover {
+        background: var(--color-border-strong);
+        transform: scale(1.05);
+      }
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+      .theme-icon-dark,
+      .theme-icon-light {
+        display: none;
+      }
+      [data-theme="dark"] .theme-icon-light,
+      :root:not([data-theme]) .theme-icon-light {
+        display: block;
+      }
+      [data-theme="light"] .theme-icon-dark {
+        display: block;
+      }
 
       .main-content {
-        position: relative; z-index: 1; min-height: 100vh;
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
         padding-top: calc(var(--nav-height) + var(--safe-area-top) + var(--space-6));
         padding-bottom: calc(var(--space-8) + var(--safe-area-bottom));
-        padding-left: var(--space-6); padding-right: var(--space-6);
-        display: flex; flex-direction: column; align-items: center;
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      .container { width: 100%; max-width: var(--container-max); }
+      .container {
+        width: 100%;
+        max-width: var(--container-max);
+      }
 
       .card {
-        background: var(--glass-bg); backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-lg);
-        padding: var(--space-6); margin-bottom: var(--space-5); box-shadow: var(--shadow-md);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        margin-bottom: var(--space-5);
+        box-shadow: var(--shadow-md);
       }
 
-      .card-title { font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-5); }
+      .card-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--space-5);
+      }
 
-      .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+      .location-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-5);
+      }
 
       .location-box {
-        background: var(--color-bg-surface); border: 1px solid var(--color-border-default);
-        border-radius: var(--radius-md); padding: var(--space-5);
+        background: var(--color-bg-surface);
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        padding: var(--space-5);
       }
 
       .location-box h3 {
-        font-size: 0.9375rem; font-weight: 600; margin-bottom: var(--space-4);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        margin-bottom: var(--space-4);
         color: var(--color-accent-primary);
       }
 
-      .input-group { margin-bottom: var(--space-4); }
-      .input-group:last-child { margin-bottom: 0; }
+      .input-group {
+        margin-bottom: var(--space-4);
+      }
+      .input-group:last-child {
+        margin-bottom: 0;
+      }
       .input-group label {
-        display: block; font-weight: 500; margin-bottom: var(--space-2);
-        font-size: 0.875rem; color: var(--color-text-secondary);
+        display: block;
+        font-weight: 500;
+        margin-bottom: var(--space-2);
+        font-size: 0.875rem;
+        color: var(--color-text-secondary);
       }
 
-      input, select {
-        width: 100%; padding: var(--space-3) var(--space-4); font-size: 0.9375rem;
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-md);
-        background: var(--color-bg-input); color: var(--color-text-primary);
-        font-family: var(--font-mono); transition: all var(--transition-fast);
+      input,
+      select {
+        width: 100%;
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.9375rem;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-input);
+        color: var(--color-text-primary);
+        font-family: var(--font-mono);
+        transition: all var(--transition-fast);
       }
-      input:focus, select:focus {
-        outline: none; border-color: var(--color-accent-primary);
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: var(--color-accent-primary);
         box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
       }
 
-      .coord-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+      .coord-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-3);
+      }
 
       button {
-        padding: var(--space-3) var(--space-4); font-size: 0.9375rem; font-weight: 500;
-        border: 1px solid var(--color-border-default); border-radius: var(--radius-md);
-        background: var(--color-bg-subtle); color: var(--color-text-primary);
-        cursor: pointer; transition: all var(--transition-fast); font-family: var(--font-sans);
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-md);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-primary);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        font-family: var(--font-sans);
       }
-      button:hover { border-color: var(--color-accent-primary); }
+      button:hover {
+        border-color: var(--color-accent-primary);
+      }
       button.primary {
-        background: var(--color-accent-primary); border-color: var(--color-accent-primary);
-        color: #fff; font-weight: 600;
+        background: var(--color-accent-primary);
+        border-color: var(--color-accent-primary);
+        color: #fff;
+        font-weight: 600;
       }
-      button.primary:hover { background: #00c299; box-shadow: var(--shadow-glow); }
+      button.primary:hover {
+        background: #00c299;
+        box-shadow: var(--shadow-glow);
+      }
 
-      .btn-row { display: flex; gap: var(--space-3); margin-top: var(--space-5); justify-content: center; }
+      .btn-row {
+        display: flex;
+        gap: var(--space-3);
+        margin-top: var(--space-5);
+        justify-content: center;
+      }
 
       .result-display {
-        background: var(--color-bg-subtle); border-radius: var(--radius-md);
-        padding: var(--space-6); margin-top: var(--space-5); text-align: center;
+        background: var(--color-bg-subtle);
+        border-radius: var(--radius-md);
+        padding: var(--space-6);
+        margin-top: var(--space-5);
+        text-align: center;
       }
 
       .result-distance {
-        font-size: 2.5rem; font-weight: 700; font-family: var(--font-mono);
-        color: var(--color-accent-primary); margin-bottom: var(--space-2);
+        font-size: 2.5rem;
+        font-weight: 700;
+        font-family: var(--font-mono);
+        color: var(--color-accent-primary);
+        margin-bottom: var(--space-2);
       }
 
       .result-miles {
-        font-size: 1.25rem; color: var(--color-text-secondary); margin-bottom: var(--space-4);
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-4);
       }
 
       .result-details {
-        font-size: 0.875rem; color: var(--text-muted);
-        padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--color-border-subtle);
       }
 
       .city-presets {
-        display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4);
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin-top: var(--space-4);
       }
 
       .preset-chip {
-        padding: var(--space-2) var(--space-3); font-size: 0.8125rem;
-        background: var(--color-bg-subtle); border: 1px solid var(--color-border-default);
-        border-radius: var(--radius-full); cursor: pointer; transition: all var(--transition-fast);
+        padding: var(--space-2) var(--space-3);
+        font-size: 0.8125rem;
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        transition: all var(--transition-fast);
       }
-      .preset-chip:hover { border-color: var(--color-accent-primary); }
+      .preset-chip:hover {
+        border-color: var(--color-accent-primary);
+      }
 
       @media (max-width: 640px) {
-        .location-grid { grid-template-columns: 1fr; }
-        .result-distance { font-size: 2rem; }
+        .location-grid {
+          grid-template-columns: 1fr;
+        }
+        .result-distance {
+          font-size: 2rem;
+        }
       }
 
       @media (max-width: 480px) {
-        :root { --nav-height: 52px; }
-        .nav-content { padding: 0 var(--space-4); }
-        .nav-back-text { display: none; }
+        :root {
+          --nav-height: 52px;
+        }
+        .nav-content {
+          padding: 0 var(--space-4);
+        }
+        .nav-back-text {
+          display: none;
+        }
         .main-content {
           padding-top: calc(var(--nav-height) + var(--safe-area-top) + var(--space-4));
-          padding-left: var(--space-4); padding-right: var(--space-4);
+          padding-left: var(--space-4);
+          padding-right: var(--space-4);
         }
-        .card { padding: var(--space-4); }
-        .coord-row { grid-template-columns: 1fr; }
+        .card {
+          padding: var(--space-4);
+        }
+        .coord-row {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -222,7 +404,14 @@
     <nav class="nav-bar">
       <div class="nav-content">
         <a href="../../index.html" class="nav-back" aria-label="返回首页">
-          <svg class="nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            class="nav-back-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
           <span class="nav-back-text">首页</span>
@@ -230,10 +419,26 @@
         <h1 class="nav-title">距离计算器</h1>
         <div class="nav-actions">
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-            <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-light"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
-            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-dark"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -301,7 +506,7 @@
             <button class="primary" onclick="calculate()">计算距离</button>
           </div>
 
-          <div class="result-display" id="resultDisplay" style="display: none;">
+          <div class="result-display" id="resultDisplay" style="display: none">
             <div class="result-distance" id="resultKm">0 km</div>
             <div class="result-miles" id="resultMiles">0 miles</div>
             <div class="result-details" id="resultDetails"></div>
@@ -317,26 +522,26 @@
 
     <script>
       var CITIES = {
-        "北京": { lat: 39.9042, lon: 116.4074 },
-        "上海": { lat: 31.2304, lon: 121.4737 },
-        "广州": { lat: 23.1291, lon: 113.2644 },
-        "深圳": { lat: 22.5431, lon: 114.0579 },
-        "香港": { lat: 22.3193, lon: 114.1694 },
-        "台北": { lat: 25.0330, lon: 121.5654 },
-        "东京": { lat: 35.6762, lon: 139.6503 },
-        "首尔": { lat: 37.5665, lon: 126.9780 },
-        "新加坡": { lat: 1.3521, lon: 103.8198 },
-        "曼谷": { lat: 13.7563, lon: 100.5018 },
-        "悉尼": { lat: -33.8688, lon: 151.2093 },
-        "纽约": { lat: 40.7128, lon: -74.0060 },
-        "洛杉矶": { lat: 34.0522, lon: -118.2437 },
-        "旧金山": { lat: 37.7749, lon: -122.4194 },
-        "伦敦": { lat: 51.5074, lon: -0.1278 },
-        "巴黎": { lat: 48.8566, lon: 2.3522 },
-        "柏林": { lat: 52.5200, lon: 13.4050 },
-        "莫斯科": { lat: 55.7558, lon: 37.6173 },
-        "迪拜": { lat: 25.2048, lon: 55.2708 },
-        "开罗": { lat: 30.0444, lon: 31.2357 }
+        北京: { lat: 39.9042, lon: 116.4074 },
+        上海: { lat: 31.2304, lon: 121.4737 },
+        广州: { lat: 23.1291, lon: 113.2644 },
+        深圳: { lat: 22.5431, lon: 114.0579 },
+        香港: { lat: 22.3193, lon: 114.1694 },
+        台北: { lat: 25.033, lon: 121.5654 },
+        东京: { lat: 35.6762, lon: 139.6503 },
+        首尔: { lat: 37.5665, lon: 126.978 },
+        新加坡: { lat: 1.3521, lon: 103.8198 },
+        曼谷: { lat: 13.7563, lon: 100.5018 },
+        悉尼: { lat: -33.8688, lon: 151.2093 },
+        纽约: { lat: 40.7128, lon: -74.006 },
+        洛杉矶: { lat: 34.0522, lon: -118.2437 },
+        旧金山: { lat: 37.7749, lon: -122.4194 },
+        伦敦: { lat: 51.5074, lon: -0.1278 },
+        巴黎: { lat: 48.8566, lon: 2.3522 },
+        柏林: { lat: 52.52, lon: 13.405 },
+        莫斯科: { lat: 55.7558, lon: 37.6173 },
+        迪拜: { lat: 25.2048, lon: 55.2708 },
+        开罗: { lat: 30.0444, lon: 31.2357 }
       };
 
       var PRESETS = [
@@ -358,7 +563,7 @@
         var city1 = document.getElementById("city1");
         var city2 = document.getElementById("city2");
 
-        Object.keys(CITIES).forEach(function(name) {
+        Object.keys(CITIES).forEach(function (name) {
           var opt1 = document.createElement("option");
           opt1.value = name;
           opt1.textContent = name;
@@ -375,11 +580,13 @@
         var container = document.getElementById("presets");
         container.textContent = "";
 
-        PRESETS.forEach(function(route) {
+        PRESETS.forEach(function (route) {
           var chip = document.createElement("button");
           chip.className = "preset-chip";
           chip.textContent = route[0] + " → " + route[1];
-          chip.onclick = function() { applyPreset(route[0], route[1]); };
+          chip.onclick = function () {
+            applyPreset(route[0], route[1]);
+          };
           container.appendChild(chip);
         });
       }
@@ -422,8 +629,18 @@
         var city1Name = document.getElementById("city1").value || "起点";
         var city2Name = document.getElementById("city2").value || "终点";
         document.getElementById("resultDetails").textContent =
-          city1Name + " (" + lat1.toFixed(4) + ", " + lon1.toFixed(4) + ") → " +
-          city2Name + " (" + lat2.toFixed(4) + ", " + lon2.toFixed(4) + ")";
+          city1Name +
+          " (" +
+          lat1.toFixed(4) +
+          ", " +
+          lon1.toFixed(4) +
+          ") → " +
+          city2Name +
+          " (" +
+          lat2.toFixed(4) +
+          ", " +
+          lon2.toFixed(4) +
+          ")";
 
         document.getElementById("resultDisplay").style.display = "block";
       }
@@ -432,9 +649,9 @@
         var R = 6371; // Earth's radius in km
         var dLat = toRad(lat2 - lat1);
         var dLon = toRad(lon2 - lon1);
-        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         return R * c;
       }

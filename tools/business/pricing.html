@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>定价策略计算器 - WebUtils</title>
-    <meta name="description" content="在线计算产品定价，支持成本加成法、竞争定价等多种定价策略，帮助企业制定合理价格" />
+    <meta
+      name="description"
+      content="在线计算产品定价，支持成本加成法、竞争定价等多种定价策略，帮助企业制定合理价格"
+    />
     <meta name="keywords" content="定价策略, 产品定价, 成本加成, 价格计算, 利润定价, 市场定价" />
     <meta property="og:title" content="定价策略计算器 - WebUtils" />
-    <meta property="og:description" content="在线计算产品定价，支持成本加成法、竞争定价等多种定价策略，帮助企业制定合理价格" />
+    <meta
+      property="og:description"
+      content="在线计算产品定价，支持成本加成法、竞争定价等多种定价策略，帮助企业制定合理价格"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/business/pricing.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -39,7 +45,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -572,7 +579,11 @@
         var vsMarketEl = document.getElementById("vsMarket");
         vsMarketEl.textContent = (vsMarket >= 0 ? "+" : "") + vsMarket.toFixed(1) + "%";
         vsMarketEl.style.color =
-          vsMarket > 10 ? "var(--orange)" : vsMarket < -10 ? "var(--accent-green)" : "var(--accent-cyan)";
+          vsMarket > 10
+            ? "var(--orange)"
+            : vsMarket < -10
+              ? "var(--accent-green)"
+              : "var(--accent-cyan)";
 
         var competitiveness = "";
         if (recommendedPrice < competitorLow) {

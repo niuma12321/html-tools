@@ -53,7 +53,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -72,8 +73,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       .theme-toggle {
         position: fixed;
@@ -383,7 +382,9 @@
             <div class="lpr-value">3.60%</div>
           </div>
         </div>
-        <p style="color: var(--text-secondary); font-size: 0.85rem">* LPR每月20日更新，以央行最新公布为准</p>
+        <p style="color: var(--text-secondary); font-size: 0.85rem">
+          * LPR每月20日更新，以央行最新公布为准
+        </p>
       </div>
 
       <div class="card">
@@ -721,7 +722,8 @@
             "linear-gradient(135deg, var(--accent-green), #059669)";
         } else if (savingsMonthly < 0) {
           changeEl.textContent = "每月增加 " + formatMoney(-savingsMonthly);
-          changeEl.parentElement.style.background = "linear-gradient(135deg, var(--accent-red), #dc2626)";
+          changeEl.parentElement.style.background =
+            "linear-gradient(135deg, var(--accent-red), #dc2626)";
         } else {
           changeEl.textContent = "月供不变";
         }

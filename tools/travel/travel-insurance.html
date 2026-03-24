@@ -102,7 +102,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -121,8 +122,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       *,
       *::before,
@@ -694,7 +693,14 @@
           <div class="input-row">
             <div class="input-group">
               <label for="duration">行程天数</label>
-              <input type="number" id="duration" min="1" max="365" value="7" oninput="calculate()" />
+              <input
+                type="number"
+                id="duration"
+                min="1"
+                max="365"
+                value="7"
+                oninput="calculate()"
+              />
             </div>
             <div class="input-group">
               <label for="tripCost">行程总费用 (元)</label>
@@ -712,7 +718,14 @@
             </div>
             <div class="input-group">
               <label for="travelers">旅行人数</label>
-              <input type="number" id="travelers" min="1" max="20" value="1" oninput="calculate()" />
+              <input
+                type="number"
+                id="travelers"
+                min="1"
+                max="20"
+                value="1"
+                oninput="calculate()"
+              />
             </div>
           </div>
         </div>
@@ -749,14 +762,38 @@
         <div class="card">
           <h2 class="card-title">💡 购买保险注意事项</h2>
           <ul class="tips-list">
-            <li><span class="tip-icon">💡</span>出行前至少提前1-3天购买，部分保险有等待期</li>
-            <li><span class="tip-icon">💡</span>仔细阅读免责条款，了解哪些情况不在保障范围内</li>
-            <li><span class="tip-icon">💡</span>保留所有医疗收据和报告，理赔时需要提供</li>
-            <li><span class="tip-icon">💡</span>高风险活动（潜水、滑雪等）需单独确认是否承保</li>
-            <li><span class="tip-icon">💡</span>既往病症通常不在保障范围内，需如实告知</li>
-            <li><span class="tip-icon">💡</span>比较多家保险公司的产品，选择性价比最高的</li>
-            <li><span class="tip-icon">💡</span>确认紧急救援服务的联系方式，保存到手机中</li>
-            <li><span class="tip-icon">💡</span>境外旅行建议选择有全球救援网络的保险公司</li>
+            <li>
+              <span class="tip-icon">💡</span>
+              出行前至少提前1-3天购买，部分保险有等待期
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              仔细阅读免责条款，了解哪些情况不在保障范围内
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              保留所有医疗收据和报告，理赔时需要提供
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              高风险活动（潜水、滑雪等）需单独确认是否承保
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              既往病症通常不在保障范围内，需如实告知
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              比较多家保险公司的产品，选择性价比最高的
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              确认紧急救援服务的联系方式，保存到手机中
+            </li>
+            <li>
+              <span class="tip-icon">💡</span>
+              境外旅行建议选择有全球救援网络的保险公司
+            </li>
           </ul>
         </div>
       </div>
@@ -772,7 +809,7 @@
           desc: "覆盖旅途中的突发疾病和意外伤害医疗费用",
           importance: "essential",
           baseAmount: 100000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.5, america: 2, adventure: 2 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.5, america: 2, adventure: 2 }
         },
         {
           id: "emergency",
@@ -780,7 +817,7 @@
           desc: "包括紧急转运、医疗遣返和遗体运送费用",
           importance: "essential",
           baseAmount: 200000,
-          multiplier: { domestic: 0.3, asia: 1, europe: 1.5, america: 2, adventure: 2.5 },
+          multiplier: { domestic: 0.3, asia: 1, europe: 1.5, america: 2, adventure: 2.5 }
         },
         {
           id: "trip_cancel",
@@ -789,7 +826,7 @@
           importance: "recommended",
           baseAmount: 0,
           useTripCost: true,
-          multiplier: { domestic: 1, asia: 1, europe: 1, america: 1, adventure: 1 },
+          multiplier: { domestic: 1, asia: 1, europe: 1, america: 1, adventure: 1 }
         },
         {
           id: "trip_interrupt",
@@ -799,7 +836,7 @@
           baseAmount: 0,
           useTripCost: true,
           costMultiplier: 1.5,
-          multiplier: { domestic: 1, asia: 1, europe: 1, america: 1, adventure: 1 },
+          multiplier: { domestic: 1, asia: 1, europe: 1, america: 1, adventure: 1 }
         },
         {
           id: "baggage_loss",
@@ -807,7 +844,7 @@
           desc: "托运行李丢失或延误的赔偿",
           importance: "recommended",
           baseAmount: 5000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 }
         },
         {
           id: "flight_delay",
@@ -815,7 +852,7 @@
           desc: "航班延误超过一定时间的补偿",
           importance: "optional",
           baseAmount: 2000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1, america: 1.2, adventure: 1 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1, america: 1.2, adventure: 1 }
         },
         {
           id: "personal_liability",
@@ -823,7 +860,7 @@
           desc: "在旅途中意外造成他人人身伤害或财产损失的赔偿",
           importance: "recommended",
           baseAmount: 100000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.5, america: 2, adventure: 1.5 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.5, america: 2, adventure: 1.5 }
         },
         {
           id: "accident",
@@ -831,7 +868,7 @@
           desc: "因意外导致的身故或伤残赔偿",
           importance: "essential",
           baseAmount: 500000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1, america: 1, adventure: 1.5 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1, america: 1, adventure: 1.5 }
         },
         {
           id: "dental",
@@ -839,7 +876,7 @@
           desc: "旅途中突发牙科急症的治疗费用",
           importance: "optional",
           baseAmount: 5000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 }
         },
         {
           id: "document_loss",
@@ -847,7 +884,7 @@
           desc: "护照、签证等证件丢失的补办费用和相关损失",
           importance: "optional",
           baseAmount: 3000,
-          multiplier: { domestic: 0.2, asia: 1, europe: 1, america: 1, adventure: 1 },
+          multiplier: { domestic: 0.2, asia: 1, europe: 1, america: 1, adventure: 1 }
         },
         {
           id: "rental_car",
@@ -855,7 +892,7 @@
           desc: "租车时的额外保险保障，包括车辆损坏和盗窃",
           importance: "optional",
           baseAmount: 50000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.5, adventure: 1 }
         },
         {
           id: "sports",
@@ -863,14 +900,14 @@
           desc: "滑雪、潜水、攀岩等高风险运动的专项保障",
           importance: "optional",
           baseAmount: 100000,
-          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.2, adventure: 2 },
-        },
+          multiplier: { domestic: 0.5, asia: 1, europe: 1.2, america: 1.2, adventure: 2 }
+        }
       ];
 
       const importanceLabels = {
         essential: "必备",
         recommended: "推荐",
-        optional: "可选",
+        optional: "可选"
       };
 
       function renderChecklist() {
@@ -969,13 +1006,14 @@
             asia: 0.002,
             europe: 0.003,
             america: 0.004,
-            adventure: 0.005,
+            adventure: 0.005
           }[destination] || 0.002;
 
         const estimatedPremium = Math.round(
           totalCoverage * basePremiumRate * (duration / 7) * travelers
         );
-        document.getElementById("estimatedPremium").textContent = "¥" + formatNumber(estimatedPremium);
+        document.getElementById("estimatedPremium").textContent =
+          "¥" + formatNumber(estimatedPremium);
 
         saveState();
       }
@@ -1019,7 +1057,7 @@
           asia: "亚洲",
           europe: "欧洲/澳洲",
           america: "美洲",
-          adventure: "探险/极限运动",
+          adventure: "探险/极限运动"
         };
 
         let text = "旅行保险清单\n";
@@ -1069,7 +1107,7 @@
               const checkbox = document.getElementById("check-" + item.id);
               return checkbox && checkbox.checked;
             })
-            .map((item) => item.id),
+            .map((item) => item.id)
         };
         localStorage.setItem("travel-insurance-state", JSON.stringify(state));
       }

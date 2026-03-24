@@ -6935,6 +6935,14 @@
       "icon": "🔧",
       "description": "Color Contrast Checker"
     },
+    "836": {
+      "path": "tools/automotive/tire-pressure-calc.html",
+      "name": "胎压转换",
+      "category": "automotive",
+      "icon": "🚗",
+      "description": "轮胎压力单位转换PSI/Bar/kPa",
+      "keywords": "胎压 轮胎 转换 tire pressure converter PSI"
+    },
     "837": {
       "path": "tools/design/css-animation-generator.html",
       "name": "Css Animation Generator",
@@ -8247,14 +8255,6 @@
       "description": "今夜可见星座和天体指南",
       "keywords": "观星 星座 天文 astronomy stargazing constellation"
     },
-    "836": {
-      "path": "tools/automotive/tire-pressure-calc.html",
-      "name": "胎压转换",
-      "category": "automotive",
-      "icon": "🚗",
-      "description": "轮胎压力单位转换PSI/Bar/kPa",
-      "keywords": "胎压 轮胎 转换 tire pressure converter PSI"
-    },
     "1001": {
       "path": "tools/time/new-year-countdown.html",
       "name": "新年倒计时",
@@ -8262,182 +8262,6 @@
       "icon": "🎆",
       "description": "精致美观的新年倒计时页面，支持主题切换与分享链接",
       "keywords": "新年 倒计时 跨年 2026 new year countdown"
-    },
-    "1002": {
-      "path": "tools/data/duplicate-remover.html",
-      "name": "重复项删除",
-      "category": "data",
-      "icon": "⊖",
-      "description": "从文本中删除重复行，支持大小写和空白选项",
-      "keywords": "去重 删除重复 duplicate remover unique 文本处理"
-    },
-    "1003": {
-      "path": "tools/data/data-sorter.html",
-      "name": "数据排序",
-      "category": "data",
-      "icon": "↕",
-      "description": "对文本或CSV数据排序，支持多种排序方式",
-      "keywords": "排序 sort 文本排序 CSV排序 数据处理"
-    },
-    "1004": {
-      "path": "tools/data/json-flattener.html",
-      "name": "JSON 扁平化",
-      "category": "data",
-      "icon": "⊳",
-      "description": "将嵌套JSON转换为扁平结构，点号表示法",
-      "keywords": "json flatten 扁平化 嵌套 dot notation"
-    },
-    "1005": {
-      "path": "tools/data/json-unflatten.html",
-      "name": "JSON 反扁平化",
-      "category": "data",
-      "icon": "⊲",
-      "description": "将扁平JSON转换回嵌套结构",
-      "keywords": "json unflatten 反扁平化 嵌套 dot notation"
-    },
-    "1006": {
-      "path": "tools/office/timesheet.html",
-      "name": "工时记录",
-      "category": "office",
-      "icon": "⏱",
-      "description": "追踪工作时间，自动计算工时，支持周汇总和CSV导出",
-      "keywords": "工时 timesheet 时间追踪 工作时间 工时计算 考勤"
-    },
-    "1007": {
-      "path": "tools/office/leave-calculator.html",
-      "name": "休假天数计算",
-      "category": "office",
-      "icon": "📅",
-      "description": "计算两个日期之间的工作日天数，支持排除周末和自定义节假日",
-      "keywords": "休假 假期 工作日 天数计算 leave calculator 年假"
-    },
-    "1008": {
-      "path": "tools/office/work-log.html",
-      "name": "工作日志",
-      "category": "office",
-      "icon": "📋",
-      "description": "记录每日工作内容，统计工时，支持导出Markdown",
-      "keywords": "工作日志 work log 工时记录 日报 timesheet 工作记录"
-    },
-    "1009": {
-      "path": "tools/office/agenda-maker.html",
-      "name": "会议议程",
-      "category": "office",
-      "icon": "📝",
-      "description": "创建会议议程，管理议题和时间分配，可打印和复制",
-      "keywords": "会议议程 agenda meeting 会议安排 议题 时间表 会议管理"
-    },
-    "1010": {
-      "path": "tools/office/stamp-generator.html",
-      "name": "印章生成器",
-      "category": "office",
-      "icon": "🔴",
-      "description": "在线生成公司印章，支持圆形、椭圆、矩形，可下载 PNG",
-      "keywords": "印章 公章 圆章 椭圆章 公司章 组织章 stamp generator seal 电子章"
-    },
-    "1011": {
-      "path": "tools/office/letter-template.html",
-      "name": "商务信函",
-      "category": "office",
-      "icon": "✉️",
-      "description": "快速生成专业商务信函，支持发件人收件人信息和正式格式",
-      "keywords": "商务信函 business letter 信件模板 正式信函 公文 书信"
-    },
-    "1012": {
-      "path": "tools/office/letterhead-maker.html",
-      "name": "信头纸制作",
-      "category": "office",
-      "icon": "📄",
-      "description": "创建专业公司信头纸，支持Logo和联系信息",
-      "keywords": "信头纸 letterhead 公司抬头 信纸模板 企业信笺"
-    },
-    "1013": {
-      "path": "tools/office/minutes-template.html",
-      "name": "会议纪要",
-      "category": "office",
-      "icon": "📝",
-      "description": "创建专业会议纪要，支持议程、讨论和行动项",
-      "keywords": "会议纪要 meeting minutes 议程 行动项 会议记录"
-    },
-    "1014": {
-      "path": "tools/office/org-chart.html",
-      "name": "组织架构图",
-      "category": "office",
-      "icon": "👥",
-      "description": "创建公司组织架构图，可视化层级结构",
-      "keywords": "组织架构图 org chart 公司架构 层级结构 人员架构"
-    },
-    "1015": {
-      "path": "tools/office/project-timeline.html",
-      "name": "项目时间线",
-      "category": "office",
-      "icon": "📅",
-      "description": "创建项目里程碑时间线，跟踪项目进度",
-      "keywords": "项目时间线 timeline 里程碑 milestone 项目管理 甘特图"
-    },
-    "1016": {
-      "path": "tools/travel/world-clock.html",
-      "name": "世界时钟",
-      "category": "travel",
-      "icon": "🌍",
-      "description": "查看全球各时区的当前时间，支持添加多个城市",
-      "keywords": "世界时钟 world clock 时区 timezone 城市时间"
-    },
-    "1017": {
-      "path": "tools/travel/time-difference.html",
-      "name": "时区转换",
-      "category": "travel",
-      "icon": "🕐",
-      "description": "在不同时区之间转换时间，查看时差",
-      "keywords": "时区转换 timezone converter 时差 time difference"
-    },
-    "1018": {
-      "path": "tools/travel/currency-exchange.html",
-      "name": "货币转换",
-      "category": "travel",
-      "icon": "💱",
-      "description": "多种货币汇率转换计算器",
-      "keywords": "货币转换 currency converter 汇率 exchange rate"
-    },
-    "1019": {
-      "path": "tools/travel/distance-calculator.html",
-      "name": "距离计算器",
-      "category": "travel",
-      "icon": "📏",
-      "description": "计算两地之间的直线距离",
-      "keywords": "距离计算 distance calculator 两地距离 haversine"
-    },
-    "1020": {
-      "path": "tools/travel/flight-time.html",
-      "name": "飞行时间",
-      "category": "travel",
-      "icon": "🛫",
-      "description": "估算两地之间的飞行时间",
-      "keywords": "飞行时间 flight time 航班时间 估算"
-    },
-    "1021": {
-      "path": "tools/travel/tip-guide.html",
-      "name": "小费指南",
-      "category": "travel",
-      "icon": "💵",
-      "description": "各国小费习惯指南和小费计算器",
-      "keywords": "小费指南 tipping guide 小费计算 tip calculator"
-    },
-    "1022": {
-      "path": "tools/travel/travel-checklist.html",
-      "name": "旅行清单",
-      "category": "travel",
-      "icon": "✅",
-      "description": "旅行打包清单，支持自定义物品和进度保存",
-      "keywords": "旅行清单 packing list 打包清单 travel checklist"
-    },
-    "1023": {
-      "path": "tools/travel/trip-budget.html",
-      "name": "旅行预算",
-      "category": "travel",
-      "icon": "💰",
-      "description": "旅行预算管理，按类别追踪消费",
-      "keywords": "旅行预算 trip budget 消费追踪 费用管理 旅行费用"
     }
   }
 }

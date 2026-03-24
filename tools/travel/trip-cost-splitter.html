@@ -8,16 +8,28 @@
     <meta name="keywords" content="split cost 分摊 费用 AA 旅行 trip splitter" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html"
+    />
     <meta property="og:title" content="旅行费用分摊 - WebUtils" />
-    <meta property="og:description" content="多人旅行费用分摊计算，自动计算每人应付金额和结算方案" />
+    <meta
+      property="og:description"
+      content="多人旅行费用分摊计算，自动计算每人应付金额和结算方案"
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="旅行费用分摊 - WebUtils" />
-    <meta name="twitter:description" content="多人旅行费用分摊计算，自动计算每人应付金额和结算方案" />
+    <meta
+      name="twitter:description"
+      content="多人旅行费用分摊计算，自动计算每人应付金额和结算方案"
+    />
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
@@ -25,15 +37,33 @@
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://tools.realtime-ai.chat/" },
-          { "@type": "ListItem", "position": 2, "name": "旅行工具", "item": "https://tools.realtime-ai.chat/#travel" },
-          { "@type": "ListItem", "position": 3, "name": "旅行费用分摊", "item": "https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "https://tools.realtime-ai.chat/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "旅行工具",
+            "item": "https://tools.realtime-ai.chat/#travel"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "旅行费用分摊",
+            "item": "https://tools.realtime-ai.chat/tools/travel/trip-cost-splitter.html"
+          }
         ]
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -55,7 +85,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -74,7 +105,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -89,8 +120,14 @@
         z-index: 100;
         transition: all 0.2s;
       }
-      .theme-toggle:hover { transform: scale(1.1); }
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -101,7 +138,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -140,10 +178,20 @@
         text-decoration: none;
         transition: color 0.2s ease;
       }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); user-select: none; }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
-      .title-section { flex: 1; }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+        user-select: none;
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      .title-section {
+        flex: 1;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -152,7 +200,9 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section h1 .icon { font-size: 1.8rem; }
+      .title-section h1 .icon {
+        font-size: 1.8rem;
+      }
       .title-section p {
         color: var(--color-text-secondary);
         margin-top: 4px;
@@ -198,7 +248,9 @@
         gap: 12px;
         margin-bottom: 16px;
       }
-      .input-row input { flex: 1; }
+      .input-row input {
+        flex: 1;
+      }
       input[type="text"],
       input[type="number"],
       select {
@@ -211,11 +263,14 @@
         color: var(--color-text-primary);
         transition: border-color 0.2s;
       }
-      input:focus, select:focus {
+      input:focus,
+      select:focus {
         outline: none;
         border-color: var(--accent-green);
       }
-      input::placeholder { color: var(--text-muted); }
+      input::placeholder {
+        color: var(--text-muted);
+      }
       .btn {
         padding: 10px 16px;
         font-family: var(--font-mono);
@@ -282,7 +337,9 @@
         margin-bottom: 8px;
         transition: all 0.2s;
       }
-      .list-item:hover { background: var(--bg-hover); }
+      .list-item:hover {
+        background: var(--bg-hover);
+      }
       .list-item .name {
         font-family: var(--font-mono);
         font-weight: 500;
@@ -308,8 +365,12 @@
         grid-template-columns: 1fr 120px;
         gap: 12px;
       }
-      .expense-form select { width: 100%; }
-      .summary-panel { grid-column: 1 / -1; }
+      .expense-form select {
+        width: 100%;
+      }
+      .summary-panel {
+        grid-column: 1 / -1;
+      }
       .summary-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -336,8 +397,12 @@
         font-weight: 700;
         color: var(--accent-green);
       }
-      .summary-card .value.cyan { color: var(--accent-cyan); }
-      .summary-card .value.yellow { color: var(--accent-yellow); }
+      .summary-card .value.cyan {
+        color: var(--accent-cyan);
+      }
+      .summary-card .value.yellow {
+        color: var(--accent-yellow);
+      }
       .settlement-list {
         background: var(--bg-input);
         border: 1px solid var(--border-subtle);
@@ -362,10 +427,21 @@
         border-radius: var(--radius-sm);
         margin-bottom: 8px;
       }
-      .settlement-item:last-child { margin-bottom: 0; }
-      .settlement-item .from { color: var(--accent-red); font-weight: 600; }
-      .settlement-item .arrow { color: var(--text-muted); margin: 0 12px; }
-      .settlement-item .to { color: var(--accent-green); font-weight: 600; }
+      .settlement-item:last-child {
+        margin-bottom: 0;
+      }
+      .settlement-item .from {
+        color: var(--accent-red);
+        font-weight: 600;
+      }
+      .settlement-item .arrow {
+        color: var(--text-muted);
+        margin: 0 12px;
+      }
+      .settlement-item .to {
+        color: var(--accent-green);
+        font-weight: 600;
+      }
       .settlement-item .amount {
         font-family: var(--font-mono);
         font-weight: 700;
@@ -373,7 +449,9 @@
         margin-left: auto;
         padding-left: 16px;
       }
-      .balance-list { margin-top: 16px; }
+      .balance-list {
+        margin-top: 16px;
+      }
       .balance-item {
         display: flex;
         align-items: center;
@@ -381,24 +459,43 @@
         padding: 10px 12px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .balance-item:last-child { border-bottom: none; }
-      .balance-item .name { font-weight: 500; }
-      .balance-item .paid { font-size: 0.8rem; color: var(--color-text-secondary); }
-      .balance-item .balance { font-family: var(--font-mono); font-weight: 600; }
-      .balance-item .balance.positive { color: var(--accent-green); }
-      .balance-item .balance.negative { color: var(--accent-red); }
+      .balance-item:last-child {
+        border-bottom: none;
+      }
+      .balance-item .name {
+        font-weight: 500;
+      }
+      .balance-item .paid {
+        font-size: 0.8rem;
+        color: var(--color-text-secondary);
+      }
+      .balance-item .balance {
+        font-family: var(--font-mono);
+        font-weight: 600;
+      }
+      .balance-item .balance.positive {
+        color: var(--accent-green);
+      }
+      .balance-item .balance.negative {
+        color: var(--accent-red);
+      }
       .empty-state {
         text-align: center;
         padding: 40px 20px;
         color: var(--text-muted);
       }
-      .empty-state .icon { font-size: 3rem; margin-bottom: 12px; }
+      .empty-state .icon {
+        font-size: 3rem;
+        margin-bottom: 12px;
+      }
       .btn-row {
         display: flex;
         gap: 12px;
         margin-top: auto;
       }
-      .btn-row .btn { flex: 1; }
+      .btn-row .btn {
+        flex: 1;
+      }
       .toast {
         position: fixed;
         bottom: 24px;
@@ -419,16 +516,38 @@
         transform: translateX(-50%) translateY(0);
         opacity: 1;
       }
-      .toast.error { background: var(--accent-red); }
+      .toast.error {
+        background: var(--accent-red);
+      }
       @media (max-width: 768px) {
-        .container { padding: 16px; }
-        .main-content { grid-template-columns: 1fr; }
-        .summary-panel { grid-column: 1; }
-        .expense-form .row { grid-template-columns: 1fr; }
-        .input-row { flex-direction: column; }
-        .btn-row { flex-direction: column; }
-        .settlement-item { flex-wrap: wrap; gap: 8px; }
-        .settlement-item .amount { width: 100%; text-align: right; padding-left: 0; margin-left: 0; }
+        .container {
+          padding: 16px;
+        }
+        .main-content {
+          grid-template-columns: 1fr;
+        }
+        .summary-panel {
+          grid-column: 1;
+        }
+        .expense-form .row {
+          grid-template-columns: 1fr;
+        }
+        .input-row {
+          flex-direction: column;
+        }
+        .btn-row {
+          flex-direction: column;
+        }
+        .settlement-item {
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+        .settlement-item .amount {
+          width: 100%;
+          text-align: right;
+          padding-left: 0;
+          margin-left: 0;
+        }
       }
     </style>
   </head>
@@ -443,45 +562,80 @@
           <span class="breadcrumb-current">旅行费用分摊</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">💰</span>旅行费用分摊</h1>
+          <h1>
+            <span class="icon">💰</span>
+            旅行费用分摊
+          </h1>
           <p>多人旅行费用分摊计算，自动计算每人应付金额和结算方案</p>
         </div>
       </header>
       <main class="main-content">
         <div class="panel">
-          <div class="section-title">👥 旅行者 <span class="count" id="travelerCount">0</span></div>
+          <div class="section-title">
+            👥 旅行者
+            <span class="count" id="travelerCount">0</span>
+          </div>
           <div class="input-row">
-            <input type="text" id="travelerName" placeholder="输入旅行者姓名" onkeypress="if(event.key==='Enter')addTraveler()" />
+            <input
+              type="text"
+              id="travelerName"
+              placeholder="输入旅行者姓名"
+              onkeypress="if (event.key === 'Enter') addTraveler();"
+            />
             <button class="btn btn-primary" onclick="addTraveler()">+ 添加</button>
           </div>
           <div class="list-container" id="travelerList">
-            <div class="empty-state"><div class="icon">👤</div><div>还没有添加旅行者</div></div>
+            <div class="empty-state">
+              <div class="icon">👤</div>
+              <div>还没有添加旅行者</div>
+            </div>
           </div>
         </div>
         <div class="panel">
-          <div class="section-title">📝 费用记录 <span class="count" id="expenseCount">0</span></div>
+          <div class="section-title">
+            📝 费用记录
+            <span class="count" id="expenseCount">0</span>
+          </div>
           <div class="expense-form">
             <input type="text" id="expenseDesc" placeholder="费用描述（如：酒店、机票、餐饮）" />
             <div class="row">
               <input type="number" id="expenseAmount" placeholder="金额" min="0" step="0.01" />
-              <select id="expensePayer"><option value="">谁付的钱</option></select>
+              <select id="expensePayer">
+                <option value="">谁付的钱</option>
+              </select>
             </div>
             <button class="btn btn-primary" onclick="addExpense()">+ 添加费用</button>
           </div>
           <div class="list-container" id="expenseList">
-            <div class="empty-state"><div class="icon">📋</div><div>还没有添加费用</div></div>
+            <div class="empty-state">
+              <div class="icon">📋</div>
+              <div>还没有添加费用</div>
+            </div>
           </div>
         </div>
         <div class="panel summary-panel">
           <div class="section-title">📊 费用汇总</div>
           <div class="summary-grid">
-            <div class="summary-card"><div class="label">总费用</div><div class="value" id="totalAmount">¥0.00</div></div>
-            <div class="summary-card"><div class="label">人均费用</div><div class="value cyan" id="perPersonAmount">¥0.00</div></div>
-            <div class="summary-card"><div class="label">参与人数</div><div class="value yellow" id="participantCount">0</div></div>
+            <div class="summary-card">
+              <div class="label">总费用</div>
+              <div class="value" id="totalAmount">¥0.00</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">人均费用</div>
+              <div class="value cyan" id="perPersonAmount">¥0.00</div>
+            </div>
+            <div class="summary-card">
+              <div class="label">参与人数</div>
+              <div class="value yellow" id="participantCount">0</div>
+            </div>
           </div>
           <div class="settlement-list">
             <h3>💸 结算方案（谁应该给谁多少钱）</h3>
-            <div id="settlementList"><div class="empty-state" style="padding: 20px"><div>添加旅行者和费用后自动计算</div></div></div>
+            <div id="settlementList">
+              <div class="empty-state" style="padding: 20px">
+                <div>添加旅行者和费用后自动计算</div>
+              </div>
+            </div>
           </div>
           <div class="balance-list" id="balanceList"></div>
           <div class="btn-row" style="margin-top: 20px">
@@ -520,7 +674,9 @@
             travelers = data.travelers || [];
             expenses = data.expenses || [];
           }
-        } catch (e) { console.error("加载数据失败:", e); }
+        } catch (e) {
+          console.error("加载数据失败:", e);
+        }
       }
       function loadFromUrl() {
         var hash = location.hash.slice(1);
@@ -531,7 +687,9 @@
           expenses = data.expenses || [];
           saveData();
           return true;
-        } catch (e) { return false; }
+        } catch (e) {
+          return false;
+        }
       }
       function saveToUrl() {
         try {
@@ -544,19 +702,34 @@
       function addTraveler() {
         var input = document.getElementById("travelerName");
         var name = input.value.trim();
-        if (!name) { showToast("请输入旅行者姓名", "error"); return; }
-        if (travelers.indexOf(name) > -1) { showToast("该旅行者已存在", "error"); return; }
+        if (!name) {
+          showToast("请输入旅行者姓名", "error");
+          return;
+        }
+        if (travelers.indexOf(name) > -1) {
+          showToast("该旅行者已存在", "error");
+          return;
+        }
         travelers.push(name);
         input.value = "";
-        saveData(); saveToUrl(); renderAll();
+        saveData();
+        saveToUrl();
+        renderAll();
         showToast("已添加旅行者: " + name);
       }
       function deleteTraveler(index) {
         var name = travelers[index];
-        var hasExpenses = expenses.some(function (e) { return e.payer === name; });
-        if (hasExpenses) { showToast("该旅行者有费用记录，请先删除相关费用", "error"); return; }
+        var hasExpenses = expenses.some(function (e) {
+          return e.payer === name;
+        });
+        if (hasExpenses) {
+          showToast("该旅行者有费用记录，请先删除相关费用", "error");
+          return;
+        }
         travelers.splice(index, 1);
-        saveData(); saveToUrl(); renderAll();
+        saveData();
+        saveToUrl();
+        renderAll();
         showToast("已删除旅行者: " + name);
       }
       function addExpense() {
@@ -566,23 +739,41 @@
         var desc = descInput.value.trim();
         var amount = parseFloat(amountInput.value);
         var payer = payerSelect.value;
-        if (!desc) { showToast("请输入费用描述", "error"); return; }
-        if (!amount || amount <= 0) { showToast("请输入有效金额", "error"); return; }
-        if (!payer) { showToast("请选择付款人", "error"); return; }
+        if (!desc) {
+          showToast("请输入费用描述", "error");
+          return;
+        }
+        if (!amount || amount <= 0) {
+          showToast("请输入有效金额", "error");
+          return;
+        }
+        if (!payer) {
+          showToast("请选择付款人", "error");
+          return;
+        }
         expenses.push({ id: Date.now(), desc: desc, amount: amount, payer: payer });
-        descInput.value = ""; amountInput.value = ""; payerSelect.value = "";
-        saveData(); saveToUrl(); renderAll();
+        descInput.value = "";
+        amountInput.value = "";
+        payerSelect.value = "";
+        saveData();
+        saveToUrl();
+        renderAll();
         showToast("已添加费用: " + desc);
       }
       function deleteExpense(id) {
         var index = -1;
         for (var i = 0; i < expenses.length; i++) {
-          if (expenses[i].id === id) { index = i; break; }
+          if (expenses[i].id === id) {
+            index = i;
+            break;
+          }
         }
         if (index > -1) {
           var expense = expenses[index];
           expenses.splice(index, 1);
-          saveData(); saveToUrl(); renderAll();
+          saveData();
+          saveToUrl();
+          renderAll();
           showToast("已删除费用: " + expense.desc);
         }
       }
@@ -604,22 +795,34 @@
           balances[t] = { paid: paid, shouldPay: perPerson, balance: paid - perPerson };
         }
         var settlements = [];
-        var debtors = [], creditors = [];
+        var debtors = [],
+          creditors = [];
         for (var name in balances) {
           var data = balances[name];
           if (data.balance < -0.01) debtors.push({ name: name, amount: -data.balance });
           else if (data.balance > 0.01) creditors.push({ name: name, amount: data.balance });
         }
-        debtors.sort(function (a, b) { return b.amount - a.amount; });
-        creditors.sort(function (a, b) { return b.amount - a.amount; });
-        var i = 0, j = 0;
+        debtors.sort(function (a, b) {
+          return b.amount - a.amount;
+        });
+        creditors.sort(function (a, b) {
+          return b.amount - a.amount;
+        });
+        var i = 0,
+          j = 0;
         while (i < debtors.length && j < creditors.length) {
-          var debtor = debtors[i], creditor = creditors[j];
+          var debtor = debtors[i],
+            creditor = creditors[j];
           var amount = Math.min(debtor.amount, creditor.amount);
           if (amount > 0.01) {
-            settlements.push({ from: debtor.name, to: creditor.name, amount: Math.round(amount * 100) / 100 });
+            settlements.push({
+              from: debtor.name,
+              to: creditor.name,
+              amount: Math.round(amount * 100) / 100
+            });
           }
-          debtor.amount -= amount; creditor.amount -= amount;
+          debtor.amount -= amount;
+          creditor.amount -= amount;
           if (debtor.amount < 0.01) i++;
           if (creditor.amount < 0.01) j++;
         }
@@ -636,13 +839,19 @@
         var container = document.getElementById("travelerList");
         document.getElementById("travelerCount").textContent = travelers.length;
         if (travelers.length === 0) {
-          container.innerHTML = '<div class="empty-state"><div class="icon">👤</div><div>还没有添加旅行者</div></div>';
+          container.innerHTML =
+            '<div class="empty-state"><div class="icon">👤</div><div>还没有添加旅行者</div></div>';
           return;
         }
         var html = "";
         for (var i = 0; i < travelers.length; i++) {
-          html += '<div class="list-item"><div><div class="name">' + escapeHtml(travelers[i]) + '</div></div>' +
-            '<button class="btn btn-danger btn-icon" onclick="deleteTraveler(' + i + ')" title="删除">×</button></div>';
+          html +=
+            '<div class="list-item"><div><div class="name">' +
+            escapeHtml(travelers[i]) +
+            "</div></div>" +
+            '<button class="btn btn-danger btn-icon" onclick="deleteTraveler(' +
+            i +
+            ')" title="删除">×</button></div>';
         }
         container.innerHTML = html;
       }
@@ -650,17 +859,27 @@
         var container = document.getElementById("expenseList");
         document.getElementById("expenseCount").textContent = expenses.length;
         if (expenses.length === 0) {
-          container.innerHTML = '<div class="empty-state"><div class="icon">📋</div><div>还没有添加费用</div></div>';
+          container.innerHTML =
+            '<div class="empty-state"><div class="icon">📋</div><div>还没有添加费用</div></div>';
           return;
         }
         var html = "";
         for (var i = 0; i < expenses.length; i++) {
           var e = expenses[i];
-          html += '<div class="list-item"><div><div class="name">' + escapeHtml(e.desc) + '</div>' +
-            '<div class="details">' + escapeHtml(e.payer) + ' 付款</div></div>' +
+          html +=
+            '<div class="list-item"><div><div class="name">' +
+            escapeHtml(e.desc) +
+            "</div>" +
+            '<div class="details">' +
+            escapeHtml(e.payer) +
+            " 付款</div></div>" +
             '<div style="display: flex; align-items: center; gap: 12px;">' +
-            '<span class="amount">¥' + e.amount.toFixed(2) + '</span>' +
-            '<button class="btn btn-danger btn-icon" onclick="deleteExpense(' + e.id + ')" title="删除">×</button></div></div>';
+            '<span class="amount">¥' +
+            e.amount.toFixed(2) +
+            "</span>" +
+            '<button class="btn btn-danger btn-icon" onclick="deleteExpense(' +
+            e.id +
+            ')" title="删除">×</button></div></div>';
         }
         container.innerHTML = html;
       }
@@ -669,7 +888,12 @@
         var currentValue = select.value;
         var html = '<option value="">谁付的钱</option>';
         for (var i = 0; i < travelers.length; i++) {
-          html += '<option value="' + escapeHtml(travelers[i]) + '">' + escapeHtml(travelers[i]) + '</option>';
+          html +=
+            '<option value="' +
+            escapeHtml(travelers[i]) +
+            '">' +
+            escapeHtml(travelers[i]) +
+            "</option>";
         }
         select.innerHTML = html;
         if (travelers.indexOf(currentValue) > -1) select.value = currentValue;
@@ -681,40 +905,74 @@
         document.getElementById("participantCount").textContent = travelers.length;
         var settlementContainer = document.getElementById("settlementList");
         if (result.settlements.length === 0) {
-          var emptyMsg = (travelers.length === 0 || expenses.length === 0) ? "添加旅行者和费用后自动计算" : "无需结算，费用已平衡";
-          settlementContainer.innerHTML = '<div class="empty-state" style="padding: 20px"><div>' + emptyMsg + '</div></div>';
+          var emptyMsg =
+            travelers.length === 0 || expenses.length === 0
+              ? "添加旅行者和费用后自动计算"
+              : "无需结算，费用已平衡";
+          settlementContainer.innerHTML =
+            '<div class="empty-state" style="padding: 20px"><div>' + emptyMsg + "</div></div>";
         } else {
           var html = "";
           for (var i = 0; i < result.settlements.length; i++) {
             var s = result.settlements[i];
-            html += '<div class="settlement-item"><span class="from">' + escapeHtml(s.from) + '</span>' +
-              '<span class="arrow">→</span><span class="to">' + escapeHtml(s.to) + '</span>' +
-              '<span class="amount">¥' + s.amount.toFixed(2) + '</span></div>';
+            html +=
+              '<div class="settlement-item"><span class="from">' +
+              escapeHtml(s.from) +
+              "</span>" +
+              '<span class="arrow">→</span><span class="to">' +
+              escapeHtml(s.to) +
+              "</span>" +
+              '<span class="amount">¥' +
+              s.amount.toFixed(2) +
+              "</span></div>";
           }
           settlementContainer.innerHTML = html;
         }
         var balanceContainer = document.getElementById("balanceList");
         var balanceKeys = Object.keys(result.balances);
         if (balanceKeys.length > 0) {
-          var html = '<div class="section-title" style="margin-top: 16px; border-top: 1px solid var(--border-subtle); padding-top: 16px;">👤 个人明细</div>';
+          var html =
+            '<div class="section-title" style="margin-top: 16px; border-top: 1px solid var(--border-subtle); padding-top: 16px;">👤 个人明细</div>';
           for (var i = 0; i < balanceKeys.length; i++) {
-            var name = balanceKeys[i], data = result.balances[name];
+            var name = balanceKeys[i],
+              data = result.balances[name];
             var balanceClass = data.balance >= 0 ? "positive" : "negative";
             var balanceSign = data.balance >= 0 ? "+" : "";
-            html += '<div class="balance-item"><div><div class="name">' + escapeHtml(name) + '</div>' +
-              '<div class="paid">已付 ¥' + data.paid.toFixed(2) + ' / 应付 ¥' + data.shouldPay.toFixed(2) + '</div></div>' +
-              '<div class="balance ' + balanceClass + '">' + balanceSign + '¥' + data.balance.toFixed(2) + '</div></div>';
+            html +=
+              '<div class="balance-item"><div><div class="name">' +
+              escapeHtml(name) +
+              "</div>" +
+              '<div class="paid">已付 ¥' +
+              data.paid.toFixed(2) +
+              " / 应付 ¥" +
+              data.shouldPay.toFixed(2) +
+              "</div></div>" +
+              '<div class="balance ' +
+              balanceClass +
+              '">' +
+              balanceSign +
+              "¥" +
+              data.balance.toFixed(2) +
+              "</div></div>";
           }
           balanceContainer.innerHTML = html;
-        } else { balanceContainer.innerHTML = ""; }
+        } else {
+          balanceContainer.innerHTML = "";
+        }
       }
       function renderAll() {
-        renderTravelerList(); renderExpenseList(); renderPayerSelect(); renderSummary();
+        renderTravelerList();
+        renderExpenseList();
+        renderPayerSelect();
+        renderSummary();
       }
 
       function copySettlement() {
         var result = calculateSettlement();
-        if (travelers.length === 0 || expenses.length === 0) { showToast("没有可复制的内容", "error"); return; }
+        if (travelers.length === 0 || expenses.length === 0) {
+          showToast("没有可复制的内容", "error");
+          return;
+        }
         var text = "【旅行费用分摊】\n\n";
         text += "参与人: " + travelers.join("、") + "\n";
         text += "总费用: ¥" + result.total.toFixed(2) + "\n";
@@ -733,17 +991,28 @@
             text += "- " + s.from + " → " + s.to + ": ¥" + s.amount.toFixed(2) + "\n";
           }
         }
-        navigator.clipboard.writeText(text).then(function () { showToast("已复制到剪贴板"); });
+        navigator.clipboard.writeText(text).then(function () {
+          showToast("已复制到剪贴板");
+        });
       }
       function shareData() {
-        if (travelers.length === 0) { showToast("没有可分享的内容", "error"); return; }
+        if (travelers.length === 0) {
+          showToast("没有可分享的内容", "error");
+          return;
+        }
         saveToUrl();
-        navigator.clipboard.writeText(location.href).then(function () { showToast("链接已复制到剪贴板"); });
+        navigator.clipboard.writeText(location.href).then(function () {
+          showToast("链接已复制到剪贴板");
+        });
       }
       function clearAll() {
-        if (travelers.length === 0 && expenses.length === 0) { showToast("已经是空的了"); return; }
+        if (travelers.length === 0 && expenses.length === 0) {
+          showToast("已经是空的了");
+          return;
+        }
         if (!confirm("确定要清空所有数据吗？")) return;
-        travelers = []; expenses = [];
+        travelers = [];
+        expenses = [];
         saveData();
         history.replaceState(null, "", location.pathname);
         renderAll();
@@ -754,7 +1023,9 @@
         toast.textContent = msg;
         toast.className = "toast" + (type === "error" ? " error" : "");
         toast.classList.add("show");
-        setTimeout(function () { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       if (!loadFromUrl()) loadData();

@@ -4,12 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>应收账款账龄分析 - WebUtils</title>
-    <meta name="description" content="在线分析应收账款账龄，帮助企业监控账款回收情况，降低坏账风险" />
+    <meta
+      name="description"
+      content="在线分析应收账款账龄，帮助企业监控账款回收情况，降低坏账风险"
+    />
     <meta name="keywords" content="应收账款, 账龄分析, 账款管理, 资金回收, 财务管理, 坏账风险" />
     <meta property="og:title" content="应收账款账龄分析 - WebUtils" />
-    <meta property="og:description" content="在线分析应收账款账龄，帮助企业监控账款回收情况，降低坏账风险" />
+    <meta
+      property="og:description"
+      content="在线分析应收账款账龄，帮助企业监控账款回收情况，降低坏账风险"
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/business/receivables.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/business/receivables.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/business/receivables.html" />
@@ -39,7 +48,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -394,11 +404,19 @@
           <div class="result-grid">
             <div class="result-item">
               <div class="result-label">应收账款总额</div>
-              <div class="result-value" style="color: var(--accent-cyan)" id="totalReceivables"></div>
+              <div
+                class="result-value"
+                style="color: var(--accent-cyan)"
+                id="totalReceivables"
+              ></div>
             </div>
             <div class="result-item">
               <div class="result-label">坏账准备</div>
-              <div class="result-value" style="color: var(--accent-red)" id="badDebtProvision"></div>
+              <div
+                class="result-value"
+                style="color: var(--accent-red)"
+                id="badDebtProvision"
+              ></div>
             </div>
             <div class="result-item">
               <div class="result-label">坏账率</div>
@@ -513,7 +531,11 @@
         var badDebtRateEl = document.getElementById("badDebtRate");
         badDebtRateEl.textContent = badDebtRate.toFixed(2) + "%";
         badDebtRateEl.style.color =
-          badDebtRate > 20 ? "var(--accent-red)" : badDebtRate > 10 ? "var(--orange)" : "var(--accent-green)";
+          badDebtRate > 20
+            ? "var(--accent-red)"
+            : badDebtRate > 10
+              ? "var(--orange)"
+              : "var(--accent-green)";
 
         document.getElementById("avgAge").textContent = avgAge.toFixed(1) + "年";
 

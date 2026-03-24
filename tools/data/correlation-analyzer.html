@@ -7,10 +7,16 @@
     <meta property="og:title" content="相关性分析 - WebUtils" />
     <meta property="og:description" content="相关性分析：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/correlation-analyzer.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/data/correlation-analyzer.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/correlation-analyzer.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/data/correlation-analyzer.html"
+    />
     <meta name="description" content="计算两组数据的皮尔逊相关系数，显示散点图可视化" />
     <meta name="keywords" content="correlation 相关性 皮尔逊 pearson 散点图 统计分析" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,7 +46,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,7 +66,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -413,7 +420,9 @@
             <div class="section-title">数据输入</div>
             <div class="input-group">
               <label class="input-label">X 值（每行一个数字）</label>
-              <textarea id="xValues" placeholder="1
+              <textarea
+                id="xValues"
+                placeholder="1
 2
 3
 4
@@ -422,11 +431,14 @@
 7
 8
 9
-10"></textarea>
+10"
+              ></textarea>
             </div>
             <div class="input-group">
               <label class="input-label">Y 值（每行一个数字）</label>
-              <textarea id="yValues" placeholder="2.1
+              <textarea
+                id="yValues"
+                placeholder="2.1
 4.2
 5.8
 8.1
@@ -435,7 +447,8 @@
 14.2
 16.0
 18.1
-20.2"></textarea>
+20.2"
+              ></textarea>
               <div class="input-hint">提示：X 和 Y 的数据点数量必须相同</div>
             </div>
             <div class="btn-row">
@@ -450,7 +463,7 @@
             <div class="result-box">
               <div class="result-value" id="rValue">--</div>
               <div class="result-label">皮尔逊相关系数 (r)</div>
-              <div class="interpretation" id="interpretation" style="display: none;"></div>
+              <div class="interpretation" id="interpretation" style="display: none"></div>
             </div>
 
             <div class="chart-container">
@@ -488,42 +501,62 @@
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      const LS_KEY = 'correlation-analyzer-data';
+      const LS_KEY = "correlation-analyzer-data";
 
       function toggleTheme() {
         const body = document.body;
-        const isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        const isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
         if (window.lastData) {
           drawScatterPlot(window.lastData.x, window.lastData.y, window.lastData.r);
         }
       }
 
       (function () {
-        const saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        const saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       })();
 
       function parseValues(text) {
-        return text.trim().split('\n')
-          .map(function(line) { return line.trim(); })
-          .filter(function(line) { return line !== ''; })
-          .map(function(line) { return parseFloat(line); })
-          .filter(function(num) { return !isNaN(num); });
+        return text
+          .trim()
+          .split("\n")
+          .map(function (line) {
+            return line.trim();
+          })
+          .filter(function (line) {
+            return line !== "";
+          })
+          .map(function (line) {
+            return parseFloat(line);
+          })
+          .filter(function (num) {
+            return !isNaN(num);
+          });
       }
 
       function calculatePearson(x, y) {
         const n = x.length;
         if (n !== y.length || n < 2) return null;
 
-        const sumX = x.reduce(function(a, b) { return a + b; }, 0);
-        const sumY = y.reduce(function(a, b) { return a + b; }, 0);
-        const sumXY = x.reduce(function(total, xi, i) { return total + xi * y[i]; }, 0);
-        const sumX2 = x.reduce(function(total, xi) { return total + xi * xi; }, 0);
-        const sumY2 = y.reduce(function(total, yi) { return total + yi * yi; }, 0);
+        const sumX = x.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        const sumY = y.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+        const sumXY = x.reduce(function (total, xi, i) {
+          return total + xi * y[i];
+        }, 0);
+        const sumX2 = x.reduce(function (total, xi) {
+          return total + xi * xi;
+        }, 0);
+        const sumY2 = y.reduce(function (total, yi) {
+          return total + yi * yi;
+        }, 0);
 
         const numerator = n * sumXY - sumX * sumY;
         const denominator = Math.sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY));
@@ -536,31 +569,31 @@
         const absR = Math.abs(r);
         if (absR >= 0.8) {
           return {
-            text: r > 0 ? '强正相关' : '强负相关',
-            class: r > 0 ? 'strong-positive' : 'strong-negative'
+            text: r > 0 ? "强正相关" : "强负相关",
+            class: r > 0 ? "strong-positive" : "strong-negative"
           };
         } else if (absR >= 0.5) {
           return {
-            text: r > 0 ? '中等正相关' : '中等负相关',
-            class: r > 0 ? 'moderate-positive' : 'moderate-negative'
+            text: r > 0 ? "中等正相关" : "中等负相关",
+            class: r > 0 ? "moderate-positive" : "moderate-negative"
           };
         } else if (absR >= 0.3) {
           return {
-            text: r > 0 ? '弱正相关' : '弱负相关',
-            class: 'weak'
+            text: r > 0 ? "弱正相关" : "弱负相关",
+            class: "weak"
           };
         } else {
           return {
-            text: '无明显相关性',
-            class: 'weak'
+            text: "无明显相关性",
+            class: "weak"
           };
         }
       }
 
       function drawScatterPlot(xData, yData, r) {
-        const canvas = document.getElementById('scatterCanvas');
-        const ctx = canvas.getContext('2d');
-        const isLight = document.body.getAttribute('data-theme') === 'light';
+        const canvas = document.getElementById("scatterCanvas");
+        const ctx = canvas.getContext("2d");
+        const isLight = document.body.getAttribute("data-theme") === "light";
 
         const dpr = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
@@ -572,7 +605,7 @@
         const height = rect.height;
         const padding = 40;
 
-        ctx.fillStyle = isLight ? '#fff' : '#12121a';
+        ctx.fillStyle = isLight ? "#fff" : "#12121a";
         ctx.fillRect(0, 0, width, height);
 
         const xMin = Math.min.apply(null, xData);
@@ -590,7 +623,7 @@
           return height - padding - ((y - yMin) / yRange) * (height - 2 * padding);
         }
 
-        ctx.strokeStyle = isLight ? '#e5e5e5' : '#2a2a3a';
+        ctx.strokeStyle = isLight ? "#e5e5e5" : "#2a2a3a";
         ctx.lineWidth = 1;
 
         for (var i = 0; i <= 5; i++) {
@@ -609,9 +642,9 @@
           ctx.stroke();
         }
 
-        ctx.fillStyle = isLight ? '#666' : '#8888a0';
-        ctx.font = '11px JetBrains Mono';
-        ctx.textAlign = 'center';
+        ctx.fillStyle = isLight ? "#666" : "#8888a0";
+        ctx.font = "11px JetBrains Mono";
+        ctx.textAlign = "center";
 
         for (var k = 0; k <= 5; k++) {
           var xVal = xMin + (k / 5) * xRange;
@@ -619,14 +652,14 @@
           ctx.fillText(xVal.toFixed(1), xPos, height - padding + 15);
         }
 
-        ctx.textAlign = 'right';
+        ctx.textAlign = "right";
         for (var m = 0; m <= 5; m++) {
           var yVal = yMin + (m / 5) * yRange;
           var yPos = scaleY(yVal);
           ctx.fillText(yVal.toFixed(1), padding - 5, yPos + 4);
         }
 
-        ctx.fillStyle = '#00f5d4';
+        ctx.fillStyle = "#00f5d4";
         for (var n = 0; n < xData.length; n++) {
           var px = scaleX(xData[n]);
           var py = scaleY(yData[n]);
@@ -636,10 +669,17 @@
         }
 
         if (xData.length >= 2) {
-          var xMean = xData.reduce(function(a, b) { return a + b; }, 0) / xData.length;
-          var yMeanVal = yData.reduce(function(a, b) { return a + b; }, 0) / yData.length;
+          var xMean =
+            xData.reduce(function (a, b) {
+              return a + b;
+            }, 0) / xData.length;
+          var yMeanVal =
+            yData.reduce(function (a, b) {
+              return a + b;
+            }, 0) / yData.length;
 
-          var num = 0, den = 0;
+          var num = 0,
+            den = 0;
           for (var p = 0; p < xData.length; p++) {
             num += (xData[p] - xMean) * (yData[p] - yMeanVal);
             den += (xData[p] - xMean) * (xData[p] - xMean);
@@ -650,7 +690,7 @@
           var y1 = slope * xMin + intercept;
           var y2 = slope * xMax + intercept;
 
-          ctx.strokeStyle = '#f72585';
+          ctx.strokeStyle = "#f72585";
           ctx.lineWidth = 2;
           ctx.setLineDash([5, 5]);
           ctx.beginPath();
@@ -664,118 +704,131 @@
       }
 
       function analyze() {
-        var xText = document.getElementById('xValues').value;
-        var yText = document.getElementById('yValues').value;
+        var xText = document.getElementById("xValues").value;
+        var yText = document.getElementById("yValues").value;
 
         var xData = parseValues(xText);
         var yData = parseValues(yText);
 
         if (xData.length < 2 || yData.length < 2) {
-          showToast('请至少输入 2 个数据点', 'error');
+          showToast("请至少输入 2 个数据点", "error");
           return;
         }
 
         if (xData.length !== yData.length) {
-          showToast('X 和 Y 的数据点数量不一致', 'error');
+          showToast("X 和 Y 的数据点数量不一致", "error");
           return;
         }
 
         var r = calculatePearson(xData, yData);
         var r2 = r * r;
-        var xMean = xData.reduce(function(a, b) { return a + b; }, 0) / xData.length;
-        var yMean = yData.reduce(function(a, b) { return a + b; }, 0) / yData.length;
+        var xMean =
+          xData.reduce(function (a, b) {
+            return a + b;
+          }, 0) / xData.length;
+        var yMean =
+          yData.reduce(function (a, b) {
+            return a + b;
+          }, 0) / yData.length;
 
         var interp = getInterpretation(r);
 
-        document.getElementById('rValue').textContent = r.toFixed(4);
-        document.getElementById('rValue').style.color = r >= 0 ? '#10b981' : '#f43f5e';
+        document.getElementById("rValue").textContent = r.toFixed(4);
+        document.getElementById("rValue").style.color = r >= 0 ? "#10b981" : "#f43f5e";
 
-        var interpEl = document.getElementById('interpretation');
+        var interpEl = document.getElementById("interpretation");
         interpEl.textContent = interp.text;
-        interpEl.className = 'interpretation ' + interp.class;
-        interpEl.style.display = 'block';
+        interpEl.className = "interpretation " + interp.class;
+        interpEl.style.display = "block";
 
-        document.getElementById('r2Value').textContent = r2.toFixed(4);
-        document.getElementById('nValue').textContent = xData.length;
-        document.getElementById('xMean').textContent = xMean.toFixed(2);
-        document.getElementById('yMean').textContent = yMean.toFixed(2);
+        document.getElementById("r2Value").textContent = r2.toFixed(4);
+        document.getElementById("nValue").textContent = xData.length;
+        document.getElementById("xMean").textContent = xMean.toFixed(2);
+        document.getElementById("yMean").textContent = yMean.toFixed(2);
 
         drawScatterPlot(xData, yData, r);
         saveToStorage();
-        showToast('分析完成');
+        showToast("分析完成");
       }
 
       function copyResults() {
-        var r = document.getElementById('rValue').textContent;
-        var r2 = document.getElementById('r2Value').textContent;
-        var n = document.getElementById('nValue').textContent;
-        var interp = document.getElementById('interpretation').textContent;
+        var r = document.getElementById("rValue").textContent;
+        var r2 = document.getElementById("r2Value").textContent;
+        var n = document.getElementById("nValue").textContent;
+        var interp = document.getElementById("interpretation").textContent;
 
-        if (r === '--') {
-          showToast('请先进行分析', 'error');
+        if (r === "--") {
+          showToast("请先进行分析", "error");
           return;
         }
 
-        var text = '相关性分析结果\n';
-        text += '================\n';
-        text += '皮尔逊相关系数 (r): ' + r + '\n';
-        text += '决定系数 (R²): ' + r2 + '\n';
-        text += '数据点数: ' + n + '\n';
-        text += '解释: ' + interp + '\n';
+        var text = "相关性分析结果\n";
+        text += "================\n";
+        text += "皮尔逊相关系数 (r): " + r + "\n";
+        text += "决定系数 (R²): " + r2 + "\n";
+        text += "数据点数: " + n + "\n";
+        text += "解释: " + interp + "\n";
 
-        navigator.clipboard.writeText(text).then(function() {
-          showToast('结果已复制');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            showToast("结果已复制");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function shareAnalysis() {
         var data = {
-          x: document.getElementById('xValues').value,
-          y: document.getElementById('yValues').value
+          x: document.getElementById("xValues").value,
+          y: document.getElementById("yValues").value
         };
 
         var encoded = btoa(encodeURIComponent(JSON.stringify(data)));
-        var url = window.location.href.split('#')[0] + '#' + encoded;
+        var url = window.location.href.split("#")[0] + "#" + encoded;
 
-        navigator.clipboard.writeText(url).then(function() {
-          showToast('分享链接已复制');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(url)
+          .then(function () {
+            showToast("分享链接已复制");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function loadSample() {
-        document.getElementById('xValues').value = '1\n2\n3\n4\n5\n6\n7\n8\n9\n10';
-        document.getElementById('yValues').value = '2.1\n4.2\n5.8\n8.1\n10.3\n11.9\n14.2\n16.0\n18.1\n20.2';
+        document.getElementById("xValues").value = "1\n2\n3\n4\n5\n6\n7\n8\n9\n10";
+        document.getElementById("yValues").value =
+          "2.1\n4.2\n5.8\n8.1\n10.3\n11.9\n14.2\n16.0\n18.1\n20.2";
         analyze();
       }
 
       function clearAll() {
-        document.getElementById('xValues').value = '';
-        document.getElementById('yValues').value = '';
-        document.getElementById('rValue').textContent = '--';
-        document.getElementById('rValue').style.color = '';
-        document.getElementById('r2Value').textContent = '--';
-        document.getElementById('nValue').textContent = '--';
-        document.getElementById('xMean').textContent = '--';
-        document.getElementById('yMean').textContent = '--';
-        document.getElementById('interpretation').style.display = 'none';
+        document.getElementById("xValues").value = "";
+        document.getElementById("yValues").value = "";
+        document.getElementById("rValue").textContent = "--";
+        document.getElementById("rValue").style.color = "";
+        document.getElementById("r2Value").textContent = "--";
+        document.getElementById("nValue").textContent = "--";
+        document.getElementById("xMean").textContent = "--";
+        document.getElementById("yMean").textContent = "--";
+        document.getElementById("interpretation").style.display = "none";
 
-        var canvas = document.getElementById('scatterCanvas');
-        var ctx = canvas.getContext('2d');
+        var canvas = document.getElementById("scatterCanvas");
+        var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         localStorage.removeItem(LS_KEY);
-        window.location.hash = '';
-        showToast('已清空');
+        window.location.hash = "";
+        showToast("已清空");
       }
 
       function saveToStorage() {
         var data = {
-          x: document.getElementById('xValues').value,
-          y: document.getElementById('yValues').value
+          x: document.getElementById("xValues").value,
+          y: document.getElementById("yValues").value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -788,8 +841,8 @@
 
         try {
           var data = JSON.parse(saved);
-          if (data.x) document.getElementById('xValues').value = data.x;
-          if (data.y) document.getElementById('yValues').value = data.y;
+          if (data.x) document.getElementById("xValues").value = data.x;
+          if (data.y) document.getElementById("yValues").value = data.y;
         } catch (e) {
           // ignore
         }
@@ -801,8 +854,8 @@
 
         try {
           var data = JSON.parse(decodeURIComponent(atob(hash)));
-          if (data.x) document.getElementById('xValues').value = data.x;
-          if (data.y) document.getElementById('yValues').value = data.y;
+          if (data.x) document.getElementById("xValues").value = data.x;
+          if (data.y) document.getElementById("yValues").value = data.y;
           setTimeout(analyze, 100);
         } catch (e) {
           // ignore
@@ -810,20 +863,22 @@
       }
 
       function showToast(msg, type) {
-        type = type || 'success';
-        var toast = document.getElementById('toast');
+        type = type || "success";
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.className = 'toast' + (type === 'error' ? ' error' : '');
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.className = "toast" + (type === "error" ? " error" : "");
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         loadFromStorage();
         loadFromUrl();
 
-        document.querySelectorAll('textarea').forEach(function(el) {
-          el.addEventListener('input', saveToStorage);
+        document.querySelectorAll("textarea").forEach(function (el) {
+          el.addEventListener("input", saveToStorage);
         });
       });
     </script>

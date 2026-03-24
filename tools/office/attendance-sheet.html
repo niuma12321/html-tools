@@ -7,16 +7,25 @@
     <meta property="og:title" content="考勤表 - WebUtils" />
     <meta property="og:description" content="考勤表：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/office/attendance-sheet.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/office/attendance-sheet.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/attendance-sheet.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/office/attendance-sheet.html"
+    />
     <meta name="description" content="考勤管理工具，支持添加人员、按日期记录出勤状态、导出CSV" />
     <meta name="keywords" content="考勤 签到 attendance 出勤 打卡 请假" />
     <meta name="author" content="WebUtils" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -38,7 +47,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -57,96 +67,557 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-      html{font-size:16px;-webkit-font-smoothing:antialiased}
-      body{font-family:var(--font-sans);background:var(--color-bg-deep);color:var(--color-text-primary);min-height:100vh;line-height:1.5;transition:background-color var(--transition-normal),color var(--transition-normal)}
-      body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 20% 20%,rgba(34,197,94,0.03) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(139,92,246,0.03) 0%,transparent 50%)}
-      .nav-bar{position:fixed;top:0;left:0;right:0;z-index:1000;height:calc(var(--nav-height) + var(--safe-area-top));padding-top:var(--safe-area-top);background:var(--glass-bg);backdrop-filter:saturate(var(--glass-saturate)) blur(var(--glass-blur));-webkit-backdrop-filter:saturate(var(--glass-saturate)) blur(var(--glass-blur));border-bottom:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center}
-      .nav-content{width:100%;max-width:var(--container-max);height:var(--nav-height);padding:0 var(--space-6);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--space-4)}
-      .nav-back{display:flex;align-items:center;gap:var(--space-1);color:var(--color-accent-primary);text-decoration:none;font-size:0.9375rem;font-weight:500;padding:var(--space-2) var(--space-1);margin-left:calc(var(--space-2) * -1);border-radius:var(--radius-sm);transition:all var(--transition-fast);justify-self:start}
-      .nav-back:hover{background:var(--color-border-subtle)}
-      .nav-back-icon{width:20px;height:20px;stroke-width:2.5}
-      .nav-back-text{display:inline}
-      .nav-title{font-size:1rem;font-weight:600;color:var(--color-text-primary);text-align:center}
-      .nav-actions{display:flex;align-items:center;gap:var(--space-2);justify-self:end}
-      .theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:none;border-radius:var(--radius-full);background:var(--color-bg-subtle);color:var(--color-text-secondary);cursor:pointer;transition:all var(--transition-fast)}
-      .theme-toggle:hover{background:var(--color-border-strong);color:var(--color-text-primary);transform:scale(1.05)}
-      .theme-toggle svg{width:18px;height:18px}
-      .theme-icon-dark,.theme-icon-light{display:none}
-      [data-theme="dark"] .theme-icon-light,:root:not([data-theme]) .theme-icon-light{display:block}
-      [data-theme="light"] .theme-icon-dark{display:block}
-      .main-content{position:relative;z-index:1;min-height:100vh;padding-top:calc(var(--nav-height) + var(--safe-area-top) + var(--space-5));padding-bottom:calc(var(--space-6) + var(--safe-area-bottom));padding-left:var(--space-6);padding-right:var(--space-6);display:flex;flex-direction:column;align-items:center}
-      .tool-card{width:100%;max-width:var(--container-max);background:var(--glass-bg);backdrop-filter:saturate(var(--glass-saturate)) blur(16px);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-lg);flex:1;display:flex;flex-direction:column;animation:fade-in-up 0.4s ease-out}
-      @keyframes fade-in-up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-      .tool-header{display:flex;align-items:center;gap:var(--space-4);margin-bottom:var(--space-5);padding-bottom:var(--space-5);border-bottom:1px solid var(--color-border-subtle)}
-      .tool-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--color-accent-primary),var(--color-accent-tertiary));border-radius:var(--radius-md);color:var(--color-bg-deep);box-shadow:0 4px 12px rgba(34,197,94,0.25)}
-      .tool-info h1{font-size:1.25rem;font-weight:700}
-      .tool-info .desc{font-size:0.875rem;color:var(--text-muted);margin-top:var(--space-1)}
-      .toolbar{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-5)}
-      .btn-group{display:flex;gap:2px;background:var(--color-bg-subtle);border-radius:var(--radius-sm);padding:2px}
-      .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);height:36px;padding:0 var(--space-4);font-family:var(--font-mono);font-size:0.8125rem;font-weight:500;color:var(--color-text-secondary);background:transparent;border:none;border-radius:var(--radius-sm);cursor:pointer;transition:all var(--transition-fast);white-space:nowrap}
-      .btn:hover{background:var(--color-bg-surface);color:var(--color-text-primary)}
-      .btn-primary{background:var(--color-accent-primary);color:var(--color-bg-deep)}
-      .btn-primary:hover{filter:brightness(1.1);box-shadow:var(--shadow-glow)}
-      .btn-danger{color:var(--color-error)}
-      .btn-danger:hover{background:rgba(239,68,68,0.15)}
-      .form-section{margin-bottom:var(--space-5)}
-      .form-section h3{font-size:0.875rem;font-weight:600;color:var(--color-text-secondary);margin-bottom:var(--space-3);text-transform:uppercase;letter-spacing:0.05em}
-      .form-row{display:flex;gap:var(--space-3);align-items:center;flex-wrap:wrap}
-      .form-row input{font-family:var(--font-sans);font-size:0.9375rem;padding:var(--space-2) var(--space-3);background:var(--color-bg-input);border:2px solid var(--color-border-default);border-radius:var(--radius-sm);color:var(--color-text-primary);transition:all var(--transition-fast)}
-      .form-row input:focus{outline:none;border-color:var(--color-accent-primary);box-shadow:0 0 0 3px rgba(34,197,94,0.15)}
-      .form-row input[type="text"]{flex:1;min-width:150px}
-      .form-row input[type="date"]{width:auto}
-      .date-nav{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-5);flex-wrap:wrap;justify-content:center}
-      .date-nav .btn{height:32px;padding:0 var(--space-3)}
-      .roster-table{width:100%;border-collapse:collapse;margin-bottom:var(--space-4)}
-      .roster-table th,.roster-table td{padding:var(--space-3);text-align:left;border-bottom:1px solid var(--color-border-default)}
-      .roster-table th{font-size:0.75rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;background:var(--color-bg-subtle)}
-      .roster-table td{font-size:0.875rem}
-      .roster-table .name-cell{font-weight:500}
-      .status-btns{display:flex;gap:var(--space-2);flex-wrap:wrap}
-      .status-btn{height:28px;padding:0 var(--space-2);border:2px solid var(--color-border-default);border-radius:var(--radius-sm);background:transparent;cursor:pointer;font-size:0.75rem;transition:all var(--transition-fast);display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
-      .status-btn:hover{border-color:var(--text-muted);color:var(--color-text-primary)}
-      .status-btn.active.present{background:var(--color-success);border-color:var(--color-success);color:#fff}
-      .status-btn.active.absent{background:var(--color-error);border-color:var(--color-error);color:#fff}
-      .status-btn.active.late{background:var(--color-warning);border-color:var(--color-warning);color:#fff}
-      .status-btn.active.leave{background:var(--color-info);border-color:var(--color-info);color:#fff}
-      .remove-btn{width:28px;height:28px;padding:0;color:var(--color-error);background:transparent;border:none;cursor:pointer;font-size:1rem;opacity:0.6}
-      .remove-btn:hover{opacity:1}
-      .summary-section{margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-border-subtle)}
-      .summary-section h3{font-size:0.875rem;font-weight:600;color:var(--color-text-secondary);margin-bottom:var(--space-3);text-transform:uppercase;letter-spacing:0.05em}
-      .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:var(--space-4)}
-      .summary-item{background:var(--color-bg-subtle);border-radius:var(--radius-sm);padding:var(--space-4);text-align:center}
-      .summary-item .value{font-size:1.5rem;font-weight:700;font-family:var(--font-mono)}
-      .summary-item .label{font-size:0.75rem;color:var(--text-muted);margin-top:var(--space-1)}
-      .summary-item.present .value{color:var(--color-success)}
-      .summary-item.absent .value{color:var(--color-error)}
-      .summary-item.late .value{color:var(--color-warning)}
-      .summary-item.leave .value{color:var(--color-info)}
-      .status-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4);margin-top:var(--space-5);padding-top:var(--space-5);border-top:1px solid var(--color-border-subtle)}
-      .status{font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-muted)}
-      .status.success{color:var(--color-success)}
-      .empty-state{text-align:center;padding:var(--space-8);color:var(--text-muted)}
-      .footer{text-align:center;margin-top:var(--space-5);padding-top:var(--space-4)}
-      .footer p{font-family:var(--font-mono);font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:var(--space-2);flex-wrap:wrap}
-      .footer a{color:var(--color-accent-primary);text-decoration:none}
-      .footer a:hover{color:var(--color-text-primary)}
-      @media (max-width:640px){:root{--nav-height:52px}.nav-content{padding:0 var(--space-4)}.nav-back-text{display:none}.main-content{padding:calc(var(--nav-height) + var(--safe-area-top) + var(--space-4)) var(--space-4) calc(var(--space-5) + var(--safe-area-bottom))}.tool-card{padding:var(--space-4);border-radius:var(--radius-md)}.roster-table{font-size:0.8125rem}.roster-table th,.roster-table td{padding:var(--space-2)}.status-btn{height:26px;padding:0 var(--space-1);font-size:0.6875rem}}
+
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 16px;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-bg-deep);
+        color: var(--color-text-primary);
+        min-height: 100vh;
+        line-height: 1.5;
+        transition:
+          background-color var(--transition-normal),
+          color var(--transition-normal);
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.03) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+      }
+      .nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: calc(var(--nav-height) + var(--safe-area-top));
+        padding-top: var(--safe-area-top);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        -webkit-backdrop-filter: saturate(var(--glass-saturate)) blur(var(--glass-blur));
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-content {
+        width: 100%;
+        max-width: var(--container-max);
+        height: var(--nav-height);
+        padding: 0 var(--space-6);
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: var(--space-4);
+      }
+      .nav-back {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        color: var(--color-accent-primary);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        padding: var(--space-2) var(--space-1);
+        margin-left: calc(var(--space-2) * -1);
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-fast);
+        justify-self: start;
+      }
+      .nav-back:hover {
+        background: var(--color-border-subtle);
+      }
+      .nav-back-icon {
+        width: 20px;
+        height: 20px;
+        stroke-width: 2.5;
+      }
+      .nav-back-text {
+        display: inline;
+      }
+      .nav-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        text-align: center;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        justify-self: end;
+      }
+      .theme-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: var(--radius-full);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+      .theme-toggle:hover {
+        background: var(--color-border-strong);
+        color: var(--color-text-primary);
+        transform: scale(1.05);
+      }
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+      .theme-icon-dark,
+      .theme-icon-light {
+        display: none;
+      }
+      [data-theme="dark"] .theme-icon-light,
+      :root:not([data-theme]) .theme-icon-light {
+        display: block;
+      }
+      [data-theme="light"] .theme-icon-dark {
+        display: block;
+      }
+      .main-content {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        padding-top: calc(var(--nav-height) + var(--safe-area-top) + var(--space-5));
+        padding-bottom: calc(var(--space-6) + var(--safe-area-bottom));
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .tool-card {
+        width: 100%;
+        max-width: var(--container-max);
+        background: var(--glass-bg);
+        backdrop-filter: saturate(var(--glass-saturate)) blur(16px);
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-6);
+        box-shadow: var(--shadow-lg);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        animation: fade-in-up 0.4s ease-out;
+      }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .tool-header {
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+        margin-bottom: var(--space-5);
+        padding-bottom: var(--space-5);
+        border-bottom: 1px solid var(--color-border-subtle);
+      }
+      .tool-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          var(--color-accent-primary),
+          var(--color-accent-tertiary)
+        );
+        border-radius: var(--radius-md);
+        color: var(--color-bg-deep);
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+      }
+      .tool-info h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+      .tool-info .desc {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-top: var(--space-1);
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-3);
+        margin-bottom: var(--space-5);
+      }
+      .btn-group {
+        display: flex;
+        gap: 2px;
+        background: var(--color-bg-subtle);
+        border-radius: var(--radius-sm);
+        padding: 2px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        height: 36px;
+        padding: 0 var(--space-4);
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        background: transparent;
+        border: none;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        white-space: nowrap;
+      }
+      .btn:hover {
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+      }
+      .btn-primary {
+        background: var(--color-accent-primary);
+        color: var(--color-bg-deep);
+      }
+      .btn-primary:hover {
+        filter: brightness(1.1);
+        box-shadow: var(--shadow-glow);
+      }
+      .btn-danger {
+        color: var(--color-error);
+      }
+      .btn-danger:hover {
+        background: rgba(239, 68, 68, 0.15);
+      }
+      .form-section {
+        margin-bottom: var(--space-5);
+      }
+      .form-section h3 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-3);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .form-row {
+        display: flex;
+        gap: var(--space-3);
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .form-row input {
+        font-family: var(--font-sans);
+        font-size: 0.9375rem;
+        padding: var(--space-2) var(--space-3);
+        background: var(--color-bg-input);
+        border: 2px solid var(--color-border-default);
+        border-radius: var(--radius-sm);
+        color: var(--color-text-primary);
+        transition: all var(--transition-fast);
+      }
+      .form-row input:focus {
+        outline: none;
+        border-color: var(--color-accent-primary);
+        box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+      }
+      .form-row input[type="text"] {
+        flex: 1;
+        min-width: 150px;
+      }
+      .form-row input[type="date"] {
+        width: auto;
+      }
+      .date-nav {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        margin-bottom: var(--space-5);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .date-nav .btn {
+        height: 32px;
+        padding: 0 var(--space-3);
+      }
+      .roster-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: var(--space-4);
+      }
+      .roster-table th,
+      .roster-table td {
+        padding: var(--space-3);
+        text-align: left;
+        border-bottom: 1px solid var(--color-border-default);
+      }
+      .roster-table th {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background: var(--color-bg-subtle);
+      }
+      .roster-table td {
+        font-size: 0.875rem;
+      }
+      .roster-table .name-cell {
+        font-weight: 500;
+      }
+      .status-btns {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+      .status-btn {
+        height: 28px;
+        padding: 0 var(--space-2);
+        border: 2px solid var(--color-border-default);
+        border-radius: var(--radius-sm);
+        background: transparent;
+        cursor: pointer;
+        font-size: 0.75rem;
+        transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+      }
+      .status-btn:hover {
+        border-color: var(--text-muted);
+        color: var(--color-text-primary);
+      }
+      .status-btn.active.present {
+        background: var(--color-success);
+        border-color: var(--color-success);
+        color: #fff;
+      }
+      .status-btn.active.absent {
+        background: var(--color-error);
+        border-color: var(--color-error);
+        color: #fff;
+      }
+      .status-btn.active.late {
+        background: var(--color-warning);
+        border-color: var(--color-warning);
+        color: #fff;
+      }
+      .status-btn.active.leave {
+        background: var(--color-info);
+        border-color: var(--color-info);
+        color: #fff;
+      }
+      .remove-btn {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        color: var(--color-error);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        opacity: 0.6;
+      }
+      .remove-btn:hover {
+        opacity: 1;
+      }
+      .summary-section {
+        margin-top: var(--space-5);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-border-subtle);
+      }
+      .summary-section h3 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-3);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: var(--space-4);
+      }
+      .summary-item {
+        background: var(--color-bg-subtle);
+        border-radius: var(--radius-sm);
+        padding: var(--space-4);
+        text-align: center;
+      }
+      .summary-item .value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: var(--font-mono);
+      }
+      .summary-item .label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: var(--space-1);
+      }
+      .summary-item.present .value {
+        color: var(--color-success);
+      }
+      .summary-item.absent .value {
+        color: var(--color-error);
+      }
+      .summary-item.late .value {
+        color: var(--color-warning);
+      }
+      .summary-item.leave .value {
+        color: var(--color-info);
+      }
+      .status-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: var(--space-4);
+        margin-top: var(--space-5);
+        padding-top: var(--space-5);
+        border-top: 1px solid var(--color-border-subtle);
+      }
+      .status {
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+      }
+      .status.success {
+        color: var(--color-success);
+      }
+      .empty-state {
+        text-align: center;
+        padding: var(--space-8);
+        color: var(--text-muted);
+      }
+      .footer {
+        text-align: center;
+        margin-top: var(--space-5);
+        padding-top: var(--space-4);
+      }
+      .footer p {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+      .footer a {
+        color: var(--color-accent-primary);
+        text-decoration: none;
+      }
+      .footer a:hover {
+        color: var(--color-text-primary);
+      }
+      @media (max-width: 640px) {
+        :root {
+          --nav-height: 52px;
+        }
+        .nav-content {
+          padding: 0 var(--space-4);
+        }
+        .nav-back-text {
+          display: none;
+        }
+        .main-content {
+          padding: calc(var(--nav-height) + var(--safe-area-top) + var(--space-4)) var(--space-4)
+            calc(var(--space-5) + var(--safe-area-bottom));
+        }
+        .tool-card {
+          padding: var(--space-4);
+          border-radius: var(--radius-md);
+        }
+        .roster-table {
+          font-size: 0.8125rem;
+        }
+        .roster-table th,
+        .roster-table td {
+          padding: var(--space-2);
+        }
+        .status-btn {
+          height: 26px;
+          padding: 0 var(--space-1);
+          font-size: 0.6875rem;
+        }
+      }
     </style>
   </head>
   <body>
     <nav class="nav-bar">
       <div class="nav-content">
         <a href="../../index.html" class="nav-back" aria-label="返回首页">
-          <svg class="nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg
+            class="nav-back-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
           <span class="nav-back-text">首页</span>
         </a>
         <h1 class="nav-title">考勤表</h1>
         <div class="nav-actions">
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-            <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg
+              class="theme-icon-light"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg
+              class="theme-icon-dark"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
           </button>
         </div>
       </div>
@@ -155,7 +626,19 @@
       <div class="tool-card">
         <div class="tool-header">
           <div class="tool-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <line x1="20" y1="8" x2="20" y2="14"></line>
+              <line x1="23" y1="11" x2="17" y2="11"></line>
+            </svg>
           </div>
           <div class="tool-info">
             <h1>考勤表</h1>
@@ -178,17 +661,32 @@
             <button id="btnToday" class="btn btn-primary">今天</button>
           </div>
         </div>
-        <div class="summary-section" style="margin-top:0;padding-top:0;border-top:none">
+        <div class="summary-section" style="margin-top: 0; padding-top: 0; border-top: none">
           <h3>统计</h3>
           <div class="summary-grid">
-            <div class="summary-item"><div class="value" id="totalCount">0</div><div class="label">总人数</div></div>
-            <div class="summary-item present"><div class="value" id="presentCount">0</div><div class="label">出勤</div></div>
-            <div class="summary-item absent"><div class="value" id="absentCount">0</div><div class="label">缺勤</div></div>
-            <div class="summary-item late"><div class="value" id="lateCount">0</div><div class="label">迟到</div></div>
-            <div class="summary-item leave"><div class="value" id="leaveCount">0</div><div class="label">请假</div></div>
+            <div class="summary-item">
+              <div class="value" id="totalCount">0</div>
+              <div class="label">总人数</div>
+            </div>
+            <div class="summary-item present">
+              <div class="value" id="presentCount">0</div>
+              <div class="label">出勤</div>
+            </div>
+            <div class="summary-item absent">
+              <div class="value" id="absentCount">0</div>
+              <div class="label">缺勤</div>
+            </div>
+            <div class="summary-item late">
+              <div class="value" id="lateCount">0</div>
+              <div class="label">迟到</div>
+            </div>
+            <div class="summary-item leave">
+              <div class="value" id="leaveCount">0</div>
+              <div class="label">请假</div>
+            </div>
           </div>
         </div>
-        <div class="form-section" style="margin-top:var(--space-5)">
+        <div class="form-section" style="margin-top: var(--space-5)">
           <h3>考勤记录</h3>
           <table class="roster-table">
             <thead>
@@ -200,7 +698,7 @@
             </thead>
             <tbody id="rosterBody"></tbody>
           </table>
-          <div id="emptyState" class="empty-state" style="display:none">暂无人员，请先添加</div>
+          <div id="emptyState" class="empty-state" style="display: none">暂无人员，请先添加</div>
         </div>
         <div class="toolbar">
           <div class="btn-group">
@@ -213,7 +711,15 @@
         </div>
       </div>
       <footer class="footer">
-        <p><a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">GitHub</a><span>·</span><span>纯前端 · 无服务器</span><span>·</span><a href="../../index.html">WebUtils</a></p>
+        <p>
+          <a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <span>·</span>
+          <span>纯前端 · 无服务器</span>
+          <span>·</span>
+          <a href="../../index.html">WebUtils</a>
+        </p>
       </footer>
     </main>
     <script>
@@ -244,7 +750,9 @@
             data = JSON.parse(saved);
             if (!data.roster) data.roster = [];
             if (!data.records) data.records = {};
-          } catch (e) { data = { roster: [], records: {} }; }
+          } catch (e) {
+            data = { roster: [], records: {} };
+          }
         }
       }
       function getCurrentDate() {
@@ -261,7 +769,9 @@
       }
       function getStatus(personId) {
         const date = getCurrentDate();
-        return data.records[date] && data.records[date][personId] ? data.records[date][personId] : null;
+        return data.records[date] && data.records[date][personId]
+          ? data.records[date][personId]
+          : null;
       }
       function setStatus(personId, status) {
         const date = getCurrentDate();
@@ -276,7 +786,7 @@
           emptyStateEl.style.display = "block";
         } else {
           emptyStateEl.style.display = "none";
-          data.roster.forEach(function(person) {
+          data.roster.forEach(function (person) {
             var tr = document.createElement("tr");
             var nameTd = document.createElement("td");
             nameTd.className = "name-cell";
@@ -285,13 +795,13 @@
             var btnsDiv = document.createElement("div");
             btnsDiv.className = "status-btns";
             var currentStatus = getStatus(person.id);
-            STATUS_LIST.forEach(function(st) {
+            STATUS_LIST.forEach(function (st) {
               var btn = document.createElement("button");
               btn.className = "status-btn " + st + (currentStatus === st ? " active" : "");
               btn.textContent = STATUS_LABEL[st];
               btn.setAttribute("data-person", person.id);
               btn.setAttribute("data-status", st);
-              btn.addEventListener("click", function() {
+              btn.addEventListener("click", function () {
                 setStatus(person.id, st);
               });
               btnsDiv.appendChild(btn);
@@ -302,10 +812,12 @@
             removeBtn.className = "remove-btn";
             removeBtn.textContent = "×";
             removeBtn.title = "删除人员";
-            removeBtn.addEventListener("click", function() {
+            removeBtn.addEventListener("click", function () {
               if (confirm("确定要删除「" + person.name + "」吗？该人员所有考勤记录也将被删除。")) {
-                data.roster = data.roster.filter(function(p) { return p.id !== person.id; });
-                Object.keys(data.records).forEach(function(d) {
+                data.roster = data.roster.filter(function (p) {
+                  return p.id !== person.id;
+                });
+                Object.keys(data.records).forEach(function (d) {
                   delete data.records[d][person.id];
                 });
                 saveToStorage();
@@ -325,8 +837,11 @@
         var date = getCurrentDate();
         var records = data.records[date] || {};
         var total = data.roster.length;
-        var present = 0, absent = 0, late = 0, leave = 0;
-        data.roster.forEach(function(p) {
+        var present = 0,
+          absent = 0,
+          late = 0,
+          leave = 0;
+        data.roster.forEach(function (p) {
           var st = records[p.id];
           if (st === "present") present++;
           else if (st === "absent") absent++;
@@ -339,10 +854,14 @@
         document.getElementById("lateCount").textContent = late;
         document.getElementById("leaveCount").textContent = leave;
       }
-      document.getElementById("btnAddName").addEventListener("click", function() {
+      document.getElementById("btnAddName").addEventListener("click", function () {
         var name = newNameEl.value.trim();
         if (!name) return;
-        if (data.roster.some(function(p) { return p.name === name; })) {
+        if (
+          data.roster.some(function (p) {
+            return p.name === name;
+          })
+        ) {
           alert("该姓名已存在");
           return;
         }
@@ -352,19 +871,29 @@
         renderRoster();
         newNameEl.focus();
       });
-      newNameEl.addEventListener("keydown", function(e) {
+      newNameEl.addEventListener("keydown", function (e) {
         if (e.key === "Enter") document.getElementById("btnAddName").click();
       });
       dateEl.addEventListener("change", renderRoster);
-      document.getElementById("btnPrevDay").addEventListener("click", function() { changeDate(-1); });
-      document.getElementById("btnNextDay").addEventListener("click", function() { changeDate(1); });
-      document.getElementById("btnToday").addEventListener("click", function() { setToday(); renderRoster(); });
-      document.getElementById("btnExport").addEventListener("click", function() {
-        if (data.roster.length === 0) { showStatus("没有数据可导出", ""); return; }
+      document.getElementById("btnPrevDay").addEventListener("click", function () {
+        changeDate(-1);
+      });
+      document.getElementById("btnNextDay").addEventListener("click", function () {
+        changeDate(1);
+      });
+      document.getElementById("btnToday").addEventListener("click", function () {
+        setToday();
+        renderRoster();
+      });
+      document.getElementById("btnExport").addEventListener("click", function () {
+        if (data.roster.length === 0) {
+          showStatus("没有数据可导出", "");
+          return;
+        }
         var date = getCurrentDate();
         var records = data.records[date] || {};
         var csv = "\uFEFF日期,姓名,状态\n";
-        data.roster.forEach(function(p) {
+        data.roster.forEach(function (p) {
           var st = records[p.id] || "未标记";
           var label = STATUS_LABEL[st] || st;
           csv += date + "," + p.name + "," + label + "\n";
@@ -378,7 +907,7 @@
         URL.revokeObjectURL(url);
         showStatus("已导出 CSV", "success");
       });
-      document.getElementById("btnClear").addEventListener("click", function() {
+      document.getElementById("btnClear").addEventListener("click", function () {
         if (confirm("确定要清空所有数据吗？此操作不可恢复。")) {
           data = { roster: [], records: {} };
           localStorage.removeItem(LS_KEY);
@@ -387,7 +916,7 @@
           showStatus("已清空", "success");
         }
       });
-      window.toggleTheme = function() {
+      window.toggleTheme = function () {
         var html = document.documentElement;
         var currentTheme = html.getAttribute("data-theme") || "dark";
         var newTheme = currentTheme === "light" ? "dark" : "light";

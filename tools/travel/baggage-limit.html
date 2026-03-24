@@ -12,7 +12,10 @@
     <meta property="og:title" content="行李限制查询 - WebUtils" />
     <meta property="og:description" content="查询各航空公司行李尺寸和重量限制" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/baggage-limit.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/baggage-limit.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -22,7 +25,10 @@
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -44,7 +50,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -63,8 +70,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -88,7 +99,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -122,9 +134,16 @@
         color: var(--color-text-secondary);
         text-decoration: none;
       }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -255,7 +274,9 @@
         border-radius: var(--radius-md);
         display: none;
       }
-      .detail-panel.show { display: block; }
+      .detail-panel.show {
+        display: block;
+      }
       .detail-title {
         font-family: var(--font-mono);
         font-size: 1.1rem;
@@ -313,9 +334,15 @@
         opacity: 1;
       }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .airlines-grid { grid-template-columns: 1fr; }
-        .baggage-info { grid-template-columns: 1fr; }
+        .container {
+          padding: 16px;
+        }
+        .airlines-grid {
+          grid-template-columns: 1fr;
+        }
+        .baggage-info {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -331,7 +358,10 @@
           <span class="breadcrumb-current">行李限制查询</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">✈️</span>行李限制查询</h1>
+          <h1>
+            <span class="icon">✈️</span>
+            行李限制查询
+          </h1>
           <p>查询各航空公司行李尺寸和重量限制</p>
         </div>
       </header>
@@ -339,7 +369,13 @@
       <main class="main-content">
         <div class="search-section">
           <div class="search-row">
-            <input type="text" class="search-input" id="searchInput" placeholder="搜索航空公司名称或代码..." oninput="filterAirlines()">
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="搜索航空公司名称或代码..."
+              oninput="filterAirlines()"
+            />
             <select class="cabin-select" id="cabinSelect" onchange="filterAirlines()">
               <option value="economy">经济舱</option>
               <option value="business">商务舱</option>
@@ -433,7 +469,12 @@
           cabin: {
             economy: {
               carryOn: { weight: "无限制", size: "56×36×23cm", pieces: 1 },
-              checked: { weight: "23kg", size: "三边之和≤157cm", pieces: 0, freeAllowance: "需付费" }
+              checked: {
+                weight: "23kg",
+                size: "三边之和≤157cm",
+                pieces: 0,
+                freeAllowance: "需付费"
+              }
             },
             business: {
               carryOn: { weight: "无限制", size: "56×36×23cm", pieces: 2 },
@@ -454,7 +495,12 @@
           cabin: {
             economy: {
               carryOn: { weight: "无限制", size: "56×35×22cm", pieces: 1 },
-              checked: { weight: "23kg", size: "三边之和≤157cm", pieces: 0, freeAllowance: "需付费" }
+              checked: {
+                weight: "23kg",
+                size: "三边之和≤157cm",
+                pieces: 0,
+                freeAllowance: "需付费"
+              }
             },
             business: {
               carryOn: { weight: "无限制", size: "56×35×22cm", pieces: 2 },
@@ -475,7 +521,12 @@
           cabin: {
             economy: {
               carryOn: { weight: "无限制", size: "56×35×23cm", pieces: 1 },
-              checked: { weight: "23kg", size: "三边之和≤157cm", pieces: 0, freeAllowance: "需付费" }
+              checked: {
+                weight: "23kg",
+                size: "三边之和≤157cm",
+                pieces: 0,
+                freeAllowance: "需付费"
+              }
             },
             business: {
               carryOn: { weight: "无限制", size: "56×35×23cm", pieces: 2 },
@@ -709,7 +760,7 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      (function() {
+      (function () {
         const saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -719,50 +770,54 @@
       function filterAirlines() {
         const search = document.getElementById("searchInput").value.toLowerCase();
         const cabin = document.getElementById("cabinSelect").value;
-        
-        const filtered = airlines.filter(function(a) {
-          return a.name.toLowerCase().includes(search) ||
+
+        const filtered = airlines.filter(function (a) {
+          return (
+            a.name.toLowerCase().includes(search) ||
             a.nameEn.toLowerCase().includes(search) ||
             a.code.toLowerCase().includes(search) ||
-            a.region.toLowerCase().includes(search);
+            a.region.toLowerCase().includes(search)
+          );
         });
-        
+
         renderAirlines(filtered, cabin);
       }
 
       function renderAirlines(list, cabin) {
         const grid = document.getElementById("airlinesGrid");
         grid.textContent = "";
-        
-        list.forEach(function(airline) {
+
+        list.forEach(function (airline) {
           const info = airline.cabin[cabin];
-          
+
           const card = document.createElement("div");
           card.className = "airline-card" + (selectedAirline === airline.code ? " selected" : "");
-          card.onclick = function() { showDetail(airline.code); };
-          
+          card.onclick = function () {
+            showDetail(airline.code);
+          };
+
           const header = document.createElement("div");
           header.className = "airline-header";
-          
+
           const code = document.createElement("span");
           code.className = "airline-code";
           code.textContent = airline.code;
-          
+
           const name = document.createElement("span");
           name.className = "airline-name";
           name.textContent = airline.name;
-          
+
           const region = document.createElement("span");
           region.className = "airline-region";
           region.textContent = airline.region;
-          
+
           header.appendChild(code);
           header.appendChild(name);
           header.appendChild(region);
-          
+
           const baggageInfo = document.createElement("div");
           baggageInfo.className = "baggage-info";
-          
+
           const carryOnItem = document.createElement("div");
           carryOnItem.className = "baggage-item";
           const carryOnLabel = document.createElement("div");
@@ -777,7 +832,7 @@
           carryOnItem.appendChild(carryOnLabel);
           carryOnItem.appendChild(carryOnValue);
           carryOnItem.appendChild(carryOnDetail);
-          
+
           const checkedItem = document.createElement("div");
           checkedItem.className = "baggage-item";
           const checkedLabel = document.createElement("div");
@@ -792,10 +847,10 @@
           checkedItem.appendChild(checkedLabel);
           checkedItem.appendChild(checkedValue);
           checkedItem.appendChild(checkedDetail);
-          
+
           baggageInfo.appendChild(carryOnItem);
           baggageInfo.appendChild(checkedItem);
-          
+
           card.appendChild(header);
           card.appendChild(baggageInfo);
           grid.appendChild(card);
@@ -804,7 +859,9 @@
 
       function showDetail(code) {
         selectedAirline = code;
-        var airline = airlines.find(function(a) { return a.code === code; });
+        var airline = airlines.find(function (a) {
+          return a.code === code;
+        });
         var cabin = document.getElementById("cabinSelect").value;
         var cabinNames = { economy: "经济舱", business: "商务舱", first: "头等舱" };
         var info = airline.cabin[cabin];
@@ -815,11 +872,13 @@
         codeSpan.className = "airline-code";
         codeSpan.textContent = airline.code;
         titleEl.appendChild(codeSpan);
-        titleEl.appendChild(document.createTextNode(" " + airline.name + " - " + cabinNames[cabin] + "行李规定"));
+        titleEl.appendChild(
+          document.createTextNode(" " + airline.name + " - " + cabinNames[cabin] + "行李规定")
+        );
 
         var detailGrid = document.getElementById("detailGrid");
         detailGrid.textContent = "";
-        
+
         var items = [
           { label: "手提行李重量", value: info.carryOn.weight },
           { label: "手提行李尺寸", value: info.carryOn.size },
@@ -828,8 +887,8 @@
           { label: "托运单件重量上限", value: info.checked.weight },
           { label: "托运尺寸限制", value: info.checked.size }
         ];
-        
-        items.forEach(function(item) {
+
+        items.forEach(function (item) {
           var div = document.createElement("div");
           div.className = "detail-item";
           var labelDiv = document.createElement("div");
@@ -845,7 +904,7 @@
 
         document.getElementById("noteBox").textContent = "⚠️ " + airline.notes;
         document.getElementById("detailPanel").classList.add("show");
-        
+
         filterAirlines();
       }
 
@@ -853,7 +912,9 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize

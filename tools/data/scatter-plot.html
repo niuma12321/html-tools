@@ -87,7 +87,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -106,7 +107,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -527,11 +528,14 @@
               </div>
               <div class="input-group">
                 <label class="input-label">数据点 (每行一个: X,Y)</label>
-                <textarea id="dataInput" placeholder="1,2
+                <textarea
+                  id="dataInput"
+                  placeholder="1,2
 3,5
 4,8
 6,3
-8,10"></textarea>
+8,10"
+                ></textarea>
                 <div class="help-text">格式: X,Y (每行一个数据点，用逗号分隔)</div>
               </div>
               <div class="config-grid">
@@ -588,7 +592,9 @@
               <div class="section-title">图表预览</div>
               <div class="chart-container" id="chartContainer">
                 <canvas id="chartCanvas"></canvas>
-                <div class="chart-placeholder" id="chartPlaceholder">添加数据并点击"生成图表"预览</div>
+                <div class="chart-placeholder" id="chartPlaceholder">
+                  添加数据并点击"生成图表"预览
+                </div>
               </div>
               <div class="btn-row" style="margin-top: 16px">
                 <button class="btn btn-success" onclick="exportPNG()">💾 导出 PNG</button>
@@ -617,7 +623,7 @@
         "#a855f7",
         "#3b82f6",
         "#ef4444",
-        "#06b6d4",
+        "#06b6d4"
       ];
 
       // 主题切换
@@ -687,7 +693,9 @@
       // 添加数据系列
       function addSeries() {
         const input = document.getElementById("dataInput").value;
-        const name = document.getElementById("seriesName").value.trim() || ("数据系列 " + (dataSeries.length + 1));
+        const name =
+          document.getElementById("seriesName").value.trim() ||
+          "数据系列 " + (dataSeries.length + 1);
         const color = document.getElementById("pointColor").value;
         const pointSize = parseInt(document.getElementById("pointSize").value) || 8;
 
@@ -713,7 +721,7 @@
           name: name,
           color: color,
           pointSize: pointSize,
-          data: points,
+          data: points
         });
 
         // 更新UI
@@ -723,9 +731,10 @@
         // 清空输入并设置下一个系列的默认值
         document.getElementById("dataInput").value = "";
         document.getElementById("seriesName").value = "数据系列 " + (dataSeries.length + 1);
-        document.getElementById("pointColor").value = PRESET_COLORS[dataSeries.length % PRESET_COLORS.length];
+        document.getElementById("pointColor").value =
+          PRESET_COLORS[dataSeries.length % PRESET_COLORS.length];
 
-        showToast("已添加 \"" + name + "\" (" + points.length + " 个点)");
+        showToast('已添加 "' + name + '" (' + points.length + " 个点)");
       }
 
       // 创建系列项元素（安全的DOM方式）
@@ -847,7 +856,7 @@
             backgroundColor: series.color,
             borderColor: series.color,
             pointRadius: series.pointSize,
-            pointHoverRadius: series.pointSize + 3,
+            pointHoverRadius: series.pointSize + 3
           };
         });
 
@@ -865,8 +874,8 @@
                 font: {
                   size: 16,
                   weight: "bold",
-                  family: "'Space Grotesk', sans-serif",
-                },
+                  family: "'Space Grotesk', sans-serif"
+                }
               },
               legend: {
                 display: dataSeries.length > 1,
@@ -874,19 +883,26 @@
                 labels: {
                   color: textColor,
                   font: {
-                    family: "'JetBrains Mono', monospace",
+                    family: "'JetBrains Mono', monospace"
                   },
                   usePointStyle: true,
-                  pointStyle: "circle",
-                },
+                  pointStyle: "circle"
+                }
               },
               tooltip: {
                 callbacks: {
                   label: function (context) {
-                    return context.dataset.label + ": (" + context.parsed.x + ", " + context.parsed.y + ")";
-                  },
-                },
-              },
+                    return (
+                      context.dataset.label +
+                      ": (" +
+                      context.parsed.x +
+                      ", " +
+                      context.parsed.y +
+                      ")"
+                    );
+                  }
+                }
+              }
             },
             scales: {
               x: {
@@ -895,15 +911,15 @@
                   text: xAxisLabel,
                   color: textColor,
                   font: {
-                    family: "'Space Grotesk', sans-serif",
-                  },
+                    family: "'Space Grotesk', sans-serif"
+                  }
                 },
                 ticks: {
-                  color: textColor,
+                  color: textColor
                 },
                 grid: {
-                  color: gridColor,
-                },
+                  color: gridColor
+                }
               },
               y: {
                 title: {
@@ -911,18 +927,18 @@
                   text: yAxisLabel,
                   color: textColor,
                   font: {
-                    family: "'Space Grotesk', sans-serif",
-                  },
+                    family: "'Space Grotesk', sans-serif"
+                  }
                 },
                 ticks: {
-                  color: textColor,
+                  color: textColor
                 },
                 grid: {
-                  color: gridColor,
-                },
-              },
-            },
-          },
+                  color: gridColor
+                }
+              }
+            }
+          }
         });
 
         saveToStorage();
@@ -962,8 +978,8 @@
           config: {
             title: document.getElementById("chartTitle").value,
             xLabel: document.getElementById("xAxisLabel").value,
-            yLabel: document.getElementById("yAxisLabel").value,
-          },
+            yLabel: document.getElementById("yAxisLabel").value
+          }
         };
 
         const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
@@ -983,7 +999,14 @@
           const state = JSON.parse(decodeURIComponent(atob(hash)));
           if (state.series && state.series.length > 0) {
             dataSeries = state.series;
-            seriesIdCounter = Math.max.apply(null, dataSeries.map(function (s) { return s.id || 0; }).concat([0]));
+            seriesIdCounter = Math.max.apply(
+              null,
+              dataSeries
+                .map(function (s) {
+                  return s.id || 0;
+                })
+                .concat([0])
+            );
 
             if (state.config) {
               document.getElementById("chartTitle").value = state.config.title || "散点图";
@@ -1008,8 +1031,8 @@
           config: {
             title: document.getElementById("chartTitle").value,
             xLabel: document.getElementById("xAxisLabel").value,
-            yLabel: document.getElementById("yAxisLabel").value,
-          },
+            yLabel: document.getElementById("yAxisLabel").value
+          }
         };
         localStorage.setItem(LS_KEY, JSON.stringify(state));
       }
@@ -1023,7 +1046,14 @@
           const state = JSON.parse(saved);
           if (state.series && state.series.length > 0) {
             dataSeries = state.series;
-            seriesIdCounter = Math.max.apply(null, dataSeries.map(function (s) { return s.id || 0; }).concat([0]));
+            seriesIdCounter = Math.max.apply(
+              null,
+              dataSeries
+                .map(function (s) {
+                  return s.id || 0;
+                })
+                .concat([0])
+            );
 
             if (state.config) {
               document.getElementById("chartTitle").value = state.config.title || "散点图";
@@ -1063,7 +1093,8 @@
           document.getElementById("pointColor").value = PRESET_COLORS[0];
         } else {
           document.getElementById("seriesName").value = "数据系列 " + (dataSeries.length + 1);
-          document.getElementById("pointColor").value = PRESET_COLORS[dataSeries.length % PRESET_COLORS.length];
+          document.getElementById("pointColor").value =
+            PRESET_COLORS[dataSeries.length % PRESET_COLORS.length];
         }
       })();
     </script>

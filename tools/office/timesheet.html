@@ -6,7 +6,10 @@
     <title>工时记录 - WebUtils</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出" />
+    <meta
+      name="description"
+      content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出"
+    />
     <meta name="keywords" content="工时 timesheet 时间追踪 工作时间 工时计算" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -14,7 +17,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="工时记录 - WebUtils" />
-    <meta property="og:description" content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出" />
+    <meta
+      property="og:description"
+      content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/office/timesheet.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -23,7 +29,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="工时记录 - WebUtils" />
-    <meta name="twitter:description" content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出" />
+    <meta
+      name="twitter:description"
+      content="工时记录工具，追踪工作时间，自动计算工时，支持周汇总和CSV导出"
+    />
 
     <!-- JSON-LD BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -85,7 +94,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -106,7 +116,6 @@
       }
 
       /* Light Theme */
-      
 
       /* ============================================
          Base Styles
@@ -732,8 +741,7 @@
                   <th>操作</th>
                 </tr>
               </thead>
-              <tbody id="entriesBody">
-              </tbody>
+              <tbody id="entriesBody"></tbody>
             </table>
           </div>
         </div>
@@ -1039,10 +1047,22 @@
 
         var headers = ["日期", "项目/任务", "开始时间", "结束时间", "工时(小时)"];
         var rows = entries.map(function (e) {
-          return [e.date, '"' + e.project.replace(/"/g, '""') + '"', e.start, e.end, e.hours.toFixed(2)];
+          return [
+            e.date,
+            '"' + e.project.replace(/"/g, '""') + '"',
+            e.start,
+            e.end,
+            e.hours.toFixed(2)
+          ];
         });
 
-        var csvContent = [headers.join(",")].concat(rows.map(function (r) { return r.join(","); })).join("\n");
+        var csvContent = [headers.join(",")]
+          .concat(
+            rows.map(function (r) {
+              return r.join(",");
+            })
+          )
+          .join("\n");
 
         // Add BOM for Excel compatibility
         var bom = "\uFEFF";

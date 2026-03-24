@@ -7,7 +7,10 @@
     <meta property="og:title" content="驾驶方向查询 - WebUtils" />
     <meta property="og:description" content="驾驶方向查询：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/driving-side.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/driving-side.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/travel/driving-side.html" />
@@ -40,7 +43,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,8 +63,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -92,7 +100,9 @@
         z-index: 100;
         transition: all 0.2s;
       }
-      .theme-toggle:hover { transform: scale(1.1); }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
       .container {
         position: relative;
         z-index: 1;
@@ -124,10 +134,19 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .breadcrumb a:hover { color: var(--color-accent-cyan); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
-      .title-section { flex: 1; }
+      .breadcrumb a:hover {
+        color: var(--color-accent-cyan);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      .title-section {
+        flex: 1;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -167,8 +186,12 @@
         font-size: 2.5rem;
         font-weight: 700;
       }
-      .stat-card.left-drive .stat-number { color: var(--accent-blue); }
-      .stat-card.right-drive .stat-number { color: var(--accent-yellow); }
+      .stat-card.left-drive .stat-number {
+        color: var(--accent-blue);
+      }
+      .stat-card.right-drive .stat-number {
+        color: var(--accent-yellow);
+      }
       .stat-label {
         font-size: 0.85rem;
         color: var(--color-text-secondary);
@@ -192,7 +215,9 @@
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .input-group { margin-bottom: 20px; }
+      .input-group {
+        margin-bottom: 20px;
+      }
       .input-label {
         display: block;
         font-family: var(--font-mono);
@@ -493,12 +518,26 @@
         opacity: 1;
       }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .stats-grid { gap: 12px; }
-        .stat-number { font-size: 1.8rem; }
-        .side-indicator { padding: 16px 32px; font-size: 1.2rem; }
-        .lane { width: 60px; height: 80px; }
-        .car-icon { font-size: 2rem; }
+        .container {
+          padding: 16px;
+        }
+        .stats-grid {
+          gap: 12px;
+        }
+        .stat-number {
+          font-size: 1.8rem;
+        }
+        .side-indicator {
+          padding: 16px 32px;
+          font-size: 1.2rem;
+        }
+        .lane {
+          width: 60px;
+          height: 80px;
+        }
+        .car-icon {
+          font-size: 2rem;
+        }
       }
     </style>
   </head>
@@ -533,27 +572,41 @@
 
       <main class="main-content">
         <div class="section-title">选择国家</div>
-        
+
         <div class="input-group">
           <label class="input-label">搜索或选择国家</label>
           <div class="search-wrapper">
-            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg
+              class="search-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <circle cx="11" cy="11" r="8"></circle>
               <path d="m21 21-4.35-4.35"></path>
             </svg>
-            <input type="text" class="search-input" id="searchInput" placeholder="输入国家名称搜索..." autocomplete="off" />
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="输入国家名称搜索..."
+              autocomplete="off"
+            />
           </div>
           <select id="countrySelect" onchange="updateResult()">
             <option value="">-- 请选择国家 --</option>
           </select>
         </div>
 
-        <div id="resultCard" class="result-card" style="display: none;">
+        <div id="resultCard" class="result-card" style="display: none">
           <div class="result-header">
             <span class="country-flag" id="countryFlag"></span>
             <span class="country-name" id="countryName"></span>
           </div>
-          
+
           <div class="driving-side">
             <div class="side-indicator" id="sideIndicator">
               <div class="side-icon" id="sideIcon"></div>
@@ -571,7 +624,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="steering-info">
             <div class="steering-label">方向盘位置</div>
             <div class="steering-value" id="steeringPosition">-</div>
@@ -755,7 +808,7 @@
       }
 
       // Load theme
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -767,14 +820,16 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Update statistics
       function updateStats() {
         var leftCount = 0;
         var rightCount = 0;
-        Object.keys(COUNTRIES).forEach(function(code) {
+        Object.keys(COUNTRIES).forEach(function (code) {
           if (COUNTRIES[code].side === "left") {
             leftCount++;
           } else {
@@ -789,15 +844,15 @@
       function initCountrySelect() {
         var select = document.getElementById("countrySelect");
         select.innerHTML = '<option value="">-- 请选择国家 --</option>';
-        
-        var countries = Object.keys(COUNTRIES).map(function(code) {
+
+        var countries = Object.keys(COUNTRIES).map(function (code) {
           return { code: code, data: COUNTRIES[code] };
         });
-        countries.sort(function(a, b) {
+        countries.sort(function (a, b) {
           return a.data.name.localeCompare(b.data.name, "zh-CN");
         });
-        
-        countries.forEach(function(item) {
+
+        countries.forEach(function (item) {
           var option = document.createElement("option");
           option.value = item.code;
           option.textContent = item.data.flag + " " + item.data.name;
@@ -809,44 +864,48 @@
       function renderCountryList() {
         var list = document.getElementById("countryList");
         list.innerHTML = "";
-        
-        var countries = Object.keys(COUNTRIES).map(function(code) {
+
+        var countries = Object.keys(COUNTRIES).map(function (code) {
           return { code: code, data: COUNTRIES[code] };
         });
-        
+
         // Filter by side
         if (currentFilter !== "all") {
-          countries = countries.filter(function(item) {
+          countries = countries.filter(function (item) {
             return item.data.side === currentFilter;
           });
         }
-        
+
         // Filter by search term
         if (searchTerm) {
           var term = searchTerm.toLowerCase();
-          countries = countries.filter(function(item) {
-            return item.data.name.toLowerCase().indexOf(term) !== -1 ||
-                   item.code.toLowerCase().indexOf(term) !== -1;
+          countries = countries.filter(function (item) {
+            return (
+              item.data.name.toLowerCase().indexOf(term) !== -1 ||
+              item.code.toLowerCase().indexOf(term) !== -1
+            );
           });
         }
-        
-        countries.sort(function(a, b) {
+
+        countries.sort(function (a, b) {
           return a.data.name.localeCompare(b.data.name, "zh-CN");
         });
-        
+
         if (countries.length === 0) {
           list.innerHTML = '<div class="no-results">未找到匹配的国家</div>';
           return;
         }
-        
-        countries.forEach(function(item) {
+
+        countries.forEach(function (item) {
           var tag = document.createElement("span");
           tag.className = "country-tag " + item.data.side + "-side";
           tag.textContent = item.data.flag + " " + item.data.name;
-          tag.onclick = function() {
+          tag.onclick = function () {
             document.getElementById("countrySelect").value = item.code;
             updateResult();
-            document.getElementById("resultCard").scrollIntoView({ behavior: "smooth", block: "center" });
+            document
+              .getElementById("resultCard")
+              .scrollIntoView({ behavior: "smooth", block: "center" });
           };
           list.appendChild(tag);
         });
@@ -862,7 +921,7 @@
       function updateResult() {
         var code = document.getElementById("countrySelect").value;
         var resultCard = document.getElementById("resultCard");
-        
+
         if (!code || !COUNTRIES[code]) {
           resultCard.style.display = "none";
           return;
@@ -870,17 +929,17 @@
 
         var country = COUNTRIES[code];
         resultCard.style.display = "block";
-        
+
         document.getElementById("countryFlag").textContent = country.flag;
         document.getElementById("countryName").textContent = country.name;
-        
+
         var indicator = document.getElementById("sideIndicator");
         var icon = document.getElementById("sideIcon");
         var text = document.getElementById("sideText");
         var steering = document.getElementById("steeringPosition");
         var carIcon = document.getElementById("carIcon");
         var laneLabel = document.getElementById("laneLabel");
-        
+
         if (country.side === "left") {
           indicator.className = "side-indicator side-left";
           icon.textContent = "⬅️";
@@ -903,30 +962,31 @@
       }
 
       // Search input handler
-      document.getElementById("searchInput").addEventListener("input", function(e) {
+      document.getElementById("searchInput").addEventListener("input", function (e) {
         searchTerm = e.target.value;
         renderCountryList();
-        
+
         // Also filter the select dropdown
         var select = document.getElementById("countrySelect");
         var options = select.querySelectorAll("option");
         var term = searchTerm.toLowerCase();
-        
-        options.forEach(function(opt) {
+
+        options.forEach(function (opt) {
           if (opt.value === "") return;
           var country = COUNTRIES[opt.value];
           if (country) {
-            var match = country.name.toLowerCase().indexOf(term) !== -1 ||
-                       opt.value.toLowerCase().indexOf(term) !== -1;
+            var match =
+              country.name.toLowerCase().indexOf(term) !== -1 ||
+              opt.value.toLowerCase().indexOf(term) !== -1;
             opt.style.display = match || !searchTerm ? "" : "none";
           }
         });
       });
 
       // Filter tabs
-      document.querySelectorAll(".filter-tab").forEach(function(tab) {
-        tab.addEventListener("click", function() {
-          document.querySelectorAll(".filter-tab").forEach(function(t) {
+      document.querySelectorAll(".filter-tab").forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          document.querySelectorAll(".filter-tab").forEach(function (t) {
             t.classList.remove("active");
           });
           this.classList.add("active");
@@ -944,11 +1004,11 @@
       }
 
       // Initialize
-      (function() {
+      (function () {
         updateStats();
         initCountrySelect();
         renderCountryList();
-        
+
         // Load from URL hash first, then localStorage
         var hash = window.location.hash.slice(1);
         if (hash && COUNTRIES[hash]) {

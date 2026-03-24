@@ -53,7 +53,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -72,8 +73,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       .theme-toggle {
         position: fixed;
@@ -391,7 +390,9 @@
           <textarea id="textInput" placeholder="输入汉字，自动标注拼音..."></textarea>
 
           <div class="quick-input">
-            <span style="color: var(--text-secondary); font-size: 0.9rem; line-height: 32px">示例：</span>
+            <span style="color: var(--text-secondary); font-size: 0.9rem; line-height: 32px">
+              示例：
+            </span>
             <span class="quick-item" onclick="setExample('中华人民共和国')">中华人民共和国</span>
             <span class="quick-item" onclick="setExample('床前明月光')">床前明月光</span>
             <span class="quick-item" onclick="setExample('学而时习之')">学而时习之</span>
@@ -409,7 +410,9 @@
           <textarea id="numberInput" placeholder="输入数字声调拼音，如：zhong1 guo2"></textarea>
 
           <div class="quick-input">
-            <span style="color: var(--text-secondary); font-size: 0.9rem; line-height: 32px">示例：</span>
+            <span style="color: var(--text-secondary); font-size: 0.9rem; line-height: 32px">
+              示例：
+            </span>
             <span class="quick-item" onclick="setNumberExample('ni3 hao3')">ni3 hao3</span>
             <span class="quick-item" onclick="setNumberExample('zhong1 guo2')">zhong1 guo2</span>
             <span class="quick-item" onclick="setNumberExample('pin1 yin1')">pin1 yin1</span>

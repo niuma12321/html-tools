@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>签证查询 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息" />
+    <meta
+      name="description"
+      content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息"
+    />
     <meta name="keywords" content="visa 签证 passport 护照 免签 落地签 电子签证 中国护照" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="签证查询 - WebUtils" />
-    <meta property="og:description" content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息" />
+    <meta
+      property="og:description"
+      content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -25,7 +31,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="签证查询 - WebUtils" />
-    <meta name="twitter:description" content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息" />
+    <meta
+      name="twitter:description"
+      content="查询中国护照前往各国的签证要求，包括免签、落地签、电子签证等信息"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -88,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -107,8 +117,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       .theme-toggle {
         position: fixed;
@@ -586,10 +594,18 @@
         font-weight: 700;
       }
 
-      .stat-value.green { color: var(--accent-green); }
-      .stat-value.yellow { color: var(--accent-yellow); }
-      .stat-value.blue { color: var(--accent-blue); }
-      .stat-value.red { color: var(--accent-red); }
+      .stat-value.green {
+        color: var(--accent-green);
+      }
+      .stat-value.yellow {
+        color: var(--accent-yellow);
+      }
+      .stat-value.blue {
+        color: var(--accent-blue);
+      }
+      .stat-value.red {
+        color: var(--accent-red);
+      }
 
       .stat-label {
         font-family: var(--font-mono);
@@ -655,7 +671,8 @@
         <!-- Selection Section -->
         <div class="tool-section">
           <div class="section-title">
-            <span>📋</span> 选择护照和目的地
+            <span>📋</span>
+            选择护照和目的地
           </div>
           <div class="row">
             <div class="input-group">
@@ -692,7 +709,8 @@
         <!-- Result Section -->
         <div class="tool-section">
           <div class="section-title">
-            <span>📄</span> 签证要求
+            <span>📄</span>
+            签证要求
           </div>
           <div class="result-card" id="resultCard">
             <div class="result-header">
@@ -722,7 +740,14 @@
               本工具提供的签证信息仅供参考，可能不是最新数据。签证政策随时可能变化，
               出行前请务必通过以下渠道核实最新要求：
             </p>
-            <ul style="margin-top: 8px; padding-left: 20px; color: var(--color-text-secondary); font-size: 0.85rem;">
+            <ul
+              style="
+                margin-top: 8px;
+                padding-left: 20px;
+                color: var(--color-text-secondary);
+                font-size: 0.85rem;
+              "
+            >
               <li>目的地国家/地区的官方大使馆或领事馆网站</li>
               <li>中国外交部领事服务网 (cs.mfa.gov.cn)</li>
               <li>专业签证服务机构</li>
@@ -733,7 +758,8 @@
         <!-- Stats Section -->
         <div class="tool-section">
           <div class="section-title">
-            <span>📊</span> 中国护照免签/落地签统计
+            <span>📊</span>
+            中国护照免签/落地签统计
           </div>
           <div class="stats-summary">
             <div class="stat-item">
@@ -773,134 +799,457 @@
       var VISA_DATA = {
         CN: {
           // Asia - Visa Free
-          JP: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["2024年11月起单次免签30天", "需持有效护照", "需有返程机票"] },
-          KR: { type: VISA_TYPES.VISA_FREE, days: 15, notes: ["2024年11月起试行免签15天", "需持有效护照", "需有返程机票"] },
-          SG: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["2024年2月起互免签证", "可停留30天", "需有返程机票和足够资金"] },
-          TH: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["2024年3月起永久互免签证", "可停留30天", "需有返程机票"] },
-          MY: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["2023年12月起互免签证", "可停留30天", "需有返程机票和酒店预订"] },
-          KZ: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["2024年11月起互免签证", "可停留30天"] },
-          AE: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天", "可续签30天"] },
+          JP: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["2024年11月起单次免签30天", "需持有效护照", "需有返程机票"]
+          },
+          KR: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 15,
+            notes: ["2024年11月起试行免签15天", "需持有效护照", "需有返程机票"]
+          },
+          SG: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["2024年2月起互免签证", "可停留30天", "需有返程机票和足够资金"]
+          },
+          TH: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["2024年3月起永久互免签证", "可停留30天", "需有返程机票"]
+          },
+          MY: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["2023年12月起互免签证", "可停留30天", "需有返程机票和酒店预订"]
+          },
+          KZ: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["2024年11月起互免签证", "可停留30天"]
+          },
+          AE: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["免签入境", "可停留30天", "可续签30天"]
+          },
           QA: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           GE: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           AM: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "180天内可停留90天"] },
           AZ: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
-          
+
           // Asia - Visa on Arrival
-          KH: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 30, notes: ["落地签费用约30美元", "需准备2寸照片", "建议提前申请电子签"] },
-          LA: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 20, notes: ["落地签费用约20美元", "需准备2寸照片"] },
-          NP: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 30, notes: ["落地签费用约30美元", "需准备照片和美元现金"] },
-          LK: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 50, notes: ["建议提前申请ETA电子签", "落地签费用约50美元"] },
-          MV: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 0, notes: ["免费落地签", "需有酒店预订和返程机票"] },
-          ID: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 35, notes: ["落地签费用约35美元", "巴厘岛等主要口岸可办理", "建议提前申请电子签"] },
-          BD: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 51, notes: ["落地签费用约51美元", "需有邀请函或酒店预订"] },
-          JO: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 40, notes: ["落地签费用约40约旦第纳尔"] },
-          BH: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 14, fee: 25, notes: ["落地签费用约25巴林第纳尔", "可延期至1个月"] },
-          OM: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 20, notes: ["落地签费用约20阿曼里亚尔"] },
+          KH: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 30,
+            notes: ["落地签费用约30美元", "需准备2寸照片", "建议提前申请电子签"]
+          },
+          LA: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 20,
+            notes: ["落地签费用约20美元", "需准备2寸照片"]
+          },
+          NP: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 30,
+            notes: ["落地签费用约30美元", "需准备照片和美元现金"]
+          },
+          LK: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 50,
+            notes: ["建议提前申请ETA电子签", "落地签费用约50美元"]
+          },
+          MV: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 0,
+            notes: ["免费落地签", "需有酒店预订和返程机票"]
+          },
+          ID: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 35,
+            notes: ["落地签费用约35美元", "巴厘岛等主要口岸可办理", "建议提前申请电子签"]
+          },
+          BD: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 51,
+            notes: ["落地签费用约51美元", "需有邀请函或酒店预订"]
+          },
+          JO: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 40,
+            notes: ["落地签费用约40约旦第纳尔"]
+          },
+          BH: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 14,
+            fee: 25,
+            notes: ["落地签费用约25巴林第纳尔", "可延期至1个月"]
+          },
+          OM: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 20,
+            notes: ["落地签费用约20阿曼里亚尔"]
+          },
 
           // Asia - E-Visa
-          VN: { type: VISA_TYPES.E_VISA, days: 30, fee: 25, notes: ["电子签费用约25美元", "可在线申请", "处理时间约3个工作日"] },
-          IN: { type: VISA_TYPES.E_VISA, days: 30, fee: 25, notes: ["电子签费用约25美元", "需提前申请", "可多次入境"] },
-          MM: { type: VISA_TYPES.E_VISA, days: 28, fee: 50, notes: ["电子签费用约50美元", "仅限旅游签"] },
-          PK: { type: VISA_TYPES.E_VISA, days: 30, fee: 60, notes: ["电子签费用约60美元", "处理时间约7-10个工作日"] },
-          UZ: { type: VISA_TYPES.E_VISA, days: 30, fee: 20, notes: ["电子签费用约20美元", "可在线申请"] },
+          VN: {
+            type: VISA_TYPES.E_VISA,
+            days: 30,
+            fee: 25,
+            notes: ["电子签费用约25美元", "可在线申请", "处理时间约3个工作日"]
+          },
+          IN: {
+            type: VISA_TYPES.E_VISA,
+            days: 30,
+            fee: 25,
+            notes: ["电子签费用约25美元", "需提前申请", "可多次入境"]
+          },
+          MM: {
+            type: VISA_TYPES.E_VISA,
+            days: 28,
+            fee: 50,
+            notes: ["电子签费用约50美元", "仅限旅游签"]
+          },
+          PK: {
+            type: VISA_TYPES.E_VISA,
+            days: 30,
+            fee: 60,
+            notes: ["电子签费用约60美元", "处理时间约7-10个工作日"]
+          },
+          UZ: {
+            type: VISA_TYPES.E_VISA,
+            days: 30,
+            fee: 20,
+            notes: ["电子签费用约20美元", "可在线申请"]
+          },
           TJ: { type: VISA_TYPES.E_VISA, days: 45, fee: 50, notes: ["电子签费用约50美元"] },
           KG: { type: VISA_TYPES.E_VISA, days: 60, fee: 70, notes: ["电子签费用约70美元"] },
 
           // Asia - Visa Required
-          IL: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需提前申请签证", "旅游签可停留90天", "需提供行程单和酒店预订"] },
-          SA: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请旅游签证", "2019年开放旅游签"] },
+          IL: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需提前申请签证", "旅游签可停留90天", "需提供行程单和酒店预订"]
+          },
+          SA: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请旅游签证", "2019年开放旅游签"]
+          },
           KW: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需提前申请签证"] },
-          IR: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证", "部分情况可落地签"] },
-          IQ: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证", "安全形势需关注"] },
+          IR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 30,
+            notes: ["需提前申请签证", "部分情况可落地签"]
+          },
+          IQ: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 30,
+            notes: ["需提前申请签证", "安全形势需关注"]
+          },
           AF: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证", "不建议前往"] },
           SY: { type: VISA_TYPES.VISA_REQUIRED, days: 15, notes: ["需提前申请签证", "不建议前往"] },
           YE: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证", "不建议前往"] },
-          BT: { type: VISA_TYPES.VISA_REQUIRED, days: 15, notes: ["需通过授权旅行社办理", "每日最低消费要求"] },
-          TM: { type: VISA_TYPES.VISA_REQUIRED, days: 10, notes: ["需提前申请签证", "签证较难获得"] },
-          KP: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需通过授权旅行社办理", "团队游为主"] },
-          PH: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证", "可申请9a旅游签证"] },
+          BT: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 15,
+            notes: ["需通过授权旅行社办理", "每日最低消费要求"]
+          },
+          TM: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 10,
+            notes: ["需提前申请签证", "签证较难获得"]
+          },
+          KP: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 30,
+            notes: ["需通过授权旅行社办理", "团队游为主"]
+          },
+          PH: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 30,
+            notes: ["需提前申请签证", "可申请9a旅游签证"]
+          },
           BN: { type: VISA_TYPES.VISA_REQUIRED, days: 14, notes: ["需提前申请签证"] },
 
           // Europe - Visa Free
           RS: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           BA: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "180天内可停留90天"] },
-          AL: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["旅游旺季免签(4-10月)", "其他时间需签证"] },
-          BY: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天", "需从明斯克机场入境"] },
+          AL: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 90,
+            notes: ["旅游旺季免签(4-10月)", "其他时间需签证"]
+          },
+          BY: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["免签入境", "可停留30天", "需从明斯克机场入境"]
+          },
           ME: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           MK: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["持有效申根签证可免签"] },
 
           // Europe - Visa Required (Schengen)
-          DE: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天", "建议提前2-3个月申请"] },
-          FR: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天", "旅游签证较易获得"] },
-          IT: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          ES: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          NL: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          BE: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          AT: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          CH: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          PT: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          GR: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          SE: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          NO: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          DK: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          FI: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          PL: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          CZ: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
-          HU: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请申根签证", "可在申根区停留90天/180天"] },
+          DE: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天", "建议提前2-3个月申请"]
+          },
+          FR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天", "旅游签证较易获得"]
+          },
+          IT: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          ES: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          NL: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          BE: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          AT: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          CH: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          PT: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          GR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          SE: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          NO: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          DK: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          FI: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          PL: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          CZ: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
+          HU: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请申根签证", "可在申根区停留90天/180天"]
+          },
 
           // Europe - Non-Schengen
-          GB: { type: VISA_TYPES.VISA_REQUIRED, days: 180, notes: ["需申请英国签证", "旅游签可停留6个月", "建议提前申请"] },
-          IE: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请爱尔兰签证", "与英国签证独立"] },
-          RU: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["团队旅游免签", "个人旅游可申请电子签", "世界杯/大型活动期间有特殊政策"] },
+          GB: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 180,
+            notes: ["需申请英国签证", "旅游签可停留6个月", "建议提前申请"]
+          },
+          IE: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请爱尔兰签证", "与英国签证独立"]
+          },
+          RU: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 30,
+            notes: ["团队旅游免签", "个人旅游可申请电子签", "世界杯/大型活动期间有特殊政策"]
+          },
           UA: { type: VISA_TYPES.E_VISA, days: 30, notes: ["可申请电子签", "注意安全形势"] },
-          TR: { type: VISA_TYPES.E_VISA, days: 30, fee: 50, notes: ["电子签费用约50美元", "可在线申请", "持有效申根/英美签证可免签"] },
-          HR: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["2023年加入申根区", "需申请申根签证"] },
+          TR: {
+            type: VISA_TYPES.E_VISA,
+            days: 30,
+            fee: 50,
+            notes: ["电子签费用约50美元", "可在线申请", "持有效申根/英美签证可免签"]
+          },
+          HR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["2023年加入申根区", "需申请申根签证"]
+          },
           RO: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["持有效申根签证可入境"] },
           BG: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["持有效申根签证可入境"] },
 
           // Americas - Visa Free
           EC: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "可停留90天"] },
-          
+
           // Americas - Visa Required
-          US: { type: VISA_TYPES.VISA_REQUIRED, days: 180, notes: ["需申请B1/B2签证", "面签必须", "建议提前3个月预约"] },
-          CA: { type: VISA_TYPES.VISA_REQUIRED, days: 180, notes: ["需申请访客签证", "可在线申请", "持有效美签可简化申请"] },
-          MX: { type: VISA_TYPES.VISA_FREE, days: 180, notes: ["持有效美签可免签入境", "或需申请墨西哥签证"] },
-          BR: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需提前申请签证", "可申请电子签"] },
-          AR: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需提前申请签证", "持有效美签可申请AVE电子授权"] },
+          US: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 180,
+            notes: ["需申请B1/B2签证", "面签必须", "建议提前3个月预约"]
+          },
+          CA: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 180,
+            notes: ["需申请访客签证", "可在线申请", "持有效美签可简化申请"]
+          },
+          MX: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 180,
+            notes: ["持有效美签可免签入境", "或需申请墨西哥签证"]
+          },
+          BR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需提前申请签证", "可申请电子签"]
+          },
+          AR: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需提前申请签证", "持有效美签可申请AVE电子授权"]
+          },
           CL: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["持有效美签可免签", "或需申请签证"] },
-          PE: { type: VISA_TYPES.VISA_FREE, days: 183, notes: ["持有效美签/申根签可免签", "或需申请签证"] },
-          CO: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["持有效美签/申根签可免签", "或需申请签证"] },
-          CU: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 25, notes: ["需购买旅游卡", "费用约25美元"] },
+          PE: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 183,
+            notes: ["持有效美签/申根签可免签", "或需申请签证"]
+          },
+          CO: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 90,
+            notes: ["持有效美签/申根签可免签", "或需申请签证"]
+          },
+          CU: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 25,
+            notes: ["需购买旅游卡", "费用约25美元"]
+          },
           PA: { type: VISA_TYPES.VISA_FREE, days: 180, notes: ["持有效美签可免签入境"] },
           CR: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["持有效美签/申根签可免签"] },
 
           // Oceania
-          AU: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请访客签证(600类)", "可在线申请", "处理时间约20天"] },
+          AU: {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 90,
+            notes: ["需申请访客签证(600类)", "可在线申请", "处理时间约20天"]
+          },
           NZ: { type: VISA_TYPES.VISA_REQUIRED, days: 90, notes: ["需申请访客签证", "可在线申请"] },
           FJ: { type: VISA_TYPES.VISA_FREE, days: 120, notes: ["免签入境", "可停留120天"] },
           WS: { type: VISA_TYPES.VISA_FREE, days: 60, notes: ["免签入境", "可停留60天"] },
           TO: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           VU: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
-          PG: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 60, fee: 100, notes: ["落地签费用约100基那"] },
+          PG: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 60,
+            fee: 100,
+            notes: ["落地签费用约100基那"]
+          },
 
           // Africa - Visa Free
           MU: { type: VISA_TYPES.VISA_FREE, days: 60, notes: ["免签入境", "可停留60天"] },
           SC: { type: VISA_TYPES.VISA_FREE, days: 30, notes: ["免签入境", "可停留30天"] },
           MA: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "可停留90天"] },
-          TN: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["团队旅游免签", "需有返程机票和酒店预订"] },
+          TN: {
+            type: VISA_TYPES.VISA_FREE,
+            days: 90,
+            notes: ["团队旅游免签", "需有返程机票和酒店预订"]
+          },
           ZA: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "可停留90天"] },
           BW: { type: VISA_TYPES.VISA_FREE, days: 90, notes: ["免签入境", "可停留90天"] },
-          
+
           // Africa - Visa on Arrival
-          EG: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 25, notes: ["落地签费用约25美元", "仅限特定口岸"] },
-          KE: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 90, fee: 50, notes: ["建议申请电子签", "落地签费用约50美元"] },
-          TZ: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 90, fee: 50, notes: ["落地签费用约50美元", "可在线申请电子签"] },
-          ET: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 52, notes: ["仅限亚的斯亚贝巴机场", "费用约52美元"] },
-          MG: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 90, fee: 35, notes: ["落地签费用约35美元"] },
-          RW: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 30, notes: ["落地签费用约30美元"] },
-          UG: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 90, fee: 50, notes: ["建议申请电子签", "落地签费用约50美元"] },
-          ZM: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 90, fee: 50, notes: ["落地签费用约50美元"] },
-          ZW: { type: VISA_TYPES.VISA_ON_ARRIVAL, days: 30, fee: 30, notes: ["落地签费用约30美元", "可申请KAZA签证"] },
+          EG: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 25,
+            notes: ["落地签费用约25美元", "仅限特定口岸"]
+          },
+          KE: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 90,
+            fee: 50,
+            notes: ["建议申请电子签", "落地签费用约50美元"]
+          },
+          TZ: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 90,
+            fee: 50,
+            notes: ["落地签费用约50美元", "可在线申请电子签"]
+          },
+          ET: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 52,
+            notes: ["仅限亚的斯亚贝巴机场", "费用约52美元"]
+          },
+          MG: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 90,
+            fee: 35,
+            notes: ["落地签费用约35美元"]
+          },
+          RW: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 30,
+            notes: ["落地签费用约30美元"]
+          },
+          UG: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 90,
+            fee: 50,
+            notes: ["建议申请电子签", "落地签费用约50美元"]
+          },
+          ZM: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 90,
+            fee: 50,
+            notes: ["落地签费用约50美元"]
+          },
+          ZW: {
+            type: VISA_TYPES.VISA_ON_ARRIVAL,
+            days: 30,
+            fee: 30,
+            notes: ["落地签费用约30美元", "可申请KAZA签证"]
+          },
 
           // Africa - Visa Required
           NG: { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["需提前申请签证"] },
@@ -1040,7 +1389,22 @@
       };
 
       // Popular destinations for quick selection
-      var POPULAR_DESTINATIONS = ["JP", "KR", "TH", "SG", "MY", "US", "AU", "GB", "FR", "DE", "IT", "MV", "AE", "NZ"];
+      var POPULAR_DESTINATIONS = [
+        "JP",
+        "KR",
+        "TH",
+        "SG",
+        "MY",
+        "US",
+        "AU",
+        "GB",
+        "FR",
+        "DE",
+        "IT",
+        "MV",
+        "AE",
+        "NZ"
+      ];
 
       // Passport country data
       var PASSPORT_COUNTRIES = {
@@ -1061,7 +1425,7 @@
       }
 
       // Load theme
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -1074,16 +1438,18 @@
         toast.textContent = msg;
         toast.className = "toast" + (isError ? " error" : "");
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize destination select
       function initDestinationSelect() {
         var select = document.getElementById("destinationCountry");
-        
+
         // Group countries by region
         var regions = {};
-        Object.keys(COUNTRIES).forEach(function(code) {
+        Object.keys(COUNTRIES).forEach(function (code) {
           var country = COUNTRIES[code];
           if (!regions[country.region]) {
             regions[country.region] = [];
@@ -1093,24 +1459,25 @@
 
         // Sort regions
         var regionOrder = ["亚洲", "欧洲", "美洲", "大洋洲", "非洲"];
-        
-        regionOrder.forEach(function(regionName) {
+
+        regionOrder.forEach(function (regionName) {
           if (regions[regionName]) {
             var optgroup = document.createElement("optgroup");
             optgroup.label = regionName;
-            
+
             // Sort countries within region by name
-            regions[regionName].sort(function(a, b) {
+            regions[regionName].sort(function (a, b) {
               return a.country.name.localeCompare(b.country.name, "zh-CN");
             });
-            
-            regions[regionName].forEach(function(item) {
+
+            regions[regionName].forEach(function (item) {
               var option = document.createElement("option");
               option.value = item.code;
-              option.textContent = item.country.flag + " " + item.country.name + " (" + item.country.nameEn + ")";
+              option.textContent =
+                item.country.flag + " " + item.country.name + " (" + item.country.nameEn + ")";
               optgroup.appendChild(option);
             });
-            
+
             select.appendChild(optgroup);
           }
         });
@@ -1119,22 +1486,22 @@
       // Initialize popular destinations buttons
       function initPopularDestinations() {
         var container = document.getElementById("popularDestinations");
-        
-        POPULAR_DESTINATIONS.forEach(function(code) {
+
+        POPULAR_DESTINATIONS.forEach(function (code) {
           var country = COUNTRIES[code];
           if (country) {
             var btn = document.createElement("button");
             btn.className = "dest-btn";
-            
+
             var flagSpan = document.createElement("span");
             flagSpan.className = "flag";
             flagSpan.textContent = country.flag;
             btn.appendChild(flagSpan);
-            
+
             var nameText = document.createTextNode(country.name);
             btn.appendChild(nameText);
-            
-            btn.onclick = function() {
+
+            btn.onclick = function () {
               document.getElementById("destinationCountry").value = code;
               checkVisa();
             };
@@ -1146,22 +1513,32 @@
       // Get visa type label
       function getVisaTypeLabel(type) {
         switch (type) {
-          case VISA_TYPES.VISA_FREE: return "免签";
-          case VISA_TYPES.VISA_ON_ARRIVAL: return "落地签";
-          case VISA_TYPES.E_VISA: return "电子签证";
-          case VISA_TYPES.VISA_REQUIRED: return "需要签证";
-          default: return "未知";
+          case VISA_TYPES.VISA_FREE:
+            return "免签";
+          case VISA_TYPES.VISA_ON_ARRIVAL:
+            return "落地签";
+          case VISA_TYPES.E_VISA:
+            return "电子签证";
+          case VISA_TYPES.VISA_REQUIRED:
+            return "需要签证";
+          default:
+            return "未知";
         }
       }
 
       // Get visa type icon
       function getVisaTypeIcon(type) {
         switch (type) {
-          case VISA_TYPES.VISA_FREE: return "✓";
-          case VISA_TYPES.VISA_ON_ARRIVAL: return "🛬";
-          case VISA_TYPES.E_VISA: return "💻";
-          case VISA_TYPES.VISA_REQUIRED: return "📝";
-          default: return "?";
+          case VISA_TYPES.VISA_FREE:
+            return "✓";
+          case VISA_TYPES.VISA_ON_ARRIVAL:
+            return "🛬";
+          case VISA_TYPES.E_VISA:
+            return "💻";
+          case VISA_TYPES.VISA_REQUIRED:
+            return "📝";
+          default:
+            return "?";
         }
       }
 
@@ -1169,17 +1546,17 @@
       function createDetailItem(label, value, isHighlight) {
         var item = document.createElement("div");
         item.className = "detail-item";
-        
+
         var labelEl = document.createElement("span");
         labelEl.className = "detail-label";
         labelEl.textContent = label;
         item.appendChild(labelEl);
-        
+
         var valueEl = document.createElement("span");
         valueEl.className = "detail-value" + (isHighlight ? " highlight" : "");
         valueEl.textContent = value;
         item.appendChild(valueEl);
-        
+
         return item;
       }
 
@@ -1199,12 +1576,17 @@
 
         if (!visaData) {
           // Default to visa required if no data
-          visaData = { type: VISA_TYPES.VISA_REQUIRED, days: 30, notes: ["暂无详细数据", "请查阅官方渠道获取最新信息"] };
+          visaData = {
+            type: VISA_TYPES.VISA_REQUIRED,
+            days: 30,
+            notes: ["暂无详细数据", "请查阅官方渠道获取最新信息"]
+          };
         }
 
         // Update result card
         document.getElementById("fromCountry").textContent = passport.flag + " " + passport.name;
-        document.getElementById("toCountry").textContent = destination.flag + " " + destination.name;
+        document.getElementById("toCountry").textContent =
+          destination.flag + " " + destination.name;
 
         // Update badge
         var badge = document.getElementById("visaBadge");
@@ -1217,18 +1599,24 @@
         while (detailsContainer.firstChild) {
           detailsContainer.removeChild(detailsContainer.firstChild);
         }
-        
-        detailsContainer.appendChild(createDetailItem("签证类型", getVisaTypeLabel(visaData.type), true));
+
+        detailsContainer.appendChild(
+          createDetailItem("签证类型", getVisaTypeLabel(visaData.type), true)
+        );
 
         if (visaData.days) {
           detailsContainer.appendChild(createDetailItem("停留天数", visaData.days + " 天", false));
         }
 
         if (visaData.fee !== undefined) {
-          detailsContainer.appendChild(createDetailItem("签证费用", "约 " + visaData.fee + " 美元", false));
+          detailsContainer.appendChild(
+            createDetailItem("签证费用", "约 " + visaData.fee + " 美元", false)
+          );
         }
 
-        detailsContainer.appendChild(createDetailItem("目的地", destination.name + " (" + destination.nameEn + ")", false));
+        detailsContainer.appendChild(
+          createDetailItem("目的地", destination.name + " (" + destination.nameEn + ")", false)
+        );
         detailsContainer.appendChild(createDetailItem("所属地区", destination.region, false));
 
         // Update notes
@@ -1237,9 +1625,9 @@
         while (notesList.firstChild) {
           notesList.removeChild(notesList.firstChild);
         }
-        
+
         if (visaData.notes && visaData.notes.length > 0) {
-          visaData.notes.forEach(function(note) {
+          visaData.notes.forEach(function (note) {
             var li = document.createElement("li");
             li.textContent = note;
             notesList.appendChild(li);
@@ -1282,11 +1670,14 @@
         var encoded = btoa(encodeURIComponent(JSON.stringify(data)));
         history.replaceState(null, "", "#" + encoded);
 
-        navigator.clipboard.writeText(location.href).then(function() {
-          showToast("链接已复制到剪贴板");
-        }).catch(function() {
-          showToast("请手动复制地址栏链接");
-        });
+        navigator.clipboard
+          .writeText(location.href)
+          .then(function () {
+            showToast("链接已复制到剪贴板");
+          })
+          .catch(function () {
+            showToast("请手动复制地址栏链接");
+          });
       }
 
       // Save to storage
@@ -1342,7 +1733,7 @@
       function calculateStats() {
         var passportCode = "CN";
         var visaData = VISA_DATA[passportCode];
-        
+
         if (!visaData) return;
 
         var stats = {
@@ -1352,7 +1743,7 @@
           visaRequired: 0
         };
 
-        Object.keys(visaData).forEach(function(destCode) {
+        Object.keys(visaData).forEach(function (destCode) {
           var visa = visaData[destCode];
           switch (visa.type) {
             case VISA_TYPES.VISA_FREE:
@@ -1387,7 +1778,7 @@
         }
 
         // Auto-save on change
-        document.getElementById("passportCountry").addEventListener("change", function() {
+        document.getElementById("passportCountry").addEventListener("change", function () {
           calculateStats();
           if (document.getElementById("destinationCountry").value) {
             checkVisa();

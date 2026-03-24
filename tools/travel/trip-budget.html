@@ -76,7 +76,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +96,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -388,7 +389,11 @@
       }
       .progress-fill {
         height: 100%;
-        background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-tertiary));
+        background: linear-gradient(
+          90deg,
+          var(--color-accent-primary),
+          var(--color-accent-tertiary)
+        );
         border-radius: var(--radius-full);
         transition: width var(--transition-normal);
       }
@@ -1006,7 +1011,7 @@
         transport: "🚗 交通",
         activities: "🎭 活动",
         shopping: "🛍️ 购物",
-        other: "📦 其他",
+        other: "📦 其他"
       };
 
       var categoryIcons = {
@@ -1016,12 +1021,12 @@
         transport: "🚗",
         activities: "🎭",
         shopping: "🛍️",
-        other: "📦",
+        other: "📦"
       };
 
       var state = {
         budget: 0,
-        expenses: [],
+        expenses: []
       };
 
       function loadFromStorage() {
@@ -1071,7 +1076,10 @@
       }
 
       function formatCurrency(amount) {
-        return "¥" + amount.toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        return (
+          "¥" +
+          amount.toLocaleString("zh-CN", { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+        );
       }
 
       function calculateTotals() {
@@ -1082,7 +1090,7 @@
           transport: 0,
           activities: 0,
           shopping: 0,
-          other: 0,
+          other: 0
         };
 
         var total = 0;
@@ -1104,7 +1112,7 @@
         var percentage = state.budget > 0 ? Math.min((spent / state.budget) * 100, 100) : 0;
 
         document.getElementById("totalSpent").textContent = formatCurrency(spent);
-        
+
         var remainingEl = document.getElementById("remaining");
         remainingEl.textContent = formatCurrency(remaining);
         if (remaining < 0) {
@@ -1129,7 +1137,9 @@
         document.getElementById("progressTotal").textContent = "/ " + formatCurrency(state.budget);
 
         Object.keys(calc.totals).forEach(function (cat) {
-          var item = document.querySelector('.category-item[data-category="' + cat + '"] .category-amount');
+          var item = document.querySelector(
+            '.category-item[data-category="' + cat + '"] .category-amount'
+          );
           if (item) {
             item.textContent = formatCurrency(calc.totals[cat]);
           }
@@ -1141,7 +1151,7 @@
       function renderExpenses() {
         var container = document.getElementById("expenseItems");
         var countEl = document.getElementById("expenseCount");
-        
+
         countEl.textContent = state.expenses.length + " 笔";
 
         while (container.firstChild) {
@@ -1166,7 +1176,7 @@
         var sorted = state.expenses.slice().reverse();
         sorted.forEach(function (expense, idx) {
           var realIdx = state.expenses.length - 1 - idx;
-          
+
           var item = document.createElement("div");
           item.className = "expense-item";
           item.setAttribute("data-category", expense.category);
@@ -1177,15 +1187,15 @@
 
           var details = document.createElement("div");
           details.className = "expense-details";
-          
+
           var desc = document.createElement("div");
           desc.className = "expense-description";
           desc.textContent = expense.description;
-          
+
           var cat = document.createElement("div");
           cat.className = "expense-category";
           cat.textContent = categoryNames[expense.category];
-          
+
           details.appendChild(desc);
           details.appendChild(cat);
 
@@ -1197,10 +1207,10 @@
           deleteBtn.className = "btn-delete";
           deleteBtn.setAttribute("aria-label", "删除");
           deleteBtn.setAttribute("data-index", realIdx);
-          deleteBtn.addEventListener("click", function() {
+          deleteBtn.addEventListener("click", function () {
             deleteExpense(parseInt(this.getAttribute("data-index"), 10));
           });
-          
+
           var deleteSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
           deleteSvg.setAttribute("viewBox", "0 0 24 24");
           deleteSvg.setAttribute("fill", "none");
@@ -1208,13 +1218,16 @@
           deleteSvg.setAttribute("stroke-width", "2");
           deleteSvg.setAttribute("stroke-linecap", "round");
           deleteSvg.setAttribute("stroke-linejoin", "round");
-          
+
           var polyline = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
           polyline.setAttribute("points", "3 6 5 6 21 6");
-          
+
           var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-          path.setAttribute("d", "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2");
-          
+          path.setAttribute(
+            "d",
+            "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
+          );
+
           deleteSvg.appendChild(polyline);
           deleteSvg.appendChild(path);
           deleteBtn.appendChild(deleteSvg);
@@ -1223,7 +1236,7 @@
           item.appendChild(details);
           item.appendChild(amount);
           item.appendChild(deleteBtn);
-          
+
           container.appendChild(item);
         });
       }
@@ -1234,7 +1247,7 @@
           description: description,
           amount: amount,
           category: category,
-          createdAt: new Date().toISOString(),
+          createdAt: new Date().toISOString()
         });
         saveToStorage();
         saveToUrl();
@@ -1286,11 +1299,14 @@
 
       document.getElementById("btnShare").addEventListener("click", function () {
         saveToUrl();
-        navigator.clipboard.writeText(location.href).then(function() {
-          alert("链接已复制到剪贴板");
-        }).catch(function() {
-          alert("复制失败，请手动复制地址栏链接");
-        });
+        navigator.clipboard
+          .writeText(location.href)
+          .then(function () {
+            alert("链接已复制到剪贴板");
+          })
+          .catch(function () {
+            alert("复制失败，请手动复制地址栏链接");
+          });
       });
 
       document.getElementById("btnClear").addEventListener("click", clearAll);

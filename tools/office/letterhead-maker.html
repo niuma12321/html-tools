@@ -7,10 +7,16 @@
     <meta property="og:title" content="信头纸制作 - WebUtils" />
     <meta property="og:description" content="信头纸制作：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/office/letterhead-maker.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/office/letterhead-maker.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/letterhead-maker.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/office/letterhead-maker.html"
+    />
     <meta name="description" content="创建专业公司信头纸，支持Logo和联系信息" />
     <meta name="keywords" content="信头纸 letterhead 公司抬头 信纸模板" />
     <meta name="author" content="WebUtils" />
@@ -42,7 +48,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -61,7 +68,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -253,7 +260,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+        background: linear-gradient(
+          135deg,
+          var(--color-accent-primary),
+          var(--color-accent-tertiary)
+        );
         border-radius: var(--radius-md);
         font-size: 1.25rem;
         font-weight: 700;
@@ -678,9 +689,7 @@
                   </div>
                 </div>
                 <div class="letterhead-body">
-                  <p style="color: #ccc; text-align: center; margin-top: 200px">
-                    信纸正文区域
-                  </p>
+                  <p style="color: #ccc; text-align: center; margin-top: 200px">信纸正文区域</p>
                 </div>
               </div>
             </div>
@@ -689,7 +698,9 @@
       </div>
       <footer class="footer">
         <p>
-          <a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
           <span>·</span>
           <span>纯前端 · 无服务器</span>
           <span>·</span>
@@ -744,7 +755,8 @@
         const data = getFormData();
 
         // Update company name
-        document.getElementById("previewCompanyName").textContent = data.companyName || "\u516C\u53F8\u540D\u79F0";
+        document.getElementById("previewCompanyName").textContent =
+          data.companyName || "\u516C\u53F8\u540D\u79F0";
 
         // Update company info
         var infoLines = [];

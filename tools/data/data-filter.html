@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>数据筛选器 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合" />
+    <meta
+      name="description"
+      content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合"
+    />
     <meta name="keywords" content="data filter 筛选 过滤 CSV regex contains" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="数据筛选器 - WebUtils" />
-    <meta property="og:description" content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合" />
+    <meta
+      property="og:description"
+      content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/data-filter.html" />
     <meta property="og:site_name" content="WebUtils" />
@@ -22,7 +28,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="数据筛选器 - WebUtils" />
-    <meta name="twitter:description" content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合" />
+    <meta
+      name="twitter:description"
+      content="强大的数据筛选工具，支持CSV/文本筛选，多种匹配模式，多条件组合"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -85,7 +94,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -104,7 +114,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -731,7 +741,9 @@
             <button class="logic-btn active" data-logic="and" onclick="setLogic('and')">
               AND (全部满足)
             </button>
-            <button class="logic-btn" data-logic="or" onclick="setLogic('or')">OR (任一满足)</button>
+            <button class="logic-btn" data-logic="or" onclick="setLogic('or')">
+              OR (任一满足)
+            </button>
           </div>
 
           <div id="conditionsContainer" class="conditions-container">
@@ -828,18 +840,43 @@
         delimiter: ",",
         hasHeader: false,
         logic: "and",
-        conditions: [],
+        conditions: []
       };
 
       const LS_KEY = "data_filter_state_v1";
 
       // Filter modes
       const FILTER_MODES = {
-        contains: { label: "包含", fn: function (val, pat) { return val.includes(pat); } },
-        not_contains: { label: "不包含", fn: function (val, pat) { return !val.includes(pat); } },
-        starts_with: { label: "开头是", fn: function (val, pat) { return val.startsWith(pat); } },
-        ends_with: { label: "结尾是", fn: function (val, pat) { return val.endsWith(pat); } },
-        exact: { label: "精确匹配", fn: function (val, pat) { return val === pat; } },
+        contains: {
+          label: "包含",
+          fn: function (val, pat) {
+            return val.includes(pat);
+          }
+        },
+        not_contains: {
+          label: "不包含",
+          fn: function (val, pat) {
+            return !val.includes(pat);
+          }
+        },
+        starts_with: {
+          label: "开头是",
+          fn: function (val, pat) {
+            return val.startsWith(pat);
+          }
+        },
+        ends_with: {
+          label: "结尾是",
+          fn: function (val, pat) {
+            return val.endsWith(pat);
+          }
+        },
+        exact: {
+          label: "精确匹配",
+          fn: function (val, pat) {
+            return val === pat;
+          }
+        },
         regex: {
           label: "正则表达式",
           fn: function (val, pat, flags) {
@@ -849,8 +886,8 @@
             } catch (e) {
               return false;
             }
-          },
-        },
+          }
+        }
       };
 
       // Theme toggle
@@ -875,18 +912,23 @@
         toast.textContent = msg;
         toast.className = "toast" + (isError ? " error" : "");
         toast.classList.add("show");
-        setTimeout(function () { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Paste from clipboard
       function pasteFromClipboard() {
-        navigator.clipboard.readText().then(function (text) {
-          document.getElementById("inputData").value = text;
-          parseData();
-          showToast("已粘贴");
-        }).catch(function () {
-          showToast("无法访问剪贴板", true);
-        });
+        navigator.clipboard
+          .readText()
+          .then(function (text) {
+            document.getElementById("inputData").value = text;
+            parseData();
+            showToast("已粘贴");
+          })
+          .catch(function () {
+            showToast("无法访问剪贴板", true);
+          });
       }
 
       // Detect delimiter
@@ -898,7 +940,9 @@
           var matches = firstLine.match(new RegExp(escaped, "g"));
           return { d: d, count: matches ? matches.length : 0 };
         });
-        counts.sort(function (a, b) { return b.count - a.count; });
+        counts.sort(function (a, b) {
+          return b.count - a.count;
+        });
         return counts[0].count > 0 ? counts[0].d : null;
       }
 
@@ -955,7 +999,9 @@
           return;
         }
 
-        var lines = input.split("\n").filter(function (line) { return line.trim(); });
+        var lines = input.split("\n").filter(function (line) {
+          return line.trim();
+        });
 
         // Detect delimiter
         var delimiter;
@@ -984,7 +1030,7 @@
 
           if (state.hasHeader && rows.length > 0) {
             state.headers = rows[0].map(function (h, i) {
-              return h.trim() || ("列" + (i + 1));
+              return h.trim() || "列" + (i + 1);
             });
             state.parsedData = rows.slice(1);
           } else {
@@ -1000,7 +1046,9 @@
         } else {
           // Plain text mode
           state.headers = ["内容"];
-          state.parsedData = lines.map(function (line) { return [line]; });
+          state.parsedData = lines.map(function (line) {
+            return [line];
+          });
           updateModeIndicator(false);
         }
 
@@ -1179,7 +1227,12 @@
 
         state.parsedData.forEach(function (row) {
           // Skip empty rows if option is checked
-          if (skipEmpty && row.every(function (cell) { return !cell.trim(); })) {
+          if (
+            skipEmpty &&
+            row.every(function (cell) {
+              return !cell.trim();
+            })
+          ) {
             return;
           }
 
@@ -1213,9 +1266,13 @@
           // Apply logic (AND/OR)
           var isMatch;
           if (state.logic === "and") {
-            isMatch = results.every(function (r) { return r; });
+            isMatch = results.every(function (r) {
+              return r;
+            });
           } else {
-            isMatch = results.some(function (r) { return r; });
+            isMatch = results.some(function (r) {
+              return r;
+            });
           }
 
           if (isMatch) {
@@ -1294,7 +1351,9 @@
 
       // Copy result
       function copyResult(type) {
-        var resultEl = document.getElementById(type === "matched" ? "matchedResult" : "unmatchedResult");
+        var resultEl = document.getElementById(
+          type === "matched" ? "matchedResult" : "unmatchedResult"
+        );
         var text = resultEl.textContent;
 
         if (text === "无匹配数据" || text === "无不匹配数据" || text.indexOf("将显示在这里") >= 0) {
@@ -1340,7 +1399,7 @@
           caseSensitive: document.getElementById("caseSensitive").checked,
           trimWhitespace: document.getElementById("trimWhitespace").checked,
           skipEmpty: document.getElementById("skipEmpty").checked,
-          conditions: getConditions(),
+          conditions: getConditions()
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -1370,7 +1429,9 @@
           }
 
           if (data.conditions && data.conditions.length > 0) {
-            data.conditions.forEach(function (cond) { addCondition(cond); });
+            data.conditions.forEach(function (cond) {
+              addCondition(cond);
+            });
           } else {
             addCondition();
           }
@@ -1391,7 +1452,7 @@
           cs: document.getElementById("caseSensitive").checked,
           tw: document.getElementById("trimWhitespace").checked,
           se: document.getElementById("skipEmpty").checked,
-          c: getConditions(),
+          c: getConditions()
         };
 
         try {
@@ -1417,7 +1478,8 @@
           document.getElementById("delimiter").value = data.d || "auto";
           document.getElementById("hasHeader").value = data.h || "auto";
           document.getElementById("caseSensitive").checked = data.cs || false;
-          document.getElementById("trimWhitespace").checked = data.tw !== undefined ? data.tw : true;
+          document.getElementById("trimWhitespace").checked =
+            data.tw !== undefined ? data.tw : true;
           document.getElementById("skipEmpty").checked = data.se !== undefined ? data.se : true;
 
           if (data.l) {
@@ -1429,7 +1491,9 @@
           }
 
           if (data.c && data.c.length > 0) {
-            data.c.forEach(function (cond) { addCondition(cond); });
+            data.c.forEach(function (cond) {
+              addCondition(cond);
+            });
           } else {
             addCondition();
           }
@@ -1443,11 +1507,14 @@
       // Share state
       function shareState() {
         if (saveToUrl()) {
-          navigator.clipboard.writeText(location.href).then(function () {
-            showToast("链接已复制到剪贴板");
-          }).catch(function () {
-            showToast("请手动复制地址栏链接");
-          });
+          navigator.clipboard
+            .writeText(location.href)
+            .then(function () {
+              showToast("链接已复制到剪贴板");
+            })
+            .catch(function () {
+              showToast("请手动复制地址栏链接");
+            });
         } else {
           showToast("数据过大，无法生成分享链接", true);
         }

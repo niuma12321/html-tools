@@ -4,13 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>统计计算器 - WebUtils</title>
-    <meta name="description" content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等" />
+    <meta
+      name="description"
+      content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等"
+    />
     <meta name="keywords" content="statistics 统计 计算器 均值 中位数 标准差 方差 百分位数" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/statistics-calculator.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/data/statistics-calculator.html"
+    />
     <meta property="og:title" content="统计计算器 - WebUtils" />
-    <meta property="og:description" content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等" />
+    <meta
+      property="og:description"
+      content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -21,7 +30,10 @@
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="统计计算器 - WebUtils" />
-    <meta name="twitter:description" content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等" />
+    <meta
+      name="twitter:description"
+      content="计算数据的统计指标：均值、中位数、众数、方差、标准差、百分位数等"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <script type="application/ld+json">
       {
@@ -76,7 +88,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -95,7 +108,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -871,7 +884,7 @@
         const rounded = Math.round(num * Math.pow(10, decimals)) / Math.pow(10, decimals);
         return rounded.toLocaleString("zh-CN", {
           maximumFractionDigits: decimals,
-          minimumFractionDigits: 0,
+          minimumFractionDigits: 0
         });
       }
 
@@ -964,7 +977,9 @@
         dispersionSection.appendChild(createStatRow("样本方差", formatNumber(sampleVariance, 6)));
         dispersionSection.appendChild(createStatRow("总体标准差", formatNumber(popStdDev, 6)));
         dispersionSection.appendChild(createStatRow("样本标准差", formatNumber(sampleStdDev, 6)));
-        dispersionSection.appendChild(createStatRow("变异系数 (CV)", cv !== null ? formatNumber(cv, 4) + "%" : "-"));
+        dispersionSection.appendChild(
+          createStatRow("变异系数 (CV)", cv !== null ? formatNumber(cv, 4) + "%" : "-")
+        );
         outputEl.appendChild(dispersionSection);
 
         const percentileSection = createStatSection("百分位数");

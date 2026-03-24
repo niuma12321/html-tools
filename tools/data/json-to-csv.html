@@ -18,10 +18,7 @@
       content="JSON 数组转 CSV 格式，支持嵌套对象展平、自定义分隔符、表头选项，可下载 CSV 文件"
     />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://tools.realtime-ai.chat/tools/data/json-to-csv.html"
-    />
+    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/json-to-csv.html" />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
@@ -85,7 +82,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -104,7 +102,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -758,7 +756,7 @@
             <textarea
               id="input"
               class="panel-textarea"
-              placeholder="在此粘贴 JSON 数组数据...&#10;&#10;示例:&#10;[&#10;  { &quot;name&quot;: &quot;张三&quot;, &quot;age&quot;: 25 },&#10;  { &quot;name&quot;: &quot;李四&quot;, &quot;age&quot;: 30 }&#10;]"
+              placeholder='在此粘贴 JSON 数组数据...&#10;&#10;示例:&#10;[&#10;  { "name": "张三", "age": 25 },&#10;  { "name": "李四", "age": 30 }&#10;]'
               spellcheck="false"
             ></textarea>
           </div>
@@ -825,10 +823,10 @@
           address: {
             city: "北京",
             district: "朝阳区",
-            zip: "100000",
+            zip: "100000"
           },
           hobbies: ["读书", "游泳", "编程"],
-          active: true,
+          active: true
         },
         {
           name: "李四",
@@ -837,10 +835,10 @@
           address: {
             city: "上海",
             district: "浦东新区",
-            zip: "200000",
+            zip: "200000"
           },
           hobbies: ["音乐", "旅行"],
-          active: false,
+          active: false
         },
         {
           name: "王五",
@@ -849,11 +847,11 @@
           address: {
             city: "深圳",
             district: "南山区",
-            zip: "518000",
+            zip: "518000"
           },
           hobbies: ["摄影"],
-          active: true,
-        },
+          active: true
+        }
       ];
 
       // URL state management
@@ -996,7 +994,7 @@
         return {
           csv: lines.join("\n"),
           rows: processedRows.length,
-          cols: headers.length,
+          cols: headers.length
         };
       }
 
@@ -1014,7 +1012,7 @@
             delimiter: delimiterEl.value,
             includeHeaders: includeHeadersEl.checked,
             flattenNested: flattenNestedEl.checked,
-            quoteAll: quoteAllEl.checked,
+            quoteAll: quoteAllEl.checked
           };
 
           const result = jsonToCsv(data, options);
@@ -1025,9 +1023,7 @@
           // Update stats
           document.getElementById("statRows").textContent = result.rows;
           document.getElementById("statCols").textContent = result.cols;
-          document.getElementById("statSize").textContent = formatSize(
-            new Blob([result.csv]).size
-          );
+          document.getElementById("statSize").textContent = formatSize(new Blob([result.csv]).size);
           statsEl.classList.add("show");
 
           showStatus(`转换成功: ${result.rows} 行, ${result.cols} 列`, "success");

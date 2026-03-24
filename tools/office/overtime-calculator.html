@@ -7,11 +7,20 @@
     <meta property="og:title" content="加班费计算器 - WebUtils" />
     <meta property="og:description" content="加班费计算器：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/office/overtime-calculator.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/office/overtime-calculator.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/overtime-calculator.html" />
-    <meta name="description" content="计算加班费，支持多种加班倍率，周末/节假日费率，自动计算正常工资和加班工资" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/office/overtime-calculator.html"
+    />
+    <meta
+      name="description"
+      content="计算加班费，支持多种加班倍率，周末/节假日费率，自动计算正常工资和加班工资"
+    />
     <meta name="keywords" content="overtime 加班 工资 计算器 薪资 周末加班 节假日" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,7 +49,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,7 +69,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -85,7 +95,8 @@
         inset: 0;
         pointer-events: none;
         z-index: 0;
-        background: radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
+        background:
+          radial-gradient(circle at 20% 20%, rgba(0, 212, 170, 0.03) 0%, transparent 50%),
           radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
       }
       .nav-bar {
@@ -228,7 +239,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+        background: linear-gradient(
+          135deg,
+          var(--color-accent-primary),
+          var(--color-accent-tertiary)
+        );
         border-radius: var(--radius-md);
         font-size: 1.25rem;
       }
@@ -354,8 +369,12 @@
         display: block;
       }
       @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
       .results {
         padding: var(--space-5);
@@ -506,7 +525,14 @@
     <nav class="nav-bar">
       <div class="nav-content">
         <a href="../../index.html" class="nav-back" aria-label="返回首页">
-          <svg class="nav-back-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <svg
+            class="nav-back-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
           <span>首页</span>
@@ -514,7 +540,15 @@
         <h1 class="nav-title">加班费计算器</h1>
         <div class="nav-actions">
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-            <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-light"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -525,7 +559,15 @@
               <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
               <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              class="theme-icon-dark"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
           </button>
@@ -547,26 +589,60 @@
         <div class="section-title">💵 基础信息</div>
         <div class="form-group">
           <label class="form-label">时薪 (元/小时)</label>
-          <input type="number" id="hourlyRate" class="form-input" placeholder="例如: 50" min="0" step="0.01" value="50" />
+          <input
+            type="number"
+            id="hourlyRate"
+            class="form-input"
+            placeholder="例如: 50"
+            min="0"
+            step="0.01"
+            value="50"
+          />
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">正常工时 (小时)</label>
-            <input type="number" id="regularHours" class="form-input" placeholder="例如: 8" min="0" step="0.5" value="8" />
+            <input
+              type="number"
+              id="regularHours"
+              class="form-input"
+              placeholder="例如: 8"
+              min="0"
+              step="0.5"
+              value="8"
+            />
           </div>
           <div class="form-group">
             <label class="form-label">加班工时 (小时)</label>
-            <input type="number" id="overtimeHours" class="form-input" placeholder="例如: 2" min="0" step="0.5" value="2" />
+            <input
+              type="number"
+              id="overtimeHours"
+              class="form-input"
+              placeholder="例如: 2"
+              min="0"
+              step="0.5"
+              value="2"
+            />
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label">加班倍率</label>
           <div class="multiplier-group">
-            <button class="multiplier-btn active" data-multiplier="1.5" onclick="setMultiplier(1.5)">1.5x</button>
-            <button class="multiplier-btn" data-multiplier="2" onclick="setMultiplier(2)">2x</button>
-            <button class="multiplier-btn" data-multiplier="3" onclick="setMultiplier(3)">3x</button>
+            <button
+              class="multiplier-btn active"
+              data-multiplier="1.5"
+              onclick="setMultiplier(1.5)"
+            >
+              1.5x
+            </button>
+            <button class="multiplier-btn" data-multiplier="2" onclick="setMultiplier(2)">
+              2x
+            </button>
+            <button class="multiplier-btn" data-multiplier="3" onclick="setMultiplier(3)">
+              3x
+            </button>
           </div>
         </div>
 
@@ -580,7 +656,15 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">周末工时 (小时)</label>
-                <input type="number" id="weekendHours" class="form-input" placeholder="例如: 8" min="0" step="0.5" value="0" />
+                <input
+                  type="number"
+                  id="weekendHours"
+                  class="form-input"
+                  placeholder="例如: 8"
+                  min="0"
+                  step="0.5"
+                  value="0"
+                />
               </div>
               <div class="form-group">
                 <label class="form-label">周末倍率</label>
@@ -604,7 +688,15 @@
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">节假日工时 (小时)</label>
-                <input type="number" id="holidayHours" class="form-input" placeholder="例如: 8" min="0" step="0.5" value="0" />
+                <input
+                  type="number"
+                  id="holidayHours"
+                  class="form-input"
+                  placeholder="例如: 8"
+                  min="0"
+                  step="0.5"
+                  value="0"
+                />
               </div>
               <div class="form-group">
                 <label class="form-label">节假日倍率</label>
@@ -631,11 +723,11 @@
             <span class="result-label">工作日加班费</span>
             <span id="overtimePay" class="result-value">¥150.00</span>
           </div>
-          <div class="result-row" id="weekendPayRow" style="display: none;">
+          <div class="result-row" id="weekendPayRow" style="display: none">
             <span class="result-label">周末加班费</span>
             <span id="weekendPay" class="result-value weekend">¥0.00</span>
           </div>
-          <div class="result-row" id="holidayPayRow" style="display: none;">
+          <div class="result-row" id="holidayPayRow" style="display: none">
             <span class="result-label">节假日加班费</span>
             <span id="holidayPay" class="result-value holiday">¥0.00</span>
           </div>
@@ -653,7 +745,12 @@
 
       <footer class="footer">
         <p>
-          <a href="https://github.com/chicogong/html-tools/blob/main/tools/office/overtime-calculator.html" target="_blank">View source</a>
+          <a
+            href="https://github.com/chicogong/html-tools/blob/main/tools/office/overtime-calculator.html"
+            target="_blank"
+          >
+            View source
+          </a>
           · 纯前端 · 无服务器 ·
           <a href="../../index.html">WebUtils</a>
         </p>
@@ -713,7 +810,7 @@
           weekendMultiplier: weekendMultiplierEl.value,
           enableHoliday: enableHolidayEl.checked,
           holidayHours: holidayHoursEl.value,
-          holidayMultiplier: holidayMultiplierEl.value,
+          holidayMultiplier: holidayMultiplierEl.value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -761,9 +858,9 @@
 
         const weekendEnabled = enableWeekendEl.checked;
         const holidayEnabled = enableHolidayEl.checked;
-        const weekendHours = weekendEnabled ? (parseFloat(weekendHoursEl.value) || 0) : 0;
+        const weekendHours = weekendEnabled ? parseFloat(weekendHoursEl.value) || 0 : 0;
         const weekendMult = parseFloat(weekendMultiplierEl.value) || 2;
-        const holidayHours = holidayEnabled ? (parseFloat(holidayHoursEl.value) || 0) : 0;
+        const holidayHours = holidayEnabled ? parseFloat(holidayHoursEl.value) || 0 : 0;
         const holidayMult = parseFloat(holidayMultiplierEl.value) || 3;
 
         const regularPay = hourlyRate * regularHours;
@@ -791,9 +888,9 @@
         const overtimeHours = parseFloat(overtimeHoursEl.value) || 0;
         const weekendEnabled = enableWeekendEl.checked;
         const holidayEnabled = enableHolidayEl.checked;
-        const weekendHours = weekendEnabled ? (parseFloat(weekendHoursEl.value) || 0) : 0;
+        const weekendHours = weekendEnabled ? parseFloat(weekendHoursEl.value) || 0 : 0;
         const weekendMult = parseFloat(weekendMultiplierEl.value) || 2;
-        const holidayHours = holidayEnabled ? (parseFloat(holidayHoursEl.value) || 0) : 0;
+        const holidayHours = holidayEnabled ? parseFloat(holidayHoursEl.value) || 0 : 0;
         const holidayMult = parseFloat(holidayMultiplierEl.value) || 3;
 
         const regularPay = hourlyRate * regularHours;
@@ -806,27 +903,51 @@
         text += "━━━━━━━━━━━━━━━━\n";
         text += "时薪: " + formatCurrency(hourlyRate) + "\n\n";
         text += "正常工时: " + regularHours + "h → " + formatCurrency(regularPay) + "\n";
-        
+
         if (overtimeHours > 0) {
-          text += "工作日加班: " + overtimeHours + "h × " + overtimeMultiplier + "倍 → " + formatCurrency(overtimePay) + "\n";
+          text +=
+            "工作日加班: " +
+            overtimeHours +
+            "h × " +
+            overtimeMultiplier +
+            "倍 → " +
+            formatCurrency(overtimePay) +
+            "\n";
         }
-        
+
         if (weekendEnabled && weekendHours > 0) {
-          text += "周末加班: " + weekendHours + "h × " + weekendMult + "倍 → " + formatCurrency(weekendPay) + "\n";
+          text +=
+            "周末加班: " +
+            weekendHours +
+            "h × " +
+            weekendMult +
+            "倍 → " +
+            formatCurrency(weekendPay) +
+            "\n";
         }
-        
+
         if (holidayEnabled && holidayHours > 0) {
-          text += "节假日加班: " + holidayHours + "h × " + holidayMult + "倍 → " + formatCurrency(holidayPay) + "\n";
+          text +=
+            "节假日加班: " +
+            holidayHours +
+            "h × " +
+            holidayMult +
+            "倍 → " +
+            formatCurrency(holidayPay) +
+            "\n";
         }
-        
+
         text += "━━━━━━━━━━━━━━━━\n";
         text += "总计: " + formatCurrency(totalPay);
 
-        navigator.clipboard.writeText(text).then(function() {
-          showToast("已复制到剪贴板");
-        }).catch(function() {
-          showToast("复制失败，请手动复制");
-        });
+        navigator.clipboard
+          .writeText(text)
+          .then(function () {
+            showToast("已复制到剪贴板");
+          })
+          .catch(function () {
+            showToast("复制失败，请手动复制");
+          });
       }
 
       function clearInputs() {
@@ -839,12 +960,12 @@
         holidayMultiplierEl.value = "3";
         enableWeekendEl.checked = false;
         enableHolidayEl.checked = false;
-        
+
         setMultiplier(1.5, false);
         toggleWeekend();
         toggleHoliday();
         calculate();
-        
+
         localStorage.removeItem(LS_KEY);
         showToast("已清空所有输入");
       }
@@ -853,7 +974,7 @@
         const toast = document.getElementById("toast");
         toast.textContent = message;
         toast.classList.add("show");
-        setTimeout(function() {
+        setTimeout(function () {
           toast.classList.remove("show");
         }, 2000);
       }

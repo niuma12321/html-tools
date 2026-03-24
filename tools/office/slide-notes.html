@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>演讲笔记 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出" />
+    <meta
+      name="description"
+      content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出"
+    />
     <meta name="keywords" content="slide notes 笔记 演讲 presentation" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="演讲笔记 - WebUtils" />
-    <meta property="og:description" content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出" />
+    <meta
+      property="og:description"
+      content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -25,7 +31,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="演讲笔记 - WebUtils" />
-    <meta name="twitter:description" content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出" />
+    <meta
+      name="twitter:description"
+      content="演讲笔记工具，支持幻灯片标题和备注、导航切换、计时器、打印导出"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -88,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -107,7 +117,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -742,7 +752,9 @@
         <div class="timer-section no-print">
           <div class="timer-display" id="timerDisplay">00:00:00</div>
           <div class="timer-controls">
-            <button class="timer-btn" id="timerPlayBtn" onclick="toggleTimer()" title="开始/暂停">▶</button>
+            <button class="timer-btn" id="timerPlayBtn" onclick="toggleTimer()" title="开始/暂停">
+              ▶
+            </button>
             <button class="timer-btn" onclick="resetTimer()" title="重置">↺</button>
           </div>
         </div>
@@ -751,7 +763,9 @@
         <div class="slide-nav no-print">
           <button class="nav-btn" id="prevBtn" onclick="prevSlide()" title="上一页">◀</button>
           <div class="slide-indicator">
-            <span id="currentSlideNum">0</span> / <span id="totalSlides">0</span>
+            <span id="currentSlideNum">0</span>
+            /
+            <span id="totalSlides">0</span>
           </div>
           <button class="nav-btn" id="nextBtn" onclick="nextSlide()" title="下一页">▶</button>
         </div>
@@ -759,7 +773,9 @@
         <!-- Current Slide Display -->
         <div class="current-slide no-print" id="currentSlideDisplay">
           <div class="slide-title-display" id="slideTitle">请添加幻灯片</div>
-          <div class="slide-notes-display" id="slideNotes">点击下方"添加幻灯片"开始创建演讲笔记</div>
+          <div class="slide-notes-display" id="slideNotes">
+            点击下方"添加幻灯片"开始创建演讲笔记
+          </div>
         </div>
 
         <!-- Edit Section -->
@@ -784,7 +800,7 @@
           <div class="slide-list" id="slideList">
             <!-- Slides will be rendered here -->
           </div>
-          <div class="btn-row no-print" style="margin-top: 16px;">
+          <div class="btn-row no-print" style="margin-top: 16px">
             <button class="btn btn-secondary btn-sm" onclick="addSlide()">+ 添加幻灯片</button>
           </div>
         </div>
@@ -802,7 +818,7 @@
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      var LS_KEY = 'slide_notes_data_v1';
+      var LS_KEY = "slide_notes_data_v1";
       var slides = [];
       var currentIndex = 0;
       var editingIndex = -1;
@@ -817,17 +833,19 @@
         renderSlideList();
         updateDisplay();
         updateNavigation();
-        
+
         // Add input listeners for auto-save
-        document.getElementById('presentationTitle').addEventListener('input', debounce(saveToStorage, 500));
-        
+        document
+          .getElementById("presentationTitle")
+          .addEventListener("input", debounce(saveToStorage, 500));
+
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener("keydown", function (e) {
           if (editingIndex >= 0) return; // Don't navigate while editing
-          
-          if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+
+          if (e.key === "ArrowLeft" || e.key === "PageUp") {
             prevSlide();
-          } else if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          } else if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
             e.preventDefault();
             nextSlide();
           }
@@ -845,10 +863,10 @@
 
       function startTimer() {
         timerRunning = true;
-        document.getElementById('timerPlayBtn').textContent = '⏸';
-        document.getElementById('timerPlayBtn').classList.add('active');
-        
-        timerInterval = setInterval(function() {
+        document.getElementById("timerPlayBtn").textContent = "⏸";
+        document.getElementById("timerPlayBtn").classList.add("active");
+
+        timerInterval = setInterval(function () {
           timerSeconds++;
           updateTimerDisplay();
         }, 1000);
@@ -856,9 +874,9 @@
 
       function pauseTimer() {
         timerRunning = false;
-        document.getElementById('timerPlayBtn').textContent = '▶';
-        document.getElementById('timerPlayBtn').classList.remove('active');
-        
+        document.getElementById("timerPlayBtn").textContent = "▶";
+        document.getElementById("timerPlayBtn").classList.remove("active");
+
         if (timerInterval) {
           clearInterval(timerInterval);
           timerInterval = null;
@@ -875,13 +893,15 @@
         var hours = Math.floor(timerSeconds / 3600);
         var minutes = Math.floor((timerSeconds % 3600) / 60);
         var seconds = timerSeconds % 60;
-        
-        var display = 
-          String(hours).padStart(2, '0') + ':' +
-          String(minutes).padStart(2, '0') + ':' +
-          String(seconds).padStart(2, '0');
-        
-        document.getElementById('timerDisplay').textContent = display;
+
+        var display =
+          String(hours).padStart(2, "0") +
+          ":" +
+          String(minutes).padStart(2, "0") +
+          ":" +
+          String(seconds).padStart(2, "0");
+
+        document.getElementById("timerDisplay").textContent = display;
       }
 
       // Slide navigation
@@ -911,62 +931,64 @@
       }
 
       function updateNavigation() {
-        document.getElementById('prevBtn').disabled = currentIndex === 0;
-        document.getElementById('nextBtn').disabled = currentIndex >= slides.length - 1;
-        document.getElementById('currentSlideNum').textContent = slides.length > 0 ? currentIndex + 1 : 0;
-        document.getElementById('totalSlides').textContent = slides.length;
+        document.getElementById("prevBtn").disabled = currentIndex === 0;
+        document.getElementById("nextBtn").disabled = currentIndex >= slides.length - 1;
+        document.getElementById("currentSlideNum").textContent =
+          slides.length > 0 ? currentIndex + 1 : 0;
+        document.getElementById("totalSlides").textContent = slides.length;
       }
 
       function updateDisplay() {
         if (slides.length === 0) {
-          document.getElementById('slideTitle').textContent = '请添加幻灯片';
-          document.getElementById('slideNotes').textContent = '点击下方"添加幻灯片"开始创建演讲笔记';
+          document.getElementById("slideTitle").textContent = "请添加幻灯片";
+          document.getElementById("slideNotes").textContent =
+            '点击下方"添加幻灯片"开始创建演讲笔记';
           return;
         }
-        
+
         var slide = slides[currentIndex];
-        document.getElementById('slideTitle').textContent = slide.title || '(无标题)';
-        document.getElementById('slideNotes').textContent = slide.notes || '(无备注)';
+        document.getElementById("slideTitle").textContent = slide.title || "(无标题)";
+        document.getElementById("slideNotes").textContent = slide.notes || "(无备注)";
       }
 
       // Slide CRUD
       function addSlide() {
         editingIndex = -1;
-        document.getElementById('editTitle').value = '';
-        document.getElementById('editNotes').value = '';
-        document.getElementById('editSection').classList.add('show');
-        document.getElementById('editTitle').focus();
+        document.getElementById("editTitle").value = "";
+        document.getElementById("editNotes").value = "";
+        document.getElementById("editSection").classList.add("show");
+        document.getElementById("editTitle").focus();
       }
 
       function editSlide(index) {
         editingIndex = index;
         var slide = slides[index];
-        document.getElementById('editTitle').value = slide.title;
-        document.getElementById('editNotes').value = slide.notes;
-        document.getElementById('editSection').classList.add('show');
-        document.getElementById('editTitle').focus();
+        document.getElementById("editTitle").value = slide.title;
+        document.getElementById("editNotes").value = slide.notes;
+        document.getElementById("editSection").classList.add("show");
+        document.getElementById("editTitle").focus();
       }
 
       function saveSlide() {
-        var title = document.getElementById('editTitle').value.trim();
-        var notes = document.getElementById('editNotes').value.trim();
-        
+        var title = document.getElementById("editTitle").value.trim();
+        var notes = document.getElementById("editNotes").value.trim();
+
         if (!title) {
-          title = '幻灯片 ' + (editingIndex >= 0 ? editingIndex + 1 : slides.length + 1);
+          title = "幻灯片 " + (editingIndex >= 0 ? editingIndex + 1 : slides.length + 1);
         }
-        
+
         if (editingIndex >= 0) {
           // Update existing
           slides[editingIndex].title = title;
           slides[editingIndex].notes = notes;
-          showToast('已更新');
+          showToast("已更新");
         } else {
           // Add new
           slides.push({ title: title, notes: notes });
           currentIndex = slides.length - 1;
-          showToast('已添加');
+          showToast("已添加");
         }
-        
+
         cancelEdit();
         renderSlideList();
         updateDisplay();
@@ -976,40 +998,40 @@
 
       function cancelEdit() {
         editingIndex = -1;
-        document.getElementById('editSection').classList.remove('show');
+        document.getElementById("editSection").classList.remove("show");
       }
 
       function deleteSlide(index) {
-        if (!confirm('确定要删除这张幻灯片吗？')) return;
-        
+        if (!confirm("确定要删除这张幻灯片吗？")) return;
+
         slides.splice(index, 1);
-        
+
         if (currentIndex >= slides.length) {
           currentIndex = Math.max(0, slides.length - 1);
         }
-        
+
         renderSlideList();
         updateDisplay();
         updateNavigation();
         saveToStorage();
-        showToast('已删除');
+        showToast("已删除");
       }
 
       // Render slide list
       function renderSlideList() {
-        var container = document.getElementById('slideList');
-        container.textContent = '';
-        
+        var container = document.getElementById("slideList");
+        container.textContent = "";
+
         if (slides.length === 0) {
-          var placeholder = document.createElement('div');
-          placeholder.style.textAlign = 'center';
-          placeholder.style.color = 'var(--text-muted)';
-          placeholder.style.padding = '40px 0';
-          placeholder.textContent = '暂无幻灯片';
+          var placeholder = document.createElement("div");
+          placeholder.style.textAlign = "center";
+          placeholder.style.color = "var(--text-muted)";
+          placeholder.style.padding = "40px 0";
+          placeholder.textContent = "暂无幻灯片";
           container.appendChild(placeholder);
           return;
         }
-        
+
         for (var i = 0; i < slides.length; i++) {
           var item = createSlideItem(slides[i], i);
           container.appendChild(item);
@@ -1017,67 +1039,67 @@
       }
 
       function createSlideItem(slide, index) {
-        var item = document.createElement('div');
-        item.className = 'slide-item' + (index === currentIndex ? ' active' : '');
-        
-        item.addEventListener('click', function(e) {
-          if (e.target.closest('.slide-item-actions')) return;
+        var item = document.createElement("div");
+        item.className = "slide-item" + (index === currentIndex ? " active" : "");
+
+        item.addEventListener("click", function (e) {
+          if (e.target.closest(".slide-item-actions")) return;
           goToSlide(index);
         });
-        
-        var number = document.createElement('div');
-        number.className = 'slide-number';
+
+        var number = document.createElement("div");
+        number.className = "slide-number";
         number.textContent = index + 1;
         item.appendChild(number);
-        
-        var content = document.createElement('div');
-        content.className = 'slide-content';
-        
-        var title = document.createElement('div');
-        title.className = 'slide-item-title';
-        title.textContent = slide.title || '(无标题)';
+
+        var content = document.createElement("div");
+        content.className = "slide-content";
+
+        var title = document.createElement("div");
+        title.className = "slide-item-title";
+        title.textContent = slide.title || "(无标题)";
         content.appendChild(title);
-        
-        var preview = document.createElement('div');
-        preview.className = 'slide-item-preview';
-        preview.textContent = slide.notes || '(无备注)';
+
+        var preview = document.createElement("div");
+        preview.className = "slide-item-preview";
+        preview.textContent = slide.notes || "(无备注)";
         content.appendChild(preview);
-        
+
         item.appendChild(content);
-        
-        var actions = document.createElement('div');
-        actions.className = 'slide-item-actions no-print';
-        
-        var editBtn = document.createElement('button');
-        editBtn.className = 'btn-icon';
-        editBtn.title = '编辑';
-        editBtn.textContent = '✎';
-        editBtn.addEventListener('click', function() {
+
+        var actions = document.createElement("div");
+        actions.className = "slide-item-actions no-print";
+
+        var editBtn = document.createElement("button");
+        editBtn.className = "btn-icon";
+        editBtn.title = "编辑";
+        editBtn.textContent = "✎";
+        editBtn.addEventListener("click", function () {
           editSlide(index);
         });
         actions.appendChild(editBtn);
-        
-        var deleteBtn = document.createElement('button');
-        deleteBtn.className = 'btn-icon delete';
-        deleteBtn.title = '删除';
-        deleteBtn.textContent = '×';
-        deleteBtn.addEventListener('click', function() {
+
+        var deleteBtn = document.createElement("button");
+        deleteBtn.className = "btn-icon delete";
+        deleteBtn.title = "删除";
+        deleteBtn.textContent = "×";
+        deleteBtn.addEventListener("click", function () {
           deleteSlide(index);
         });
         actions.appendChild(deleteBtn);
-        
+
         item.appendChild(actions);
-        
+
         return item;
       }
 
       // Debounce function
       function debounce(func, wait) {
         var timeout;
-        return function() {
+        return function () {
           var context = this;
           var args = arguments;
-          var later = function() {
+          var later = function () {
             clearTimeout(timeout);
             func.apply(context, args);
           };
@@ -1088,38 +1110,38 @@
 
       // Print notes
       function printNotes() {
-        var title = document.getElementById('presentationTitle').value || '演讲笔记';
-        document.getElementById('printPresentationTitle').textContent = title;
+        var title = document.getElementById("presentationTitle").value || "演讲笔记";
+        document.getElementById("printPresentationTitle").textContent = title;
         window.print();
       }
 
       // Clear all
       function clearAll() {
-        if (!confirm('确定要清空所有内容吗？')) return;
-        
-        document.getElementById('presentationTitle').value = '';
+        if (!confirm("确定要清空所有内容吗？")) return;
+
+        document.getElementById("presentationTitle").value = "";
         slides = [];
         currentIndex = 0;
         resetTimer();
         cancelEdit();
-        
+
         renderSlideList();
         updateDisplay();
         updateNavigation();
-        
+
         localStorage.removeItem(LS_KEY);
-        
-        showToast('已清空');
+
+        showToast("已清空");
       }
 
       // Save to localStorage
       function saveToStorage() {
         var data = {
-          presentationTitle: document.getElementById('presentationTitle').value,
+          presentationTitle: document.getElementById("presentationTitle").value,
           slides: slides,
           currentIndex: currentIndex
         };
-        
+
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
 
@@ -1127,44 +1149,46 @@
       function loadFromStorage() {
         var saved = localStorage.getItem(LS_KEY);
         if (!saved) return;
-        
+
         try {
           var data = JSON.parse(saved);
-          
-          document.getElementById('presentationTitle').value = data.presentationTitle || '';
+
+          document.getElementById("presentationTitle").value = data.presentationTitle || "";
           slides = data.slides || [];
           currentIndex = data.currentIndex || 0;
-          
+
           if (currentIndex >= slides.length) {
             currentIndex = Math.max(0, slides.length - 1);
           }
         } catch (e) {
-          console.error('Failed to load saved data:', e);
+          console.error("Failed to load saved data:", e);
         }
       }
 
       // Theme toggle
       function toggleTheme() {
         var body = document.body;
-        var isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        var isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
       // Load theme
       function loadTheme() {
-        var saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       }
 
       // Show toast
       function showToast(msg) {
-        var toast = document.getElementById('toast');
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize on load

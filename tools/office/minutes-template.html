@@ -7,10 +7,16 @@
     <meta property="og:title" content="会议纪要模板 - WebUtils" />
     <meta property="og:description" content="会议纪要模板：在线实用工具，免费在线使用，无需安装" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/office/minutes-template.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/office/minutes-template.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
-    <link rel="canonical" href="https://tools.realtime-ai.chat/tools/office/minutes-template.html" />
+    <link
+      rel="canonical"
+      href="https://tools.realtime-ai.chat/tools/office/minutes-template.html"
+    />
     <meta name="description" content="快速创建专业会议纪要，支持议程、讨论和行动项" />
     <meta name="keywords" content="会议纪要 meeting minutes 议程 行动项" />
     <meta name="author" content="WebUtils" />
@@ -42,7 +48,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -61,7 +68,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       *,
       *::before,
       *::after {
@@ -253,7 +260,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-tertiary));
+        background: linear-gradient(
+          135deg,
+          var(--color-accent-primary),
+          var(--color-accent-tertiary)
+        );
         border-radius: var(--radius-md);
         font-size: 1.25rem;
         font-weight: 700;
@@ -708,7 +719,9 @@
       </div>
       <footer class="footer">
         <p>
-          <a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://github.com/chicogong/html-tools" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
           <span>·</span>
           <span>纯前端 · 无服务器</span>
           <span>·</span>
@@ -721,7 +734,13 @@
       var agendaItems = [];
       var actionItems = [];
 
-      const basicFields = ["meetingTitle", "meetingDate", "meetingTime", "meetingLocation", "attendees"];
+      const basicFields = [
+        "meetingTitle",
+        "meetingDate",
+        "meetingTime",
+        "meetingLocation",
+        "attendees"
+      ];
 
       function getFormData() {
         var data = {};
@@ -938,7 +957,7 @@
           { label: "\u65E5\u671F", value: formatDate(data.meetingDate) },
           { label: "\u65F6\u95F4", value: data.meetingTime },
           { label: "\u5730\u70B9", value: data.meetingLocation },
-          { label: "\u53C2\u4F1A\u4EBA", value: data.attendees },
+          { label: "\u53C2\u4F1A\u4EBA", value: data.attendees }
         ];
 
         rows.forEach(function (row) {
@@ -978,7 +997,8 @@
 
               var itemTitle = document.createElement("div");
               itemTitle.className = "agenda-item-title";
-              itemTitle.textContent = (index + 1) + ". " + (item.title || "\u672A\u547D\u540D\u8BAE\u9898");
+              itemTitle.textContent =
+                index + 1 + ". " + (item.title || "\u672A\u547D\u540D\u8BAE\u9898");
               itemEl.appendChild(itemTitle);
 
               if (item.notes) {

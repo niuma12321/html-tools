@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>简历生成器 - WebUtils</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印" />
+    <meta
+      name="description"
+      content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印"
+    />
     <meta name="keywords" content="resume cv 简历 履历" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
@@ -13,7 +16,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="简历生成器 - WebUtils" />
-    <meta property="og:description" content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印" />
+    <meta
+      property="og:description"
+      content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -25,7 +31,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="简历生成器 - WebUtils" />
-    <meta name="twitter:description" content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印" />
+    <meta
+      name="twitter:description"
+      content="在线简历生成器，支持个人信息、教育经历、工作经验、技能展示、预览打印"
+    />
     <!-- OG Image -->
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
@@ -88,7 +97,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -107,7 +117,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -623,7 +633,10 @@
         <div class="tool-section">
           <div class="section-title">个人简介</div>
           <div class="input-group">
-            <textarea id="summary" placeholder="简要介绍自己的专业背景、核心优势和职业目标..."></textarea>
+            <textarea
+              id="summary"
+              placeholder="简要介绍自己的专业背景、核心优势和职业目标..."
+            ></textarea>
           </div>
         </div>
 
@@ -634,7 +647,9 @@
             <!-- Education entries will be added here -->
           </div>
           <div class="btn-row no-print">
-            <button class="btn btn-secondary btn-sm" onclick="addEducation()">+ 添加教育经历</button>
+            <button class="btn btn-secondary btn-sm" onclick="addEducation()">
+              + 添加教育经历
+            </button>
           </div>
         </div>
 
@@ -645,7 +660,9 @@
             <!-- Experience entries will be added here -->
           </div>
           <div class="btn-row no-print">
-            <button class="btn btn-secondary btn-sm" onclick="addExperience()">+ 添加工作经验</button>
+            <button class="btn btn-secondary btn-sm" onclick="addExperience()">
+              + 添加工作经验
+            </button>
           </div>
         </div>
 
@@ -656,7 +673,12 @@
             <!-- Skill tags will be added here -->
           </div>
           <div class="skill-input-row no-print">
-            <input type="text" id="skillInput" placeholder="输入技能名称" onkeypress="handleSkillKeypress(event)" />
+            <input
+              type="text"
+              id="skillInput"
+              placeholder="输入技能名称"
+              onkeypress="handleSkillKeypress(event)"
+            />
             <button class="btn btn-secondary btn-sm" onclick="addSkill()">添加</button>
           </div>
         </div>
@@ -674,7 +696,7 @@
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      var LS_KEY = 'resume_maker_data_v1';
+      var LS_KEY = "resume_maker_data_v1";
       var educationList = [];
       var experienceList = [];
       var skillsList = [];
@@ -684,27 +706,27 @@
       function init() {
         loadTheme();
         loadFromStorage();
-        
+
         // Add initial entries if none exist
         if (educationList.length === 0) {
           addEducation();
         } else {
           renderEducation();
         }
-        
+
         if (experienceList.length === 0) {
           addExperience();
         } else {
           renderExperience();
         }
-        
+
         renderSkills();
-        
+
         // Add input listeners for auto-save
-        var inputs = document.querySelectorAll('input, textarea, select');
+        var inputs = document.querySelectorAll("input, textarea, select");
         for (var i = 0; i < inputs.length; i++) {
-          inputs[i].addEventListener('input', debounce(saveToStorage, 500));
-          inputs[i].addEventListener('change', debounce(saveToStorage, 500));
+          inputs[i].addEventListener("input", debounce(saveToStorage, 500));
+          inputs[i].addEventListener("change", debounce(saveToStorage, 500));
         }
       }
 
@@ -712,12 +734,12 @@
       function addEducation() {
         var entry = {
           id: ++idCounter,
-          school: '',
-          degree: '',
-          field: '',
-          startDate: '',
-          endDate: '',
-          description: ''
+          school: "",
+          degree: "",
+          field: "",
+          startDate: "",
+          endDate: "",
+          description: ""
         };
         educationList.push(entry);
         renderEducation();
@@ -726,7 +748,9 @@
 
       // Remove education entry
       function removeEducation(id) {
-        educationList = educationList.filter(function(e) { return e.id !== id; });
+        educationList = educationList.filter(function (e) {
+          return e.id !== id;
+        });
         if (educationList.length === 0) {
           addEducation();
         } else {
@@ -737,9 +761,9 @@
 
       // Render education entries
       function renderEducation() {
-        var container = document.getElementById('educationList');
-        container.textContent = '';
-        
+        var container = document.getElementById("educationList");
+        container.textContent = "";
+
         for (var i = 0; i < educationList.length; i++) {
           var entry = educationList[i];
           var card = createEducationCard(entry);
@@ -749,53 +773,65 @@
 
       // Create education card
       function createEducationCard(entry) {
-        var card = document.createElement('div');
-        card.className = 'entry-card';
-        
-        var removeBtn = document.createElement('button');
-        removeBtn.className = 'btn-remove-entry no-print';
-        removeBtn.textContent = '×';
-        removeBtn.title = '删除';
-        removeBtn.addEventListener('click', function() {
+        var card = document.createElement("div");
+        card.className = "entry-card";
+
+        var removeBtn = document.createElement("button");
+        removeBtn.className = "btn-remove-entry no-print";
+        removeBtn.textContent = "×";
+        removeBtn.title = "删除";
+        removeBtn.addEventListener("click", function () {
           removeEducation(entry.id);
         });
         card.appendChild(removeBtn);
-        
-        var grid = document.createElement('div');
-        grid.className = 'form-grid';
-        
+
+        var grid = document.createElement("div");
+        grid.className = "form-grid";
+
         // School
-        var schoolGroup = createInputGroup('学校名称', 'text', entry.school, '学校名称', function(val) {
-          updateEducation(entry.id, 'school', val);
-        });
+        var schoolGroup = createInputGroup(
+          "学校名称",
+          "text",
+          entry.school,
+          "学校名称",
+          function (val) {
+            updateEducation(entry.id, "school", val);
+          }
+        );
         grid.appendChild(schoolGroup);
-        
+
         // Degree
-        var degreeGroup = createInputGroup('学历', 'text', entry.degree, '本科/硕士/博士', function(val) {
-          updateEducation(entry.id, 'degree', val);
-        });
+        var degreeGroup = createInputGroup(
+          "学历",
+          "text",
+          entry.degree,
+          "本科/硕士/博士",
+          function (val) {
+            updateEducation(entry.id, "degree", val);
+          }
+        );
         grid.appendChild(degreeGroup);
-        
+
         // Field
-        var fieldGroup = createInputGroup('专业', 'text', entry.field, '专业名称', function(val) {
-          updateEducation(entry.id, 'field', val);
+        var fieldGroup = createInputGroup("专业", "text", entry.field, "专业名称", function (val) {
+          updateEducation(entry.id, "field", val);
         });
         grid.appendChild(fieldGroup);
-        
+
         // Start date
-        var startGroup = createInputGroup('开始日期', 'date', entry.startDate, '', function(val) {
-          updateEducation(entry.id, 'startDate', val);
+        var startGroup = createInputGroup("开始日期", "date", entry.startDate, "", function (val) {
+          updateEducation(entry.id, "startDate", val);
         });
         grid.appendChild(startGroup);
-        
+
         // End date
-        var endGroup = createInputGroup('结束日期', 'date', entry.endDate, '', function(val) {
-          updateEducation(entry.id, 'endDate', val);
+        var endGroup = createInputGroup("结束日期", "date", entry.endDate, "", function (val) {
+          updateEducation(entry.id, "endDate", val);
         });
         grid.appendChild(endGroup);
-        
+
         card.appendChild(grid);
-        
+
         return card;
       }
 
@@ -814,11 +850,11 @@
       function addExperience() {
         var entry = {
           id: ++idCounter,
-          company: '',
-          position: '',
-          startDate: '',
-          endDate: '',
-          description: ''
+          company: "",
+          position: "",
+          startDate: "",
+          endDate: "",
+          description: ""
         };
         experienceList.push(entry);
         renderExperience();
@@ -827,7 +863,9 @@
 
       // Remove experience entry
       function removeExperience(id) {
-        experienceList = experienceList.filter(function(e) { return e.id !== id; });
+        experienceList = experienceList.filter(function (e) {
+          return e.id !== id;
+        });
         if (experienceList.length === 0) {
           addExperience();
         } else {
@@ -838,9 +876,9 @@
 
       // Render experience entries
       function renderExperience() {
-        var container = document.getElementById('experienceList');
-        container.textContent = '';
-        
+        var container = document.getElementById("experienceList");
+        container.textContent = "";
+
         for (var i = 0; i < experienceList.length; i++) {
           var entry = experienceList[i];
           var card = createExperienceCard(entry);
@@ -850,63 +888,75 @@
 
       // Create experience card
       function createExperienceCard(entry) {
-        var card = document.createElement('div');
-        card.className = 'entry-card';
-        
-        var removeBtn = document.createElement('button');
-        removeBtn.className = 'btn-remove-entry no-print';
-        removeBtn.textContent = '×';
-        removeBtn.title = '删除';
-        removeBtn.addEventListener('click', function() {
+        var card = document.createElement("div");
+        card.className = "entry-card";
+
+        var removeBtn = document.createElement("button");
+        removeBtn.className = "btn-remove-entry no-print";
+        removeBtn.textContent = "×";
+        removeBtn.title = "删除";
+        removeBtn.addEventListener("click", function () {
           removeExperience(entry.id);
         });
         card.appendChild(removeBtn);
-        
-        var grid = document.createElement('div');
-        grid.className = 'form-grid';
-        
+
+        var grid = document.createElement("div");
+        grid.className = "form-grid";
+
         // Company
-        var companyGroup = createInputGroup('公司名称', 'text', entry.company, '公司名称', function(val) {
-          updateExperience(entry.id, 'company', val);
-        });
+        var companyGroup = createInputGroup(
+          "公司名称",
+          "text",
+          entry.company,
+          "公司名称",
+          function (val) {
+            updateExperience(entry.id, "company", val);
+          }
+        );
         grid.appendChild(companyGroup);
-        
+
         // Position
-        var positionGroup = createInputGroup('职位', 'text', entry.position, '职位名称', function(val) {
-          updateExperience(entry.id, 'position', val);
-        });
+        var positionGroup = createInputGroup(
+          "职位",
+          "text",
+          entry.position,
+          "职位名称",
+          function (val) {
+            updateExperience(entry.id, "position", val);
+          }
+        );
         grid.appendChild(positionGroup);
-        
+
         // Start date
-        var startGroup = createInputGroup('开始日期', 'date', entry.startDate, '', function(val) {
-          updateExperience(entry.id, 'startDate', val);
+        var startGroup = createInputGroup("开始日期", "date", entry.startDate, "", function (val) {
+          updateExperience(entry.id, "startDate", val);
         });
         grid.appendChild(startGroup);
-        
+
         // End date
-        var endGroup = createInputGroup('结束日期', 'date', entry.endDate, '', function(val) {
-          updateExperience(entry.id, 'endDate', val);
+        var endGroup = createInputGroup("结束日期", "date", entry.endDate, "", function (val) {
+          updateExperience(entry.id, "endDate", val);
         });
         grid.appendChild(endGroup);
-        
+
         card.appendChild(grid);
-        
+
         // Description
-        var descGroup = document.createElement('div');
-        descGroup.className = 'input-group';
-        var descLabel = document.createElement('label');
-        descLabel.className = 'input-label';
-        descLabel.textContent = '工作描述';
+        var descGroup = document.createElement("div");
+        descGroup.className = "input-group";
+        var descLabel = document.createElement("label");
+        descLabel.className = "input-label";
+        descLabel.textContent = "工作描述";
         descGroup.appendChild(descLabel);
-        var descTextarea = document.createElement('textarea');
+        var descTextarea = document.createElement("textarea");
         descTextarea.value = entry.description;
-        descTextarea.placeholder = '描述您的主要职责和成就...';
-        descTextarea.addEventListener('change', function() {
-          updateExperience(entry.id, 'description', this.value);
+        descTextarea.placeholder = "描述您的主要职责和成就...";
+        descTextarea.addEventListener("change", function () {
+          updateExperience(entry.id, "description", this.value);
         });
         descGroup.appendChild(descTextarea);
         card.appendChild(descGroup);
-        
+
         return card;
       }
 
@@ -923,50 +973,50 @@
 
       // Create input group helper
       function createInputGroup(label, type, value, placeholder, onChange) {
-        var group = document.createElement('div');
-        group.className = 'input-group';
-        
-        var labelEl = document.createElement('label');
-        labelEl.className = 'input-label';
+        var group = document.createElement("div");
+        group.className = "input-group";
+
+        var labelEl = document.createElement("label");
+        labelEl.className = "input-label";
         labelEl.textContent = label;
         group.appendChild(labelEl);
-        
-        var input = document.createElement('input');
+
+        var input = document.createElement("input");
         input.type = type;
         input.value = value;
         input.placeholder = placeholder;
-        input.addEventListener('change', function() {
+        input.addEventListener("change", function () {
           onChange(this.value);
         });
         group.appendChild(input);
-        
+
         return group;
       }
 
       // Add skill
       function addSkill() {
-        var input = document.getElementById('skillInput');
+        var input = document.getElementById("skillInput");
         var skill = input.value.trim();
-        
+
         if (!skill) {
-          showToast('请输入技能名称');
+          showToast("请输入技能名称");
           return;
         }
-        
+
         if (skillsList.indexOf(skill) !== -1) {
-          showToast('该技能已存在');
+          showToast("该技能已存在");
           return;
         }
-        
+
         skillsList.push(skill);
-        input.value = '';
+        input.value = "";
         renderSkills();
         saveToStorage();
       }
 
       // Handle skill input keypress
       function handleSkillKeypress(event) {
-        if (event.key === 'Enter') {
+        if (event.key === "Enter") {
           event.preventDefault();
           addSkill();
         }
@@ -974,30 +1024,37 @@
 
       // Remove skill
       function removeSkill(skill) {
-        skillsList = skillsList.filter(function(s) { return s !== skill; });
+        skillsList = skillsList.filter(function (s) {
+          return s !== skill;
+        });
         renderSkills();
         saveToStorage();
       }
 
       // Render skills
       function renderSkills() {
-        var container = document.getElementById('skillsContainer');
-        container.textContent = '';
-        
+        var container = document.getElementById("skillsContainer");
+        container.textContent = "";
+
         for (var i = 0; i < skillsList.length; i++) {
           var skill = skillsList[i];
-          var tag = document.createElement('span');
-          tag.className = 'skill-tag';
+          var tag = document.createElement("span");
+          tag.className = "skill-tag";
           tag.textContent = skill;
-          
-          var removeBtn = document.createElement('span');
-          removeBtn.className = 'remove';
-          removeBtn.textContent = '×';
-          removeBtn.addEventListener('click', (function(s) {
-            return function() { removeSkill(s); };
-          })(skill));
+
+          var removeBtn = document.createElement("span");
+          removeBtn.className = "remove";
+          removeBtn.textContent = "×";
+          removeBtn.addEventListener(
+            "click",
+            (function (s) {
+              return function () {
+                removeSkill(s);
+              };
+            })(skill)
+          );
           tag.appendChild(removeBtn);
-          
+
           container.appendChild(tag);
         }
       }
@@ -1005,10 +1062,10 @@
       // Debounce function
       function debounce(func, wait) {
         var timeout;
-        return function() {
+        return function () {
           var context = this;
           var args = arguments;
-          var later = function() {
+          var later = function () {
             clearTimeout(timeout);
             func.apply(context, args);
           };
@@ -1019,64 +1076,64 @@
 
       // Print resume
       function printResume() {
-        var name = document.getElementById('fullName').value || '姓名';
+        var name = document.getElementById("fullName").value || "姓名";
         var contact = [];
-        var email = document.getElementById('email').value;
-        var phone = document.getElementById('phone').value;
-        var location = document.getElementById('location').value;
-        
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var location = document.getElementById("location").value;
+
         if (email) contact.push(email);
         if (phone) contact.push(phone);
         if (location) contact.push(location);
-        
-        document.getElementById('printName').textContent = name;
-        document.getElementById('printContact').textContent = contact.join(' | ');
-        
+
+        document.getElementById("printName").textContent = name;
+        document.getElementById("printContact").textContent = contact.join(" | ");
+
         window.print();
       }
 
       // Clear all
       function clearAll() {
-        if (!confirm('确定要清空所有内容吗？')) return;
-        
-        document.getElementById('fullName').value = '';
-        document.getElementById('jobTitle').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('phone').value = '';
-        document.getElementById('location').value = '';
-        document.getElementById('website').value = '';
-        document.getElementById('summary').value = '';
-        
+        if (!confirm("确定要清空所有内容吗？")) return;
+
+        document.getElementById("fullName").value = "";
+        document.getElementById("jobTitle").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("location").value = "";
+        document.getElementById("website").value = "";
+        document.getElementById("summary").value = "";
+
         educationList = [];
         experienceList = [];
         skillsList = [];
         idCounter = 0;
-        
+
         addEducation();
         addExperience();
         renderSkills();
-        
+
         localStorage.removeItem(LS_KEY);
-        
-        showToast('已清空');
+
+        showToast("已清空");
       }
 
       // Save to localStorage
       function saveToStorage() {
         var data = {
-          fullName: document.getElementById('fullName').value,
-          jobTitle: document.getElementById('jobTitle').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          location: document.getElementById('location').value,
-          website: document.getElementById('website').value,
-          summary: document.getElementById('summary').value,
+          fullName: document.getElementById("fullName").value,
+          jobTitle: document.getElementById("jobTitle").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          location: document.getElementById("location").value,
+          website: document.getElementById("website").value,
+          summary: document.getElementById("summary").value,
           educationList: educationList,
           experienceList: experienceList,
           skillsList: skillsList,
           idCounter: idCounter
         };
-        
+
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
 
@@ -1084,58 +1141,60 @@
       function loadFromStorage() {
         var saved = localStorage.getItem(LS_KEY);
         if (!saved) return;
-        
+
         try {
           var data = JSON.parse(saved);
-          
-          document.getElementById('fullName').value = data.fullName || '';
-          document.getElementById('jobTitle').value = data.jobTitle || '';
-          document.getElementById('email').value = data.email || '';
-          document.getElementById('phone').value = data.phone || '';
-          document.getElementById('location').value = data.location || '';
-          document.getElementById('website').value = data.website || '';
-          document.getElementById('summary').value = data.summary || '';
-          
+
+          document.getElementById("fullName").value = data.fullName || "";
+          document.getElementById("jobTitle").value = data.jobTitle || "";
+          document.getElementById("email").value = data.email || "";
+          document.getElementById("phone").value = data.phone || "";
+          document.getElementById("location").value = data.location || "";
+          document.getElementById("website").value = data.website || "";
+          document.getElementById("summary").value = data.summary || "";
+
           if (data.educationList && data.educationList.length > 0) {
             educationList = data.educationList;
           }
-          
+
           if (data.experienceList && data.experienceList.length > 0) {
             experienceList = data.experienceList;
           }
-          
+
           if (data.skillsList) {
             skillsList = data.skillsList;
           }
-          
+
           idCounter = data.idCounter || 0;
         } catch (e) {
-          console.error('Failed to load saved data:', e);
+          console.error("Failed to load saved data:", e);
         }
       }
 
       // Theme toggle
       function toggleTheme() {
         var body = document.body;
-        var isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        var isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
       // Load theme
       function loadTheme() {
-        var saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       }
 
       // Show toast
       function showToast(msg) {
-        var toast = document.getElementById('toast');
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize on load

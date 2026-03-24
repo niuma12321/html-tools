@@ -40,7 +40,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -59,7 +60,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -410,22 +411,28 @@
             <div class="section-title">原始数据</div>
             <div class="input-group">
               <label class="input-label">数据集 A（每行一条记录）</label>
-              <textarea id="dataA" placeholder="apple
+              <textarea
+                id="dataA"
+                placeholder="apple
 banana
 cherry
 date
-elderberry"></textarea>
+elderberry"
+              ></textarea>
             </div>
           </div>
           <div class="input-panel">
             <div class="section-title">新数据</div>
             <div class="input-group">
               <label class="input-label">数据集 B（每行一条记录）</label>
-              <textarea id="dataB" placeholder="apple
+              <textarea
+                id="dataB"
+                placeholder="apple
 blueberry
 cherry
 fig
-grape"></textarea>
+grape"
+              ></textarea>
             </div>
           </div>
         </div>
@@ -439,17 +446,26 @@ grape"></textarea>
 
         <div class="section-title">对比结果</div>
 
-        <div class="stats-bar" id="statsBar" style="display: none;">
-          <div class="stat-badge added">新增: <span id="addedCount">0</span></div>
-          <div class="stat-badge removed">删除: <span id="removedCount">0</span></div>
-          <div class="stat-badge unchanged">未变: <span id="unchangedCount">0</span></div>
+        <div class="stats-bar" id="statsBar" style="display: none">
+          <div class="stat-badge added">
+            新增:
+            <span id="addedCount">0</span>
+          </div>
+          <div class="stat-badge removed">
+            删除:
+            <span id="removedCount">0</span>
+          </div>
+          <div class="stat-badge unchanged">
+            未变:
+            <span id="unchangedCount">0</span>
+          </div>
         </div>
 
         <div class="diff-output" id="diffOutput">
           <div class="empty-state">输入两组数据后点击对比</div>
         </div>
 
-        <div class="btn-row" style="margin-top: 16px;">
+        <div class="btn-row" style="margin-top: 16px">
           <button class="btn btn-secondary" onclick="copyAdded()">📋 复制新增</button>
           <button class="btn btn-secondary" onclick="copyRemoved()">📋 复制删除</button>
           <button class="btn btn-secondary" onclick="copyAll()">📋 复制全部</button>
@@ -460,58 +476,68 @@ grape"></textarea>
     <div class="toast" id="toast">操作成功</div>
 
     <script>
-      var LS_KEY = 'data-diff-data';
+      var LS_KEY = "data-diff-data";
       var lastDiff = { added: [], removed: [], unchanged: [] };
 
       function toggleTheme() {
         var body = document.body;
-        var isDark = body.getAttribute('data-theme') !== 'light';
-        body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('theme', isDark ? 'light' : 'dark');
+        var isDark = body.getAttribute("data-theme") !== "light";
+        body.setAttribute("data-theme", isDark ? "light" : "dark");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
       (function () {
-        var saved = localStorage.getItem('theme');
-        if (saved === 'light') {
-          document.body.setAttribute('data-theme', 'light');
+        var saved = localStorage.getItem("theme");
+        if (saved === "light") {
+          document.body.setAttribute("data-theme", "light");
         }
       })();
 
       function parseLines(text) {
-        return text.trim().split('\n')
-          .map(function(line) { return line.trim(); })
-          .filter(function(line) { return line !== ''; });
+        return text
+          .trim()
+          .split("\n")
+          .map(function (line) {
+            return line.trim();
+          })
+          .filter(function (line) {
+            return line !== "";
+          });
       }
 
       function compare() {
-        var textA = document.getElementById('dataA').value;
-        var textB = document.getElementById('dataB').value;
+        var textA = document.getElementById("dataA").value;
+        var textB = document.getElementById("dataB").value;
 
         var linesA = parseLines(textA);
         var linesB = parseLines(textB);
 
         if (linesA.length === 0 && linesB.length === 0) {
-          showToast('请输入数据', 'error');
+          showToast("请输入数据", "error");
           return;
         }
 
         var setA = {};
         var setB = {};
 
-        linesA.forEach(function(line) { setA[line] = true; });
-        linesB.forEach(function(line) { setB[line] = true; });
+        linesA.forEach(function (line) {
+          setA[line] = true;
+        });
+        linesB.forEach(function (line) {
+          setB[line] = true;
+        });
 
         var added = [];
         var removed = [];
         var unchanged = [];
 
-        linesA.forEach(function(line) {
+        linesA.forEach(function (line) {
           if (!setB[line]) {
             removed.push(line);
           }
         });
 
-        linesB.forEach(function(line) {
+        linesB.forEach(function (line) {
           if (!setA[line]) {
             added.push(line);
           } else {
@@ -522,64 +548,64 @@ grape"></textarea>
         lastDiff = { added: added, removed: removed, unchanged: unchanged };
 
         renderDiff(added, removed, unchanged);
-        document.getElementById('addedCount').textContent = added.length;
-        document.getElementById('removedCount').textContent = removed.length;
-        document.getElementById('unchangedCount').textContent = unchanged.length;
-        document.getElementById('statsBar').style.display = 'flex';
+        document.getElementById("addedCount").textContent = added.length;
+        document.getElementById("removedCount").textContent = removed.length;
+        document.getElementById("unchangedCount").textContent = unchanged.length;
+        document.getElementById("statsBar").style.display = "flex";
 
         saveToStorage();
-        showToast('对比完成');
+        showToast("对比完成");
       }
 
       function renderDiff(added, removed, unchanged) {
-        var output = document.getElementById('diffOutput');
-        output.textContent = '';
+        var output = document.getElementById("diffOutput");
+        output.textContent = "";
 
         var total = added.length + removed.length + unchanged.length;
         if (total === 0) {
-          var emptyDiv = document.createElement('div');
-          emptyDiv.className = 'empty-state';
-          emptyDiv.textContent = '无数据';
+          var emptyDiv = document.createElement("div");
+          emptyDiv.className = "empty-state";
+          emptyDiv.textContent = "无数据";
           output.appendChild(emptyDiv);
           return;
         }
 
-        removed.forEach(function(line) {
-          var div = document.createElement('div');
-          div.className = 'diff-line removed';
-          var prefix = document.createElement('span');
-          prefix.className = 'diff-prefix';
-          prefix.textContent = '-';
-          var content = document.createElement('span');
-          content.className = 'diff-content';
+        removed.forEach(function (line) {
+          var div = document.createElement("div");
+          div.className = "diff-line removed";
+          var prefix = document.createElement("span");
+          prefix.className = "diff-prefix";
+          prefix.textContent = "-";
+          var content = document.createElement("span");
+          content.className = "diff-content";
           content.textContent = line;
           div.appendChild(prefix);
           div.appendChild(content);
           output.appendChild(div);
         });
 
-        added.forEach(function(line) {
-          var div = document.createElement('div');
-          div.className = 'diff-line added';
-          var prefix = document.createElement('span');
-          prefix.className = 'diff-prefix';
-          prefix.textContent = '+';
-          var content = document.createElement('span');
-          content.className = 'diff-content';
+        added.forEach(function (line) {
+          var div = document.createElement("div");
+          div.className = "diff-line added";
+          var prefix = document.createElement("span");
+          prefix.className = "diff-prefix";
+          prefix.textContent = "+";
+          var content = document.createElement("span");
+          content.className = "diff-content";
           content.textContent = line;
           div.appendChild(prefix);
           div.appendChild(content);
           output.appendChild(div);
         });
 
-        unchanged.forEach(function(line) {
-          var div = document.createElement('div');
-          div.className = 'diff-line unchanged';
-          var prefix = document.createElement('span');
-          prefix.className = 'diff-prefix';
-          prefix.textContent = '=';
-          var content = document.createElement('span');
-          content.className = 'diff-content';
+        unchanged.forEach(function (line) {
+          var div = document.createElement("div");
+          div.className = "diff-line unchanged";
+          var prefix = document.createElement("span");
+          prefix.className = "diff-prefix";
+          prefix.textContent = "=";
+          var content = document.createElement("span");
+          content.className = "diff-content";
           content.textContent = line;
           div.appendChild(prefix);
           div.appendChild(content);
@@ -589,87 +615,96 @@ grape"></textarea>
 
       function copyAdded() {
         if (lastDiff.added.length === 0) {
-          showToast('无新增数据', 'error');
+          showToast("无新增数据", "error");
           return;
         }
-        navigator.clipboard.writeText(lastDiff.added.join('\n')).then(function() {
-          showToast('已复制新增数据');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(lastDiff.added.join("\n"))
+          .then(function () {
+            showToast("已复制新增数据");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function copyRemoved() {
         if (lastDiff.removed.length === 0) {
-          showToast('无删除数据', 'error');
+          showToast("无删除数据", "error");
           return;
         }
-        navigator.clipboard.writeText(lastDiff.removed.join('\n')).then(function() {
-          showToast('已复制删除数据');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(lastDiff.removed.join("\n"))
+          .then(function () {
+            showToast("已复制删除数据");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function copyAll() {
         var lines = [];
-        lastDiff.removed.forEach(function(line) {
-          lines.push('- ' + line);
+        lastDiff.removed.forEach(function (line) {
+          lines.push("- " + line);
         });
-        lastDiff.added.forEach(function(line) {
-          lines.push('+ ' + line);
+        lastDiff.added.forEach(function (line) {
+          lines.push("+ " + line);
         });
-        lastDiff.unchanged.forEach(function(line) {
-          lines.push('= ' + line);
+        lastDiff.unchanged.forEach(function (line) {
+          lines.push("= " + line);
         });
 
         if (lines.length === 0) {
-          showToast('无数据可复制', 'error');
+          showToast("无数据可复制", "error");
           return;
         }
 
-        navigator.clipboard.writeText(lines.join('\n')).then(function() {
-          showToast('已复制全部结果');
-        }).catch(function() {
-          showToast('复制失败', 'error');
-        });
+        navigator.clipboard
+          .writeText(lines.join("\n"))
+          .then(function () {
+            showToast("已复制全部结果");
+          })
+          .catch(function () {
+            showToast("复制失败", "error");
+          });
       }
 
       function swapData() {
-        var dataA = document.getElementById('dataA');
-        var dataB = document.getElementById('dataB');
+        var dataA = document.getElementById("dataA");
+        var dataB = document.getElementById("dataB");
         var temp = dataA.value;
         dataA.value = dataB.value;
         dataB.value = temp;
         saveToStorage();
-        showToast('已交换');
+        showToast("已交换");
       }
 
       function loadSample() {
-        document.getElementById('dataA').value = 'apple\nbanana\ncherry\ndate\nelderberry\nfig';
-        document.getElementById('dataB').value = 'apple\nblueberry\ncherry\nfig\ngrape\nhoneydew';
+        document.getElementById("dataA").value = "apple\nbanana\ncherry\ndate\nelderberry\nfig";
+        document.getElementById("dataB").value = "apple\nblueberry\ncherry\nfig\ngrape\nhoneydew";
         compare();
       }
 
       function clearAll() {
-        document.getElementById('dataA').value = '';
-        document.getElementById('dataB').value = '';
-        var output = document.getElementById('diffOutput');
-        output.textContent = '';
-        var emptyDiv = document.createElement('div');
-        emptyDiv.className = 'empty-state';
-        emptyDiv.textContent = '输入两组数据后点击对比';
+        document.getElementById("dataA").value = "";
+        document.getElementById("dataB").value = "";
+        var output = document.getElementById("diffOutput");
+        output.textContent = "";
+        var emptyDiv = document.createElement("div");
+        emptyDiv.className = "empty-state";
+        emptyDiv.textContent = "输入两组数据后点击对比";
         output.appendChild(emptyDiv);
-        document.getElementById('statsBar').style.display = 'none';
+        document.getElementById("statsBar").style.display = "none";
         lastDiff = { added: [], removed: [], unchanged: [] };
         localStorage.removeItem(LS_KEY);
-        showToast('已清空');
+        showToast("已清空");
       }
 
       function saveToStorage() {
         var data = {
-          a: document.getElementById('dataA').value,
-          b: document.getElementById('dataB').value
+          a: document.getElementById("dataA").value,
+          b: document.getElementById("dataB").value
         };
         localStorage.setItem(LS_KEY, JSON.stringify(data));
       }
@@ -680,27 +715,29 @@ grape"></textarea>
 
         try {
           var data = JSON.parse(saved);
-          if (data.a) document.getElementById('dataA').value = data.a;
-          if (data.b) document.getElementById('dataB').value = data.b;
+          if (data.a) document.getElementById("dataA").value = data.a;
+          if (data.b) document.getElementById("dataB").value = data.b;
         } catch (e) {
           // ignore
         }
       }
 
       function showToast(msg, type) {
-        type = type || 'success';
-        var toast = document.getElementById('toast');
+        type = type || "success";
+        var toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.className = 'toast' + (type === 'error' ? ' error' : '');
-        toast.classList.add('show');
-        setTimeout(function() { toast.classList.remove('show'); }, 2000);
+        toast.className = "toast" + (type === "error" ? " error" : "");
+        toast.classList.add("show");
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener("DOMContentLoaded", function () {
         loadFromStorage();
 
-        document.querySelectorAll('textarea').forEach(function(el) {
-          el.addEventListener('input', saveToStorage);
+        document.querySelectorAll("textarea").forEach(function (el) {
+          el.addEventListener("input", saveToStorage);
         });
       });
     </script>

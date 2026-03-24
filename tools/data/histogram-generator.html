@@ -93,7 +93,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -112,7 +113,7 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
+
       .theme-toggle {
         position: fixed;
         top: 1rem;
@@ -520,7 +521,9 @@
               <div class="section-title">数据输入</div>
               <div class="input-group">
                 <label class="input-label">数值数据 (每行一个或逗号分隔)</label>
-                <textarea id="dataInput" placeholder="23
+                <textarea
+                  id="dataInput"
+                  placeholder="23
 45
 67
 34
@@ -539,7 +542,8 @@
 45
 67
 23
-56"></textarea>
+56"
+                ></textarea>
                 <div class="example-data">支持每行一个数值，或逗号/空格/制表符分隔</div>
               </div>
               <div class="btn-row">
@@ -552,7 +556,12 @@
               <div class="section-title">图表设置</div>
               <div class="input-group">
                 <label class="input-label">图表标题</label>
-                <input type="text" id="chartTitle" placeholder="直方图标题" value="数据分布直方图" />
+                <input
+                  type="text"
+                  id="chartTitle"
+                  placeholder="直方图标题"
+                  value="数据分布直方图"
+                />
               </div>
               <div class="inline-group">
                 <div class="input-group">
@@ -564,7 +573,7 @@
                   <input type="text" id="yAxisLabel" placeholder="Y轴" value="频数" />
                 </div>
               </div>
-              <div class="inline-group" style="margin-top: 16px;">
+              <div class="inline-group" style="margin-top: 16px">
                 <div class="input-group">
                   <label class="input-label">分组数量 (Bins)</label>
                   <input type="number" id="binCount" value="10" min="2" max="100" />
@@ -590,7 +599,9 @@
               <div class="section-title">直方图预览</div>
               <div class="chart-container" id="chartContainer">
                 <canvas id="chartCanvas"></canvas>
-                <div class="chart-placeholder" id="chartPlaceholder">输入数据后点击"生成直方图"</div>
+                <div class="chart-placeholder" id="chartPlaceholder">
+                  输入数据后点击"生成直方图"
+                </div>
               </div>
             </div>
 
@@ -624,7 +635,7 @@
               </div>
             </div>
 
-            <div class="btn-row" style="margin-top: 16px;">
+            <div class="btn-row" style="margin-top: 16px">
               <button class="btn btn-primary" onclick="exportPNG()">📥 导出PNG</button>
               <button class="btn btn-secondary" onclick="shareChart()">🔗 分享</button>
             </div>
@@ -663,11 +674,11 @@
         // 支持多种分隔符: 换行、逗号、空格、制表符、分号
         const values = input
           .split(/[\n,\s\t;]+/)
-          .map(v => v.trim())
-          .filter(v => v !== '')
-          .map(v => parseFloat(v))
-          .filter(v => !isNaN(v) && isFinite(v));
-        
+          .map((v) => v.trim())
+          .filter((v) => v !== "")
+          .map((v) => parseFloat(v))
+          .filter((v) => !isNaN(v) && isFinite(v));
+
         return values.length > 0 ? values : null;
       }
 
@@ -675,23 +686,22 @@
       function calculateStats(data) {
         const n = data.length;
         const sorted = [...data].sort((a, b) => a - b);
-        
+
         // 平均值
         const mean = data.reduce((sum, v) => sum + v, 0) / n;
-        
+
         // 中位数
-        const median = n % 2 === 0 
-          ? (sorted[n/2 - 1] + sorted[n/2]) / 2 
-          : sorted[Math.floor(n/2)];
-        
+        const median =
+          n % 2 === 0 ? (sorted[n / 2 - 1] + sorted[n / 2]) / 2 : sorted[Math.floor(n / 2)];
+
         // 标准差
         const variance = data.reduce((sum, v) => sum + Math.pow(v - mean, 2), 0) / n;
         const stdDev = Math.sqrt(variance);
-        
+
         // 最小值和最大值
         const min = sorted[0];
         const max = sorted[n - 1];
-        
+
         return { count: n, mean, median, stdDev, min, max };
       }
 
@@ -700,7 +710,7 @@
         const min = Math.min(...values);
         const max = Math.max(...values);
         const range = max - min;
-        
+
         // 处理所有值相同的情况
         if (range === 0) {
           return {
@@ -708,43 +718,43 @@
             counts: [values.length]
           };
         }
-        
+
         const binWidth = range / binCount;
         const bins = new Array(binCount).fill(0);
         const labels = [];
-        
+
         // 计算每个bin的范围标签
         for (let i = 0; i < binCount; i++) {
           const binStart = min + i * binWidth;
           const binEnd = min + (i + 1) * binWidth;
           labels.push(`${binStart.toFixed(1)}-${binEnd.toFixed(1)}`);
         }
-        
+
         // 将数据分配到bins
-        values.forEach(v => {
+        values.forEach((v) => {
           let binIndex = Math.floor((v - min) / binWidth);
           // 处理边界情况：最大值应该放在最后一个bin
           if (binIndex >= binCount) binIndex = binCount - 1;
           bins[binIndex]++;
         });
-        
+
         return { labels, counts: bins };
       }
 
       // 更新统计显示
       function updateStatsDisplay(stats) {
-        document.getElementById('statCount').textContent = stats.count;
-        document.getElementById('statMean').textContent = stats.mean.toFixed(2);
-        document.getElementById('statMedian').textContent = stats.median.toFixed(2);
-        document.getElementById('statStd').textContent = stats.stdDev.toFixed(2);
-        document.getElementById('statMin').textContent = stats.min.toFixed(2);
-        document.getElementById('statMax').textContent = stats.max.toFixed(2);
+        document.getElementById("statCount").textContent = stats.count;
+        document.getElementById("statMean").textContent = stats.mean.toFixed(2);
+        document.getElementById("statMedian").textContent = stats.median.toFixed(2);
+        document.getElementById("statStd").textContent = stats.stdDev.toFixed(2);
+        document.getElementById("statMin").textContent = stats.min.toFixed(2);
+        document.getElementById("statMax").textContent = stats.max.toFixed(2);
       }
 
       // 重置统计显示
       function resetStatsDisplay() {
-        ['statCount', 'statMean', 'statMedian', 'statStd', 'statMin', 'statMax'].forEach(id => {
-          document.getElementById(id).textContent = '-';
+        ["statCount", "statMean", "statMedian", "statStd", "statMin", "statMax"].forEach((id) => {
+          document.getElementById(id).textContent = "-";
         });
       }
 
@@ -785,7 +795,7 @@
         }
 
         const ctx = document.getElementById("chartCanvas").getContext("2d");
-        
+
         // 获取当前主题
         const isLight = document.body.getAttribute("data-theme") === "light";
         const textColor = isLight ? "#1a1a1a" : "#e8e8ed";
@@ -798,17 +808,19 @@
           type: "bar",
           data: {
             labels: histData.labels,
-            datasets: [{
-              label: "频数",
-              data: histData.counts,
-              backgroundColor: barColor + 'cc', // 添加透明度
-              borderColor: borderColor,
-              borderWidth: 1,
-              borderRadius: 2,
-              borderSkipped: false,
-              barPercentage: 1,
-              categoryPercentage: 0.95
-            }]
+            datasets: [
+              {
+                label: "频数",
+                data: histData.counts,
+                backgroundColor: barColor + "cc", // 添加透明度
+                borderColor: borderColor,
+                borderWidth: 1,
+                borderRadius: 2,
+                borderSkipped: false,
+                barPercentage: 1,
+                categoryPercentage: 0.95
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -820,7 +832,7 @@
                 color: textColor,
                 font: {
                   size: 16,
-                  weight: 'bold',
+                  weight: "bold",
                   family: "'Space Grotesk', sans-serif"
                 },
                 padding: {
@@ -832,7 +844,7 @@
                 display: false
               },
               tooltip: {
-                backgroundColor: isLight ? '#fff' : '#1a1a24',
+                backgroundColor: isLight ? "#fff" : "#1a1a24",
                 titleColor: textColor,
                 bodyColor: textColor,
                 borderColor: gridColor,
@@ -845,7 +857,7 @@
                   family: "'JetBrains Mono', monospace"
                 },
                 callbacks: {
-                  label: function(context) {
+                  label: function (context) {
                     const count = context.raw;
                     const total = histData.counts.reduce((a, b) => a + b, 0);
                     const percentage = ((count / total) * 100).toFixed(1);
@@ -862,7 +874,7 @@
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 ticks: {
@@ -886,7 +898,7 @@
                   color: textColor,
                   font: {
                     family: "'Space Grotesk', sans-serif",
-                    weight: '500'
+                    weight: "500"
                   }
                 },
                 ticks: {
@@ -906,7 +918,7 @@
             },
             animation: {
               duration: 800,
-              easing: 'easeOutQuart'
+              easing: "easeOutQuart"
             }
           }
         });
@@ -918,11 +930,11 @@
 
       // 调整颜色亮度
       function adjustColorBrightness(hex, percent) {
-        const num = parseInt(hex.replace('#', ''), 16);
+        const num = parseInt(hex.replace("#", ""), 16);
         const r = Math.min(255, Math.max(0, (num >> 16) + percent));
-        const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + percent));
-        const b = Math.min(255, Math.max(0, (num & 0x0000FF) + percent));
-        return '#' + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
+        const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00ff) + percent));
+        const b = Math.min(255, Math.max(0, (num & 0x0000ff) + percent));
+        return "#" + (0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1);
       }
 
       // 导出PNG
@@ -933,9 +945,9 @@
         }
 
         const canvas = document.getElementById("chartCanvas");
-        const link = document.createElement('a');
-        link.download = 'histogram.png';
-        link.href = canvas.toDataURL('image/png', 1.0);
+        const link = document.createElement("a");
+        link.download = "histogram.png";
+        link.href = canvas.toDataURL("image/png", 1.0);
         link.click();
         showToast("PNG已下载");
       }
@@ -952,13 +964,16 @@
         };
 
         const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
-        const url = window.location.href.split('#')[0] + '#' + encoded;
-        
-        navigator.clipboard.writeText(url).then(() => {
-          showToast("分享链接已复制到剪贴板");
-        }).catch(() => {
-          showToast("复制失败，请手动复制URL", true);
-        });
+        const url = window.location.href.split("#")[0] + "#" + encoded;
+
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            showToast("分享链接已复制到剪贴板");
+          })
+          .catch(() => {
+            showToast("复制失败，请手动复制URL", true);
+          });
       }
 
       // 从URL加载状态
@@ -990,12 +1005,12 @@
           bins: document.getElementById("binCount").value,
           color: document.getElementById("barColor").value
         };
-        localStorage.setItem('histogram-generator-state', JSON.stringify(state));
+        localStorage.setItem("histogram-generator-state", JSON.stringify(state));
       }
 
       // 从 localStorage 加载状态
       function loadState() {
-        const saved = localStorage.getItem('histogram-generator-state');
+        const saved = localStorage.getItem("histogram-generator-state");
         if (!saved) return false;
 
         try {
@@ -1018,7 +1033,7 @@
         const sampleData = [];
         const mean = 50;
         const stdDev = 15;
-        
+
         for (let i = 0; i < 100; i++) {
           // Box-Muller变换生成正态分布
           const u1 = Math.random();
@@ -1027,8 +1042,8 @@
           const value = mean + z * stdDev;
           sampleData.push(Math.round(value * 10) / 10);
         }
-        
-        document.getElementById("dataInput").value = sampleData.join('\n');
+
+        document.getElementById("dataInput").value = sampleData.join("\n");
         document.getElementById("chartTitle").value = "正态分布示例";
         showToast("已加载100个正态分布示例数据");
       }
@@ -1065,10 +1080,10 @@
         resetStatsDisplay();
 
         // 清除 localStorage
-        localStorage.removeItem('histogram-generator-state');
-        
+        localStorage.removeItem("histogram-generator-state");
+
         // 清除 URL hash
-        history.replaceState(null, '', window.location.pathname);
+        history.replaceState(null, "", window.location.pathname);
 
         showToast("已清空");
       }
@@ -1077,7 +1092,7 @@
       function showToast(msg, isError = false) {
         const toast = document.getElementById("toast");
         toast.textContent = msg;
-        toast.classList.toggle('error', isError);
+        toast.classList.toggle("error", isError);
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 2000);
       }
@@ -1097,11 +1112,18 @@
         }
 
         // 监听输入变化保存状态
-        const inputs = ['dataInput', 'chartTitle', 'xAxisLabel', 'yAxisLabel', 'binCount', 'barColor'];
-        inputs.forEach(id => {
+        const inputs = [
+          "dataInput",
+          "chartTitle",
+          "xAxisLabel",
+          "yAxisLabel",
+          "binCount",
+          "barColor"
+        ];
+        inputs.forEach((id) => {
           const el = document.getElementById(id);
-          el.addEventListener('input', saveState);
-          el.addEventListener('change', saveState);
+          el.addEventListener("input", saveState);
+          el.addEventListener("change", saveState);
         });
       })();
     </script>

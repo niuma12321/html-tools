@@ -4,20 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>热力图生成器 - WebUtils</title>
-    <meta name="description" content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出" />
+    <meta
+      name="description"
+      content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出"
+    />
     <meta name="keywords" content="heatmap 热力图 matrix 矩阵 数据可视化 visualization" />
     <meta name="author" content="WebUtils" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://tools.realtime-ai.chat/tools/data/heatmap-generator.html" />
     <meta property="og:title" content="热力图生成器 - WebUtils" />
-    <meta property="og:description" content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出" />
+    <meta
+      property="og:description"
+      content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出"
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/data/heatmap-generator.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/data/heatmap-generator.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="热力图生成器 - WebUtils" />
-    <meta name="twitter:description" content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出" />
+    <meta
+      name="twitter:description"
+      content="创建数据热力图，支持CSV数据输入、颜色渐变自定义、行列标签、数值悬停显示、PNG导出"
+    />
     <meta property="og:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
@@ -28,15 +40,33 @@
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://tools.realtime-ai.chat/" },
-          { "@type": "ListItem", "position": 2, "name": "数据工具", "item": "https://tools.realtime-ai.chat/#data" },
-          { "@type": "ListItem", "position": 3, "name": "热力图生成器", "item": "https://tools.realtime-ai.chat/tools/data/heatmap-generator.html" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首页",
+            "item": "https://tools.realtime-ai.chat/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "数据工具",
+            "item": "https://tools.realtime-ai.chat/#data"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "热力图生成器",
+            "item": "https://tools.realtime-ai.chat/tools/data/heatmap-generator.html"
+          }
         ]
       }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -58,7 +88,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -77,8 +108,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -89,7 +124,9 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgb(0 245 212 / 2%) 1px, transparent 1px), linear-gradient(90deg, rgb(0 245 212 / 2%) 1px, transparent 1px);
+        background-image:
+          linear-gradient(rgb(0 245 212 / 2%) 1px, transparent 1px),
+          linear-gradient(90deg, rgb(0 245 212 / 2%) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
         z-index: 0;
@@ -108,7 +145,9 @@
         z-index: 100;
         transition: all 0.2s;
       }
-      .theme-toggle:hover { transform: scale(1.1); }
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
       .container {
         position: relative;
         z-index: 1;
@@ -142,10 +181,19 @@
         text-decoration: none;
         transition: color 0.2s;
       }
-      .breadcrumb a:hover { color: var(--color-accent-cyan); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
-      .title-section { flex: 1; }
+      .breadcrumb a:hover {
+        color: var(--color-accent-cyan);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+      .title-section {
+        flex: 1;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -154,8 +202,14 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section h1 .icon { font-size: 1.8rem; }
-      .title-section p { color: var(--color-text-secondary); margin-top: 4px; font-size: 0.9rem; }
+      .title-section h1 .icon {
+        font-size: 1.8rem;
+      }
+      .title-section p {
+        color: var(--color-text-secondary);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
       .main-content {
         background: var(--color-bg-card);
         border: 1px solid var(--border-subtle);
@@ -168,7 +222,9 @@
         grid-template-columns: 380px 1fr;
         gap: 24px;
       }
-      .tool-section { margin-bottom: 20px; }
+      .tool-section {
+        margin-bottom: 20px;
+      }
       .section-title {
         font-family: var(--font-mono);
         font-size: 0.85rem;
@@ -180,7 +236,9 @@
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .input-group { margin-bottom: 12px; }
+      .input-group {
+        margin-bottom: 12px;
+      }
       .input-label {
         display: block;
         font-family: var(--font-mono);
@@ -188,7 +246,11 @@
         color: var(--color-text-secondary);
         margin-bottom: 6px;
       }
-      input[type="text"], input[type="number"], input[type="color"], select, textarea {
+      input[type="text"],
+      input[type="number"],
+      input[type="color"],
+      select,
+      textarea {
         width: 100%;
         padding: 8px 12px;
         font-family: var(--font-mono);
@@ -199,14 +261,52 @@
         color: var(--color-text-primary);
         transition: border-color 0.2s;
       }
-      input:focus, select:focus, textarea:focus { outline: none; border-color: var(--color-accent-cyan); }
-      textarea { min-height: 160px; resize: vertical; font-size: 0.8rem; line-height: 1.5; }
-      .color-row { display: flex; gap: 10px; align-items: flex-end; }
-      .color-picker-wrapper { display: flex; flex-direction: column; gap: 4px; flex: 1; }
-      .color-picker-wrapper span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
-      input[type="color"] { width: 100%; height: 36px; padding: 2px; cursor: pointer; }
-      .gradient-preview { margin-top: 8px; height: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); }
-      .preset-colors { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-accent-cyan);
+      }
+      textarea {
+        min-height: 160px;
+        resize: vertical;
+        font-size: 0.8rem;
+        line-height: 1.5;
+      }
+      .color-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-end;
+      }
+      .color-picker-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        flex: 1;
+      }
+      .color-picker-wrapper span {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+      input[type="color"] {
+        width: 100%;
+        height: 36px;
+        padding: 2px;
+        cursor: pointer;
+      }
+      .gradient-preview {
+        margin-top: 8px;
+        height: 16px;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-subtle);
+      }
+      .preset-colors {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
       .preset-btn {
         padding: 4px 10px;
         font-family: var(--font-mono);
@@ -218,8 +318,15 @@
         cursor: pointer;
         transition: all 0.2s;
       }
-      .preset-btn:hover { border-color: var(--color-accent-cyan); color: var(--color-accent-cyan); }
-      .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+      .preset-btn:hover {
+        border-color: var(--color-accent-cyan);
+        color: var(--color-accent-cyan);
+      }
+      .btn-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
       .btn {
         flex: 1;
         min-width: 100px;
@@ -236,10 +343,23 @@
         justify-content: center;
         gap: 6px;
       }
-      .btn-primary { background: var(--color-accent-cyan); color: var(--color-bg-deep); }
-      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 20px var(--glow-cyan); }
-      .btn-secondary { background: var(--color-bg-surface); color: var(--color-text-primary); border: 1px solid var(--border-subtle); }
-      .btn-secondary:hover { border-color: var(--color-accent-cyan); color: var(--color-accent-cyan); }
+      .btn-primary {
+        background: var(--color-accent-cyan);
+        color: var(--color-bg-deep);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px var(--glow-cyan);
+      }
+      .btn-secondary {
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+        border: 1px solid var(--border-subtle);
+      }
+      .btn-secondary:hover {
+        border-color: var(--color-accent-cyan);
+        color: var(--color-accent-cyan);
+      }
       .canvas-container {
         position: relative;
         background: var(--bg-input);
@@ -253,8 +373,15 @@
         justify-content: center;
         overflow: auto;
       }
-      .canvas-container.empty { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; }
-      #heatmapCanvas { max-width: 100%; cursor: crosshair; }
+      .canvas-container.empty {
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+      }
+      #heatmapCanvas {
+        max-width: 100%;
+        cursor: crosshair;
+      }
       .tooltip {
         position: fixed;
         background: var(--color-bg-card);
@@ -270,10 +397,19 @@
         transition: opacity 0.15s;
         box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
       }
-      .tooltip.visible { opacity: 1; }
-      .tooltip-row { color: var(--color-accent-cyan); }
-      .tooltip-col { color: var(--color-accent-purple); }
-      .tooltip-value { color: var(--accent-yellow); font-weight: 600; }
+      .tooltip.visible {
+        opacity: 1;
+      }
+      .tooltip-row {
+        color: var(--color-accent-cyan);
+      }
+      .tooltip-col {
+        color: var(--color-accent-purple);
+      }
+      .tooltip-value {
+        color: var(--accent-yellow);
+        font-weight: 600;
+      }
       .stats-row {
         display: flex;
         gap: 16px;
@@ -282,15 +418,53 @@
         padding-top: 12px;
         border-top: 1px solid var(--border-subtle);
       }
-      .stat-item { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-text-secondary); }
-      .stat-item span { color: var(--color-accent-cyan); font-weight: 600; }
-      .checkbox-group { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-      .checkbox-group input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--color-accent-cyan); }
-      .checkbox-group label { font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-text-secondary); cursor: pointer; }
-      .options-row { display: flex; gap: 12px; }
-      .options-row .input-group { flex: 1; min-width: 80px; }
-      .sample-hint { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
-      .sample-hint code { background: var(--bg-input); padding: 1px 4px; border-radius: 2px; }
+      .stat-item {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--color-text-secondary);
+      }
+      .stat-item span {
+        color: var(--color-accent-cyan);
+        font-weight: 600;
+      }
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+      }
+      .checkbox-group input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        accent-color: var(--color-accent-cyan);
+      }
+      .checkbox-group label {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--color-text-secondary);
+        cursor: pointer;
+      }
+      .options-row {
+        display: flex;
+        gap: 12px;
+      }
+      .options-row .input-group {
+        flex: 1;
+        min-width: 80px;
+      }
+      .sample-hint {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        margin-top: 6px;
+        line-height: 1.4;
+      }
+      .sample-hint code {
+        background: var(--bg-input);
+        padding: 1px 4px;
+        border-radius: 2px;
+      }
       .toast {
         position: fixed;
         bottom: 24px;
@@ -307,17 +481,34 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      .toast.error { background: var(--accent-red); }
-      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.error {
+        background: var(--accent-red);
+      }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
       @media (max-width: 900px) {
-        .tool-grid { grid-template-columns: 1fr; }
+        .tool-grid {
+          grid-template-columns: 1fr;
+        }
       }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .btn-row { flex-direction: column; }
-        .btn { width: 100%; }
-        .color-row { flex-direction: column; }
-        .options-row { flex-direction: column; }
+        .container {
+          padding: 16px;
+        }
+        .btn-row {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
+        .color-row {
+          flex-direction: column;
+        }
+        .options-row {
+          flex-direction: column;
+        }
       }
     </style>
   </head>
@@ -332,7 +523,10 @@
           <span class="breadcrumb-current">热力图生成器</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">🔥</span>热力图生成器</h1>
+          <h1>
+            <span class="icon">🔥</span>
+            热力图生成器
+          </h1>
           <p>创建数据热力图，支持CSV数据、颜色自定义、行列标签、PNG导出</p>
         </div>
       </header>
@@ -343,11 +537,18 @@
               <div class="section-title">数据输入 (CSV格式)</div>
               <div class="input-group">
                 <label class="input-label">矩阵数据 (每行一行数据，值用逗号分隔)</label>
-                <textarea id="dataInput" placeholder=",列A,列B,列C
+                <textarea
+                  id="dataInput"
+                  placeholder=",列A,列B,列C
 行1,10,20,30
 行2,15,25,35
-行3,20,30,40"></textarea>
-                <div class="sample-hint">提示: 第一行可作为列标签，第一列可作为行标签。如 <code>,A,B,C</code> 表示3列标签</div>
+行3,20,30,40"
+                ></textarea>
+                <div class="sample-hint">
+                  提示: 第一行可作为列标签，第一列可作为行标签。如
+                  <code>,A,B,C</code>
+                  表示3列标签
+                </div>
               </div>
               <div class="checkbox-group">
                 <input type="checkbox" id="hasRowLabels" checked />
@@ -421,11 +622,26 @@
                 <canvas id="heatmapCanvas" style="display: none"></canvas>
               </div>
               <div class="stats-row" id="statsRow" style="display: none">
-                <div class="stat-item">行数: <span id="statRows">0</span></div>
-                <div class="stat-item">列数: <span id="statCols">0</span></div>
-                <div class="stat-item">最小值: <span id="statMin">0</span></div>
-                <div class="stat-item">最大值: <span id="statMax">0</span></div>
-                <div class="stat-item">平均值: <span id="statAvg">0</span></div>
+                <div class="stat-item">
+                  行数:
+                  <span id="statRows">0</span>
+                </div>
+                <div class="stat-item">
+                  列数:
+                  <span id="statCols">0</span>
+                </div>
+                <div class="stat-item">
+                  最小值:
+                  <span id="statMin">0</span>
+                </div>
+                <div class="stat-item">
+                  最大值:
+                  <span id="statMax">0</span>
+                </div>
+                <div class="stat-item">
+                  平均值:
+                  <span id="statAvg">0</span>
+                </div>
               </div>
             </div>
           </div>
@@ -433,9 +649,18 @@
       </main>
     </div>
     <div class="tooltip" id="tooltip">
-      <div><span class="tooltip-row">行:</span> <span id="tipRow">-</span></div>
-      <div><span class="tooltip-col">列:</span> <span id="tipCol">-</span></div>
-      <div><span class="tooltip-value">值:</span> <span id="tipValue">-</span></div>
+      <div>
+        <span class="tooltip-row">行:</span>
+        <span id="tipRow">-</span>
+      </div>
+      <div>
+        <span class="tooltip-col">列:</span>
+        <span id="tipCol">-</span>
+      </div>
+      <div>
+        <span class="tooltip-value">值:</span>
+        <span id="tipValue">-</span>
+      </div>
     </div>
     <div class="toast" id="toast">操作成功</div>
     <script>
@@ -443,7 +668,8 @@
       let matrixData = [];
       let rowLabels = [];
       let colLabels = [];
-      let minVal = 0, maxVal = 1;
+      let minVal = 0,
+        maxVal = 1;
       const canvas = document.getElementById("heatmapCanvas");
       const ctx = canvas.getContext("2d");
       const tooltip = document.getElementById("tooltip");
@@ -455,15 +681,17 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
         if (matrixData.length > 0) generateHeatmap();
       }
-      (function() {
-        if (localStorage.getItem("theme") === "light") document.body.setAttribute("data-theme", "light");
+      (function () {
+        if (localStorage.getItem("theme") === "light")
+          document.body.setAttribute("data-theme", "light");
       })();
 
       function updateGradient() {
         const low = document.getElementById("lowColor").value;
         const mid = document.getElementById("midColor").value;
         const high = document.getElementById("highColor").value;
-        document.getElementById("gradientPreview").style.background = `linear-gradient(to right, ${low}, ${mid}, ${high})`;
+        document.getElementById("gradientPreview").style.background =
+          `linear-gradient(to right, ${low}, ${mid}, ${high})`;
       }
       document.getElementById("lowColor").addEventListener("input", updateGradient);
       document.getElementById("midColor").addEventListener("input", updateGradient);
@@ -488,14 +716,21 @@
 
       function parseData() {
         const input = document.getElementById("dataInput").value.trim();
-        if (!input) { showToast("请输入数据", true); return false; }
+        if (!input) {
+          showToast("请输入数据", true);
+          return false;
+        }
         const hasRow = document.getElementById("hasRowLabels").checked;
         const hasCol = document.getElementById("hasColLabels").checked;
-        const lines = input.split("\n").filter(l => l.trim());
-        if (lines.length === 0) { showToast("数据为空", true); return false; }
-        let startRow = 0, startCol = 0;
+        const lines = input.split("\n").filter((l) => l.trim());
+        if (lines.length === 0) {
+          showToast("数据为空", true);
+          return false;
+        }
+        let startRow = 0,
+          startCol = 0;
         if (hasCol) {
-          const first = lines[0].split(",").map(s => s.trim());
+          const first = lines[0].split(",").map((s) => s.trim());
           colLabels = hasRow ? first.slice(1) : first;
           startRow = 1;
         } else {
@@ -504,7 +739,7 @@
         matrixData = [];
         rowLabels = [];
         for (let i = startRow; i < lines.length; i++) {
-          const cells = lines[i].split(",").map(s => s.trim());
+          const cells = lines[i].split(",").map((s) => s.trim());
           if (hasRow) {
             rowLabels.push(cells[0] || `R${i - startRow + 1}`);
             startCol = 1;
@@ -518,9 +753,15 @@
           }
           if (row.length > 0) matrixData.push(row);
         }
-        if (matrixData.length === 0) { showToast("无法解析有效数据", true); return false; }
-        const maxCols = Math.max(...matrixData.map(r => r.length));
-        matrixData = matrixData.map(r => { while (r.length < maxCols) r.push(0); return r; });
+        if (matrixData.length === 0) {
+          showToast("无法解析有效数据", true);
+          return false;
+        }
+        const maxCols = Math.max(...matrixData.map((r) => r.length));
+        matrixData = matrixData.map((r) => {
+          while (r.length < maxCols) r.push(0);
+          return r;
+        });
         if (!hasRow || rowLabels.length === 0) rowLabels = matrixData.map((_, i) => `R${i + 1}`);
         if (!hasCol || colLabels.length === 0) colLabels = matrixData[0].map((_, i) => `C${i + 1}`);
         while (rowLabels.length < matrixData.length) rowLabels.push(`R${rowLabels.length + 1}`);
@@ -533,10 +774,14 @@
 
       function hexToRgb(hex) {
         const r = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        return r ? { r: parseInt(r[1], 16), g: parseInt(r[2], 16), b: parseInt(r[3], 16) } : { r: 0, g: 0, b: 0 };
+        return r
+          ? { r: parseInt(r[1], 16), g: parseInt(r[2], 16), b: parseInt(r[3], 16) }
+          : { r: 0, g: 0, b: 0 };
       }
       function interpolate(lowHex, midHex, highHex, t) {
-        const low = hexToRgb(lowHex), mid = hexToRgb(midHex), high = hexToRgb(highHex);
+        const low = hexToRgb(lowHex),
+          mid = hexToRgb(midHex),
+          high = hexToRgb(highHex);
         let r, g, b;
         if (t < 0.5) {
           const t2 = t * 2;
@@ -554,7 +799,8 @@
       function contrast(bg) {
         const m = bg.match(/rgb\((\d+),(\d+),(\d+)\)/);
         if (!m) return "#000";
-        const lum = (0.299 * parseInt(m[1]) + 0.587 * parseInt(m[2]) + 0.114 * parseInt(m[3])) / 255;
+        const lum =
+          (0.299 * parseInt(m[1]) + 0.587 * parseInt(m[2]) + 0.114 * parseInt(m[3])) / 255;
         return lum > 0.5 ? "#000" : "#fff";
       }
 
@@ -567,10 +813,14 @@
         const lowC = document.getElementById("lowColor").value;
         const midC = document.getElementById("midColor").value;
         const highC = document.getElementById("highColor").value;
-        const rows = matrixData.length, cols = matrixData[0].length;
+        const rows = matrixData.length,
+          cols = matrixData[0].length;
         ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
-        const maxRowW = Math.max(...rowLabels.map(l => ctx.measureText(l).width), 40);
-        const pad = 10, legW = showLeg ? 70 : 0, legPad = showLeg ? 20 : 0, headerH = 70;
+        const maxRowW = Math.max(...rowLabels.map((l) => ctx.measureText(l).width), 40);
+        const pad = 10,
+          legW = showLeg ? 70 : 0,
+          legPad = showLeg ? 20 : 0,
+          headerH = 70;
         const canvasW = maxRowW + pad + cols * cellSize + legW + legPad + 30;
         const canvasH = headerH + rows * cellSize + 30;
         canvas.width = canvasW;
@@ -582,7 +832,8 @@
         const borC = isDark ? "#2a2a3a" : "#e5e5e5";
         ctx.fillStyle = bgC;
         ctx.fillRect(0, 0, canvasW, canvasH);
-        const offX = maxRowW + pad, offY = headerH;
+        const offX = maxRowW + pad,
+          offY = headerH;
         ctx.fillStyle = mutC;
         ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
         ctx.textAlign = "center";
@@ -606,7 +857,8 @@
             const v = matrixData[i][j];
             const t = maxVal === minVal ? 0.5 : (v - minVal) / (maxVal - minVal);
             const color = interpolate(lowC, midC, highC, t);
-            const x = offX + j * cellSize, y = offY + i * cellSize;
+            const x = offX + j * cellSize,
+              y = offY + i * cellSize;
             ctx.fillStyle = color;
             ctx.fillRect(x, y, cellSize, cellSize);
             ctx.strokeStyle = borC;
@@ -623,7 +875,10 @@
           }
         }
         if (showLeg) {
-          const lx = offX + cols * cellSize + legPad, ly = offY, lh = rows * cellSize, lw = 18;
+          const lx = offX + cols * cellSize + legPad,
+            ly = offY,
+            lh = rows * cellSize,
+            lw = 18;
           const grad = ctx.createLinearGradient(0, ly + lh, 0, ly);
           grad.addColorStop(0, lowC);
           grad.addColorStop(0.5, midC);
@@ -636,7 +891,7 @@
           ctx.font = `${fontSize - 2}px "JetBrains Mono", monospace`;
           ctx.textAlign = "left";
           ctx.textBaseline = "middle";
-          const fmt = n => Number.isInteger(n) ? n : n.toFixed(1);
+          const fmt = (n) => (Number.isInteger(n) ? n : n.toFixed(1));
           ctx.fillText(fmt(maxVal), lx + lw + 4, ly + 5);
           ctx.fillText(fmt((minVal + maxVal) / 2), lx + lw + 4, ly + lh / 2);
           ctx.fillText(fmt(minVal), lx + lw + 4, ly + lh - 5);
@@ -650,10 +905,11 @@
       }
 
       function updateStats() {
-        const rows = matrixData.length, cols = matrixData[0] ? matrixData[0].length : 0;
+        const rows = matrixData.length,
+          cols = matrixData[0] ? matrixData[0].length : 0;
         const all = matrixData.flat();
         const avg = all.reduce((a, b) => a + b, 0) / all.length;
-        const fmt = n => Number.isInteger(n) ? n : n.toFixed(2);
+        const fmt = (n) => (Number.isInteger(n) ? n : n.toFixed(2));
         document.getElementById("statRows").textContent = rows;
         document.getElementById("statCols").textContent = cols;
         document.getElementById("statMin").textContent = fmt(minVal);
@@ -662,20 +918,31 @@
         document.getElementById("statsRow").style.display = "flex";
       }
 
-      canvas.addEventListener("mousemove", function(e) {
+      canvas.addEventListener("mousemove", function (e) {
         if (matrixData.length === 0) return;
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width, scaleY = canvas.height / rect.height;
-        const x = (e.clientX - rect.left) * scaleX, y = (e.clientY - rect.top) * scaleY;
+        const scaleX = canvas.width / rect.width,
+          scaleY = canvas.height / rect.height;
+        const x = (e.clientX - rect.left) * scaleX,
+          y = (e.clientY - rect.top) * scaleY;
         const cellSize = parseInt(document.getElementById("cellSize").value) || 50;
         const fontSize = parseInt(document.getElementById("fontSize").value) || 12;
         ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
-        const maxRowW = Math.max(...rowLabels.map(l => ctx.measureText(l).width), 40);
-        const pad = 10, headerH = 70;
-        const offX = maxRowW + pad, offY = headerH;
+        const maxRowW = Math.max(...rowLabels.map((l) => ctx.measureText(l).width), 40);
+        const pad = 10,
+          headerH = 70;
+        const offX = maxRowW + pad,
+          offY = headerH;
         const col = Math.floor((x - offX) / cellSize);
         const row = Math.floor((y - offY) / cellSize);
-        if (row >= 0 && row < matrixData.length && col >= 0 && col < matrixData[0].length && x >= offX && y >= offY) {
+        if (
+          row >= 0 &&
+          row < matrixData.length &&
+          col >= 0 &&
+          col < matrixData[0].length &&
+          x >= offX &&
+          y >= offY
+        ) {
           const v = matrixData[row][col];
           document.getElementById("tipRow").textContent = rowLabels[row];
           document.getElementById("tipCol").textContent = colLabels[col];
@@ -690,7 +957,10 @@
       canvas.addEventListener("mouseleave", () => tooltip.classList.remove("visible"));
 
       function exportPNG() {
-        if (matrixData.length === 0) { showToast("请先生成热力图", true); return; }
+        if (matrixData.length === 0) {
+          showToast("请先生成热力图", true);
+          return;
+        }
         const link = document.createElement("a");
         link.download = `heatmap_${Date.now()}.png`;
         link.href = canvas.toDataURL("image/png");
@@ -756,7 +1026,9 @@
           if (d.showL !== undefined) document.getElementById("showLegend").checked = d.showL;
           updateGradient();
           if (d.input && d.input.trim()) generateHeatmap();
-        } catch (e) { console.error(e); }
+        } catch (e) {
+          console.error(e);
+        }
       }
 
       function showToast(msg, isErr = false) {

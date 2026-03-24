@@ -12,7 +12,10 @@
     <meta property="og:title" content="护照照片要求 - WebUtils" />
     <meta property="og:description" content="查询各国护照和签证照片要求" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/passport-photo.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/passport-photo.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -22,7 +25,10 @@
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -44,7 +50,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -63,8 +70,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -88,7 +99,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -118,10 +130,20 @@
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-sm);
       }
-      .breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+      .breadcrumb a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -130,14 +152,20 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section p { color: var(--color-text-secondary); margin-top: 4px; font-size: 0.9rem; }
+      .title-section p {
+        color: var(--color-text-secondary);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
       .main-content {
         background: var(--color-bg-card);
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-lg);
         padding: 24px;
       }
-      .search-box { margin-bottom: 24px; }
+      .search-box {
+        margin-bottom: 24px;
+      }
       .search-input {
         width: 100%;
         padding: 14px 18px;
@@ -148,8 +176,15 @@
         border-radius: var(--radius-md);
         color: var(--color-text-primary);
       }
-      .search-input:focus { outline: none; border-color: var(--accent-green); }
-      .country-list { display: flex; flex-direction: column; gap: 16px; }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent-green);
+      }
+      .country-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
       .country-card {
         background: var(--color-bg-surface);
         border: 1px solid var(--border-subtle);
@@ -157,7 +192,9 @@
         padding: 20px;
         transition: all 0.2s;
       }
-      .country-card:hover { border-color: var(--accent-green); }
+      .country-card:hover {
+        border-color: var(--accent-green);
+      }
       .country-header {
         display: flex;
         align-items: center;
@@ -166,9 +203,17 @@
         padding-bottom: 12px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .country-flag { font-size: 2.5rem; }
-      .country-name { font-weight: 600; font-size: 1.2rem; }
-      .country-name-en { font-size: 0.85rem; color: var(--text-muted); }
+      .country-flag {
+        font-size: 2.5rem;
+      }
+      .country-name {
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
+      .country-name-en {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
       .photo-specs {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -234,10 +279,17 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .photo-specs { grid-template-columns: 1fr 1fr; }
+        .container {
+          padding: 16px;
+        }
+        .photo-specs {
+          grid-template-columns: 1fr 1fr;
+        }
       }
     </style>
   </head>
@@ -253,14 +305,23 @@
           <span class="breadcrumb-current">护照照片要求</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">📷</span>护照照片要求</h1>
+          <h1>
+            <span class="icon">📷</span>
+            护照照片要求
+          </h1>
           <p>查询各国护照和签证照片要求</p>
         </div>
       </header>
 
       <main class="main-content">
         <div class="search-box">
-          <input type="text" class="search-input" id="searchInput" placeholder="搜索国家或地区名称..." oninput="filterCountries()">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="搜索国家或地区名称..."
+            oninput="filterCountries()"
+          />
         </div>
 
         <div class="country-list" id="countryList"></div>
@@ -430,7 +491,7 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -439,7 +500,7 @@
 
       function filterCountries() {
         var search = document.getElementById("searchInput").value.toLowerCase();
-        var filtered = countries.filter(function(c) {
+        var filtered = countries.filter(function (c) {
           return c.name.toLowerCase().includes(search) || c.nameEn.toLowerCase().includes(search);
         });
         renderCountries(filtered);
@@ -449,7 +510,7 @@
         var container = document.getElementById("countryList");
         container.textContent = "";
 
-        list.forEach(function(country) {
+        list.forEach(function (country) {
           var card = document.createElement("div");
           card.className = "country-card";
 
@@ -478,7 +539,7 @@
             { label: "背景", value: country.background },
             { label: "头部", value: country.headSize }
           ];
-          specItems.forEach(function(item) {
+          specItems.forEach(function (item) {
             var specEl = document.createElement("div");
             specEl.className = "spec-item";
             var label = document.createElement("div");
@@ -499,7 +560,7 @@
           reqTitle.textContent = "具体要求";
           var reqList = document.createElement("ul");
           reqList.className = "requirements-list";
-          country.requirements.forEach(function(req) {
+          country.requirements.forEach(function (req) {
             var li = document.createElement("li");
             li.textContent = req;
             reqList.appendChild(li);
@@ -518,7 +579,9 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize

@@ -14,7 +14,10 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="疫苗要求查询 - WebUtils" />
-    <meta property="og:description" content="旅行目的地疫苗要求查询，了解各国必需和推荐接种的疫苗信息" />
+    <meta
+      property="og:description"
+      content="旅行目的地疫苗要求查询，了解各国必需和推荐接种的疫苗信息"
+    />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -30,7 +33,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="疫苗要求查询 - WebUtils" />
-    <meta name="twitter:description" content="旅行目的地疫苗要求查询，了解各国必需和推荐接种的疫苗信息" />
+    <meta
+      name="twitter:description"
+      content="旅行目的地疫苗要求查询，了解各国必需和推荐接种的疫苗信息"
+    />
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
 
     <!-- JSON-LD BreadcrumbList Schema -->
@@ -90,7 +96,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -109,8 +116,6 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-
-      
 
       *,
       *::before,
@@ -732,80 +737,80 @@
         { id: "americas", name: "美洲" },
         { id: "europe", name: "欧洲" },
         { id: "oceania", name: "大洋洲" },
-        { id: "middle_east", name: "中东" },
+        { id: "middle_east", name: "中东" }
       ];
 
       const vaccineTypes = {
         yellow_fever: {
           name: "黄热病疫苗",
           desc: "热带非洲和南美洲部分地区的蚊媒传染病，部分国家入境时需要出示黄热病疫苗接种证明",
-          timing: "出发前至少10天接种，有效期10年",
+          timing: "出发前至少10天接种，有效期10年"
         },
         hepatitis_a: {
           name: "甲型肝炎疫苗",
           desc: "通过污染的食物和水传播，在卫生条件较差的地区风险较高",
-          timing: "出发前2-4周接种，第2针在6-12个月后",
+          timing: "出发前2-4周接种，第2针在6-12个月后"
         },
         hepatitis_b: {
           name: "乙型肝炎疫苗",
           desc: "通过血液和体液传播，医疗接触或长期逗留时风险较高",
-          timing: "需要3针，完整接种需6个月",
+          timing: "需要3针，完整接种需6个月"
         },
         typhoid: {
           name: "伤寒疫苗",
           desc: "通过污染的食物和水传播，在卫生条件较差的地区常见",
-          timing: "出发前2周接种，有效期2-3年",
+          timing: "出发前2周接种，有效期2-3年"
         },
         japanese_encephalitis: {
           name: "日本脑炎疫苗",
           desc: "通过蚊虫传播，主要在亚洲农村地区流行",
-          timing: "需要2针，间隔28天，出发前1周完成",
+          timing: "需要2针，间隔28天，出发前1周完成"
         },
         rabies: {
           name: "狂犬病疫苗",
           desc: "通过动物咬伤传播，如计划与动物接触或前往偏远地区",
-          timing: "需要3针，在21-28天内完成",
+          timing: "需要3针，在21-28天内完成"
         },
         meningitis: {
           name: "脑膜炎疫苗",
           desc: "通过飞沫传播，撒哈拉以南非洲脑膜炎带高风险",
-          timing: "出发前至少2周接种，前往沙特朝觐必须接种",
+          timing: "出发前至少2周接种，前往沙特朝觐必须接种"
         },
         cholera: {
           name: "霍乱疫苗",
           desc: "通过污染的水传播，在卫生条件差的地区或疫情爆发时考虑",
-          timing: "口服疫苗，出发前1-2周完成",
+          timing: "口服疫苗，出发前1-2周完成"
         },
         polio: {
           name: "脊髓灰质炎疫苗",
           desc: "部分国家仍有病例，可能需要加强针",
-          timing: "出发前4-6周接种加强针",
+          timing: "出发前4-6周接种加强针"
         },
         malaria: {
           name: "疟疾预防药物",
           desc: "通过蚊虫传播的寄生虫病，无疫苗但有预防药物",
-          timing: "根据药物类型，出发前1-2周开始服用",
+          timing: "根据药物类型，出发前1-2周开始服用"
         },
         mmr: {
           name: "麻疹-腮腺炎-风疹疫苗",
           desc: "常规疫苗，出国前确保已完成接种",
-          timing: "如未接种，出发前至少4周完成",
+          timing: "如未接种，出发前至少4周完成"
         },
         dtp: {
           name: "白喉-破伤风-百日咳疫苗",
           desc: "常规疫苗，每10年需要加强针",
-          timing: "出发前检查是否需要加强针",
+          timing: "出发前检查是否需要加强针"
         },
         flu: {
           name: "流感疫苗",
           desc: "季节性流感预防，南北半球流感季节相反",
-          timing: "出发前2周接种",
+          timing: "出发前2周接种"
         },
         covid: {
           name: "新冠疫苗",
           desc: "部分国家可能要求接种证明",
-          timing: "按当地要求完成接种",
-        },
+          timing: "按当地要求完成接种"
+        }
       };
 
       const destinations = {
@@ -814,9 +819,15 @@
             id: "thailand",
             name: "泰国",
             required: [],
-            recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "japanese_encephalitis", "rabies"],
+            recommended: [
+              "hepatitis_a",
+              "hepatitis_b",
+              "typhoid",
+              "japanese_encephalitis",
+              "rabies"
+            ],
             routine: ["mmr", "dtp", "flu"],
-            notes: "农村地区有疟疾风险，需要预防药物",
+            notes: "农村地区有疟疾风险，需要预防药物"
           },
           {
             id: "vietnam",
@@ -828,10 +839,10 @@
               "typhoid",
               "japanese_encephalitis",
               "rabies",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "flu"],
-            notes: "南部和中部高原有疟疾风险",
+            notes: "南部和中部高原有疟疾风险"
           },
           {
             id: "india",
@@ -844,10 +855,10 @@
               "japanese_encephalitis",
               "rabies",
               "cholera",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "大部分地区有疟疾风险，卫生条件需注意",
+            notes: "大部分地区有疟疾风险，卫生条件需注意"
           },
           {
             id: "indonesia",
@@ -859,10 +870,10 @@
               "typhoid",
               "japanese_encephalitis",
               "rabies",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "flu"],
-            notes: "巴厘岛等旅游区风险较低，偏远岛屿需预防疟疾",
+            notes: "巴厘岛等旅游区风险较低，偏远岛屿需预防疟疾"
           },
           {
             id: "japan",
@@ -870,7 +881,7 @@
             required: [],
             recommended: ["japanese_encephalitis"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "nepal",
@@ -882,28 +893,42 @@
               "typhoid",
               "japanese_encephalitis",
               "rabies",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "高海拔地区需注意高原反应",
-          },
+            notes: "高海拔地区需注意高原反应"
+          }
         ],
         africa: [
           {
             id: "kenya",
             name: "肯尼亚",
             required: ["yellow_fever"],
-            recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "meningitis", "rabies", "malaria"],
+            recommended: [
+              "hepatitis_a",
+              "hepatitis_b",
+              "typhoid",
+              "meningitis",
+              "rabies",
+              "malaria"
+            ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "黄热病疫苗入境必需，全境有疟疾风险",
+            notes: "黄热病疫苗入境必需，全境有疟疾风险"
           },
           {
             id: "tanzania",
             name: "坦桑尼亚",
             required: ["yellow_fever"],
-            recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "meningitis", "rabies", "malaria"],
+            recommended: [
+              "hepatitis_a",
+              "hepatitis_b",
+              "typhoid",
+              "meningitis",
+              "rabies",
+              "malaria"
+            ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "黄热病疫苗入境必需，全境有疟疾风险",
+            notes: "黄热病疫苗入境必需，全境有疟疾风险"
           },
           {
             id: "south_africa",
@@ -911,7 +936,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "rabies", "malaria"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "部分地区有疟疾风险，从黄热病疫区入境需证明",
+            notes: "部分地区有疟疾风险，从黄热病疫区入境需证明"
           },
           {
             id: "egypt",
@@ -919,7 +944,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "rabies"],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "从黄热病疫区入境需证明",
+            notes: "从黄热病疫区入境需证明"
           },
           {
             id: "morocco",
@@ -927,7 +952,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "rabies"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发展中国家中相对安全",
+            notes: "发展中国家中相对安全"
           },
           {
             id: "nigeria",
@@ -940,11 +965,11 @@
               "meningitis",
               "rabies",
               "cholera",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "高风险地区，需要全面防护",
-          },
+            notes: "高风险地区，需要全面防护"
+          }
         ],
         americas: [
           {
@@ -953,15 +978,22 @@
             required: ["yellow_fever"],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "rabies", "malaria"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "亚马逊地区需要黄热病疫苗和疟疾预防",
+            notes: "亚马逊地区需要黄热病疫苗和疟疾预防"
           },
           {
             id: "peru",
             name: "秘鲁",
             required: [],
-            recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "yellow_fever", "rabies", "malaria"],
+            recommended: [
+              "hepatitis_a",
+              "hepatitis_b",
+              "typhoid",
+              "yellow_fever",
+              "rabies",
+              "malaria"
+            ],
             routine: ["mmr", "dtp", "flu"],
-            notes: "亚马逊地区需要黄热病疫苗",
+            notes: "亚马逊地区需要黄热病疫苗"
           },
           {
             id: "mexico",
@@ -969,7 +1001,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "rabies"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "旅游区相对安全",
+            notes: "旅游区相对安全"
           },
           {
             id: "usa",
@@ -977,15 +1009,22 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu", "covid"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "colombia",
             name: "哥伦比亚",
             required: [],
-            recommended: ["hepatitis_a", "hepatitis_b", "typhoid", "yellow_fever", "rabies", "malaria"],
+            recommended: [
+              "hepatitis_a",
+              "hepatitis_b",
+              "typhoid",
+              "yellow_fever",
+              "rabies",
+              "malaria"
+            ],
             routine: ["mmr", "dtp", "flu"],
-            notes: "部分地区需要黄热病疫苗",
+            notes: "部分地区需要黄热病疫苗"
           },
           {
             id: "argentina",
@@ -993,8 +1032,8 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "相对安全的南美国家",
-          },
+            notes: "相对安全的南美国家"
+          }
         ],
         europe: [
           {
@@ -1003,7 +1042,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "france",
@@ -1011,7 +1050,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "germany",
@@ -1019,7 +1058,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "italy",
@@ -1027,7 +1066,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "spain",
@@ -1035,7 +1074,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "russia",
@@ -1043,8 +1082,8 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "西伯利亚有蜱传脑炎风险",
-          },
+            notes: "西伯利亚有蜱传脑炎风险"
+          }
         ],
         oceania: [
           {
@@ -1053,7 +1092,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "new_zealand",
@@ -1061,7 +1100,7 @@
             required: [],
             recommended: [],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
+            notes: "发达国家，常规疫苗即可"
           },
           {
             id: "fiji",
@@ -1069,7 +1108,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "热带岛国，注意食物卫生",
+            notes: "热带岛国，注意食物卫生"
           },
           {
             id: "papua_new_guinea",
@@ -1081,11 +1120,11 @@
               "typhoid",
               "japanese_encephalitis",
               "rabies",
-              "malaria",
+              "malaria"
             ],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "高风险地区，需要全面防护",
-          },
+            notes: "高风险地区，需要全面防护"
+          }
         ],
         middle_east: [
           {
@@ -1094,7 +1133,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发展良好，风险较低",
+            notes: "发展良好，风险较低"
           },
           {
             id: "saudi_arabia",
@@ -1102,7 +1141,7 @@
             required: ["meningitis"],
             recommended: ["hepatitis_a", "hepatitis_b"],
             routine: ["mmr", "dtp", "polio", "flu"],
-            notes: "朝觐必须接种脑膜炎疫苗",
+            notes: "朝觐必须接种脑膜炎疫苗"
           },
           {
             id: "jordan",
@@ -1110,7 +1149,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "相对安全的中东国家",
+            notes: "相对安全的中东国家"
           },
           {
             id: "turkey",
@@ -1118,7 +1157,7 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b", "typhoid"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "横跨欧亚，大城市风险低",
+            notes: "横跨欧亚，大城市风险低"
           },
           {
             id: "israel",
@@ -1126,9 +1165,9 @@
             required: [],
             recommended: ["hepatitis_a", "hepatitis_b"],
             routine: ["mmr", "dtp", "flu"],
-            notes: "发达国家，常规疫苗即可",
-          },
-        ],
+            notes: "发达国家，常规疫苗即可"
+          }
+        ]
       };
 
       let currentRegion = "";
@@ -1366,7 +1405,7 @@
       function saveState() {
         const state = {
           region: currentRegion,
-          destination: document.getElementById("destination").value,
+          destination: document.getElementById("destination").value
         };
         localStorage.setItem("vaccine-checker-state", JSON.stringify(state));
       }

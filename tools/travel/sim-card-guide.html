@@ -12,7 +12,10 @@
     <meta property="og:title" content="SIM卡指南 - WebUtils" />
     <meta property="og:description" content="各国旅行SIM卡和流量套餐信息" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tools.realtime-ai.chat/tools/travel/sim-card-guide.html" />
+    <meta
+      property="og:url"
+      content="https://tools.realtime-ai.chat/tools/travel/sim-card-guide.html"
+    />
     <meta property="og:site_name" content="WebUtils" />
     <meta property="og:locale" content="zh_CN" />
     <meta name="twitter:card" content="summary" />
@@ -22,7 +25,10 @@
     <meta name="twitter:image" content="https://tools.realtime-ai.chat/social-preview.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --bg-deep: #0a0a0f;
@@ -44,7 +50,8 @@
         --radius-sm: 4px;
         --radius-md: 8px;
         --radius-lg: 12px;
-        --font-sans: "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+        --font-sans:
+          "Space Grotesk", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
         --font-mono: "JetBrains Mono", "Courier New", monospace;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
@@ -63,8 +70,12 @@
         --accent-magenta: #e63975;
         --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: var(--font-sans);
         background: var(--color-bg-deep);
@@ -88,7 +99,8 @@
       .bg-grid {
         position: fixed;
         inset: 0;
-        background-image: linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
+        background-image:
+          linear-gradient(rgba(0, 245, 212, 0.02) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 245, 212, 0.02) 1px, transparent 1px);
         background-size: 40px 40px;
         pointer-events: none;
@@ -118,10 +130,20 @@
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-sm);
       }
-      .breadcrumb a { color: var(--color-text-secondary); text-decoration: none; }
-      .breadcrumb a:hover { color: var(--accent-green); }
-      .breadcrumb-separator { color: var(--text-muted); }
-      .breadcrumb-current { color: var(--color-text-primary); font-weight: 500; }
+      .breadcrumb a {
+        color: var(--color-text-secondary);
+        text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent-green);
+      }
+      .breadcrumb-separator {
+        color: var(--text-muted);
+      }
+      .breadcrumb-current {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
       .title-section h1 {
         font-family: var(--font-mono);
         font-size: 1.5rem;
@@ -130,14 +152,20 @@
         align-items: center;
         gap: 12px;
       }
-      .title-section p { color: var(--color-text-secondary); margin-top: 4px; font-size: 0.9rem; }
+      .title-section p {
+        color: var(--color-text-secondary);
+        margin-top: 4px;
+        font-size: 0.9rem;
+      }
       .main-content {
         background: var(--color-bg-card);
         border: 1px solid var(--border-subtle);
         border-radius: var(--radius-lg);
         padding: 24px;
       }
-      .search-box { margin-bottom: 24px; }
+      .search-box {
+        margin-bottom: 24px;
+      }
       .search-input {
         width: 100%;
         padding: 14px 18px;
@@ -148,7 +176,10 @@
         border-radius: var(--radius-md);
         color: var(--color-text-primary);
       }
-      .search-input:focus { outline: none; border-color: var(--accent-green); }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--accent-green);
+      }
       .tips-box {
         padding: 16px;
         background: rgba(59, 130, 246, 0.1);
@@ -167,9 +198,21 @@
         font-size: 0.85rem;
         color: var(--color-text-secondary);
       }
-      .tips-list li { padding: 4px 0; padding-left: 20px; position: relative; }
-      .tips-list li::before { content: "💡"; position: absolute; left: 0; }
-      .country-list { display: flex; flex-direction: column; gap: 16px; }
+      .tips-list li {
+        padding: 4px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+      .tips-list li::before {
+        content: "💡";
+        position: absolute;
+        left: 0;
+      }
+      .country-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
       .country-card {
         background: var(--color-bg-surface);
         border: 1px solid var(--border-subtle);
@@ -177,7 +220,9 @@
         padding: 20px;
         transition: all 0.2s;
       }
-      .country-card:hover { border-color: var(--accent-green); }
+      .country-card:hover {
+        border-color: var(--accent-green);
+      }
       .country-header {
         display: flex;
         align-items: center;
@@ -186,10 +231,22 @@
         padding-bottom: 12px;
         border-bottom: 1px solid var(--border-subtle);
       }
-      .country-flag { font-size: 2rem; }
-      .country-name { font-weight: 600; font-size: 1.1rem; }
-      .country-name-en { font-size: 0.8rem; color: var(--text-muted); }
-      .sim-options { display: flex; flex-direction: column; gap: 12px; }
+      .country-flag {
+        font-size: 2rem;
+      }
+      .country-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+      .country-name-en {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+      .sim-options {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
       .sim-option {
         padding: 12px;
         background: var(--bg-input);
@@ -205,7 +262,10 @@
         font-size: 0.85rem;
         color: var(--accent-purple);
       }
-      .option-details { font-size: 0.85rem; color: var(--color-text-secondary); }
+      .option-details {
+        font-size: 0.85rem;
+        color: var(--color-text-secondary);
+      }
       .option-price {
         font-family: var(--font-mono);
         color: var(--accent-green);
@@ -249,10 +309,17 @@
         transition: all 0.3s;
         z-index: 1000;
       }
-      .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
       @media (max-width: 600px) {
-        .container { padding: 16px; }
-        .sim-option { grid-template-columns: 1fr; }
+        .container {
+          padding: 16px;
+        }
+        .sim-option {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
@@ -268,7 +335,10 @@
           <span class="breadcrumb-current">SIM卡指南</span>
         </nav>
         <div class="title-section">
-          <h1><span class="icon">📱</span>SIM卡指南</h1>
+          <h1>
+            <span class="icon">📱</span>
+            SIM卡指南
+          </h1>
           <p>各国旅行SIM卡和流量套餐信息</p>
         </div>
       </header>
@@ -285,7 +355,13 @@
         </div>
 
         <div class="search-box">
-          <input type="text" class="search-input" id="searchInput" placeholder="搜索国家或地区名称..." oninput="filterCountries()">
+          <input
+            type="text"
+            class="search-input"
+            id="searchInput"
+            placeholder="搜索国家或地区名称..."
+            oninput="filterCountries()"
+          />
         </div>
 
         <div class="country-list" id="countryList"></div>
@@ -297,7 +373,9 @@
     <script>
       var countries = [
         {
-          name: "日本", nameEn: "Japan", flag: "🇯🇵",
+          name: "日本",
+          nameEn: "Japan",
+          flag: "🇯🇵",
           providers: "Docomo, SoftBank, AU",
           options: [
             { type: "旅游SIM卡", details: "7天无限流量（限速后）", price: "约¥60-100" },
@@ -307,7 +385,9 @@
           purchase: "机场、电器店、便利店均可购买"
         },
         {
-          name: "韩国", nameEn: "South Korea", flag: "🇰🇷",
+          name: "韩国",
+          nameEn: "South Korea",
+          flag: "🇰🇷",
           providers: "SK Telecom, KT, LG U+",
           options: [
             { type: "旅游SIM卡", details: "5天无限流量4G", price: "约¥50-80" },
@@ -317,7 +397,9 @@
           purchase: "仁川机场、明洞便利店、淘宝提前购买"
         },
         {
-          name: "泰国", nameEn: "Thailand", flag: "🇹🇭",
+          name: "泰国",
+          nameEn: "Thailand",
+          flag: "🇹🇭",
           providers: "AIS, DTAC, TrueMove",
           options: [
             { type: "旅游SIM卡", details: "8天15GB+通话", price: "约¥30-50" },
@@ -327,7 +409,9 @@
           purchase: "机场7-11、AIS/DTAC门店、提前网购"
         },
         {
-          name: "新加坡", nameEn: "Singapore", flag: "🇸🇬",
+          name: "新加坡",
+          nameEn: "Singapore",
+          flag: "🇸🇬",
           providers: "Singtel, StarHub, M1",
           options: [
             { type: "旅游SIM卡", details: "7天100GB", price: "约¥80-120" },
@@ -337,7 +421,9 @@
           purchase: "樟宜机场、便利店、运营商门店"
         },
         {
-          name: "马来西亚", nameEn: "Malaysia", flag: "🇲🇾",
+          name: "马来西亚",
+          nameEn: "Malaysia",
+          flag: "🇲🇾",
           providers: "Maxis, Digi, Celcom, U Mobile",
           options: [
             { type: "旅游SIM卡", details: "7天10GB", price: "约¥20-40" },
@@ -347,7 +433,9 @@
           purchase: "机场、购物中心、便利店"
         },
         {
-          name: "越南", nameEn: "Vietnam", flag: "🇻🇳",
+          name: "越南",
+          nameEn: "Vietnam",
+          flag: "🇻🇳",
           providers: "Viettel, Mobifone, Vinaphone",
           options: [
             { type: "旅游SIM卡", details: "30天60GB", price: "约¥30-50" },
@@ -357,7 +445,9 @@
           purchase: "机场柜台、手机店、街边摊位"
         },
         {
-          name: "美国", nameEn: "United States", flag: "🇺🇸",
+          name: "美国",
+          nameEn: "United States",
+          flag: "🇺🇸",
           providers: "AT&T, Verizon, T-Mobile",
           options: [
             { type: "预付费卡", details: "T-Mobile Tourist Plan 21天", price: "约¥200-300" },
@@ -367,7 +457,9 @@
           purchase: "机场、Best Buy、Target、网上预购"
         },
         {
-          name: "英国", nameEn: "United Kingdom", flag: "🇬🇧",
+          name: "英国",
+          nameEn: "United Kingdom",
+          flag: "🇬🇧",
           providers: "EE, Vodafone, Three, O2",
           options: [
             { type: "预付费SIM", details: "Three的Go Roam包含欧洲漫游", price: "约¥100-150/30天" },
@@ -377,7 +469,9 @@
           purchase: "机场、超市、运营商门店"
         },
         {
-          name: "欧盟", nameEn: "European Union", flag: "🇪🇺",
+          name: "欧盟",
+          nameEn: "European Union",
+          flag: "🇪🇺",
           providers: "各国本地运营商",
           options: [
             { type: "欧洲通用SIM", details: "Orange Holiday 20GB 14天", price: "约¥150-200" },
@@ -387,7 +481,9 @@
           purchase: "提前网购或落地后在当地运营商购买"
         },
         {
-          name: "澳大利亚", nameEn: "Australia", flag: "🇦🇺",
+          name: "澳大利亚",
+          nameEn: "Australia",
+          flag: "🇦🇺",
           providers: "Telstra, Optus, Vodafone",
           options: [
             { type: "预付费SIM", details: "Optus 28天50GB", price: "约¥150-200" },
@@ -397,7 +493,9 @@
           purchase: "机场、超市、便利店"
         },
         {
-          name: "香港", nameEn: "Hong Kong", flag: "🇭🇰",
+          name: "香港",
+          nameEn: "Hong Kong",
+          flag: "🇭🇰",
           providers: "中国移动香港, CSL, 3HK, SmarTone",
           options: [
             { type: "旅游SIM", details: "8天无限流量", price: "约¥50-80" },
@@ -407,7 +505,9 @@
           purchase: "机场、便利店、关口、淘宝"
         },
         {
-          name: "台湾", nameEn: "Taiwan", flag: "🇹🇼",
+          name: "台湾",
+          nameEn: "Taiwan",
+          flag: "🇹🇼",
           providers: "中华电信, 台湾大哥大, 远传, 台湾之星",
           options: [
             { type: "吃到饱SIM", details: "5天无限流量", price: "约¥50-80" },
@@ -425,7 +525,7 @@
         localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      (function() {
+      (function () {
         var saved = localStorage.getItem("theme");
         if (saved === "light") {
           document.body.setAttribute("data-theme", "light");
@@ -434,7 +534,7 @@
 
       function filterCountries() {
         var search = document.getElementById("searchInput").value.toLowerCase();
-        var filtered = countries.filter(function(c) {
+        var filtered = countries.filter(function (c) {
           return c.name.toLowerCase().includes(search) || c.nameEn.toLowerCase().includes(search);
         });
         renderCountries(filtered);
@@ -444,7 +544,7 @@
         var container = document.getElementById("countryList");
         container.textContent = "";
 
-        list.forEach(function(country) {
+        list.forEach(function (country) {
           var card = document.createElement("div");
           card.className = "country-card";
 
@@ -467,7 +567,7 @@
 
           var options = document.createElement("div");
           options.className = "sim-options";
-          country.options.forEach(function(opt) {
+          country.options.forEach(function (opt) {
             var optEl = document.createElement("div");
             optEl.className = "sim-option";
             var typeEl = document.createElement("div");
@@ -514,7 +614,9 @@
         var toast = document.getElementById("toast");
         toast.textContent = msg;
         toast.classList.add("show");
-        setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2000);
       }
 
       // Initialize
