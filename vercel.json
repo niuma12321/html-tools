@@ -65,28 +65,28 @@
       "permanent": true
     },
     {
-      "source": "/tools/ecommerce/discount-calculator.html",
-      "destination": "/tools/shopping/discount-calculator.html",
+      "source": "/tools/ecommerce/discount-calculator",
+      "destination": "/tools/shopping/discount-calculator",
       "permanent": true
     },
     {
-      "source": "/tools/lifestyle/habit-tracker.html",
-      "destination": "/tools/life/habit-tracker-checkin.html",
+      "source": "/tools/lifestyle/habit-tracker",
+      "destination": "/tools/life/habit-tracker-checkin",
       "permanent": true
     },
     {
-      "source": "/tools/pet/pet-age-calculator.html",
-      "destination": "/tools/pets/pet-age-calculator-cn.html",
+      "source": "/tools/pet/pet-age-calculator",
+      "destination": "/tools/pets/pet-age-calculator-cn",
       "permanent": true
     },
     {
-      "source": "/tools/gaming/dice-roller.html",
-      "destination": "/tools/game/dice-roller.html",
+      "source": "/tools/gaming/dice-roller",
+      "destination": "/tools/game/dice-roller",
       "permanent": true
     },
     {
-      "source": "/tools/real-estate/rent-vs-buy.html",
-      "destination": "/tools/realestate/rent-vs-buy-cn.html",
+      "source": "/tools/real-estate/rent-vs-buy",
+      "destination": "/tools/realestate/rent-vs-buy-cn",
       "permanent": true
     }
   ]
