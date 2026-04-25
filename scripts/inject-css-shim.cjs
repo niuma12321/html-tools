@@ -22,6 +22,7 @@ const ROOT = path.resolve(__dirname, '..');
 const SHIM_PATH = path.join(__dirname, '_shim-content.css');
 const SHIM_MARKER = '/* CSS 变量兼容垫片';
 const DRY_RUN = process.argv.includes('--dry-run');
+const FORCE = process.argv.includes('--force');
 
 const shim = fs.readFileSync(SHIM_PATH, 'utf8').trimEnd();
 
@@ -45,8 +46,48 @@ for (const file of tools) {
   let content = fs.readFileSync(file, 'utf8');
 
   if (content.includes(SHIM_MARKER)) {
-    skippedAlreadyInjected++;
-    continue;
+    if (!FORCE) {
+      skippedAlreadyInjected++;
+      continue;
+    }
+    // --force：剥离整个旧垫片（marker 行 + 后续连续的 :root { ... } / [data-theme=...] { ... } 块），
+    // 直到遇到原 :root（其特征：定义 --bg-deep: 直值，而非 var()）。
+    const markerIdx = content.indexOf(SHIM_MARKER);
+    const markerLineStart = content.lastIndexOf('\n', markerIdx) + 1;
+
+    // 从 markerLineStart 开始扫描，逐个跳过 { ... } 块，直到下一块的内容
+    // 不再是兼容垫片（即不含 SHIM_MARKER 之后的内容也不再是 var(--... 风格的映射）。
+    // 简化判断：垫片的 :root 第一行通常是 var(--bg-deep) 或注释；原 :root 第一行是 --bg-deep: #;
+    let pos = markerLineStart;
+    while (true) {
+      const openBrace = content.indexOf('{', pos);
+      if (openBrace === -1) break;
+      // 取这个块的开头几个字符判定是否是垫片
+      const firstLineEnd = content.indexOf('\n', openBrace);
+      const firstContentLine = content.slice(openBrace + 1, firstLineEnd + 200);
+      const looksLikeShim =
+        firstContentLine.includes('var(--') || // 映射定义
+        firstContentLine.includes('color-* 家族') || // 内嵌注释
+        firstContentLine.includes('玻璃拟态') ||
+        firstContentLine.includes('兼容垫片') ||
+        firstContentLine.includes('浅色主题覆盖');
+      if (!looksLikeShim) break;
+      // 找匹配的 }
+      let depth = 1;
+      let i = openBrace + 1;
+      while (i < content.length && depth > 0) {
+        if (content[i] === '{') depth++;
+        else if (content[i] === '}') depth--;
+        i++;
+      }
+      pos = i;
+      // 跳过空白和换行
+      while (pos < content.length && /\s/.test(content[pos])) pos++;
+    }
+    // 删掉 [markerLineStart, pos)
+    // 但要保留 pos 前的最后一个换行的缩进（让原 :root 上方有空行）
+    const stripEnd = content.lastIndexOf('\n', pos) + 1;
+    content = content.slice(0, markerLineStart) + content.slice(stripEnd);
   }
 
   const styleMatch = content.match(/<style>([\s\S]*?)<\/style>/);

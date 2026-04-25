@@ -188,6 +188,43 @@
         --pico-form-element-background-color: var(--bg-input, #0e0e14);
       }
 
+      /* 浅色主题覆盖：glass/shadow/glow 等主题敏感变量 */
+      [data-theme="light"] {
+        /* 玻璃拟态 — 浅色版（半透明白） */
+        --glass-bg: rgba(255, 255, 255, 0.78);
+        --glass-border: rgba(0, 0, 0, 0.06);
+        --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+        /* 阴影 — 浅色版（更淡） */
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+        --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+        --shadow-glow: 0 0 20px rgba(0, 184, 148, 0.12);
+        --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+        /* 辉光 — 浅色版（透明度降低） */
+        --glow-cyan: 0 0 16px rgba(0, 184, 148, 0.18);
+        --glow-purple: 0 0 16px rgba(139, 92, 246, 0.18);
+        --glow-green: 0 0 16px rgba(16, 185, 129, 0.18);
+        --glow-red: 0 0 16px rgba(244, 63, 94, 0.18);
+        --glow-magenta: 0 0 16px rgba(247, 37, 133, 0.18);
+        --accent-glow: 0 0 16px rgba(0, 184, 148, 0.18);
+
+        /* 渐变 — 浅色版 */
+        --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #fff 100%);
+
+        /* hover/elevated 替换为浅色调 */
+        --bg-card-hover: #f1f5f9;
+        --bg-elevated: #fff;
+        --bg-hover: #f1f5f9;
+        --accent-light: rgba(0, 184, 148, 0.12);
+        --accent-hover: #00d4aa;
+
+        /* Pico 浅色覆盖（默认 Pico 行为） */
+        --pico-primary-inverse: #fff;
+        --pico-contrast-background: #f1f5f9;
+      }
+
       :root {
         --bg-deep: #0a0a0f;
         --bg-surface: #12121a;
