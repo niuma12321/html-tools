@@ -63,6 +63,31 @@
       "source": "/tool/:path*",
       "destination": "/tools/:path*",
       "permanent": true
+    },
+    {
+      "source": "/tools/ecommerce/discount-calculator.html",
+      "destination": "/tools/shopping/discount-calculator.html",
+      "permanent": true
+    },
+    {
+      "source": "/tools/lifestyle/habit-tracker.html",
+      "destination": "/tools/life/habit-tracker-checkin.html",
+      "permanent": true
+    },
+    {
+      "source": "/tools/pet/pet-age-calculator.html",
+      "destination": "/tools/pets/pet-age-calculator-cn.html",
+      "permanent": true
+    },
+    {
+      "source": "/tools/gaming/dice-roller.html",
+      "destination": "/tools/game/dice-roller.html",
+      "permanent": true
+    },
+    {
+      "source": "/tools/real-estate/rent-vs-buy.html",
+      "destination": "/tools/realestate/rent-vs-buy-cn.html",
+      "permanent": true
     }
   ]
 }
